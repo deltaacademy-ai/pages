@@ -8,21 +8,24 @@
 <style>
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-num:#C8D1C0;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
-  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-num:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
-  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-num:#C7BB9D;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+
   .palette-switch{position:fixed;top:12px;right:12px;z-index:100;display:inline-flex;gap:3px;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:3px;box-shadow:var(--shadow-sm);font-family:'Montserrat',system-ui,sans-serif}
   .palette-switch button{font:inherit;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:5px 10px;border-radius:999px;border:none;background:transparent;color:var(--text3);cursor:pointer;transition:all 160ms ease}
   .palette-switch button:hover{color:var(--text)}
   .palette-switch button.is-active{background:var(--accent2);color:var(--bg)}
 
   body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
-  .container{max-width:600px;margin:0 auto}
+  .container{max-width:620px;margin:0 auto}
   .header-bar{background:var(--accent2);border-radius:14px;padding:26px 28px 22px;margin-bottom:32px}
   .header-bar .label{font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:6px}
   .header-bar h1{font-size:1.3rem;font-weight:800;color:var(--bg);letter-spacing:0.02em}
   .header-bar p{font-size:0.74rem;color:rgba(242,236,224,0.65);margin-top:4px}
   .section-label{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 14px;padding-left:4px}
+
+  /* Módulo */
   .modulo-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-xs)}
   .modulo-head{background:var(--card-tag-bg);color:var(--card-tag-fg);padding:14px 20px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;user-select:none}
   .modulo-head-left{display:flex;align-items:baseline;gap:10px}
@@ -32,14 +35,40 @@
   .modulo-head.open .chevron{transform:rotate(180deg)}
   .modulo-body{display:none;background:#FFFFFF;border-top:1px solid var(--border)}
   .modulo-body.open{display:block}
-  .aula-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 20px;border-bottom:1px solid #F0EBE0}
+
+  /* Linha de aula */
+  .aula-row{padding:14px 20px;border-bottom:1px solid #F0EBE0;display:flex;flex-direction:column;gap:10px}
   .aula-row:last-child{border-bottom:none}
-  .aula-info{display:flex;align-items:center;gap:10px}
-  .aula-num{font-size:0.68rem;font-weight:800;color:#8A7F64;min-width:22px}
-  .aula-title{font-size:0.8rem;font-weight:600;color:#1A1A1A}
-  .copy-link-btn{font-family:'Montserrat',system-ui,sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 12px;border-radius:6px;border:1px solid var(--border2);background:var(--panel);color:var(--accent2);cursor:pointer;transition:all 0.15s;white-space:nowrap}
-  .copy-link-btn:hover{background:var(--accent2);color:var(--bg);border-color:var(--accent2)}
-  .copy-link-btn.copied{background:var(--accent2);color:var(--bg);border-color:var(--accent2)}
+  .aula-top{display:flex;align-items:center;gap:10px}
+  .aula-num{font-size:0.68rem;font-weight:800;color:#8A7F64;min-width:22px;flex-shrink:0}
+  .aula-title{font-size:0.82rem;font-weight:700;color:var(--accent2);text-decoration:none;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:5px}
+  .aula-title:hover{opacity:0.7}
+  .aula-title svg{width:11px;height:11px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  /* Ações */
+  .aula-actions{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-left:32px}
+
+  /* Botão ícone base */
+  .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:7px;border:1px solid var(--border2);background:var(--panel);cursor:pointer;transition:all 0.15s;color:var(--text3);flex-shrink:0;position:relative}
+  .icon-btn:hover{background:var(--accent-lighter,#EFE8D7);border-color:var(--accent-border,#D8CFB7);color:var(--accent2)}
+  .icon-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+  .icon-btn[title]:hover::after{content:attr(title);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1F3331;color:#F2ECE0;font-size:0.58rem;font-weight:600;white-space:nowrap;padding:4px 8px;border-radius:5px;pointer-events:none;letter-spacing:0.03em}
+
+  /* Olho ativo */
+  .icon-btn.eye-active{background:var(--accent2);border-color:var(--accent2);color:var(--bg)}
+  .icon-btn.eye-active:hover{background:var(--accent2);opacity:0.85}
+
+  /* Tag de senha */
+  .senha-reveal{display:inline-flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:700;font-family:'Montserrat',system-ui,sans-serif;padding:5px 12px;border-radius:7px;background:var(--accent2);color:var(--bg);letter-spacing:0.06em;animation:popIn 0.15s ease}
+  .senha-reveal .senha-label{font-size:0.58rem;font-weight:600;opacity:0.7;text-transform:uppercase;letter-spacing:0.08em}
+  @keyframes popIn{from{opacity:0;transform:scale(0.92)}to{opacity:1;transform:scale(1)}}
+
+  /* Botão copiar msg / link */
+  .action-btn{font-family:'Montserrat',system-ui,sans-serif;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:6px 13px;border-radius:7px;border:1px solid var(--border2);background:var(--panel);color:var(--accent2);cursor:pointer;transition:all 0.15s;white-space:nowrap;height:32px;display:inline-flex;align-items:center;gap:5px}
+  .action-btn svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .action-btn:hover{background:var(--accent2);color:var(--bg);border-color:var(--accent2)}
+  .action-btn.done{background:var(--accent2);color:var(--bg);border-color:var(--accent2)}
+
   .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
   .footer p{font-size:0.68rem;color:var(--text3);line-height:1.7}
   .footer a{color:var(--accent);text-decoration:none;font-weight:600}
@@ -47,7 +76,7 @@
 </head>
 <body>
 
-<!-- Gate de senha — visível por padrão -->
+<!-- Gate de senha -->
 <div id="gate" style="display:flex;flex-direction:column;align-items:center;
   justify-content:center;min-height:100vh;gap:16px;
   font-family:'Montserrat',sans-serif;background:var(--bg)">
@@ -72,7 +101,7 @@
     Senha incorreta. Tente novamente.</span>
 </div>
 
-<!-- Painel real — oculto até senha correta -->
+<!-- Painel real -->
 <div id="main-content" style="display:none">
 
 <div class="palette-switch" role="tablist" aria-label="Escolher paleta">
@@ -99,13 +128,55 @@
       <span class="chevron">&#9660;</span>
     </div>
     <div class="modulo-body">
+
       <div class="aula-row">
-        <div class="aula-info">
+        <!-- Título clicável → abre a página do aluno em nova aba -->
+        <div class="aula-top">
           <span class="aula-num">01</span>
-          <span class="aula-title">Introdução a Prompts</span>
+          <a class="aula-title"
+             href="https://deltaacademy-ai.github.io/pages/glauco-teste/ia-para-executivos/tutorial-01-intro-prompts.html"
+             target="_blank">
+            Introdução a Prompts
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
         </div>
-        <button class="copy-link-btn" onclick="copyLink(this, 'https://deltaacademy-ai.github.io/pages/glauco-teste/ia-para-executivos/tutorial-01-intro-prompts.html')">Copiar link</button>
+        <!-- Ações -->
+        <div class="aula-actions">
+
+          <!-- Olho: revela/oculta senha com ícone alternado -->
+          <button class="icon-btn"
+            id="eye-01"
+            title="Ver senha"
+            onclick="toggleSenha(this, 'delta101', 'senha-01')">
+            <svg id="eye-icon-01" viewBox="0 0 24 24">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+
+          <!-- Tag de senha: aparece ao lado do olho quando aberto -->
+          <span class="senha-reveal" id="senha-01" style="display:none">
+            <span class="senha-label">Senha</span>delta101
+          </span>
+
+          <!-- Copiar mensagem pronta -->
+          <button class="action-btn"
+            title="Copiar mensagem para alunos"
+            onclick="copyMsg(this, 'Introdução a Prompts', 'https://deltaacademy-ai.github.io/pages/glauco-teste/ia-para-executivos/tutorial-01-intro-prompts.html', 'delta101')">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Copiar Mensagem
+          </button>
+
+          <!-- Copiar só o link -->
+          <button class="action-btn"
+            onclick="copyLink(this, 'https://deltaacademy-ai.github.io/pages/glauco-teste/ia-para-executivos/tutorial-01-intro-prompts.html')">
+            <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            Copiar link
+          </button>
+
+        </div>
       </div>
+
     </div>
   </div>
 
@@ -129,32 +200,83 @@
     }
   }
 
+  /* Olho: alterna ícone open/closed e exibe a senha */
+  const EYE_OPEN  = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+  const EYE_CLOSE = '<line x1="1" y1="1" x2="23" y2="23"/><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>';
+
+  function toggleSenha(btn, senha, tagId) {
+    const tag = document.getElementById(tagId);
+    const icon = btn.querySelector('svg');
+    const visible = tag.style.display !== 'none';
+    if (visible) {
+      tag.style.display = 'none';
+      icon.innerHTML = EYE_OPEN;
+      btn.classList.remove('eye-active');
+      btn.title = 'Ver senha';
+    } else {
+      tag.style.display = 'inline-flex';
+      icon.innerHTML = EYE_CLOSE;
+      btn.classList.add('eye-active');
+      btn.title = 'Ocultar senha';
+    }
+  }
+
   function toggleModulo(head) {
     head.classList.toggle('open');
     head.nextElementSibling.classList.toggle('open');
   }
 
+  /* Copiar mensagem pronta: rich text para e-mail, plain text para WhatsApp */
+  function copyMsg(btn, titulo, url, senha) {
+    const plain =
+      'Conteúdo da aula: ' + titulo + '\n\n' +
+      'Clique para acessar:\n' + url + '\n\n' +
+      'Senha de acesso: ' + senha;
+
+    const html =
+      '<p style="font-family:sans-serif;font-size:15px;color:#1A1A1A">' +
+      '<strong>' + titulo + '</strong></p>' +
+      '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">' +
+      '<a href="' + url + '" style="color:#1F3331;font-weight:600">' +
+      'Clique aqui para acessar: ' + titulo + '</a></p>' +
+      '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">' +
+      'Senha de acesso: <strong>' + senha + '</strong></p>';
+
+    try {
+      navigator.clipboard.write([
+        new ClipboardItem({
+          'text/plain': new Blob([plain], { type: 'text/plain' }),
+          'text/html':  new Blob([html],  { type: 'text/html'  })
+        })
+      ]).then(() => feedback(btn, 'Copiado \u2713'));
+    } catch {
+      navigator.clipboard.writeText(plain).then(() => feedback(btn, 'Copiado \u2713'));
+    }
+  }
+
   function copyLink(btn, url) {
-    navigator.clipboard.writeText(url).then(() => {
-      btn.textContent = 'Copiado \u2713';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Copiar link';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
+    navigator.clipboard.writeText(url).then(() => feedback(btn, 'Copiado \u2713'));
+  }
+
+  function feedback(btn, msg) {
+    const prev = btn.innerHTML;
+    btn.innerHTML = msg;
+    btn.classList.add('done');
+    setTimeout(() => { btn.innerHTML = prev; btn.classList.remove('done'); }, 2000);
   }
 
   (function(){
-    const KEY="delta-tut-palette";
-    const saved=localStorage.getItem(KEY)||"cream";
-    document.documentElement.setAttribute("data-palette",saved);
-    const apply=(p)=>{
-      document.documentElement.setAttribute("data-palette",p);
-      localStorage.setItem(KEY,p);
-      document.querySelectorAll(".palette-switch button").forEach(b=>b.classList.toggle("is-active",b.dataset.palette===p));
+    const KEY = "delta-tut-palette";
+    const saved = localStorage.getItem(KEY) || "cream";
+    document.documentElement.setAttribute("data-palette", saved);
+    const apply = (p) => {
+      document.documentElement.setAttribute("data-palette", p);
+      localStorage.setItem(KEY, p);
+      document.querySelectorAll(".palette-switch button").forEach(b =>
+        b.classList.toggle("is-active", b.dataset.palette === p));
     };
-    document.querySelectorAll(".palette-switch button").forEach(b=>b.addEventListener("click",()=>apply(b.dataset.palette)));
+    document.querySelectorAll(".palette-switch button").forEach(b =>
+      b.addEventListener("click", () => apply(b.dataset.palette)));
     apply(saved);
   })();
 </script>
