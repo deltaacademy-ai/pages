@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta Board · Quadrant Map · Quick Wins de Segunda</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F5F0EB; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1F3331; line-height: 1.5; }
+  .page { max-width: 1280px; margin: 0 auto; padding: 32px 28px 64px; }
+  .eyebrow { font-size: 12px; letter-spacing: 2px; color: #5C6C51; text-transform: uppercase; margin: 0 0 8px; font-weight: 500; }
+  h1 { font-size: 36px; font-weight: 500; margin: 0 0 6px; color: #1F3331; line-height: 1.15; }
+  .subtitle { font-size: 16px; color: #5C6C51; margin: 0 0 28px; max-width: 780px; }
+  .insight-row { display: flex; gap: 16px; margin: 0 0 32px; flex-wrap: wrap; }
+  .insight-card { flex: 1; min-width: 220px; background: #FFFFFF; border: 0.5px solid rgba(31,51,49,0.15); border-radius: 10px; padding: 14px 18px; }
+  .insight-card.gold { border-left: 3px solid #C4A35A; }
+  .insight-card.dark { background: #1F3331; color: #F5F0EB; border: none; }
+  .insight-num { font-size: 28px; font-weight: 500; line-height: 1; margin-bottom: 4px; }
+  .insight-num.gold { color: #C4A35A; }
+  .insight-label { font-size: 12px; color: #5C6C51; }
+  .insight-card.dark .insight-label { color: #D4CBB8; }
+  .chart-wrapper { background: #FFFFFF; border: 0.5px solid rgba(31,51,49,0.15); border-radius: 12px; padding: 24px; margin: 0 0 32px; }
+  .chart-wrapper svg { display: block; width: 100%; height: auto; max-height: 760px; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 16px; padding-top: 16px; border-top: 0.5px solid rgba(31,51,49,0.1); font-size: 12px; color: #5C6C51; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+  h2 { font-size: 22px; font-weight: 500; margin: 32px 0 4px; color: #1F3331; }
+  h2 .count { font-size: 16px; color: #5C6C51; font-weight: 400; margin-left: 8px; }
+  .section-sub { font-size: 13px; color: #5C6C51; margin: 0 0 16px; }
+  .clusters-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px; }
+  .cluster-card { background: #FFFFFF; border: 0.5px solid rgba(31,51,49,0.15); border-radius: 10px; padding: 16px 18px; transition: all 0.2s; }
+  .cluster-card.highlighted { border-color: #C4A35A; box-shadow: 0 0 0 3px rgba(196,163,90,0.25); transform: translateY(-2px); }
+  .cluster-card.quick { border-left: 3px solid #C4A35A; }
+  .cluster-card.big { border-left: 3px solid #5C6C51; }
+  .cluster-card.easy { border-left: 3px solid #7A8E70; }
+  .cluster-card.ignore { border-left: 3px solid #BDC9B6; }
+  .cluster-header { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .cluster-name { font-size: 15px; font-weight: 500; color: #1F3331; }
+  .cluster-count { font-size: 12px; color: #C4A35A; font-weight: 500; }
+  .cluster-desc { font-size: 12px; color: #5C6C51; margin-bottom: 12px; line-height: 1.45; }
+  .cluster-people { display: flex; flex-direction: column; gap: 6px; }
+  .person-row { font-size: 12px; color: #1F3331; padding: 6px 0; border-top: 0.5px dashed rgba(31,51,49,0.1); }
+  .person-row:first-child { border-top: none; padding-top: 0; }
+  .person-name { font-weight: 500; }
+  .person-co { color: #5C6C51; }
+  .person-cohort { font-size: 10px; padding: 1px 6px; border-radius: 8px; background: #1F3331; color: #F5F0EB; margin-left: 4px; }
+  .person-proc { color: #9A9485; font-size: 11px; font-style: italic; margin-top: 3px; line-height: 1.4; }
+  .footer { margin-top: 48px; padding-top: 20px; border-top: 0.5px solid rgba(31,51,49,0.15); font-size: 11px; color: #9A9485; display: flex; justify-content: space-between; }
+  @media (max-width: 640px) { h1 { font-size: 26px; } .insight-row { flex-direction: column; } .clusters-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<p class="eyebrow">Delta Board · Sexta · Fechamento da Clínica</p>
+<h1>Onde está o seu quick win<br>de segunda-feira?</h1>
+<p class="subtitle">Os processos que mais consomem tempo da sala, mapeados por <strong>tempo consumido</strong> × <strong>facilidade de automação</strong>. Cada bolha é um cluster — clique pra ver quem está dentro.</p>
+
+<div class="insight-row">
+  <div class="insight-card gold">
+    <div class="insight-num gold">8 / 12</div>
+    <div class="insight-label">clusters caem em Quick Wins. Maior parte da dor é executável em semanas.</div>
+  </div>
+  <div class="insight-card">
+    <div class="insight-num">9</div>
+    <div class="insight-label">descreveram a dor como "operação genérica" — não é automação, é redesenho. Vai pro workshop das 11h.</div>
+  </div>
+  <div class="insight-card dark">
+    <div class="insight-num">47 / 50</div>
+    <div class="insight-label">processos classificáveis. Cada um identifica seu cluster e leva 1 quick win pra segunda.</div>
+  </div>
+</div>
+
+<div class="chart-wrapper">
+  <svg id="quadrant" viewBox="0 0 1200 760" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="qtitle">
+    <title id="qtitle">Quadrant map dos processos da sala</title>
+  </svg>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#C4A35A"></div>Quick Wins · alto consumo, alta automação</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#5C6C51"></div>Big Bets · alto consumo, automação difícil</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#7A8E70"></div>Quick & Easy · baixo consumo, alta automação</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#BDC9B6"></div>Cuidado · baixo consumo, difícil</div>
+  </div>
+</div>
+
+<h2>Quick Wins <span class="count">· execute na semana</span></h2>
+<p class="section-sub">Alto consumo de tempo + alta facilidade de automação. Comece por aqui.</p>
+<div class="clusters-grid" id="grid-quick"></div>
+
+<h2>Big Bets <span class="count">· demanda redesenho</span></h2>
+<p class="section-sub">Alto consumo, mas não cabe num agente isolado. Conversa do workshop.</p>
+<div class="clusters-grid" id="grid-big"></div>
+
+<h2>Quick & Easy <span class="count">· wins de tempo livre</span></h2>
+<p class="section-sub">Baixo consumo individual, mas escalável e barato.</p>
+<div class="clusters-grid" id="grid-easy"></div>
+
+<h2>Zona de Cuidado <span class="count">· avalie ROI</span></h2>
+<p class="section-sub">Difícil de automatizar e baixo consumo de tempo.</p>
+<div class="clusters-grid" id="grid-ignore"></div>
+
+<div class="footer">
+  <span>Delta Board · 50 respondentes (C1-C4) · 47 processos classificados</span>
+  <span>Input para o Workshop de Roadmap 90 dias · 11h00</span>
+</div>
+</div>
+
+<script>
+const CLUSTERS = [{"id": "crm", "nome": "CRM e cadastro de dados", "keywords": ["crm", "cadastro", "atualização de dados"], "x": 92, "y": 70, "descricao": "Saneamento, enriquecimento e atualização de bases. Pronto pra agente em horas.", "count": 4, "people": [{"primeiro": "Danyele", "empresa": "Sebrae PB", "cargo": "Analista de Inovação e Empreendedorismo", "processo": "Registros no CRM, monitoramento da jornada de clientes", "cohort": "C2"}, {"primeiro": "NUNO", "empresa": "LUZA GROUP", "cargo": "DIRETOR COMERCIAL", "processo": "CRM E ATUALIZAÇÃO DE DADOS EM SISTEMAS", "cohort": "C1"}, {"primeiro": "Deborah", "empresa": "IS Indústria Simples", "cargo": "CEO", "processo": "Tratativas de Emails + Treinamento de colaboradores novos (onboarding) + Folha de Pagamento + Registro de contatos dos vendedores no CRM", "cohort": "C3"}, {"primeiro": "Barbara", "empresa": "IS Indústria Simples", "cargo": "Supervisora Comercial", "processo": "Tratativas de email. Registro de atividades em crm e elaboração de propostas/pedidos", "cohort": "C2"}], "quadrant": "quick"}, {"id": "nfs", "nome": "NFs, pagamentos e fluxo financeiro", "keywords": ["nota fiscal", "nfes", "nfe", "pagamento", "fluxo de pagament", "ordem de compra", "despesas", "recebimentos", "fechamentos financeiros", "fluxo de caixa"], "x": 75, "y": 76, "descricao": "Workflows de processamento de documentos fiscais e aprovações. Caso de agente clássico.", "count": 8, "people": [{"primeiro": "Rodrigo", "empresa": "Porto Seguro Cia de Seguros Gerais", "cargo": "Analista de relacionamento sênior", "processo": "Pagamento de fornecedores", "cohort": "C2"}, {"primeiro": "Cesar", "empresa": "Lemon Consultoria", "cargo": "Analista de BI", "processo": "Processo de fechamentos financeiros.", "cohort": "C2"}, {"primeiro": "Andres", "empresa": "Darwin Seguros", "cargo": "Human Resources Business Partner", "processo": "Conferência de folha de pagamento, preenchimentos de documentação referente a benefícios.", "cohort": "C1"}, {"primeiro": "João", "empresa": "Luza", "cargo": "CFO", "processo": "Fluxo de Pagamentos", "cohort": "C1"}, {"primeiro": "André", "empresa": "Darwin Seguros", "cargo": "Head de Sinistros", "processo": "Atender outras áreas e realizar processos operacionais simples, como pagamento de notas fiscais, entre outras.", "cohort": "C2"}, {"primeiro": "Lais", "empresa": "Darwin Seguros", "cargo": "Legal Counsel", "processo": "Contratos e temas operacionais - envio de pagamento, planilha etc", "cohort": "C3"}, {"primeiro": "Écio", "empresa": "Pamaris Papelaria e Livraria LTDA", "cargo": "Líder de T.I", "processo": "Ordens de compra e Entrada de NFes", "cohort": "C2"}, {"primeiro": "Fabricio", "empresa": "IS Indústria Simples", "cargo": "CFO/COO", "processo": "Etapas de RH/DP e lançamento de despesas e recebimentos", "cohort": "C3"}], "quadrant": "quick"}, {"id": "vendas", "nome": "Vendas e funil comercial", "keywords": ["venda", "comercial", "leads", "funil", "pipeline", "administração e vendas"], "x": 82, "y": 88, "descricao": "Prospecção, qualificação, forecast e tratamento de pipeline. Maturidade alta de tooling.", "count": 5, "people": [{"primeiro": "Tiago", "empresa": "Luza Group", "cargo": "CEO", "processo": "Vendas", "cohort": "C1"}, {"primeiro": "Rodrigo", "empresa": "Nitro", "cargo": "CIO", "processo": "Vendas e Comercial", "cohort": "C4"}, {"primeiro": "Deborah", "empresa": "IS", "cargo": "CEO", "processo": "administração e vendas", "cohort": "C2"}, {"primeiro": "Jefferson", "empresa": "Jera", "cargo": "CEO", "processo": "Venda", "cohort": "C3"}, {"primeiro": "Hugo", "empresa": "Popcode", "cargo": "Founder", "processo": "Geração de leads", "cohort": "C4"}], "quadrant": "quick"}, {"id": "rh_dp", "nome": "RH, folha e onboarding", "keywords": ["folha", "departamento pessoal", "recursos humanos", "onboarding", "treinamento", "colaboradores novos", "rh/dp"], "x": 68, "y": 82, "descricao": "Folha, benefícios, integração de novos. Volume alto e estruturado.", "count": 1, "people": [{"primeiro": "Letícia", "empresa": "Sweet Secrets", "cargo": "Gerente de Recursos Humanos", "processo": "Todos de departamento pessoal", "cohort": "C3"}], "quadrant": "quick"}, {"id": "docs_tecnicos", "nome": "Documentos técnicos e projetos", "keywords": ["documentos técnicos", "especificações", "pops", "orçamento", "desenho", "liberação de documentos", "organização de documentação"], "x": 52, "y": 75, "descricao": "Documentação especializada por projeto. Skills brandeadas reduzem 60-80%.", "count": 5, "people": [{"primeiro": "Guilherme", "empresa": "Dravin engeneering", "cargo": "Analista de engenharia", "processo": "Revisões de desenho e contato com time externo de engenharia", "cohort": "C1"}, {"primeiro": "Lucas", "empresa": "Dravin Engineering", "cargo": "Analista de Engenharia", "processo": "Conclusão e liberação de documentos técnicos", "cohort": "C1"}, {"primeiro": "Daniel", "empresa": "Darwin Seguros", "cargo": "Gerente de Produtos - PM", "processo": "Organização de Documentação, Iniciativas etc", "cohort": "C2"}, {"primeiro": "Lucas", "empresa": "Deepsea Technologies", "cargo": "Coordenador de Processos", "processo": "Rotinas do setor, como emissão de relatórios e especificações e rotinas de projetos, análises críticas e desenvolvimento de metodologias específicas para cada projeto.", "cohort": "C2"}, {"primeiro": "André", "empresa": "FLORESTi", "cargo": "CEO", "processo": "pops, orçamento", "cohort": "C4"}], "quadrant": "quick"}, {"id": "operacao_geral", "nome": "Operação genérica do dia-a-dia", "keywords": ["operacionais", "operacional", "atividades diárias", "rotinas", "processos repetitivos", "serviços manuais", "servicos manuais", "processos manuais", "gestão da operação", "gestao da operação", "falta processo", "desorganização operacional", "controles manuais", "controles em geral"], "x": 38, "y": 88, "descricao": "Atividades pulverizadas que não cabem num único agente. Demanda redesenho.", "count": 9, "people": [{"primeiro": "Daiane", "empresa": "Lemon Consultoria", "cargo": "Gestora Financeira", "processo": "Processos repetitivos", "cohort": "C2"}, {"primeiro": "Angélica", "empresa": "Casa do marmore", "cargo": "Diretora comercial", "processo": "Servicos manuais", "cohort": "C1"}, {"primeiro": "Angelica", "empresa": "Darwin Seguros", "cargo": "Superintendente Comercial", "processo": "Operacionais", "cohort": "C4"}, {"primeiro": "Leila", "empresa": "Porto Seguro", "cargo": "Sênior", "processo": "Processos manuais", "cohort": "C4"}, {"primeiro": "Inacio", "empresa": "eGreen", "cargo": "CEO", "processo": "Atividades diárias em todos os setores.", "cohort": "C3"}, {"primeiro": "Bruno", "empresa": "Sweet Secrets", "cargo": "Gerente de Compras/Preços/Custos", "processo": "Desorganização operacional", "cohort": "C3"}, {"primeiro": "Willyan", "empresa": "Grupo casa colonial", "cargo": "Sócio", "processo": "Gestao da operação", "cohort": "C1"}, {"primeiro": "Henrique", "empresa": "Neobag", "cargo": "CEO", "processo": "Falta Processo", "cohort": "C2"}, {"primeiro": "Josemar", "empresa": "Luza Group", "cargo": "COO", "processo": "Controles em geral (Horas, ociosidade, HC)", "cohort": "C1"}], "quadrant": "big"}, {"id": "controles", "nome": "Controles, dashboards e relatórios", "keywords": ["relatório", "consolidação", "horas", "ociosidade", "dados pulverizados", "gerir, passar", "equidade de informação", "gestão de informação"], "x": 62, "y": 64, "descricao": "Consolidação de dados em dashboards. Artifacts entregam isso ao vivo.", "count": 3, "people": [{"primeiro": "Liza", "empresa": "Senac", "cargo": "Coordenadora de área - Educacional", "processo": "Consolidação de dados; Assertividade nos cronogramas e execução de projetos.", "cohort": "C2"}, {"primeiro": "Thales", "empresa": "Vinci Society", "cargo": "RevOps", "processo": "Relatórios detalhados mostrando em qual etapa está o gargalo", "cohort": "C3"}, {"primeiro": "Maria", "empresa": "Maria Barros Arquitetura & Interiores", "cargo": "Arquiteta & Sócia", "processo": "Gerir, passar e garantir equidade de informação", "cohort": "C2"}], "quadrant": "quick"}, {"id": "conteudo", "nome": "Marketing, conteúdo e apresentações", "keywords": ["marketing", "mkt", "conteúdo", "apresentação", "apresentações", "materiais de apresentação", "materiais de comunicação"], "x": 88, "y": 52, "descricao": "Pauta, peças, apresentações executivas. Máquina de conteúdo monta em 1 dia.", "count": 4, "people": [{"primeiro": "Cleiton", "empresa": "Betagogiando", "cargo": "Sócio administrativo", "processo": "Produção de conteúdo", "cohort": "C1"}, {"primeiro": "MARCUS", "empresa": "GRUPO MVX", "cargo": "CEO", "processo": "MKT", "cohort": "C2"}, {"primeiro": "Aline", "empresa": "Egreen Engenharia de Marketing", "cargo": "Sócia", "processo": "MArketing", "cohort": "C2"}, {"primeiro": "Roberta", "empresa": "Betagogiando", "cargo": "Neuropsicopedagoga", "processo": "Marketing", "cohort": "C1"}], "quadrant": "quick"}, {"id": "atendimento", "nome": "Atendimento e suporte ao cliente", "keywords": ["atendimento", "suporte ao cliente", "whatsapp", "fornecedores", "pedidos", "organização de demandas"], "x": 80, "y": 58, "descricao": "Triagem e resposta de tickets recorrentes. Copiloto resolve 60-70%.", "count": 3, "people": [{"primeiro": "Fernanda", "empresa": "Fernanda Suguiama - Estratégia e Copywriting", "cargo": "Founder", "processo": "Organização de demandas via WhatsApp e entrega.", "cohort": "C1"}, {"primeiro": "Sara", "empresa": "Pamaris Papelaria e Livraria", "cargo": "Auxiliar de Comunicação Digital", "processo": "Hoje, um dos processos que mais consome tempo e energia do time é o acompanhamento de pedidos e tratativas com fornecedores, principalmente quando há atrasos ou falta de estoque. Além disso, o atendimento ao cliente em situações de atrasos, trocas e indisponibilidade.", "cohort": "C1"}, {"primeiro": "Lucas", "empresa": "Goshen Land/Solutions", "cargo": "CEO SOLUTIONS", "processo": "Financeiro, atendimento. Sucesso do cliente", "cohort": "C4"}], "quadrant": "quick"}, {"id": "discovery", "nome": "Discovery e modelagem de negócio", "keywords": ["discovery", "modelagem", "novos negócios", "refinamento", "iniciativas do upstream", "oportunidades"], "x": 32, "y": 60, "descricao": "Trabalho criativo-analítico. Claude acelera, mas exige co-criação.", "count": 3, "people": [{"primeiro": "Carolina", "empresa": "Bluma (Grupo Natura)", "cargo": "Head de Produtos Digitais", "processo": "Refinamento de iniciativas do upstream para downstream", "cohort": "C1"}, {"primeiro": "Vinicius", "empresa": "Construtora Tenda SA", "cargo": "Coordenador de Inovação e Novos Negócios", "processo": "Discovery de oportunidades", "cohort": "C2"}, {"primeiro": "Marco", "empresa": "Construtora e Incorporadora Tenda", "cargo": "Analista Sênior de Inovação e Novos Negócios", "processo": "Podemos dividir essa resposta em duas frentes principais:  Novos negócios: O discovery e a modelagem de negócio são as etapas que mais consomem tempo do time atualmente.  Com relação ao desafio de escalar a produtividade das diversas áreas da empresa: Certamente, o maior esforço está no discovery com as áreas envolvidas e no desenvolvimento das soluções. Mesmo com o uso de IA e automações para nos apoiar na criação, esbarramos em cenários muito particulares, que exigem tempo e conhecimentos técnicos específicos.", "cohort": "C2"}], "quadrant": "big"}, {"id": "estrategico", "nome": "Decisões e gestão estratégica", "keywords": ["estratég", "desenvolvimento de time", "engajamento"], "x": 22, "y": 74, "descricao": "Núcleo do trabalho do CEO. Não se automatiza, mas IA dá leverage 5-10x.", "count": 1, "people": [{"primeiro": "Claudio", "empresa": "Luza Group", "cargo": "CMO", "processo": "Desenvolvimento de Time", "cohort": "C2"}], "quadrant": "big"}, {"id": "viagens", "nome": "Logística pessoal e viagens", "keywords": ["viagem", "viagens", "viage"], "x": 95, "y": 32, "descricao": "Booking, itinerário, despesas. Comet e agentes resolvem.", "count": 1, "people": [{"primeiro": "David", "empresa": "LUZA GROUP", "cargo": "Supervisor de Projetos", "processo": "Viagens", "cohort": "C3"}], "quadrant": "easy"}];
+
+function buildSVG() {
+  const svg = document.getElementById('quadrant');
+  const W = 1200, H = 760;
+  const M = { l: 100, r: 70, t: 60, b: 80 };
+  const cw = W - M.l - M.r;
+  const ch = H - M.t - M.b;
+  const midX = M.l + cw / 2;
+  const midY = M.t + ch / 2;
+  
+  let html = '';
+  html += '<rect x="' + midX + '" y="' + M.t + '" width="' + (cw/2) + '" height="' + (ch/2) + '" fill="#FAEEDA" opacity="0.55"/>';
+  html += '<rect x="' + M.l + '" y="' + M.t + '" width="' + (cw/2) + '" height="' + (ch/2) + '" fill="#EFEAE0" opacity="0.55"/>';
+  html += '<rect x="' + midX + '" y="' + midY + '" width="' + (cw/2) + '" height="' + (ch/2) + '" fill="#EFEAE0" opacity="0.3"/>';
+  html += '<rect x="' + M.l + '" y="' + midY + '" width="' + (cw/2) + '" height="' + (ch/2) + '" fill="#EFEAE0" opacity="0.18"/>';
+  
+  // Quadrant labels in corners
+  html += '<text x="' + (W - M.r - 18) + '" y="' + (M.t + 28) + '" text-anchor="end" font-size="14" fill="#854F0B" font-weight="500" letter-spacing="2.5">QUICK WINS</text>';
+  html += '<text x="' + (W - M.r - 18) + '" y="' + (M.t + 46) + '" text-anchor="end" font-size="11" fill="#A57E2F">execute na semana</text>';
+  html += '<text x="' + (M.l + 18) + '" y="' + (M.t + 28) + '" font-size="14" fill="#3B635F" font-weight="500" letter-spacing="2.5">BIG BETS</text>';
+  html += '<text x="' + (M.l + 18) + '" y="' + (M.t + 46) + '" font-size="11" fill="#5C6C51">demanda redesenho</text>';
+  html += '<text x="' + (W - M.r - 18) + '" y="' + (H - M.b - 18) + '" text-anchor="end" font-size="14" fill="#5C6C51" font-weight="500" letter-spacing="2.5">QUICK &amp; EASY</text>';
+  html += '<text x="' + (W - M.r - 18) + '" y="' + (H - M.b - 36) + '" text-anchor="end" font-size="11" fill="#9A9485">low effort wins</text>';
+  html += '<text x="' + (M.l + 18) + '" y="' + (H - M.b - 18) + '" font-size="14" fill="#9A9485" font-weight="500" letter-spacing="2.5">CUIDADO</text>';
+  html += '<text x="' + (M.l + 18) + '" y="' + (H - M.b - 36) + '" font-size="11" fill="#9A9485">avalie ROI</text>';
+  
+  // Crosshair
+  html += '<line x1="' + midX + '" y1="' + M.t + '" x2="' + midX + '" y2="' + (H - M.b) + '" stroke="#1F3331" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>';
+  html += '<line x1="' + M.l + '" y1="' + midY + '" x2="' + (W - M.r) + '" y2="' + midY + '" stroke="#1F3331" stroke-width="0.5" stroke-dasharray="4,4" opacity="0.3"/>';
+  html += '<rect x="' + M.l + '" y="' + M.t + '" width="' + cw + '" height="' + ch + '" fill="none" stroke="#1F3331" stroke-width="0.5" opacity="0.4"/>';
+  
+  // Axis labels
+  html += '<text x="' + (M.l + cw/2) + '" y="' + (H - 20) + '" text-anchor="middle" font-size="14" fill="#1F3331" font-weight="500">Facilidade de automação →</text>';
+  html += '<text x="' + (M.l - 30) + '" y="' + (M.t + ch/2) + '" text-anchor="middle" font-size="14" fill="#1F3331" font-weight="500" transform="rotate(-90 ' + (M.l - 30) + ' ' + (M.t + ch/2) + ')">Tempo consumido →</text>';
+  
+  html += '<text x="' + M.l + '" y="' + (H - M.b + 22) + '" text-anchor="start" font-size="11" fill="#9A9485">difícil</text>';
+  html += '<text x="' + (W - M.r) + '" y="' + (H - M.b + 22) + '" text-anchor="end" font-size="11" fill="#9A9485">fácil</text>';
+  html += '<text x="' + (M.l - 10) + '" y="' + (H - M.b - 4) + '" text-anchor="end" font-size="11" fill="#9A9485">pouco</text>';
+  html += '<text x="' + (M.l - 10) + '" y="' + (M.t + 12) + '" text-anchor="end" font-size="11" fill="#9A9485">muito</text>';
+  
+  function toX(x) { return M.l + (x / 100) * cw; }
+  function toY(y) { return H - M.b - (y / 100) * ch; }
+  
+  // Sort biggest first; render so smaller bubbles end up on top (added later)
+  const sorted = [...CLUSTERS].sort((a, b) => b.count - a.count);
+  const quadColor = { quick: '#C4A35A', big: '#5C6C51', easy: '#7A8E70', ignore: '#BDC9B6' };
+  
+  sorted.forEach(c => {
+    const cx = toX(c.x);
+    const cy = toY(c.y);
+    const r = 16 + Math.sqrt(c.count) * 8;
+    const color = quadColor[c.quadrant] || '#5C6C51';
+    
+    html += '<g class="bubble" data-cluster="' + c.id + '" style="cursor:pointer">';
+    html += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + color + '" fill-opacity="0.9" stroke="#FFFFFF" stroke-width="2.5"/>';
+    html += '<text x="' + cx + '" y="' + (cy + 6) + '" text-anchor="middle" font-size="' + (c.count >= 4 ? 18 : 14) + '" font-weight="500" fill="#FFFFFF" pointer-events="none">' + c.count + '</text>';
+    html += '</g>';
+    
+    // Label outside bubble — alternate top/bottom based on position to spread visual
+    let labelY, anchor;
+    if (c.y > 80) labelY = cy + r + 18;       // top of chart, label below
+    else if (c.y < 35) labelY = cy - r - 10;  // bottom, label above
+    else labelY = cy + r + 18;                // default below
+    
+    if (c.x < 25) anchor = 'start';
+    else if (c.x > 90) anchor = 'end';
+    else anchor = 'middle';
+    
+    let labelX = cx;
+    if (anchor === 'start') labelX = cx - r;
+    if (anchor === 'end') labelX = cx + r;
+    
+    html += '<text x="' + labelX + '" y="' + labelY + '" text-anchor="' + anchor + '" font-size="12" fill="#1F3331" font-weight="500" pointer-events="none">' + c.nome + '</text>';
+  });
+  
+  svg.innerHTML = html;
+  
+  svg.querySelectorAll('.bubble').forEach(g => {
+    g.addEventListener('click', () => {
+      const id = g.dataset.cluster;
+      const card = document.querySelector('.cluster-card[data-id="' + id + '"]');
+      if (card) {
+        document.querySelectorAll('.cluster-card.highlighted').forEach(el => el.classList.remove('highlighted'));
+        card.classList.add('highlighted');
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => card.classList.remove('highlighted'), 3500);
+      }
+    });
+    g.addEventListener('mouseenter', () => {
+      g.querySelector('circle').setAttribute('stroke-width', '4');
+    });
+    g.addEventListener('mouseleave', () => {
+      g.querySelector('circle').setAttribute('stroke-width', '2.5');
+    });
+  });
+}
+
+function buildClusterCards() {
+  const groups = { quick: [], big: [], easy: [], ignore: [] };
+  CLUSTERS.forEach(c => groups[c.quadrant].push(c));
+  Object.keys(groups).forEach(q => groups[q].sort((a, b) => b.count - a.count));
+  
+  const targetIds = { quick: 'grid-quick', big: 'grid-big', easy: 'grid-easy', ignore: 'grid-ignore' };
+  
+  Object.keys(groups).forEach(q => {
+    const grid = document.getElementById(targetIds[q]);
+    if (!grid) return;
+    if (groups[q].length === 0) {
+      grid.innerHTML = '<div style="font-size:12px;color:#9A9485;font-style:italic;padding:12px 0">Nenhum cluster nesta zona — bom sinal: nada da sala é completamente sem ROI.</div>';
+      return;
+    }
+    grid.innerHTML = groups[q].map(c => {
+      const peopleHTML = c.people.map(p => 
+        '<div class="person-row">' +
+          '<span class="person-name">' + esc(p.primeiro) + '</span> ' +
+          '<span class="person-co">· ' + esc(p.empresa) + ' · ' + esc(p.cargo) + '</span>' +
+          '<span class="person-cohort">' + p.cohort + '</span>' +
+          (p.processo ? '<div class="person-proc">"' + esc(p.processo.substring(0, 110)) + (p.processo.length > 110 ? '…' : '') + '"</div>' : '') +
+        '</div>'
+      ).join('');
+      return '<div class="cluster-card ' + c.quadrant + '" data-id="' + c.id + '">' +
+        '<div class="cluster-header">' +
+          '<span class="cluster-name">' + esc(c.nome) + '</span>' +
+          '<span class="cluster-count">' + c.count + ' pessoas</span>' +
+        '</div>' +
+        '<div class="cluster-desc">' + esc(c.descricao) + '</div>' +
+        '<div class="cluster-people">' + peopleHTML + '</div>' +
+      '</div>';
+    }).join('');
+  });
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+buildSVG();
+buildClusterCards();
+</script>
+</body>
+</html>
