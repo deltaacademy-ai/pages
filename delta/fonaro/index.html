@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FONARO 2026 · Kit de Prompts · Guilherme Junqueira</title>
+<style>
+  /* ───────────────────────────────────────────────────────
+     Console de palco - Identidade Visual FONARO 2026
+     Azul institucional + branco + dourado discreto
+  ─────────────────────────────────────────────────────── */
+  :root {
+    /* Paleta FONARO oficial */
+    --azul-fonaro: #04143F;
+    --azul-medio: #0E2A4D;
+    --azul-claro: #1E4470;
+    --azul-suave: #2E5A8F;
+    --azul-glow: #4A7BAB;
+    --branco: #FFFFFF;
+    --branco-sutil: #F4F6FA;
+    --texto: #E8EEF7;
+    --texto-mute: #8DA0BC;
+    --borda: #1A2D52;
+    --borda-clara: #2C4470;
+    --dourado: #C9A961;
+    --dourado-bright: #E8C575;
+    --sombra: 0 4px 30px rgba(0, 8, 30, 0.5);
+    --radius: 6px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--azul-fonaro);
+    color: var(--texto);
+    line-height: 1.55;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Textura sutil de fundo - pontos de luz como no template */
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(74, 123, 171, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(46, 90, 143, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 50% 100%, rgba(30, 68, 112, 0.05) 0%, transparent 40%);
+  }
+
+  /* Layout principal */
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     SIDEBAR - inspirada no rodapé do template FONARO
+  ═══════════════════════════════════════════════════════ */
+  .sidebar {
+    background: linear-gradient(180deg, var(--azul-medio) 0%, var(--azul-fonaro) 100%);
+    border-right: 1px solid var(--borda);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: var(--sombra);
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--borda-clara); border-radius: 3px; }
+
+  /* Brand area com logo FONARO */
+  .sidebar-brand {
+    padding: 32px 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 4px;
+  }
+  .fonaro-logo-wrap {
+    margin-bottom: 16px;
+  }
+  .fonaro-logo {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    display: block;
+  }
+  .sidebar-divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--dourado) 0%, transparent 100%);
+    margin: 12px 0;
+  }
+  .sidebar-meta {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    font-weight: 700;
+  }
+  .sidebar-event {
+    font-size: 11px;
+    color: var(--texto-mute);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  /* Nav sections */
+  .nav-section {
+    padding: 18px 24px 6px;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--azul-glow);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  .nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 24px 11px 22px;
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+    position: relative;
+  }
+  .nav a:hover {
+    background: rgba(74, 123, 171, 0.1);
+    border-left-color: var(--dourado);
+    color: var(--branco);
+  }
+  .nav a.active {
+    background: rgba(201, 169, 97, 0.08);
+    border-left-color: var(--dourado);
+    color: var(--branco);
+  }
+  .nav a .num {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 11px;
+    color: var(--dourado);
+    font-weight: 700;
+    min-width: 20px;
+    opacity: 0.85;
+  }
+  .nav a .demo-tag {
+    font-size: 8px;
+    background: var(--dourado);
+    color: var(--azul-fonaro);
+    padding: 2px 7px;
+    border-radius: 2px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-left: auto;
+    text-transform: uppercase;
+  }
+  .nav a .demo-tag.chave {
+    background: var(--branco);
+    color: var(--azul-fonaro);
+  }
+  .nav a .demo-tag.bonus {
+    background: var(--azul-glow);
+    color: var(--azul-fonaro);
+  }
+
+  /* Crédito Delta no rodapé do sidebar */
+  .sidebar-footer {
+    padding: 24px;
+    margin-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    font-size: 10px;
+    color: var(--texto-mute);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .sidebar-footer .delta {
+    color: var(--dourado);
+    font-weight: 700;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     MAIN
+  ═══════════════════════════════════════════════════════ */
+  .main {
+    padding: 56px 64px 80px;
+    max-width: 1100px;
+  }
+
+  /* HERO - capa do documento */
+  .hero {
+    margin-bottom: 64px;
+    position: relative;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    font-weight: 800;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: "";
+    width: 32px;
+    height: 1px;
+    background: var(--dourado);
+  }
+  .hero-title {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--branco);
+    letter-spacing: -2px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+  }
+  .hero-title .accent {
+    color: var(--dourado);
+    font-weight: 700;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--texto-mute);
+    max-width: 620px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  .hero-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--dourado) 0%, var(--azul-glow) 50%, transparent 100%);
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+  }
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .hero-meta-label {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    font-weight: 700;
+  }
+  .hero-meta-value {
+    font-size: 13px;
+    color: var(--texto);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* Headers de cada seção */
+  .demo-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--borda);
+  }
+  .demo-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+  .demo-eyebrow::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--dourado);
+  }
+  .demo-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--branco);
+    letter-spacing: -1px;
+    line-height: 1.05;
+  }
+  .demo-subtitle {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--texto-mute);
+  }
+
+  /* Card de prompt */
+  .prompt-card {
+    background: rgba(14, 42, 77, 0.4);
+    border: 1px solid var(--borda);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+  }
+  .prompt-card:hover {
+    border-color: var(--azul-glow);
+    box-shadow: 0 4px 20px rgba(74, 123, 171, 0.1);
+  }
+
+  .prompt-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: rgba(14, 42, 77, 0.6);
+    border-bottom: 1px solid var(--borda);
+    gap: 16px;
+  }
+  .prompt-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+  }
+  .prompt-tag {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 9.5px;
+    font-weight: 800;
+    color: var(--azul-fonaro);
+    background: var(--dourado);
+    padding: 4px 9px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+  .prompt-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--branco);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Botão Copiar - destaque dourado FONARO */
+  .copy-btn {
+    background: var(--dourado);
+    color: var(--azul-fonaro);
+    border: none;
+    padding: 9px 18px;
+    border-radius: 4px;
+    font-size: 12.5px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-family: inherit;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+  }
+  .copy-btn:hover {
+    background: var(--dourado-bright);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(201, 169, 97, 0.3);
+  }
+  .copy-btn:active { transform: translateY(0); }
+  .copy-btn.copied {
+    background: var(--branco);
+    color: var(--azul-fonaro);
+  }
+  .copy-btn .icon {
+    width: 13px;
+    height: 13px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .prompt-body {
+    padding: 22px;
+    font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--texto);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 440px;
+    overflow-y: auto;
+    background: rgba(4, 20, 63, 0.3);
+  }
+  .prompt-body::-webkit-scrollbar { width: 8px; }
+  .prompt-body::-webkit-scrollbar-track { background: transparent; }
+  .prompt-body::-webkit-scrollbar-thumb { background: var(--borda-clara); border-radius: 4px; }
+
+  /* Box de roteiro de fala */
+  .speech-box {
+    background: linear-gradient(135deg, rgba(201, 169, 97, 0.08), rgba(201, 169, 97, 0.02));
+    border: 1px solid rgba(201, 169, 97, 0.25);
+    border-left: 4px solid var(--dourado);
+    border-radius: var(--radius);
+    padding: 26px;
+    margin-bottom: 24px;
+    font-style: italic;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--branco-sutil);
+  }
+  .speech-box .speech-label {
+    display: block;
+    font-style: normal;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--dourado);
+    font-weight: 800;
+    margin-bottom: 14px;
+  }
+
+  /* Subseções */
+  .subsection-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--azul-glow);
+    margin: 36px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  /* Section anchors */
+  section {
+    scroll-margin-top: 24px;
+    padding-top: 8px;
+    margin-bottom: 72px;
+  }
+
+  /* Texto inline */
+  p.lead {
+    font-size: 14.5px;
+    color: var(--texto-mute);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--dourado);
+    color: var(--azul-fonaro);
+    padding: 14px 26px;
+    border-radius: var(--radius);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    pointer-events: none;
+    text-transform: uppercase;
+  }
+  .toast.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 96px;
+    padding-top: 40px;
+    border-top: 1px solid var(--borda);
+    text-align: center;
+    color: var(--texto-mute);
+    font-size: 11px;
+    line-height: 2;
+  }
+  .footer-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--dourado);
+    margin: 0 auto 24px;
+  }
+  .footer .fonaro-name,
+  .footer .delta-name {
+    color: var(--dourado);
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .footer .delta-name {
+    color: var(--branco);
+  }
+  .footer .signature {
+    margin-top: 16px;
+    font-style: italic;
+    font-size: 11px;
+    color: var(--texto-mute);
+    letter-spacing: 0.5px;
+  }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: relative; height: auto; padding-bottom: 24px; }
+    .main { padding: 32px 24px; }
+    .hero-title { font-size: 40px; }
+    .demo-title { font-size: 28px; }
+    .prompt-header { flex-wrap: wrap; }
+    .copy-btn { width: 100%; justify-content: center; margin-top: 8px; }
+  }
+
+  /* Print */
+  @media print {
+    .sidebar, .copy-btn, .toast { display: none; }
+    .layout { grid-template-columns: 1fr; }
+    .main { padding: 20px; }
+    .prompt-body { max-height: none; background: white; color: black; }
+    body { background: white; color: black; }
+    .prompt-card { border: 1px solid #ccc; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ═══════════════════════════════════════════════════════
+       SIDEBAR
+  ═══════════════════════════════════════════════════════ -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="fonaro-logo-wrap">
+        <img src="data:image/png;base64,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" alt="I FONARO" class="fonaro-logo">
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-meta">Kit Palco · 2026</div>
+      <div class="sidebar-event">CICB · Brasília<br>24 e 25 de Abril</div>
+    </div>
+
+    <div class="nav-section">Setup</div>
+    <nav class="nav">
+      <a href="#contexto"><span class="num">00</span>Contexto base COLL</a>
+    </nav>
+
+    <div class="nav-section">Demos ao vivo</div>
+    <nav class="nav">
+      <a href="#demo1"><span class="num">01</span>Descoberta<span class="demo-tag">Demo</span></a>
+      <a href="#demo2"><span class="num">02</span>Pré-consulta<span class="demo-tag">Demo</span></a>
+      <a href="#demo3"><span class="num">03</span>Consulta por voz<span class="demo-tag chave">Chave</span></a>
+      <a href="#demo4"><span class="num">04</span>Pós-operatório<span class="demo-tag">Demo</span></a>
+      <a href="#demo5"><span class="num">05</span>CRM no Lovable<span class="demo-tag bonus">Bônus</span></a>
+    </nav>
+
+    <div class="nav-section">Datasets</div>
+    <nav class="nav">
+      <a href="#crm"><span class="num">06</span>CRM simulado</a>
+      <a href="#precos"><span class="num">07</span>Tabela de preços</a>
+      <a href="#contrato"><span class="num">08</span>Contrato convênio</a>
+      <a href="#dashboard"><span class="num">09</span>Dashboard métricas</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      Apresentado por<br>
+      <span class="delta">Delta Academy</span>
+    </div>
+  </aside>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN
+  ═══════════════════════════════════════════════════════ -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-eyebrow">Console de palestra</div>
+      <h1 class="hero-title">IA de ponta a ponta<br><span class="accent">na oftalmologia</span></h1>
+      <p class="hero-sub">Kit de prompts para execução ao vivo. Cada bloco é um prompt pronto para colar no Claude. Um clique copia tudo.</p>
+      <div class="hero-divider"></div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Palestrante</div>
+          <div class="hero-meta-value">Guilherme Junqueira<br>CEO Delta Academy</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Evento</div>
+          <div class="hero-meta-value">I FONARO<br>Fórum Nacional de Residentes em Oftalmologia</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Local · Data</div>
+          <div class="hero-meta-value">CICB · Brasília<br>24 e 25 de Abril, 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ CONTEXTO BASE ═══ -->
+    <section id="contexto">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Setup inicial</div>
+        <h2 class="demo-title">Contexto base da COLL</h2>
+        <p class="demo-subtitle">Cole isto PRIMEIRO em qualquer demo. Define o contexto fixo da clínica.</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Contexto</span>
+            <span class="prompt-title">Contexto completo da COLL</span>
+          </div>
+          <button class="copy-btn" data-target="p-contexto">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-contexto">Você vai me ajudar em uma demonstração ao vivo para residentes de oftalmologia no FONARO 2026.
+
+Contexto da clínica (fictício, baseado em uma clínica real):
+
+Nome: COLL - Clínica de Olhos Dr. Luiz Lani
+Cidade: Campo Grande - MS
+Fundada em: 1969 (57 anos de história)
+Corpo clínico: 3 oftalmologistas
+  - Dr. Luiz Alexandre Lani (Diretor Técnico, CRM-MS 3346)
+  - Dra. Áisa Haidar Lani (Diretora Científica, CRM-MS 3591)
+  - Dr. Roberto Bezerra Nascimento (CRM-MS 3261)
+Especialidades: cirurgia refrativa (LASIK), catarata, córnea, retina, ceratocone
+Volume estimado: ~250 consultas/mês, ~30 cirurgias refrativas/mês
+Ticket médio cirurgia refrativa: R$ 5.500 por olho
+Convênios aceitos: Unimed, Bradesco Saúde, Amil, SulAmérica, particular
+Posicionamento: clínica tradicional premium, referência em refrativa no Centro-Oeste
+Valores institucionais: nosso trabalho, nossos resultados, a satisfação dos pacientes
+
+Regras importantes que você deve respeitar em TODAS as respostas:
+1. Seguir o Código de Ética Médica do CFM (Resolução 2.217/2018)
+2. Seguir o Manual de Publicidade Médica do CBO (CODAME)
+3. NUNCA prometer resultados cirúrgicos ("enxergue 100%", "liberdade dos óculos")
+4. NUNCA comparar com outras clínicas ou outros médicos
+5. NUNCA usar fotos de antes/depois
+6. NUNCA usar sensacionalismo ou apelo comercial
+7. SEMPRE que indicar ação clínica, recomendar avaliação presencial
+8. Linguagem técnica correta, mas acessível ao leigo
+
+Confirma que entendeu e aguarda minha próxima instrução.</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO 1 ═══ -->
+    <section id="demo1">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Demo 01 · Slide 16</div>
+        <h2 class="demo-title">Descoberta</h2>
+        <p class="demo-subtitle">3 posts de Instagram sobre LASIK respeitando CODAME</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Prompt</span>
+            <span class="prompt-title">3 posts CODAME-compliant</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo1">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo1">Gere 3 posts de Instagram sobre cirurgia LASIK para a COLL. Cada post precisa ter:
+
+1. Legenda (máximo 120 palavras, linguagem acessível, sem jargão)
+2. 5 a 7 hashtags relevantes
+3. Sugestão de imagem (descrição do visual, sem prometer resultado)
+4. Call-to-action educativo (nunca comercial agressivo)
+
+Os 3 posts devem cobrir 3 ângulos diferentes:
+Post 1: educativo - o que é LASIK, quem pode fazer (indicações gerais)
+Post 2: mitos e verdades - desmistificar medos comuns
+Post 3: jornada do paciente - como são as etapas (avaliação, cirurgia, pós-op)
+
+IMPORTANTE - regras CODAME:
+- Zero promessa de resultado
+- Zero comparação com outros
+- Zero fotos antes/depois
+- Sempre recomendar avaliação presencial
+- Tom informativo, nunca publicitário
+
+Comece pelo post 1.</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO 2 ═══ -->
+    <section id="demo2">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Demo 02 · Slide 19</div>
+        <h2 class="demo-title">Pré-consulta</h2>
+        <p class="demo-subtitle">Anamnese para a paciente + resumo clínico para o médico</p>
+      </header>
+
+      <h3 class="subsection-title">Parte A · Anamnese para o paciente</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Prompt 2A</span>
+            <span class="prompt-title">Anamnese pré-LASIK via WhatsApp</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo2a">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo2a">Gere uma anamnese estruturada pré-cirúrgica para cirurgia refrativa LASIK, em linguagem acessível ao leigo. Essa anamnese será enviada por WhatsApp para o paciente preencher 2 dias antes da consulta.
+
+Estruture em 5 seções:
+1. Identificação (dados básicos)
+2. História ocular (uso de óculos, lentes, sintomas)
+3. História médica geral (doenças, cirurgias, gestação, medicamentos)
+4. Histórico familiar ocular (catarata, glaucoma, ceratocone na família)
+5. Expectativas e motivação (por que quer fazer LASIK, o que espera)
+
+Para cada pergunta:
+- Texto curto e direto
+- Exemplos quando a pergunta for técnica
+- Opções de múltipla escolha quando fizer sentido
+- Campo aberto quando precisar de detalhe
+
+Use emojis com moderação para deixar menos intimidador (máximo 3 no total).
+Gere em formato que possa ser enviado por WhatsApp, numerado.</pre>
+      </div>
+
+      <h3 class="subsection-title">Parte B · Resumo clínico para o médico</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Prompt 2B</span>
+            <span class="prompt-title">Resumo de 30 segundos para o médico</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo2b">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo2b">Agora simule que a paciente Mariana Silveira Campos (dados abaixo) respondeu a anamnese. Gere o RESUMO CLÍNICO ESTRUTURADO que o médico vai receber antes da consulta.
+
+Respostas da paciente:
+- 34 anos, advogada, Campo Grande
+- Miopia de -4.50 OD e -5.00 OE desde os 12 anos
+- Usa lente de contato há 8 anos, sintomas de olho seco leves no fim do dia
+- Saudável, sem comorbidades, não gestante, não amamenta
+- Anticoncepcional oral há 5 anos
+- Pai operou catarata aos 62, sem outros antecedentes oculares familiares
+- Motivação: quer parar de usar óculos/lente, viaja a trabalho, pratica natação
+- Expectativa: reduzir dependência de correção óptica, ciente que pode precisar de óculos para leitura após os 45
+
+Formato do resumo (para o médico ler em 30 segundos):
+
+## RESUMO CLÍNICO - MARIANA SILVEIRA CAMPOS
+**Pontos de atenção:** (o que o médico precisa olhar com cuidado)
+**Dados clínicos relevantes:**
+**Expectativas da paciente:**
+**Sugestão de exames complementares:** (quais exames pedir na consulta)
+**Red flags:** (qualquer contraindicação ou preocupação)
+
+Seja técnico e conciso. Esse resumo chega 5min antes da paciente entrar no consultório.</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO 3 - MOMENTO CHAVE ═══ -->
+    <section id="demo3">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Demo 03 · Slide 20 · Momento chave</div>
+        <h2 class="demo-title">Consulta por voz</h2>
+        <p class="demo-subtitle">Caso de olho seco moderado · 3 entregáveis em 1 áudio</p>
+      </header>
+
+      <h3 class="subsection-title">Setup · Instruções do Projeto Claude</h3>
+      <p class="lead">Cole isto nas "instruções customizadas" do Projeto Claude antes da palestra.</p>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Projeto</span>
+            <span class="prompt-title">Instruções do Projeto "Consultório Oftalmo FONARO"</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo3-projeto">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo3-projeto">Você é um assistente de um oftalmologista brasileiro que atua na COLL (Clínica de Olhos Dr. Luiz Lani, Campo Grande-MS). A partir de áudios de consulta, você gera TRÊS entregáveis em UMA única resposta, nesta ordem exata:
+
+1. PRONTUÁRIO MÉDICO ESTRUTURADO
+Formato SOAP adaptado:
+- S (Subjetivo): queixa principal, história da doença atual, antecedentes relevantes
+- O (Objetivo): achados do exame com valores numéricos
+- A (Avaliação): hipótese diagnóstica com CID-10
+- P (Plano): conduta terapêutica detalhada
+Use terminologia médica correta em português brasileiro.
+Formatação pronta para colar em prontuário eletrônico.
+
+2. CARTA PARA OPERADORA DE SAÚDE
+Justificativa da conduta clínica proposta.
+Cite achados objetivos do exame que suportam a necessidade (valores de TBUT, Schirmer, biomicroscopia).
+Linguagem técnica mas acessível ao auditor médico.
+Incluir: cabeçalho com dados do paciente e médico, corpo com justificativa, fechamento com espaço para CRM, data e assinatura.
+Não exceder 250 palavras.
+
+3. ORIENTAÇÃO AO PACIENTE
+Linguagem leiga, empática, sem jargão médico.
+Estruture em 4 seções:
+- O que você tem
+- O que fazer
+- O que evitar
+- Quando voltar ou procurar ajuda urgente
+Máximo 250 palavras. Tom acolhedor.
+"Ardência" vira "sensação de irritação". "Disfunção de Meibomio" vira "glândulas que produzem a parte oleosa da lágrima não estão funcionando bem".
+
+REGRAS INEGOCIÁVEIS:
+- Nunca invente dados que não estão no áudio
+- Se algo estiver ambíguo, sinalize com [CONFIRMAR] e explique o que falta
+- Nunca substitua o julgamento clínico do médico
+- O médico revisa, edita e assina todos os documentos antes de enviar
+
+Confirme que entendeu e aguarde o áudio da consulta.</pre>
+      </div>
+
+      <h3 class="subsection-title">Roteiro de fala · Caso Maria · 30 segundos</h3>
+      <div class="speech-box">
+        <span class="speech-label">Ler em voz natural · ritmo de consulta real</span>
+        "Paciente Maria, 58 anos, professora aposentada, queixa de ardência e sensação de areia nos olhos há 6 meses, pior no final do dia e piora quando usa computador por mais de duas horas. Já usou colírio lubrificante comprado na farmácia sem melhora consistente. Nega dor intensa, fotofobia ou baixa visual súbita.<br><br>
+        Ao exame, acuidade visual 20/25 em ambos os olhos com correção, tempo de ruptura do filme lacrimal reduzido para 5 segundos, teste de Schirmer 7 milímetros em 5 minutos no olho direito e 6 milímetros no olho esquerdo, biomicroscopia com ceratite puntata discreta em ambas as córneas.<br><br>
+        Hipótese diagnóstica: olho seco evaporativo moderado associado a disfunção de glândulas de Meibomio.<br><br>
+        Conduta: lágrima artificial com trealose e ácido hialurônico quatro vezes ao dia, compressas mornas duas vezes ao dia, higiene palpebral diária, orientações sobre pausas visuais e retorno em 30 dias para reavaliação."
+      </div>
+
+      <h3 class="subsection-title">Prompt curto · Quando Projeto está configurado</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Prompt 3</span>
+            <span class="prompt-title">Frase única - junto com o áudio</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo3-curto">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo3-curto">Gere os três entregáveis a partir deste áudio de consulta.</pre>
+      </div>
+
+      <h3 class="subsection-title">Plano B · Sem Projeto Claude</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Plano B</span>
+            <span class="prompt-title">Prompt completo standalone</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo3-planob">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo3-planob">Transcrição de consulta oftalmológica:
+[COLE A TRANSCRIÇÃO DO ÁUDIO AQUI]
+
+A partir dessa transcrição, gere TRÊS entregáveis em uma única resposta:
+
+1. PRONTUÁRIO SOAP (Subjetivo, Objetivo, Avaliação com CID-10, Plano)
+Terminologia médica correta em português brasileiro. Pronto para colar em prontuário eletrônico.
+
+2. CARTA PARA OPERADORA DE SAÚDE justificando a conduta, citando os achados objetivos (TBUT, Schirmer, biomicroscopia). Linguagem técnica mas acessível ao auditor. Máximo 250 palavras.
+
+3. ORIENTAÇÃO AO PACIENTE em linguagem leiga, dividida em: o que você tem, o que fazer, o que evitar, quando voltar. Máximo 250 palavras. Tom acolhedor.
+
+Regras: nunca invente dados que não estão no áudio. Se algo ambíguo, marque com [CONFIRMAR]. Nunca substitua o julgamento clínico do médico.</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO 4 ═══ -->
+    <section id="demo4">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Demo 04 · Slide 24</div>
+        <h2 class="demo-title">Pós-operatório</h2>
+        <p class="demo-subtitle">Agente pós-LASIK respondendo às 23h da noite</p>
+      </header>
+
+      <h3 class="subsection-title">Setup · Configuração do agente</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Setup</span>
+            <span class="prompt-title">Protocolo pós-LASIK COLL</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo4-setup">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo4-setup">Você vai atuar como assistente virtual pós-operatório da COLL, disponível 24/7 para pacientes que fizeram LASIK. Seu papel é:
+
+1. Acolher o paciente com empatia
+2. Responder dúvidas seguindo o PROTOCOLO abaixo
+3. IDENTIFICAR SINAIS DE ALERTA que exigem contato médico imediato
+4. Quando houver alerta, orientar contato com o plantão médico: (67) 99999-0000
+
+PROTOCOLO PÓS-LASIK COLL:
+
+Primeiras 24 horas:
+- Leve ardência, lacrimejamento e sensibilidade à luz são esperados
+- Dor leve a moderada é comum, controlada com analgésico oral prescrito
+- Visão embaçada, flutuante: NORMAL
+- Manter olhos fechados o máximo possível nas primeiras 4 horas
+- Protetor ocular obrigatório ao dormir nas primeiras 7 noites
+
+Colírios prescritos:
+- Moxifloxacino 4x/dia por 7 dias (antibiótico)
+- Prednisolona 4x/dia por 7 dias, depois desmame gradual (anti-inflamatório)
+- Lágrima artificial sem conservante, 1 gota a cada 2 horas enquanto acordado
+
+O que NÃO FAZER:
+- Coçar, esfregar ou apertar os olhos (risco de deslocar o flap)
+- Molhar os olhos por 7 dias (banho, piscina, praia)
+- Maquiagem nos olhos por 15 dias
+- Academia/esforço físico por 7 dias
+- Lente de contato: NUNCA MAIS (a partir desse momento, lente pode danificar o flap)
+
+SINAIS DE ALERTA (acionar plantão médico):
+- Dor intensa, progressiva, que não melhora com analgésico
+- Secreção purulenta (amarelada ou esverdeada)
+- Piora súbita da visão após período de melhora
+- Flash de luz, pontos escuros novos, cortina no campo visual
+- Febre
+
+Retornos agendados:
+- 1 dia pós-op
+- 7 dias pós-op
+- 30 dias pós-op
+- 90 dias pós-op
+
+Tom: empático, tranquilo, nunca alarmista, mas firme ao identificar alerta.
+Sempre termine com uma pergunta aberta ou oferta de ajuda adicional.
+
+Confirme que entendeu e aguarde a primeira mensagem do paciente.</pre>
+      </div>
+
+      <h3 class="subsection-title">Mensagem 1 · Dúvida simples</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Paciente 1</span>
+            <span class="prompt-title">Sensação de areia + horário do colírio</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo4-msg1">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo4-msg1">Oi, operei LASIK hoje de manhã com o Dr. Luiz Lani. Agora são 22h e meu olho está com uma sensação de areia e lacrimejando bastante. Posso tomar o colírio antes do horário? Está meio incômodo.</pre>
+      </div>
+
+      <h3 class="subsection-title">Mensagem 2 · Conduta cotidiana</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Paciente 2</span>
+            <span class="prompt-title">Maquiagem + bebida no aniversário</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo4-msg2">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo4-msg2">Amanhã vou ao aniversário da minha filha. Operei anteontem. Posso usar maquiagem só dos cílios para cima? Bem levinha? E tomar um copo de vinho?</pre>
+      </div>
+
+      <h3 class="subsection-title">Mensagem 3 · Sinal de alerta</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Paciente 3</span>
+            <span class="prompt-title">Dor intensa + secreção + piora de visão</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo4-msg3">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo4-msg3">Operei há 4 dias e hoje acordei com o olho direito doendo MUITO, muito pior que nos dias anteriores. Tomei 2 comprimidos de dipirona e a dor não passou. Está saindo um líquido amarelado e minha visão piorou bastante desde ontem. Devo me preocupar?</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DEMO 5 - LOVABLE BÔNUS ═══ -->
+    <section id="demo5">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Demo 05 · Bônus · Entre slides 23 e 24</div>
+        <h2 class="demo-title">CRM no Lovable</h2>
+        <p class="demo-subtitle">Construído na véspera · iteração ao vivo no palco</p>
+      </header>
+
+      <h3 class="subsection-title">Prompt inicial · Construir na véspera</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Lovable</span>
+            <span class="prompt-title">CRM oftalmológico inicial</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo5-init">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo5-init">Construa um CRM web para uma clínica oftalmológica brasileira chamada COLL (Clínica de Olhos Dr. Luiz Lani, Campo Grande-MS).
+
+ESCOPO DESTA VERSÃO (mantenha simples):
+- Login único (apenas dono da clínica), sem perfis múltiplos
+- 2 telas principais: Agenda e Funil de Cirurgias
+
+TELA 1 - AGENDA E CONSULTAS:
+- Calendário visual (vista semanal por padrão)
+- Cards de consulta com: nome do paciente, horário, tipo (consulta/retorno/cirurgia), médico responsável, status (agendada / confirmada / realizada / faltou)
+- Cores diferentes para cada status
+- Botão verde de WhatsApp em cada card que abre o WhatsApp Web com a mensagem "Olá [nome], confirmando sua consulta na COLL amanhã às [horário]. Por favor, responda com SIM para confirmar."
+- Filtro por médico no topo
+- Botão "Nova consulta" no canto
+
+TELA 2 - FUNIL DE CIRURGIAS:
+- Layout kanban com 4 colunas: Lead WhatsApp → Avaliação Agendada → Orçamento Enviado → Cirurgia Agendada
+- Cards de lead com: nome, telefone, procedimento de interesse (LASIK / Catarata / Outros), data de entrada
+- Drag and drop entre colunas
+- Botão verde de WhatsApp em cada card
+- Card mostra valor do orçamento quando aplicável
+
+DADOS DE EXEMPLO (use estes para popular):
+
+Agenda (próximos 3 dias):
+- Mariana Silveira, 09h, LASIK pré-op, Dr. Luiz, Confirmada
+- Roberto Andrade, 10h, Retorno catarata, Dra. Áisa, Confirmada
+- Maria Helena, 11h, Olho seco, Dr. Luiz, Realizada
+- José Eduardo, 14h, Avaliação catarata, Dra. Áisa, Agendada
+- Camila Rossi, 15h, Pós-op crosslink, Dr. Roberto, Confirmada
+- Patrícia Assunção, 16h, LASIK avaliação, Dr. Luiz, Agendada
+
+Funil:
+Lead WhatsApp:
+- Beatriz Quintana, 26 anos, "interesse em PRK"
+- Cláudia Moreno, 48 anos, "catarata - indicada pela amiga"
+
+Avaliação Agendada:
+- Fernanda Okuda, 41 anos, LASIK, dia 27/04
+- Gustavo Tanaka, 39 anos, LASIK, dia 28/04
+
+Orçamento Enviado:
+- Patrícia Assunção, 38 anos, LASIK bilateral, R$ 11.000
+- Antônio Carlos Neves, 67 anos, Catarata + lente premium, R$ 16.800
+
+Cirurgia Agendada:
+- José Eduardo Prates, 62 anos, Catarata bilateral, R$ 9.600, dia 05/05
+- Larissa Cavalcanti, 31 anos, LASIK bilateral, R$ 11.000, dia 02/05
+
+ESTÉTICA:
+- Visual profissional médico
+- Paleta sóbria: branco, cinza claro, com acento azul-petróleo (#0E2A4D) para botões de ação e verde para WhatsApp
+- Fonte sem-serifa moderna
+- Sidebar à esquerda com navegação entre as 2 telas
+- Header com logo "COLL" e nome do dono logado
+- Espaçamento generoso, cards com sombra sutil
+
+Construa as duas telas funcionais com os dados de exemplo populados. Drag and drop deve funcionar de verdade no funil. Botões de WhatsApp devem abrir links wa.me com a mensagem pronta.</pre>
+      </div>
+
+      <h3 class="subsection-title">Iteração 1 ao vivo · Adicionar coluna "origem"</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Iteração</span>
+            <span class="prompt-title">Adiciona origem do lead</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo5-iter1">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo5-iter1">Adiciona um campo "origem" em cada card do funil, com tag colorida pequena no topo do card. Origens possíveis: Instagram, WhatsApp, Indicação, Google, Site. Distribui as origens entre os leads existentes de forma realista. Mostra contagem de leads por origem em um pequeno painel acima do funil.</pre>
+      </div>
+
+      <h3 class="subsection-title">Iteração 2 ao vivo · Métricas no topo</h3>
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Iteração</span>
+            <span class="prompt-title">Dashboard de métricas no topo</span>
+          </div>
+          <button class="copy-btn" data-target="p-demo5-iter2">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-demo5-iter2">Adiciona uma faixa de 4 cards de métricas no topo da tela do Funil: Total de leads no mês, Taxa de conversão lead → cirurgia, Ticket médio das cirurgias agendadas, Receita projetada do mês (soma das cirurgias agendadas). Calcula com os dados existentes.</pre>
+      </div>
+    </section>
+
+    <!-- ═══ DATASETS ═══ -->
+    <section id="crm">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Dataset · Backup Q&amp;A</div>
+        <h2 class="demo-title">CRM simulado</h2>
+        <p class="demo-subtitle">15 pacientes fictícios para demos opcionais</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Dataset</span>
+            <span class="prompt-title">Lista de 15 pacientes da COLL</span>
+          </div>
+          <button class="copy-btn" data-target="p-crm">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-crm">CRM SIMULADO COLL - 15 pacientes (dados fictícios)
+
+Nome | Idade | Procedimento | Status | LTV (R$)
+---
+Mariana Silveira Campos | 34 | LASIK bilateral | Pós-op 30d | 11.000
+Roberto Andrade Lima | 58 | Catarata OD | Pós-op 90d | 4.800
+Fernanda Okuda | 41 | Avaliação refrativa | Pipeline | 0
+José Eduardo Prates | 62 | Catarata bilateral | Cirurgia agendada | 9.600
+Camila Rossi Berber | 29 | Ceratocone + crosslink | Pós-op 7d | 6.500
+Antônio Carlos Neves | 67 | Catarata OE premium | Pós-op 30d | 8.200
+Patrícia Assunção Veloso | 38 | LASIK bilateral | Pré-op | 5.500
+Henrique Balbino Cruz | 45 | Retinopatia diabética | Seguimento | 2.400
+Larissa Cavalcanti Mota | 31 | LASIK bilateral | Pós-op 7d | 11.000
+Dr. Márcio Helbing | 51 | Check-up anual | Recorrente | 3.200
+Beatriz Quintana Sampaio | 26 | Miopia alta - PRK | Pipeline | 0
+Gustavo Uchimura Tanaka | 39 | LASIK bilateral | Cirurgia agendada | 5.500
+Rosângela Peixoto Faria | 54 | Glaucoma | Seguimento | 4.100
+Pedro Henrique Salles | 36 | Olho seco crônico | Tratamento contínuo | 1.800
+Cláudia Moreno Rizzo | 48 | Catarata precoce | Avaliação | 0
+
+Use esta tabela e me diga: quais pacientes deveriam receber follow-up esta semana e qual o motivo específico de cada um?</pre>
+      </div>
+    </section>
+
+    <section id="precos">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Dataset · Referência</div>
+        <h2 class="demo-title">Tabela de preços</h2>
+        <p class="demo-subtitle">Valores de referência clínica oftalmológica premium 2026</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Dataset</span>
+            <span class="prompt-title">Tabela de preços + análise de LTV</span>
+          </div>
+          <button class="copy-btn" data-target="p-precos">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-precos">TABELA DE PREÇOS COLL (valores referência mercado premium Centro-Oeste 2026)
+
+Procedimento | Valor | Modalidade
+---
+Consulta oftalmológica completa | R$ 450 | Particular
+Consulta de retorno (até 30 dias) | R$ 0 | Cortesia
+Mapeamento de retina | R$ 320 | Particular
+Topografia corneana | R$ 380 | Particular
+Paquimetria | R$ 220 | Particular
+Campo visual computadorizado | R$ 420 | Particular
+OCT de mácula | R$ 680 | Particular
+OCT de nervo óptico | R$ 680 | Particular
+Biometria óptica (IOL Master) | R$ 540 | Particular
+LASIK (por olho) | R$ 5.500 | Particular
+PRK (por olho) | R$ 4.800 | Particular
+Catarata com lente monofocal (por olho) | R$ 3.800 | Particular
+Catarata com lente tórica (por olho) | R$ 5.200 | Particular
+Catarata com lente premium trifocal (por olho) | R$ 8.400 | Particular
+Crosslinking corneano (por olho) | R$ 3.200 | Particular
+Implante de anel intraestromal (por olho) | R$ 4.500 | Particular
+Injeção intravítrea (por aplicação) | R$ 1.800 | Particular
+
+Analise essa tabela e me diga:
+1. Qual o ticket médio de um paciente que faz LASIK bilateral considerando todas as consultas e exames pré-op típicos?
+2. Qual o ticket médio de um paciente de catarata com lente premium bilateral?
+3. Como a COLL poderia aumentar o LTV sem aumentar preço unitário?</pre>
+      </div>
+    </section>
+
+    <section id="contrato">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Dataset · Demo opcional</div>
+        <h2 class="demo-title">Análise de contrato</h2>
+        <p class="demo-subtitle">IA lê contrato de convênio e identifica cláusulas perigosas</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Dataset</span>
+            <span class="prompt-title">Trecho de contrato + análise crítica</span>
+          </div>
+          <button class="copy-btn" data-target="p-contrato">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-contrato">Sou o CEO da COLL. Acabei de receber esse trecho de um contrato de credenciamento com uma operadora de plano de saúde. Analise em 3 partes:
+
+1. PONTOS CRÍTICOS: o que pode prejudicar o fluxo de caixa ou a margem da clínica?
+2. CLÁUSULAS PERIGOSAS: o que eu deveria negociar ANTES de assinar?
+3. RECOMENDAÇÃO FINAL: devo aceitar, negociar ou recusar? Por quê?
+
+Seja direto, use linguagem de negócio e me dê 3 alternativas de contrato-proposta específicas para negociação.
+
+CONTRATO:
+
+CLÁUSULA 4ª - DOS VALORES E FORMA DE PAGAMENTO
+
+4.1 - A OPERADORA remunerará a PRESTADORA pelos procedimentos realizados conforme tabela constante no Anexo I deste contrato, observando-se o valor unitário líquido, sem incidência de reajustes automáticos.
+
+4.2 - O reajuste dos valores constantes no Anexo I ocorrerá anualmente, na data-base de 1º de janeiro, limitado ao menor entre: (i) IPCA acumulado dos últimos 12 meses, ou (ii) 4% (quatro por cento).
+
+4.3 - O pagamento será efetuado em até 90 (noventa) dias corridos, contados da data do protocolo da fatura, desde que a documentação esteja completa.
+
+4.4 - A OPERADORA poderá glosar integralmente procedimentos cuja documentação apresente inconsistências, sem prévio aviso à PRESTADORA, cabendo a esta apresentar recurso no prazo máximo de 30 (trinta) dias.
+
+4.5 - Fica vedada a cobrança de qualquer valor adicional diretamente ao BENEFICIÁRIO, sob pena de descredenciamento imediato.
+
+CLÁUSULA 7ª - DA EXCLUSIVIDADE E NÃO-CONCORRÊNCIA
+
+7.1 - Durante a vigência deste contrato e pelo período de 24 (vinte e quatro) meses após seu término, a PRESTADORA não poderá credenciar-se, direta ou indiretamente, a qualquer operadora considerada CONCORRENTE, conforme lista do Anexo II.
+
+CLÁUSULA 11 - DA RESCISÃO
+
+11.1 - A rescisão poderá ocorrer a qualquer tempo por iniciativa de qualquer das partes, mediante aviso prévio de 60 (sessenta) dias.
+
+11.2 - Em caso de rescisão por iniciativa da PRESTADORA, aplicar-se-á multa equivalente a 3 (três) meses do faturamento médio mensal dos últimos 12 meses.
+
+11.3 - A rescisão por iniciativa da OPERADORA não acarretará multa, exceto em casos de rescisão imotivada nos primeiros 24 meses, caso em que a multa será de 1 (um) mês de faturamento médio.</pre>
+      </div>
+    </section>
+
+    <section id="dashboard">
+      <header class="demo-header">
+        <div class="demo-eyebrow">Dataset · Demo opcional</div>
+        <h2 class="demo-title">Dashboard de métricas</h2>
+        <p class="demo-subtitle">15 KPIs AI-First → IA gera dashboard HTML</p>
+      </header>
+
+      <div class="prompt-card">
+        <div class="prompt-header">
+          <div class="prompt-label">
+            <span class="prompt-tag">Dataset</span>
+            <span class="prompt-title">Métricas + pedido de dashboard visual</span>
+          </div>
+          <button class="copy-btn" data-target="p-dashboard">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copiar
+          </button>
+        </div>
+        <pre class="prompt-body" id="p-dashboard">Métricas mensais da COLL (clínica AI-First):
+
+AQUISIÇÃO
+- Leads captados no mês: 247 (+38% vs mês anterior)
+- Tempo médio de resposta ao lead: 42s (meta: 60s)
+- Taxa de conversão lead → consulta: 58% (+12pts vs mês anterior)
+
+OPERAÇÃO
+- Consultas realizadas: 286 (vs 294 capacidade)
+- Taxa de no-show: 4,2% (meta: <5%)
+- Tempo médio de digitação prontuário: 1,4 min (vs 10 min baseline)
+
+CIRÚRGICO
+- Cirurgias refrativas: 31 (+7 vs mês anterior)
+- Cirurgias catarata: 18 (estável)
+- Conversão avaliação → cirurgia: 68% (+15pts vs mês anterior)
+
+FINANCEIRO
+- Receita bruta mensal: R$ 482k (+18% vs mês anterior)
+- Taxa de glosa: 3,1% (vs 8,4% baseline)
+- LTV médio 12m: R$ 3.240 (+22% vs ano anterior)
+
+QUALIDADE
+- NPS pós-consulta: 87 (+12pts vs baseline)
+- NPS pós-cirurgia: 92 (+8pts vs baseline)
+- Intercorrências pós-op: 0,8% (vs 2,1% baseline)
+
+Transforme esses dados em um dashboard visual em HTML com CSS embutido, formato de cards. Use cores Delta Academy (verde escuro #1F3331, verde oliva #5C6C51, ocre #D9A441). Organize por área. Destaque as métricas que melhoraram mais de 15% com badge especial.</pre>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-divider"></div>
+      <div><span class="fonaro-name">I FONARO 2026</span> · Fórum Nacional de Residentes em Oftalmologia</div>
+      <div>CICB · Brasília · 24-25 abril 2026</div>
+      <div style="margin-top: 16px;">Apresentação por <span class="delta-name">Delta Academy</span></div>
+      <div>Guilherme Junqueira · CEO · deltaacademy.com.br</div>
+      <div class="signature">Consistência, resiliência, paciência.</div>
+    </div>
+
+  </main>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">Copiado</div>
+
+<script>
+  // Sistema de cópia
+  const toast = document.getElementById('toast');
+  let toastTimer = null;
+
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const targetId = btn.getAttribute('data-target');
+      const target = document.getElementById(targetId);
+      if (!target) return;
+
+      const text = target.textContent;
+
+      try {
+        await navigator.clipboard.writeText(text);
+
+        const originalContent = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Copiado';
+
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = originalContent;
+        }, 2000);
+
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+
+      } catch (err) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        toast.textContent = 'Copiado';
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+      }
+    });
+  });
+
+  // Highlight ativo na sidebar
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 120) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+
+  // Atalhos de teclado
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    const map = { '0': '#contexto', '1': '#demo1', '2': '#demo2', '3': '#demo3', '4': '#demo4', '5': '#demo5' };
+    if (map[e.key]) {
+      e.preventDefault();
+      document.querySelector(map[e.key]).scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+</script>
+
+</body>
+</html>
