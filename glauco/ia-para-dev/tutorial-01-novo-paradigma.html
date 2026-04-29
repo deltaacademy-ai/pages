@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. O Novo Paradigma &middot; IA para DEV &mdash; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  @media(max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}}
+</style>
+</head>
+<body>
+
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:100vh;gap:20px;
+  font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
+  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
+    <g clip-path="url(#clip-t01)">
+      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
+      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
+      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
+      <path d="M167.716 49.5452L162.051 61.1944L115.832 50.4639C111.435 45.5114 107.146 40.3034 103.142 35.0168C102.896 34.6925 102.503 34.609 102.655 34.0391L167.716 49.5452Z" fill="currentColor"/>
+      <path d="M293.013 34.0391L280.725 50.0414C267.439 53.5101 253.83 56.7136 240.353 59.7204C238.324 60.1725 236.28 60.6589 234.231 61.1011L228.645 49.6041L293.013 34.0391Z" fill="currentColor"/>
+      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
+      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
+    </g>
+    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM12.8853 175.574H26.7443C28.7034 175.574 30.0458 175.32 31.0253 174.776C32.4402 174.014 33.0207 172.164 33.0207 168.427C33.0207 161.715 31.9686 160.373 26.7443 160.373H12.8853V175.574ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401ZM73.6424 180V155.801H79.2295V175.465H96.8979V180H73.6424ZM104.749 180V160.336H93.3575V155.801H121.692V160.336H110.336V180H104.749ZM143.994 175.211H126.725L124.04 180H117.764L131.623 155.801H139.205L152.847 180H146.752L143.994 175.211ZM141.926 171.293L135.36 159.719L128.866 171.293H141.926ZM185.099 174.558H165.29L162.098 180H158.869L173.127 155.801H177.226L191.484 180H188.292L185.099 174.558ZM183.72 172.272L175.195 157.833L166.669 172.272H183.72ZM218.772 171.873H221.602V172.889C221.602 175.792 221.312 177.061 220.368 178.15C219.461 179.238 218.264 179.746 216.051 180C214.672 180.109 210.536 180.254 207.271 180.254C198.528 180.254 196.387 179.891 194.61 178.041C193.049 176.445 192.687 174.522 192.687 167.919C192.687 160.373 193.195 158.45 195.662 156.89C197.512 155.729 199.507 155.547 209.484 155.547C215.543 155.547 217.647 155.838 219.135 156.926C220.767 158.051 221.275 159.574 221.384 163.42H218.554V162.803C218.554 158.522 217.538 158.087 207.38 158.087C195.77 158.087 195.698 158.123 195.698 167.919C195.698 173.433 195.952 175.175 196.968 176.227C198.129 177.424 199.979 177.714 206.763 177.714C217.647 177.714 218.772 177.315 218.772 173.252V171.873ZM249.211 174.558H229.402L226.21 180H222.981L237.239 155.801H241.338L255.596 180H252.404L249.211 174.558ZM247.833 172.272L239.307 157.833L230.781 172.272H247.833ZM257.17 180V155.801H275.999C281.333 155.801 284.017 156.781 285.468 159.32C286.557 161.098 287.065 163.964 287.065 167.882C287.065 171.837 286.557 174.703 285.468 176.481C284.017 179.02 281.333 180 275.999 180H257.17ZM260.073 177.569H276.217C279.627 177.569 281.84 176.771 282.82 175.211C283.654 173.832 284.054 171.583 284.054 168.028C284.054 164.291 283.618 161.751 282.747 160.409C281.768 158.921 279.7 158.232 275.999 158.232H260.073V177.569ZM291.795 180V155.801H315.885V158.232H294.697V166.322H315.123V168.608H294.697V177.569H316.066V180H291.795ZM320.432 180V155.801H325.112L339.697 176.626L354.317 155.801H358.852V180H355.95V158.196L340.712 180H338.572L323.334 158.196V180H320.432ZM377.148 167.447L388.649 155.801H392.64L378.599 169.842V180H375.697V169.842L361.657 155.801H365.611L377.148 167.447Z" fill="currentColor"/>
+    <defs><clipPath id="clip-t01"><rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/></clipPath></defs>
+  </svg>
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">01. O Novo Paradigma do Desenvolvimento com IA</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPwd()"
+      style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
+    <button onclick="checkPwd()" style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
+    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
+
+<div id="main-content" style="display:none">
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">&#8592; &Iacute;ndice do M&oacute;dulo</a>
+      <h2>O Novo Paradigma</h2>
+      <p>Aula 01 &middot; IA para DEV</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">In&iacute;cio</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Vis&atilde;o Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdu&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> IA no dia a dia do dev<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Usu&aacute;rio vs. Desenvolvedor<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstra&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Tokens, contexto e limites<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Pr&aacute;tica</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> APIs vs. ferramentas prontas<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+  <div class="main">
+
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Board &rsaquo; IA para DEV &rsaquo; <a href="index.html">&Iacute;ndice</a> &rsaquo; 01. O Novo Paradigma</div>
+      <div class="sec-title"><span class="snum">00.</span> Vis&atilde;o Geral</div>
+      <div class="sec-desc">Aula 01 &mdash; O Novo Paradigma do Desenvolvimento com IA</div>
+      <p class="lead-text">A IA deixou de ser uma ferramenta futura para ser uma realidade no dia a dia do dev. <strong>GPT-4, Claude e Gemini</strong> est&atilde;o integrados a IDEs, pipelines de CI/CD e at&eacute; no processo de code review.</p>
+      <div class="overview-card">
+        <h3>O que voc&ecirc; vai aprender</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Dura&ccedil;&atilde;o</td><td>~20 minutos</td></tr>
+          <tr><td>N&iacute;vel</td><td>Fundamentos</td></tr>
+          <tr><td>Conte&uacute;do</td><td>LLMs na pr&aacute;tica, tokens, contexto, APIs vs. ferramentas</td></tr>
+        </tbody></table>
+      </div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; &Iacute;ndice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">01.</span> IA no dia a dia do dev</div>
+      <div class="sec-desc">LLMs de forma pr&aacute;tica</div>
+      <p class="lead-text">Um <strong>LLM (Large Language Model)</strong> &eacute; um modelo treinado em enormes volumes de texto para prever e gerar linguagem. Do ponto de vista do dev, &eacute; uma fun&ccedil;&atilde;o que recebe texto (prompt) e devolve texto (completion).</p>
+      <div class="overview-card">
+        <h3>Onde os LLMs j&aacute; est&atilde;o no seu workflow</h3>
+        <ul>
+          <li><strong>IDE:</strong> Copilot, Cursor, Cody &mdash; sugest&otilde;es de c&oacute;digo em tempo real</li>
+          <li><strong>CI/CD:</strong> revis&atilde;o autom&aacute;tica de pull requests</li>
+          <li><strong>Documenta&ccedil;&atilde;o:</strong> gera&ccedil;&atilde;o e atualiza&ccedil;&atilde;o autom&aacute;tica</li>
+          <li><strong>Testes:</strong> gera&ccedil;&atilde;o de casos de teste a partir do c&oacute;digo</li>
+          <li><strong>Deploy:</strong> agentes que detectam e sugerem rollback autom&aacute;tico</li>
+        </ul>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">02.</span> Usu&aacute;rio vs. Desenvolvedor de IA</div>
+      <div class="sec-desc">Dois modos completamente diferentes de usar a mesma tecnologia</div>
+      <p class="lead-text">Usar o ChatGPT pelo browser e <strong>integrar um LLM numa aplica&ccedil;&atilde;o</strong> s&atilde;o experi&ecirc;ncias completamente diferentes. O dev precisa entender a segunda.</p>
+      <div class="overview-card">
+        <h3>As diferen&ccedil;as que importam</h3>
+        <table class="ficha-table">
+          <thead><tr><th>Aspecto</th><th>Usu&aacute;rio</th><th>Desenvolvedor</th></tr></thead>
+          <tbody>
+            <tr><td>Interface</td><td>Chat na web</td><td>Chamada de API</td></tr>
+            <tr><td>Contexto</td><td>Conversa manual</td><td>Gerenciado pelo c&oacute;digo</td></tr>
+            <tr><td>Custo</td><td>Plano fixo (assinatura)</td><td>Por token consumido</td></tr>
+            <tr><td>Controle</td><td>Limitado ao UI</td><td>Total: model, temp, max tokens</td></tr>
+            <tr><td>Escala</td><td>Um usu&aacute;rio por vez</td><td>Milhares simult&acirc;neos</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">03.</span> Tokens, contexto e limites</div>
+      <div class="sec-desc">O que o dev precisa saber sobre como o modelo processa texto</div>
+      <p class="lead-text">O modelo n&atilde;o l&ecirc; palavras &mdash; l&ecirc; <strong>tokens</strong>. Em portugu&ecirc;s, ~1 token &asymp; 0,75 palavras. O contexto (context window) &eacute; o m&aacute;ximo de tokens que o modelo processa por vez.</p>
+      <div class="overview-card">
+        <h3>N&uacute;meros de refer&ecirc;ncia (2025)</h3>
+        <table class="ficha-table">
+          <thead><tr><th>Modelo</th><th>Context window</th><th>Custo input (aprox)</th></tr></thead>
+          <tbody>
+            <tr><td>GPT-4o</td><td>128k tokens</td><td>$2.50 / 1M tokens</td></tr>
+            <tr><td>Claude 3.5 Sonnet</td><td>200k tokens</td><td>$3.00 / 1M tokens</td></tr>
+            <tr><td>Gemini 1.5 Pro</td><td>1M tokens</td><td>$1.25 / 1M tokens</td></tr>
+            <tr><td>Llama 3 (local)</td><td>8k&ndash;128k</td><td>Custo de infra pr&oacute;pria</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">Insight</div>
+        <p>Context window <strong>n&atilde;o &eacute; mem&oacute;ria persistente</strong>. Cada chamada &agrave; API come&ccedil;a do zero &mdash; voc&ecirc; precisa injetar o hist&oacute;rico manualmente.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">04.</span> APIs vs. ferramentas prontas</div>
+      <div class="sec-desc">Quando usar cada abordagem</div>
+      <p class="lead-text">A escolha entre chamar uma API diretamente ou usar uma ferramenta de alto n&iacute;vel depende do <strong>n&iacute;vel de controle e da complexidade</strong> que voc&ecirc; precisa.</p>
+      <div class="overview-card">
+        <h3>Matriz de decis&atilde;o</h3>
+        <table class="ficha-table">
+          <thead><tr><th>Cen&aacute;rio</th><th>Recomenda&ccedil;&atilde;o</th></tr></thead>
+          <tbody>
+            <tr><td>Autocomplete no editor</td><td>Ferramenta pronta (Copilot/Cursor)</td></tr>
+            <tr><td>Feature espec&iacute;fica na sua app</td><td>API direta (OpenAI/Anthropic)</td></tr>
+            <tr><td>Pipeline complexo com m&uacute;ltiplos modelos</td><td>LangChain ou LlamaIndex</td></tr>
+            <tr><td>Chatbot no frontend React/Next</td><td>Vercel AI SDK</td></tr>
+            <tr><td>Prototipagem r&aacute;pida</td><td>Qualquer ferramenta pronta</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">Dica</div>
+        <p>Comece com a ferramenta mais simples que resolve seu problema. Migrar para API direta quando precisar de controle &eacute; mais f&aacute;cil do que remover uma abstra&ccedil;&atilde;o pesada depois.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+  const SENHA = "devai2026";
+  function checkPwd() {
+    if (document.getElementById('pwd').value === SENHA) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('pwd-error').style.display = 'block';
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){document.documentElement.setAttribute("data-palette",p);localStorage.setItem(KEY,p);const icon=document.getElementById("palette-icon");if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;const btn=document.getElementById("palette-toggle");if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";}
+    window.togglePalette=function(){apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");};
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+  const PKEY = "delta-tut-ia-dev-01";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 5;
+  function renderProgress(){document.querySelectorAll(".nav-item").forEach(ni=>{ni.classList.toggle("completed",completed.has(ni.dataset.section));});const pct=Math.round((completed.size/TOTAL)*100);document.getElementById("pct").textContent=pct;document.getElementById("sp-fill").style.width=pct+"%";}
+  function showSection(id){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));const sec=document.getElementById(id);if(sec)sec.classList.add("active");const nav=document.querySelector(`.nav-item[data-section="${id}"]`);if(nav)nav.classList.add("active");completed.add(id);localStorage.setItem(PKEY,JSON.stringify([...completed]));renderProgress();window.scrollTo({top:0,behavior:"smooth"});}
+  (function init(){const last=localStorage.getItem(PKEY+":last")||"sec-home";completed.add("sec-home");renderProgress();const origShow=showSection;window.showSection=function(id){origShow(id);localStorage.setItem(PKEY+":last",id);};if(last!=="sec-home")window.showSection(last);})();
+</script>
+</body>
+</html>
