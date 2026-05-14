@@ -7,99 +7,198 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
+
 body {
   font-family: 'Montserrat', sans-serif;
-  background: #0f1e1a;
+  background: #060f1c;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px;
+  padding: 0;
 }
+
 .page {
   width: 100%;
-  max-width: 960px;
-  min-height: 580px;
-  border-radius: 16px;
-  overflow: hidden;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  box-shadow: 0 32px 80px rgba(0,0,0,.5);
 }
+
+/* LEFT — imagem + overlay + conteúdo */
 .left {
-  background: radial-gradient(ellipse at 30% 40%, #2a4a38 0%, #1a3028 40%, #0f1e1a 100%);
-  padding: 52px 44px;
+  position: relative;
+  background: url('cover.png') center center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 48px 52px;
+  min-height: 100vh;
+}
+.left-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(6,15,28,.35) 0%,
+    rgba(6,15,28,.55) 40%,
+    rgba(6,15,28,.82) 75%,
+    rgba(6,15,28,.96) 100%
+  );
+}
+.left-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 28px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #C9A84C;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  border: 1px solid rgba(201,168,76,.35);
+  border-radius: 20px;
+  padding: 5px 14px;
+  width: fit-content;
+}
+.badge::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #C9A84C;
+  flex-shrink: 0;
+}
+
+.heading {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+}
+.heading em {
+  font-style: normal;
+  color: #C9A84C;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 13px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.45;
+}
+.check-box {
+  width: 18px; height: 18px;
+  border: 1.5px solid rgba(201,168,76,.5);
+  border-radius: 4px;
+  background: rgba(201,168,76,.1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-box svg { width: 10px; height: 10px; }
+
+.left-footer {
   position: relative;
-  overflow: hidden;
+  z-index: 1;
+  margin-top: 32px;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
-.left::after {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 280px; height: 280px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.04);
-  pointer-events: none;
-}
-.left::before {
-  content: '';
-  position: absolute;
-  top: -100px; right: -100px;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.025);
-  pointer-events: none;
-}
-.logo {
-  width: 44px; height: 44px;
-  background: rgba(255,255,255,.08);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-}
-.logo svg { width: 26px; height: 26px; }
-.eyebrow { font-size: 10px; font-weight: 600; color: #5a9a7a; text-transform: uppercase; letter-spacing: .12em; }
-.titulo { font-size: 36px; font-weight: 800; color: #ffffff; line-height: 1.1; margin-top: 6px; }
-.subtitulo { font-size: 14px; color: #7aaa8a; margin-top: 6px; }
-.checklist-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
-.checklist { display: flex; flex-direction: column; gap: 12px; }
-.check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.4; }
-.check-icon {
-  width: 20px; height: 20px; border-radius: 50%;
-  background: rgba(90,180,120,.15);
-  border: 1px solid rgba(90,180,120,.3);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; margin-top: 1px;
-  font-size: 10px; color: #6acc8a;
-}
+
+/* RIGHT — card com formulário */
 .right {
-  background: linear-gradient(135deg, #f0f4f2 0%, #f8faf9 40%, #ffffff 100%);
-  padding: 52px 44px;
-  display: flex; flex-direction: column; justify-content: center; gap: 18px;
-  position: relative;
+  background: #0d1728;
+  border-left: 1px solid rgba(255,255,255,.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 52px;
+  gap: 24px;
+  min-height: 100vh;
 }
-.right::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0; width: 60px;
-  background: linear-gradient(to right, rgba(15,30,26,.18), transparent);
-  pointer-events: none;
+
+.form-event {
+  font-size: 11px;
+  font-weight: 700;
+  color: #C9A84C;
+  text-transform: uppercase;
+  letter-spacing: .14em;
 }
-.form-heading { font-size: 20px; font-weight: 700; color: #1a2e28; }
-.form-sub { font-size: 12px; color: #7a9a8a; margin-top: 4px; line-height: 1.5; }
-.divider { border: none; border-top: 1px solid rgba(0,0,0,.07); }
+
+.form-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.form-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.45);
+  line-height: 1.6;
+  margin-top: 2px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,.07);
+}
+
 .hs-form-frame { width: 100%; }
-@media (max-width: 680px) {
-  .page { grid-template-columns: 1fr; border-radius: 12px; min-height: unset; }
-  .left { padding: 36px 28px; }
-  .left::before, .left::after { display: none; }
-  .right { padding: 36px 28px; }
-  .right::before { display: none; }
-  .titulo { font-size: 28px; }
+
+/* HubSpot override */
+.hs-form-frame input,
+.hs-form-frame select {
+  background: rgba(255,255,255,.05) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+}
+.hs-form-frame label { color: rgba(255,255,255,.6) !important; font-size: 11px !important; }
+.hs-form-frame .hs-button {
+  background: #C9A84C !important;
+  color: #060f1c !important;
+  font-weight: 700 !important;
+  border-radius: 8px !important;
+  letter-spacing: .06em !important;
+}
+
+.right-footer {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,.2);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  .page { grid-template-columns: 1fr; }
+  .left { min-height: 340px; padding: 32px 28px 36px; }
+  .right { min-height: unset; padding: 36px 28px; }
+  .heading { font-size: 24px; }
 }
 </style>
 </head>
@@ -107,37 +206,51 @@ body {
 <div class="page">
 
   <div class="left">
-    <div class="logo">
-      <svg viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16 2L28 24H4L16 2Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
-        <path d="M4 20H28" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
-        <path d="M7 24H25" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-      </svg>
-    </div>
+    <div class="left-overlay"></div>
+    <div class="left-content">
 
-    <div>
-      <div class="eyebrow">Conteúdo exclusivo</div>
-      <div class="titulo">AI TALKS</div>
-      <div class="subtitulo">Material Exclusivo · AI Talks 12/05/26</div>
-    </div>
+      <div class="badge">Material exclusivo da palestra</div>
 
-    <div>
-      <div class="checklist-label">O que você vai receber:</div>
-      <div class="checklist">
-        <div class="check-item"><div class="check-icon">✓</div><span>Sales AI-Stack completo — as 5 camadas de ferramentas usadas hoje em vendas</span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Sales AI-Daily — a rotina hora a hora de uma operação de vendas AI-First</span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Os 3 Fluxos AI-First com KPIs de referência</span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Cases reais com números — Nestlé, Spreed e Azul Cargo</span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Roteiro de implementação em 3 fases — do Quick Win à Autonomia</span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>As 6 armadilhas que destroem o ROI na adoção de IA em vendas</span></div>
+      <div>
+        <div class="heading">Conteúdo pensado para profissionais que querem <em>resultado real.</em></div>
       </div>
+
+      <div class="checklist">
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Sales AI-Stack completo — as 5 camadas de ferramentas usadas hoje em vendas</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Sales AI-Daily — a rotina hora a hora de uma operação de vendas AI-First</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Os 3 Fluxos AI-First com KPIs de referência</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Cases reais com números — Nestlé, Spreed e Azul Cargo</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Roteiro de implementação em 3 fases — do Quick Win à Autonomia</span>
+        </div>
+        <div class="check-item">
+          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>As 6 armadilhas que destroem o ROI na adoção de IA em vendas</span>
+        </div>
+      </div>
+
     </div>
+    <div class="left-footer">Seus dados são protegidos · AI Talks 2026</div>
   </div>
 
   <div class="right">
     <div>
-      <div class="form-heading">Acesse o conteúdo gratuitamente</div>
-      <div class="form-sub">Preencha os campos abaixo para liberar o acesso imediato</div>
+      <div class="form-event">AI Talks 2026</div>
+      <div class="form-heading">Acesse o conteúdo exclusivo da palestra</div>
+      <div class="form-sub">Preencha os campos abaixo para liberar seu acesso imediato</div>
     </div>
     <hr class="divider">
     <script src="https://js.hsforms.net/forms/embed/50721498.js" defer></script>
@@ -146,8 +259,9 @@ body {
       data-region="na1"
       data-form-id="85240154-6e91-4240-83ed-b4b57a8d8205"
       data-portal-id="50721498"
-      data-redirect-url="https://tutoriais.deltaacademy.ai/ai-talks/AI%20Talks/conteudo.html">
+      data-redirect-url="https://tutoriais.deltaacademy.ai/ai-talks/conteudo.html">
     </div>
+    <div class="right-footer">Seus dados são protegidos · AI Talks 2026</div>
   </div>
 
 </div>
