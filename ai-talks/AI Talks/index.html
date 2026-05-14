@@ -3,21 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wireframe — Página de Captura · Delta Academy</title>
+<title>AI Talks — Delta Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0e1a18; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; }
-
-.dev-bar { width: 100%; max-width: 960px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-.dev-title { font-size: 11px; color: #4a7a6a; }
-.view-toggle { display: flex; gap: 6px; }
-.toggle-btn { padding: 5px 12px; font-size: 10px; font-weight: 500; border-radius: 5px; border: 1px solid #2a4a3a; background: transparent; color: #4a7a6a; cursor: pointer; transition: all .15s; }
-.toggle-btn.active { background: #1F3331; color: #a8c5a0; border-color: #3a6a5a; }
-
-.page { width: 100%; max-width: 960px; min-height: 580px; border-radius: 16px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; box-shadow: 0 32px 80px rgba(0,0,0,.5); transition: all .3s; }
-.page.mobile-view { max-width: 400px; grid-template-columns: 1fr; min-height: unset; }
-
-/* LEFT — verde escuro */
+html, body { height: 100%; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #0f1e1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+.page {
+  width: 100%;
+  max-width: 960px;
+  min-height: 580px;
+  border-radius: 16px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 32px 80px rgba(0,0,0,.5);
+}
 .left {
   background: radial-gradient(ellipse at 30% 40%, #2a4a38 0%, #1a3028 40%, #0f1e1a 100%);
   padding: 52px 44px;
@@ -45,86 +55,58 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   border: 1px solid rgba(255,255,255,.025);
   pointer-events: none;
 }
-
-.logo { width: 44px; height: 44px; background: rgba(255,255,255,.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.logo {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,.08);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
 .logo svg { width: 26px; height: 26px; }
-
 .eyebrow { font-size: 10px; font-weight: 600; color: #5a9a7a; text-transform: uppercase; letter-spacing: .12em; }
 .titulo { font-size: 36px; font-weight: 800; color: #ffffff; line-height: 1.1; margin-top: 6px; }
-.subtitulo { font-size: 14px; color: #7aaa8a; margin-top: 6px; font-weight: 400; }
-
-.descricao-block { font-size: 12px; color: rgba(255,255,255,.45); line-height: 1.6; padding: 12px 14px; background: rgba(255,255,255,.04); border-radius: 8px; border: 1px solid rgba(255,255,255,.07); }
-
+.subtitulo { font-size: 14px; color: #7aaa8a; margin-top: 6px; }
 .checklist-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
 .checklist { display: flex; flex-direction: column; gap: 12px; }
 .check-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,.85); line-height: 1.4; }
-.check-icon { width: 20px; height: 20px; border-radius: 50%; background: rgba(90,180,120,.15); border: 1px solid rgba(90,180,120,.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 10px; color: #6acc8a; }
-.item-order { font-size: 9px; color: rgba(255,255,255,.25); margin-left: 4px; }
-
-/* RIGHT — branco perolado */
+.check-icon {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(90,180,120,.15);
+  border: 1px solid rgba(90,180,120,.3);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+  font-size: 10px; color: #6acc8a;
+}
 .right {
   background: linear-gradient(135deg, #f0f4f2 0%, #f8faf9 40%, #ffffff 100%);
   padding: 52px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
+  display: flex; flex-direction: column; justify-content: center; gap: 18px;
   position: relative;
 }
-
-/* transição suave entre esquerda e direita */
-.left { border-right: none; }
 .right::before {
   content: '';
   position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 60px;
+  left: 0; top: 0; bottom: 0; width: 60px;
   background: linear-gradient(to right, rgba(15,30,26,.18), transparent);
   pointer-events: none;
 }
-
 .form-heading { font-size: 20px; font-weight: 700; color: #1a2e28; }
 .form-sub { font-size: 12px; color: #7a9a8a; margin-top: 4px; line-height: 1.5; }
 .divider { border: none; border-top: 1px solid rgba(0,0,0,.07); }
-
-.field { display: flex; flex-direction: column; gap: 5px; }
-.field label { font-size: 11px; font-weight: 600; color: #4a6a5a; letter-spacing: .02em; }
-.field-input { height: 42px; background: rgba(255,255,255,.8); border: 1.5px solid rgba(0,0,0,.1); border-radius: 8px; padding: 0 14px; font-size: 13px; color: #bbb; display: flex; align-items: center; backdrop-filter: blur(4px); }
-.field-input:focus-within { border-color: #3a7a5a; }
-
-.submit-btn { height: 46px; background: linear-gradient(135deg, #1F3331, #2a4a38); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; margin-top: 4px; cursor: pointer; letter-spacing: .01em; box-shadow: 0 4px 16px rgba(31,51,49,.25); }
-
-.hubspot-note { font-size: 10px; color: #aaa; text-align: center; padding: 8px 12px; background: rgba(0,0,0,.03); border-radius: 6px; border: 1px dashed #ddd; line-height: 1.5; }
-
-.var-tag { display: inline-block; font-size: 8px; font-weight: 600; padding: 1px 5px; border-radius: 3px; background: #fff3cd; color: #856404; border: 1px solid #ffc107; margin-left: 4px; vertical-align: middle; font-family: monospace; }
-.fixed-tag { display: inline-block; font-size: 8px; font-weight: 600; padding: 1px 5px; border-radius: 3px; background: #f8d7da; color: #842029; border: 1px solid #f5c2c7; margin-left: 4px; vertical-align: middle; font-family: monospace; }
-.optional-tag { display: inline-block; font-size: 8px; padding: 1px 5px; border-radius: 3px; background: rgba(255,255,255,.12); color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.12); margin-left: 4px; vertical-align: middle; }
-
-.legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
-.legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: #4a7a6a; }
-
-/* MOBILE */
-@media (max-width: 500px) {
-  .left, .right { padding: 36px 28px; }
-  .titulo { font-size: 28px; }
+.hs-form-frame { width: 100%; }
+@media (max-width: 680px) {
+  .page { grid-template-columns: 1fr; border-radius: 12px; min-height: unset; }
+  .left { padding: 36px 28px; }
+  .left::before, .left::after { display: none; }
+  .right { padding: 36px 28px; }
   .right::before { display: none; }
+  .titulo { font-size: 28px; }
 }
 </style>
 </head>
 <body>
+<div class="page">
 
-<div class="dev-bar">
-  <div class="dev-title">Wireframe · Página de Captura · Delta Academy</div>
-  <div class="view-toggle">
-    <button class="toggle-btn active" onclick="setView('desktop')">Desktop</button>
-    <button class="toggle-btn" onclick="setView('mobile')">Mobile</button>
-  </div>
-</div>
-
-<div class="page" id="page">
-
-  <div class="left" id="left">
-
+  <div class="left">
     <div class="logo">
       <svg viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M16 2L28 24H4L16 2Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
@@ -135,81 +117,39 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <div>
       <div class="eyebrow">Conteúdo exclusivo</div>
-      <div class="titulo">FONARO <span class="var-tag">TITULO_EVENTO</span></div>
-      <div class="subtitulo">Kit de Prompts · 2026 <span class="var-tag">SUBTITULO_CONTEUDO</span></div>
-    </div>
-
-    <div class="descricao-block">
-      Texto opcional de contexto sobre o conteúdo da palestra.
-      <span class="var-tag">DESCRICAO</span> <span class="optional-tag">opcional</span>
+      <div class="titulo">AI TALKS</div>
+      <div class="subtitulo">Material Exclusivo · AI Talks 12/05/26</div>
     </div>
 
     <div>
       <div class="checklist-label">O que você vai receber:</div>
       <div class="checklist">
-        <div class="check-item"><div class="check-icon">✓</div><span>Item mais atrativo do conteúdo <span class="item-order">[1º]</span></span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Segundo item mais atrativo <span class="item-order">[2º]</span></span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Terceiro item do checklist <span class="item-order">[3º]</span></span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Quarto item do checklist <span class="item-order">[4º]</span></span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Quinto item do checklist <span class="item-order">[5º]</span></span></div>
-        <div class="check-item"><div class="check-icon">✓</div><span>Último item <span class="item-order">[6º]</span></span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>Sales AI-Stack completo — as 5 camadas de ferramentas usadas hoje em vendas</span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>Sales AI-Daily — a rotina hora a hora de uma operação de vendas AI-First</span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>Os 3 Fluxos AI-First com KPIs de referência</span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>Cases reais com números — Nestlé, Spreed e Azul Cargo</span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>Roteiro de implementação em 3 fases — do Quick Win à Autonomia</span></div>
+        <div class="check-item"><div class="check-icon">✓</div><span>As 6 armadilhas que destroem o ROI na adoção de IA em vendas</span></div>
       </div>
-      <div style="margin-top:12px;"><span class="var-tag">CHECKLIST</span> <span style="font-size:9px;color:rgba(255,255,255,.25);margin-left:4px;">ordem definida pelo CEO</span></div>
     </div>
-
   </div>
 
-  <div class="right" id="right">
-
+  <div class="right">
     <div>
       <div class="form-heading">Acesse o conteúdo gratuitamente</div>
       <div class="form-sub">Preencha os campos abaixo para liberar o acesso imediato</div>
     </div>
-
     <hr class="divider">
-
-    <div class="field">
-      <label>Nome completo <span class="fixed-tag">FIXO</span></label>
-      <div class="field-input">Seu nome</div>
+    <script src="https://js.hsforms.net/forms/embed/50721498.js" defer></script>
+    <div
+      class="hs-form-frame"
+      data-region="na1"
+      data-form-id="85240154-6e91-4240-83ed-b4b57a8d8205"
+      data-portal-id="50721498"
+      data-redirect-url="https://tutoriais.deltaacademy.ai/ai-talks/AI%20Talks/conteudo.html">
     </div>
-    <div class="field">
-      <label>E-mail corporativo <span class="fixed-tag">FIXO</span></label>
-      <div class="field-input">seu@email.com</div>
-    </div>
-    <div class="field">
-      <label>Empresa <span class="fixed-tag">FIXO</span></label>
-      <div class="field-input">Nome da empresa</div>
-    </div>
-
-    <div class="submit-btn">Quero acessar o conteúdo</div>
-
-    <div class="hubspot-note">
-      Formulário HubSpot <span class="fixed-tag">FIXO</span><br>
-      portalId e formId nunca podem ser alterados
-    </div>
-
   </div>
-</div>
 
-<div class="legend">
-  <div class="legend-item"><span class="var-tag">VARIÁVEL</span> Definida pelo CEO na Skill</div>
-  <div class="legend-item"><span class="fixed-tag">FIXO</span> Nunca pode ser alterado</div>
-  <div class="legend-item" style="color:#4a7a6a;font-size:10px;">· Para revisão do time de design</div>
 </div>
-
-<script>
-function setView(v) {
-  const page = document.getElementById('page');
-  const btns = document.querySelectorAll('.toggle-btn');
-  btns.forEach(b => b.classList.remove('active'));
-  if (v === 'mobile') {
-    page.classList.add('mobile-view');
-    btns[1].classList.add('active');
-  } else {
-    page.classList.remove('mobile-view');
-    btns[0].classList.add('active');
-  }
-}
-</script>
 </body>
 </html>
