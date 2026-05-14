@@ -39,11 +39,19 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* MAIN */
-.main {
-  max-width: 680px;
-  margin: 0;
+/* LAYOUT */
+.page-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
   padding: 40px 40px 80px;
+  align-items: start;
+}
+
+/* MAIN (left column) */
+.main {
+  /* left column */
 }
 
 /* WELCOME */
@@ -201,10 +209,100 @@ body {
   flex-shrink: 0;
 }
 
+/* CAROUSEL */
+.carousel-col {
+  position: sticky;
+  top: 40px;
+}
+
+.carousel {
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.carousel-slide.active {
+  opacity: 1;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Progress bar */
+.carousel-progress {
+  height: 3px;
+  background: rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-progress-bar {
+  height: 100%;
+  background: #7EC8A4;
+  width: 0%;
+  transition: width linear;
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 0;
+}
+
+.carousel-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  background: #7EC8A4;
+  transform: scale(1.3);
+}
+
 /* RESPONSIVE */
+@media (max-width: 860px) {
+  .page-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 28px 16px 60px;
+  }
+  .carousel-col {
+    position: static;
+    order: -1;
+  }
+  .carousel-track {
+    aspect-ratio: 4 / 3;
+  }
+}
 @media (max-width: 540px) {
   .header { padding: 14px 20px; }
-  .main { padding: 28px 16px 60px; }
   .card { padding: 20px 20px; }
   .card-title { font-size: 15px; }
 }
@@ -220,63 +318,142 @@ body {
   </div>
 </header>
 
-<main class="main">
+<div class="page-grid">
 
-  <div class="welcome">
-    <h1 class="welcome-title">Seu acesso está <span>liberado.</span></h1>
-    <p class="welcome-sub">Abaixo você encontra a apresentação da palestra e os sistemas da Delta Academy mencionados pelo Gui Junqueira. Acesse quando quiser.</p>
-  </div>
+  <!-- Coluna esquerda: conteúdo -->
+  <main class="main">
 
-  <div class="cards">
+    <div class="welcome">
+      <h1 class="welcome-title">Seu acesso está <span>liberado.</span></h1>
+      <p class="welcome-sub">Abaixo você encontra a apresentação da palestra e os sistemas da Delta Academy mencionados pelo Gui Junqueira. Acesse quando quiser.</p>
+    </div>
 
-    <!-- Card Apresentação -->
-    <a class="card" href="https://drive.google.com/file/d/10pz7qNe6NR54HA9BFn7-KSwHv3z7Msu-/view?usp=drive_link" target="_blank" rel="noopener">
-      <div class="card-body">
-        <div class="card-tag">Slides da palestra</div>
-        <div class="card-title">Vendas Aplicadas em AI-First Companies</div>
-        <div class="card-desc">Apresentação completa com frameworks, cases reais e o Sales AI-Stack do CEO.</div>
+    <div class="cards">
+
+      <!-- Card Apresentação -->
+      <a class="card" href="https://drive.google.com/file/d/10pz7qNe6NR54HA9BFn7-KSwHv3z7Msu-/view?usp=drive_link" target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-tag">Slides da palestra</div>
+          <div class="card-title">Vendas Aplicadas em AI-First Companies</div>
+          <div class="card-desc">Apresentação completa com frameworks, cases reais e o Sales AI-Stack do CEO.</div>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Card Radar de Maturidade -->
+      <a class="card" href="https://radar.deltaacademy.com.br/" target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-tag">Diagnóstico</div>
+          <div class="card-title">Radar de Maturidade Delta</div>
+          <div class="card-desc">Descubra em que estágio de adoção de IA sua empresa está e os próximos passos para se tornar AI-First.</div>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Card RPE Index -->
+      <a class="card" href="https://rpe.deltaacademy.com.br/" target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-tag">Ferramenta</div>
+          <div class="card-title">RPE Index</div>
+          <div class="card-desc">Calcule o índice de prontidão da sua empresa para implementar IA em vendas.</div>
+        </div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Link LP Delta Board -->
+      <a class="card-sm card-sm-neon" href="https://aplicacao.deltaacademy.com.br/landing-page-de-indicacao-para-participantes-do-ai-talks" target="_blank" rel="noopener">
+        <div>
+          <div class="card-sm-tag">Plataforma</div>
+          <div class="card-sm-title">Imersão exclusiva Delta Board!</div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Coluna direita: carrossel -->
+  <aside class="carousel-col">
+    <div class="carousel">
+      <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide active">
+          <img src="imgs/638874708_18452055598097891_2152033380372132801_n.jpg" alt="Delta Academy">
+        </div>
+        <div class="carousel-slide">
+          <img src="imgs/671748995_18463393246097891_4425967383331200082_n.jpg" alt="Delta Academy">
+        </div>
+        <div class="carousel-slide">
+          <img src="imgs/692474576_18097546324911853_5781253774630081038_n.jpg" alt="Delta Academy">
+        </div>
       </div>
-      <div class="card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <div class="carousel-progress">
+        <div class="carousel-progress-bar" id="progress-bar"></div>
       </div>
-    </a>
+      <div class="carousel-dots" id="carousel-dots">
+        <button class="carousel-dot active" onclick="goTo(0)"></button>
+        <button class="carousel-dot" onclick="goTo(1)"></button>
+        <button class="carousel-dot" onclick="goTo(2)"></button>
+      </div>
+    </div>
+  </aside>
 
-    <!-- Card Radar de Maturidade -->
-    <a class="card" href="https://radar.deltaacademy.com.br/" target="_blank" rel="noopener">
-      <div class="card-body">
-        <div class="card-tag">Diagnóstico</div>
-        <div class="card-title">Radar de Maturidade Delta</div>
-        <div class="card-desc">Descubra em que estágio de adoção de IA sua empresa está e os próximos passos para se tornar AI-First.</div>
-      </div>
-      <div class="card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
+</div>
 
-    <!-- Card RPE Index -->
-    <a class="card" href="https://rpe.deltaacademy.com.br/" target="_blank" rel="noopener">
-      <div class="card-body">
-        <div class="card-tag">Ferramenta</div>
-        <div class="card-title">RPE Index</div>
-        <div class="card-desc">Calcule o índice de prontidão da sua empresa para implementar IA em vendas.</div>
-      </div>
-      <div class="card-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </a>
+<script>
+  const DURATION = 10000;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const dots = document.querySelectorAll('.carousel-dot');
+  const bar = document.getElementById('progress-bar');
+  let current = 0;
+  let timer = null;
+  let startTime = null;
+  let rafId = null;
 
-    <!-- Link LP Delta Board -->
-    <a class="card-sm card-sm-neon" href="https://aplicacao.deltaacademy.com.br/landing-page-de-indicacao-para-participantes-do-ai-talks" target="_blank" rel="noopener">
-      <div>
-        <div class="card-sm-tag">Plataforma</div>
-        <div class="card-sm-title">Imersão exclusiva Delta Board!</div>
-      </div>
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
-    </a>
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    resetTimer();
+  }
 
-  </div>
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
 
-</main>
+  function animateBar(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const pct = Math.min((elapsed / DURATION) * 100, 100);
+    bar.style.width = pct + '%';
+    if (elapsed < DURATION) {
+      rafId = requestAnimationFrame(animateBar);
+    }
+  }
+
+  function resetTimer() {
+    clearTimeout(timer);
+    cancelAnimationFrame(rafId);
+    startTime = null;
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    requestAnimationFrame(() => {
+      bar.style.transition = '';
+      rafId = requestAnimationFrame(animateBar);
+    });
+    timer = setTimeout(next, DURATION);
+  }
+
+  resetTimer();
+</script>
 
 </body>
 </html>
