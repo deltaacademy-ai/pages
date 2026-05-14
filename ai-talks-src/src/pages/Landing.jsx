@@ -21,7 +21,7 @@ export default function Landing() {
       </header>
 
       {/* Main grid */}
-      <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-20">
+      <section className="mx-auto grid max-w-6xl gap-12 px-6 pb-16 pt-2 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-4">
 
         {/* Coluna esquerda */}
         <div className="flex flex-col justify-center">
@@ -56,19 +56,24 @@ export default function Landing() {
             ))}
           </ul>
 
-          <div className="mt-10 flex items-center gap-3 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-            <img src="https://tutoriais.deltaacademy.ai/ai-talks/logo.png" alt="AI Talks" className="h-12 w-auto rounded-lg shadow-sm" />
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>AI Talks · 12/05/2026</p>
-              <p className="text-sm font-bold" style={{ color: 'rgba(255,255,255,0.8)' }}>by Delta Academy</p>
-            </div>
-          </div>
         </div>
 
         {/* Coluna direita — formulário inalterado */}
         <LeadFormCard />
 
       </section>
+
+      {/* Rodapé — abaixo do form em mobile e desktop */}
+      <div className="mx-auto max-w-6xl px-6 pb-10" style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '2rem' }}>
+        <div className="flex items-center gap-3">
+          <img src="https://tutoriais.deltaacademy.ai/ai-talks/logo.png" alt="AI Talks" className="h-6 w-auto" />
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.4)' }}>AI Talks · 12/05/2026</p>
+            <p className="text-sm font-bold" style={{ color: 'rgba(255,255,255,0.8)' }}>by Delta Academy</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
