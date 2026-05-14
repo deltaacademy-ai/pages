@@ -4,266 +4,351 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Talks — Delta Academy</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { display: ['Inter','sans-serif'], body: ['Inter','sans-serif'] }
+      }
+    }
+  }
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; }
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: #060f1c;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-}
-
-.page {
-  width: 100%;
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-/* LEFT — imagem + overlay + conteúdo */
-.left {
-  position: relative;
-  background: url('cover.png') center center / cover no-repeat;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 48px 52px;
-  min-height: 100vh;
-}
-.left-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(6,15,28,.35) 0%,
-    rgba(6,15,28,.55) 40%,
-    rgba(6,15,28,.82) 75%,
-    rgba(6,15,28,.96) 100%
-  );
-}
-.left-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-size: 10px;
-  font-weight: 700;
-  color: #C9A84C;
-  text-transform: uppercase;
-  letter-spacing: .13em;
-  border: 1px solid rgba(201,168,76,.35);
-  border-radius: 20px;
-  padding: 5px 14px;
-  width: fit-content;
-}
-.badge::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #C9A84C;
-  flex-shrink: 0;
-}
-
-.heading {
-  font-size: 32px;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.15;
-}
-.heading em {
-  font-style: normal;
-  color: #C9A84C;
-}
-
-.checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 11px;
-}
-.check-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-  font-size: 13px;
-  color: rgba(255,255,255,.82);
-  line-height: 1.45;
-}
-.check-box {
-  width: 18px; height: 18px;
-  border: 1.5px solid rgba(201,168,76,.5);
-  border-radius: 4px;
-  background: rgba(201,168,76,.1);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.check-box svg { width: 10px; height: 10px; }
-
-.left-footer {
-  position: relative;
-  z-index: 1;
-  margin-top: 32px;
-  font-size: 10px;
-  font-weight: 600;
-  color: rgba(255,255,255,.3);
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-/* RIGHT — card com formulário */
-.right {
-  background: #0d1728;
-  border-left: 1px solid rgba(255,255,255,.06);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 56px 52px;
-  gap: 24px;
-  min-height: 100vh;
-}
-
-.form-event {
-  font-size: 11px;
-  font-weight: 700;
-  color: #C9A84C;
-  text-transform: uppercase;
-  letter-spacing: .14em;
-}
-
-.form-heading {
-  font-size: 22px;
-  font-weight: 800;
-  color: #ffffff;
-  line-height: 1.25;
-  margin-top: 4px;
-}
-
-.form-sub {
-  font-size: 12px;
-  color: rgba(255,255,255,.45);
-  line-height: 1.6;
-  margin-top: 2px;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,.07);
-}
-
-.hs-form-frame { width: 100%; }
-
-/* HubSpot override */
-.hs-form-frame input,
-.hs-form-frame select {
-  background: rgba(255,255,255,.05) !important;
-  border: 1px solid rgba(255,255,255,.12) !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-}
-.hs-form-frame label { color: rgba(255,255,255,.6) !important; font-size: 11px !important; }
-.hs-form-frame .hs-button {
-  background: #C9A84C !important;
-  color: #060f1c !important;
-  font-weight: 700 !important;
-  border-radius: 8px !important;
-  letter-spacing: .06em !important;
-}
-
-.right-footer {
-  font-size: 10px;
-  font-weight: 600;
-  color: rgba(255,255,255,.2);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  text-align: center;
-  margin-top: 8px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 720px) {
-  .page { grid-template-columns: 1fr; }
-  .left { min-height: 340px; padding: 32px 28px 36px; }
-  .right { min-height: unset; padding: 36px 28px; }
-  .heading { font-size: 24px; }
-}
+  body { font-family: 'Inter', sans-serif; }
+  /* toast */
+  #toast {
+    position: fixed; top: 1.25rem; right: 1.25rem; z-index: 50;
+    max-width: 22rem; transform: translateX(120%);
+    transition: transform .3s ease;
+  }
+  #toast.show { transform: translateX(0); }
+  /* select arrow */
+  select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right .6rem center; padding-right: 2rem; }
 </style>
 </head>
-<body>
-<div class="page">
+<body class="min-h-screen bg-slate-50">
 
-  <div class="left">
-    <div class="left-overlay"></div>
-    <div class="left-content">
+<!-- HEADER -->
+<header class="border-b border-slate-200 bg-white">
+  <div class="mx-auto flex max-w-6xl items-center gap-3 px-6 py-4">
+    <img src="https://tutoriais.deltaacademy.ai/ai-talks/cover.png" alt="AI Talks" class="h-8 w-auto rounded">
+    <span class="text-sm font-bold tracking-widest text-slate-800 uppercase">Delta Academy</span>
+  </div>
+</header>
 
-      <div class="badge">Material exclusivo da palestra</div>
+<!-- MAIN -->
+<section class="mx-auto grid max-w-6xl gap-12 px-6 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-20">
 
+  <!-- COLUNA ESQUERDA -->
+  <div class="flex flex-col justify-center">
+
+    <span class="inline-flex w-fit items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      Material exclusivo da palestra
+    </span>
+
+    <h1 class="mt-6 text-4xl font-black leading-tight tracking-tight text-slate-900 md:text-5xl">
+      Conteúdo pensado para profissionais que querem <span class="text-teal-600">resultado real.</span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-base leading-relaxed text-slate-600">
+      Acesse os materiais exclusivos da palestra AI Talks e leve para o seu negócio os frameworks, cases e roteiros usados por empresas AI-First.
+    </p>
+
+    <ul class="mt-8 flex flex-col gap-3 text-sm text-slate-600">
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Sales AI-Stack completo — as 5 camadas de ferramentas usadas hoje em vendas
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Sales AI-Daily — a rotina hora a hora de uma operação de vendas AI-First
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Os 3 Fluxos AI-First com KPIs de referência
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Cases reais com números — Nestlé, Spreed e Azul Cargo
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        Roteiro de implementação em 3 fases — do Quick Win à Autonomia
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </span>
+        As 6 armadilhas que destroem o ROI na adoção de IA em vendas
+      </li>
+    </ul>
+
+    <!-- Prova social -->
+    <div class="mt-10 flex items-center gap-3 border-t border-slate-200 pt-8">
+      <img src="cover.png" alt="AI Talks" class="h-12 w-auto rounded-lg shadow-sm">
       <div>
-        <div class="heading">Conteúdo pensado para profissionais que querem <em>resultado real.</em></div>
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider">AI Talks · 12/05/2026</p>
+        <p class="text-sm font-bold text-slate-800">by Delta Academy</p>
       </div>
-
-      <div class="checklist">
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Sales AI-Stack completo — as 5 camadas de ferramentas usadas hoje em vendas</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Sales AI-Daily — a rotina hora a hora de uma operação de vendas AI-First</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Os 3 Fluxos AI-First com KPIs de referência</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Cases reais com números — Nestlé, Spreed e Azul Cargo</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>Roteiro de implementação em 3 fases — do Quick Win à Autonomia</span>
-        </div>
-        <div class="check-item">
-          <div class="check-box"><svg viewBox="0 0 10 10" fill="none"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <span>As 6 armadilhas que destroem o ROI na adoção de IA em vendas</span>
-        </div>
-      </div>
-
     </div>
-    <div class="left-footer">Seus dados são protegidos · AI Talks 2026</div>
+
   </div>
 
-  <div class="right">
+  <!-- COLUNA DIREITA — CARD FORMULÁRIO -->
+  <div>
+    <form id="lead-form" class="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg lg:p-8">
+
+      <h2 class="text-lg font-bold text-slate-900">Acesse o conteúdo gratuitamente</h2>
+      <p class="mt-1 text-sm text-slate-500">Preencha os campos abaixo para liberar o acesso imediato</p>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+
+        <!-- Nome -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Nome</span>
+          <input id="f-nome" type="text" placeholder="Ex: Maria" required
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            data-campo="nome">
+        </label>
+
+        <!-- Cargo -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Cargo</span>
+          <input id="f-cargo" type="text" placeholder="Ex: CEO" required
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            data-campo="cargo">
+        </label>
+
+        <!-- Nome da empresa (full) -->
+        <label class="block text-sm sm:col-span-2">
+          <span class="mb-1 flex font-medium text-slate-700">Nome da empresa</span>
+          <input id="f-empresa" type="text" placeholder="Ex: Delta Academy" required
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            data-campo="nome_empresa">
+        </label>
+
+        <!-- Funcionários -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Funcionários</span>
+          <select id="f-funcionarios" required data-campo="funcionarios"
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+            <option value="" disabled selected>Selecione a faixa</option>
+            <option>Até 20</option>
+            <option>21 a 50</option>
+            <option>51 a 200</option>
+            <option>201 a 1.000</option>
+            <option>1.001 a 5.000</option>
+            <option>5.000+</option>
+          </select>
+        </label>
+
+        <!-- Faturamento -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Faixa de faturamento anual</span>
+          <select id="f-faturamento" required data-campo="faturamento"
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+            <option value="" disabled selected>Selecione a faixa</option>
+            <option>Até R$ 1 mi</option>
+            <option>R$ 1 mi a R$ 5 mi</option>
+            <option>R$ 5 mi a R$ 20 mi</option>
+            <option>R$ 20 mi a R$ 100 mi</option>
+            <option>R$ 100 mi a R$ 500 mi</option>
+            <option>Acima de R$ 500 mi</option>
+          </select>
+        </label>
+
+        <!-- E-mail -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">E-mail</span>
+          <input id="f-email" type="email" placeholder="nome@empresa.com" required
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            data-campo="email">
+        </label>
+
+        <!-- WhatsApp -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">WhatsApp</span>
+          <input id="f-whatsapp" type="text" placeholder="(11) 99999-9999" required
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            data-campo="whatsapp">
+        </label>
+
+        <!-- Setor -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Setor</span>
+          <select id="f-setor" required data-campo="setor"
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+            <option value="" disabled selected>Selecione o setor</option>
+            <option>Tecnologia</option>
+            <option>Serviços profissionais</option>
+            <option>Varejo</option>
+            <option>Indústria</option>
+            <option>Educação</option>
+            <option>Saúde</option>
+            <option>Financeiro</option>
+            <option>Agro</option>
+            <option>Energia</option>
+            <option>Outro</option>
+          </select>
+        </label>
+
+        <!-- Maior obstáculo -->
+        <label class="block text-sm">
+          <span class="mb-1 flex font-medium text-slate-700">Maior obstáculo hoje</span>
+          <select id="f-obstaculo" required data-campo="obstaculo"
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+            <option value="" disabled selected>Selecione o obstáculo</option>
+            <option>Pessoas</option>
+            <option>Processos</option>
+            <option>Dados</option>
+            <option>Estratégia</option>
+            <option>Budget</option>
+            <option>Cultura</option>
+            <option>Governança</option>
+          </select>
+        </label>
+
+        <!-- Área prioritária (full) -->
+        <label class="block text-sm sm:col-span-2">
+          <span class="mb-1 flex font-medium text-slate-700">Área prioritária para aplicar IA</span>
+          <select id="f-area" required data-campo="area_prioritaria"
+            class="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20">
+            <option value="" disabled selected>Selecione a prioridade</option>
+            <option>Vendas</option>
+            <option>Marketing</option>
+            <option>Operações</option>
+            <option>Atendimento</option>
+            <option>Produto</option>
+            <option>RH</option>
+            <option>Financeiro</option>
+          </select>
+        </label>
+
+      </div>
+
+      <div class="mt-8 flex justify-end">
+        <button type="submit" id="btn-submit"
+          class="inline-flex items-center gap-2 rounded-lg bg-teal-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600 disabled:cursor-not-allowed disabled:opacity-60">
+          <span id="btn-label">Liberar meu acesso</span>
+          <svg id="btn-arrow" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg id="btn-spin" xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0" stroke-dasharray="28" stroke-dashoffset="10"/></svg>
+        </button>
+      </div>
+
+      <p class="mt-4 text-center text-xs text-slate-400">Seus dados são protegidos · AI Talks 2026</p>
+
+    </form>
+  </div>
+
+</section>
+
+<!-- TOAST -->
+<div id="toast" role="alert">
+  <div class="flex items-start gap-3 rounded-xl border border-red-200 bg-white p-4 shadow-lg">
+    <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-100 text-red-600">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    </div>
     <div>
-      <div class="form-event">AI Talks 2026</div>
-      <div class="form-heading">Acesse o conteúdo exclusivo da palestra</div>
-      <div class="form-sub">Preencha os campos abaixo para liberar seu acesso imediato</div>
+      <p class="text-sm font-semibold text-slate-900" id="toast-title"></p>
+      <p class="mt-0.5 text-xs text-slate-500" id="toast-desc"></p>
     </div>
-    <hr class="divider">
-    <script src="https://js.hsforms.net/forms/embed/50721498.js" defer></script>
-    <div
-      class="hs-form-frame"
-      data-region="na1"
-      data-form-id="85240154-6e91-4240-83ed-b4b57a8d8205"
-      data-portal-id="50721498"
-      data-redirect-url="https://tutoriais.deltaacademy.ai/ai-talks/conteudo.html">
-    </div>
-    <div class="right-footer">Seus dados são protegidos · AI Talks 2026</div>
   </div>
-
 </div>
+
+<script>
+  const PORTAL_ID = '50721498';
+  const FORM_ID   = '85240154-6e91-4240-83ed-b4b57a8d8205';
+  const REDIRECT  = 'https://tutoriais.deltaacademy.ai/ai-talks/conteudo.html';
+
+  window.dataLayer = window.dataLayer || [];
+
+  // View event
+  window.dataLayer.push({ event: 'radar_formulario_view' });
+
+  // Blur tracking
+  document.querySelectorAll('[data-campo]').forEach(el => {
+    el.addEventListener('blur', () => {
+      if (el.value) window.dataLayer.push({ event: 'radar_campo_preenchido', campo: el.dataset.campo });
+    });
+  });
+
+  function showToast(title, desc) {
+    document.getElementById('toast-title').textContent = title;
+    document.getElementById('toast-desc').textContent  = desc;
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 4500);
+  }
+
+  function setLoading(on) {
+    const btn = document.getElementById('btn-submit');
+    btn.disabled = on;
+    document.getElementById('btn-label').textContent = on ? 'Enviando...' : 'Liberar meu acesso';
+    document.getElementById('btn-arrow').classList.toggle('hidden', on);
+    document.getElementById('btn-spin').classList.toggle('hidden', !on);
+  }
+
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const ids = ['f-nome','f-cargo','f-empresa','f-funcionarios','f-faturamento',
+                 'f-email','f-whatsapp','f-setor','f-obstaculo','f-area'];
+
+    const empty = ids.some(id => !document.getElementById(id).value.trim());
+    if (empty) {
+      showToast('Preencha todos os campos', 'Todos os campos são necessários para gerar um radar personalizado.');
+      return;
+    }
+
+    window.dataLayer.push({ event: 'radar_formulario_submit' });
+    setLoading(true);
+
+    const fields = [
+      { name: 'firstname',       value: document.getElementById('f-nome').value.trim() },
+      { name: 'jobtitle',        value: document.getElementById('f-cargo').value.trim() },
+      { name: 'company',         value: document.getElementById('f-empresa').value.trim() },
+      { name: 'numberofemployees', value: document.getElementById('f-funcionarios').value },
+      { name: 'annualrevenue',   value: document.getElementById('f-faturamento').value },
+      { name: 'email',           value: document.getElementById('f-email').value.trim() },
+      { name: 'phone',           value: document.getElementById('f-whatsapp').value.trim() },
+      { name: 'industry',        value: document.getElementById('f-setor').value },
+      { name: 'main_challenge',  value: document.getElementById('f-obstaculo').value },
+      { name: 'priority_area',   value: document.getElementById('f-area').value },
+    ];
+
+    try {
+      await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields,
+            context: { pageUri: window.location.href, pageName: document.title }
+          })
+        }
+      );
+    } catch (_) {
+      // continua mesmo com erro de rede
+    }
+
+    window.location.href = REDIRECT;
+  });
+</script>
+
 </body>
 </html>
