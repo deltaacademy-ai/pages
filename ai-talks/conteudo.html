@@ -25,10 +25,7 @@ body {
   padding: 18px 32px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
-.header-logo {
-  height: 36px;
-  width: auto;
-}
+.header-logo { height: 36px; width: auto; }
 .header-badge {
   display: flex;
   align-items: center;
@@ -42,34 +39,23 @@ body {
 /* LAYOUT */
 .page-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 440px;
   gap: 40px;
-  max-width: 1200px;
-  padding: 40px 40px 80px;
+  padding: 40px 10px 80px 40px;
   align-items: start;
 }
 
-/* MAIN (left column) */
-.main {
-  /* left column */
-}
-
 /* WELCOME */
-.welcome {
-  margin-bottom: 36px;
-}
+.welcome { margin-bottom: 36px; }
 .welcome-title {
   font-size: 32px;
   font-weight: 900;
   color: #ffffff;
   line-height: 1.2;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   letter-spacing: -0.02em;
   margin-bottom: 10px;
 }
-.welcome-title span {
-  color: #7EC8A4;
-}
+.welcome-title span { color: #7EC8A4; }
 .welcome-sub {
   font-size: 15px;
   color: rgba(255,255,255,0.55);
@@ -92,91 +78,72 @@ body {
   border: 1.5px solid #39ff8a;
   animation: neon-pulse 1.8s ease-in-out infinite;
 }
-.card-sm-neon .card-sm-title {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 700;
-}
-.card-sm-neon .card-sm-tag {
-  color: #7EC8A4;
-}
+.card-sm-neon .card-sm-title { color: #ffffff; font-size: 15px; font-weight: 700; }
+.card-sm-neon .card-sm-tag  { color: #7EC8A4; }
 
 /* CARDS */
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
+.cards { display: flex; flex-direction: column; gap: 12px; }
 
 .card {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: #ffffff;
+  background: linear-gradient(135deg, rgba(61,74,56,0.75) 0%, rgba(22,40,32,0.9) 100%);
+  border: 1px solid rgba(126,200,164,0.18);
   border-radius: 16px;
-  padding: 24px 28px;
+  padding: 20px 24px;
   text-decoration: none;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  backdrop-filter: blur(8px);
 }
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  border-color: rgba(126,200,164,0.4);
 }
 
-.card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
+.card-body { display: flex; flex-direction: column; gap: 3px; }
 .card-tag {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #5a9a7a;
+  color: #7EC8A4;
 }
 .card-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 700;
-  color: #1a2e28;
+  color: #ffffff;
   line-height: 1.3;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 .card-desc {
-  font-size: 13px;
-  color: #6b7a72;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
   line-height: 1.5;
   margin-top: 2px;
 }
 
 .card-arrow {
-  width: 40px;
-  height: 40px;
-  background: #f0f5f2;
+  width: 36px;
+  height: 36px;
+  background: rgba(126,200,164,0.12);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   transition: background 0.18s;
+  border: 1px solid rgba(126,200,164,0.2);
 }
-.card:hover .card-arrow {
-  background: #3D4A38;
-}
-.card:hover .card-arrow svg {
-  stroke: #ffffff;
-}
-.card-arrow svg {
-  width: 16px;
-  height: 16px;
-  stroke: #3D4A38;
-}
+.card:hover .card-arrow { background: #7EC8A4; border-color: #7EC8A4; }
+.card:hover .card-arrow svg { stroke: #0E1815; }
+.card-arrow svg { width: 14px; height: 14px; stroke: #7EC8A4; }
 
 /* CARD PEQUENO — LP Delta Board */
 .card-sm {
-  background: rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 14px;
   padding: 18px 24px;
@@ -186,14 +153,8 @@ body {
   text-decoration: none;
   transition: background 0.18s;
 }
-.card-sm:hover {
-  background: rgba(255,255,255,0.11);
-}
-.card-sm-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.75);
-}
+.card-sm:hover { background: rgba(255,255,255,0.1); }
+.card-sm-title { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); }
 .card-sm-tag {
   font-size: 10px;
   font-weight: 600;
@@ -202,12 +163,7 @@ body {
   color: rgba(255,255,255,0.35);
   margin-bottom: 2px;
 }
-.card-sm svg {
-  width: 15px;
-  height: 15px;
-  stroke: rgba(255,255,255,0.4);
-  flex-shrink: 0;
-}
+.card-sm svg { width: 15px; height: 15px; stroke: rgba(255,255,255,0.4); flex-shrink: 0; }
 
 /* CAROUSEL */
 .carousel-col {
@@ -216,13 +172,15 @@ body {
 }
 
 .carousel {
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
-  background: rgba(0,0,0,0.3);
+  background: #0a1510;
   border: 1px solid rgba(255,255,255,0.1);
   position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 
+/* Square Instagram format */
 .carousel-track {
   position: relative;
   width: 100%;
@@ -233,13 +191,9 @@ body {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 0.7s ease;
+  transition: opacity 0.6s ease;
 }
-
-.carousel-slide.active {
-  opacity: 1;
-}
-
+.carousel-slide.active { opacity: 1; }
 .carousel-slide img {
   width: 100%;
   height: 100%;
@@ -247,63 +201,118 @@ body {
   display: block;
 }
 
-/* Progress bar */
-.carousel-progress {
-  height: 3px;
-  background: rgba(255,255,255,0.12);
-  position: relative;
-  overflow: hidden;
+/* Prev / Next arrows — over the photo */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s, opacity 0.18s;
+  opacity: 0;
 }
+.carousel-track:hover .carousel-btn { opacity: 1; }
+.carousel-btn:hover { background: rgba(0,0,0,0.8); }
+.carousel-btn svg { width: 16px; height: 16px; stroke: #fff; }
+.carousel-btn-prev { left: 10px; }
+.carousel-btn-next { right: 10px; }
 
-.carousel-progress-bar {
-  height: 100%;
-  background: #7EC8A4;
-  width: 0%;
-  transition: width linear;
+/* Overlay bar: dots + pause — bottom of the photo */
+.carousel-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
 }
+.carousel-track:hover .carousel-overlay { opacity: 1; }
 
 /* Dots */
 .carousel-dots {
   display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 0;
 }
-
 .carousel-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.45);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
   border: none;
   padding: 0;
+  flex-shrink: 0;
 }
+.carousel-dot.active { background: #7EC8A4; transform: scale(1.4); }
 
-.carousel-dot.active {
+/* Pause button — inside overlay */
+.carousel-pause {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.18s;
+}
+.carousel-pause:hover { background: rgba(0,0,0,0.7); }
+.carousel-pause svg { width: 11px; height: 11px; fill: rgba(255,255,255,0.85); stroke: none; }
+
+/* Progress bar — thin line at very bottom */
+.carousel-progress {
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+}
+.carousel-progress-bar {
+  height: 100%;
   background: #7EC8A4;
-  transform: scale(1.3);
+  width: 0%;
 }
 
 /* RESPONSIVE */
 @media (max-width: 860px) {
   .page-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 28px;
     padding: 28px 16px 60px;
   }
   .carousel-col {
     position: static;
     order: -1;
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
   }
-  .carousel-track {
-    aspect-ratio: 4 / 3;
+  .carousel-track:hover .carousel-btn,
+  .carousel-track:hover .carousel-overlay {
+    opacity: 1;
   }
 }
 @media (max-width: 540px) {
   .header { padding: 14px 20px; }
-  .card { padding: 20px 20px; }
+  .card { padding: 16px 18px; }
   .card-title { font-size: 15px; }
 }
 </style>
@@ -320,17 +329,14 @@ body {
 
 <div class="page-grid">
 
-  <!-- Coluna esquerda: conteúdo -->
-  <main class="main">
-
+  <!-- Coluna esquerda -->
+  <main>
     <div class="welcome">
       <h1 class="welcome-title">Seu acesso está <span>liberado.</span></h1>
       <p class="welcome-sub">Abaixo você encontra a apresentação da palestra e os sistemas da Delta Academy mencionados pelo Gui Junqueira. Acesse quando quiser.</p>
     </div>
 
     <div class="cards">
-
-      <!-- Card Apresentação -->
       <a class="card" href="https://drive.google.com/file/d/10pz7qNe6NR54HA9BFn7-KSwHv3z7Msu-/view?usp=drive_link" target="_blank" rel="noopener">
         <div class="card-body">
           <div class="card-tag">Slides da palestra</div>
@@ -342,7 +348,6 @@ body {
         </div>
       </a>
 
-      <!-- Card Radar de Maturidade -->
       <a class="card" href="https://radar.deltaacademy.com.br/" target="_blank" rel="noopener">
         <div class="card-body">
           <div class="card-tag">Diagnóstico</div>
@@ -354,7 +359,6 @@ body {
         </div>
       </a>
 
-      <!-- Card RPE Index -->
       <a class="card" href="https://rpe.deltaacademy.com.br/" target="_blank" rel="noopener">
         <div class="card-body">
           <div class="card-tag">Ferramenta</div>
@@ -366,7 +370,6 @@ body {
         </div>
       </a>
 
-      <!-- Link LP Delta Board -->
       <a class="card-sm card-sm-neon" href="https://aplicacao.deltaacademy.com.br/landing-page-de-indicacao-para-participantes-do-ai-talks" target="_blank" rel="noopener">
         <div>
           <div class="card-sm-tag">Plataforma</div>
@@ -374,15 +377,14 @@ body {
         </div>
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
       </a>
-
     </div>
-
   </main>
 
   <!-- Coluna direita: carrossel -->
   <aside class="carousel-col">
-    <div class="carousel">
-      <div class="carousel-track" id="carousel-track">
+    <div class="carousel" id="carousel">
+      <!-- Slides + arrows + overlay — all inside the track -->
+      <div class="carousel-track">
         <div class="carousel-slide active">
           <img src="imgs/638874708_18452055598097891_2152033380372132801_n.jpg" alt="Delta Academy">
         </div>
@@ -392,14 +394,32 @@ body {
         <div class="carousel-slide">
           <img src="imgs/692474576_18097546324911853_5781253774630081038_n.jpg" alt="Delta Academy">
         </div>
+
+        <!-- Arrows -->
+        <button class="carousel-btn carousel-btn-prev" id="btn-prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="carousel-btn carousel-btn-next" id="btn-next" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <!-- Overlay: dots + pause -->
+        <div class="carousel-overlay">
+          <div class="carousel-dots">
+            <button class="carousel-dot active" onclick="goTo(0)"></button>
+            <button class="carousel-dot" onclick="goTo(1)"></button>
+            <button class="carousel-dot" onclick="goTo(2)"></button>
+          </div>
+          <button class="carousel-pause" id="btn-pause" aria-label="Pausar">
+            <svg id="icon-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+            <svg id="icon-play" viewBox="0 0 24 24" style="display:none"><path d="M5 3l14 9-14 9V3z"/></svg>
+          </button>
+        </div>
       </div>
+
+      <!-- Progress bar -->
       <div class="carousel-progress">
         <div class="carousel-progress-bar" id="progress-bar"></div>
-      </div>
-      <div class="carousel-dots" id="carousel-dots">
-        <button class="carousel-dot active" onclick="goTo(0)"></button>
-        <button class="carousel-dot" onclick="goTo(1)"></button>
-        <button class="carousel-dot" onclick="goTo(2)"></button>
       </div>
     </div>
   </aside>
@@ -409,50 +429,85 @@ body {
 <script>
   const DURATION = 10000;
   const slides = document.querySelectorAll('.carousel-slide');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const bar = document.getElementById('progress-bar');
-  let current = 0;
-  let timer = null;
-  let startTime = null;
-  let rafId = null;
+  const dots   = document.querySelectorAll('.carousel-dot');
+  const bar    = document.getElementById('progress-bar');
+  const btnPrev  = document.getElementById('btn-prev');
+  const btnNext  = document.getElementById('btn-next');
+  const btnPause = document.getElementById('btn-pause');
+  const iconPause = document.getElementById('icon-pause');
+  const iconPlay  = document.getElementById('icon-play');
 
-  function goTo(index) {
+  let current   = 0;
+  let paused    = false;
+  let timer     = null;
+  let startTime = null;
+  let elapsed   = 0;
+  let rafId     = null;
+
+  function setSlide(index) {
     slides[current].classList.remove('active');
     dots[current].classList.remove('active');
-    current = index;
+    current = (index + slides.length) % slides.length;
     slides[current].classList.add('active');
     dots[current].classList.add('active');
-    resetTimer();
   }
 
-  function next() {
-    goTo((current + 1) % slides.length);
+  function goTo(index) {
+    setSlide(index);
+    elapsed = 0;
+    if (!paused) startCountdown();
   }
 
-  function animateBar(timestamp) {
-    if (!startTime) startTime = timestamp;
-    const elapsed = timestamp - startTime;
-    const pct = Math.min((elapsed / DURATION) * 100, 100);
-    bar.style.width = pct + '%';
-    if (elapsed < DURATION) {
-      rafId = requestAnimationFrame(animateBar);
-    }
-  }
-
-  function resetTimer() {
+  function startCountdown() {
     clearTimeout(timer);
     cancelAnimationFrame(rafId);
     startTime = null;
     bar.style.transition = 'none';
-    bar.style.width = '0%';
+    bar.style.width = (elapsed / DURATION * 100) + '%';
+
     requestAnimationFrame(() => {
-      bar.style.transition = '';
-      rafId = requestAnimationFrame(animateBar);
+      rafId = requestAnimationFrame(function tick(ts) {
+        if (!startTime) startTime = ts;
+        const delta = ts - startTime;
+        const total = elapsed + delta;
+        const pct = Math.min((total / DURATION) * 100, 100);
+        bar.style.width = pct + '%';
+        if (total < DURATION) {
+          rafId = requestAnimationFrame(tick);
+        }
+      });
     });
-    timer = setTimeout(next, DURATION);
+
+    timer = setTimeout(() => {
+      elapsed = 0;
+      setSlide(current + 1);
+      startCountdown();
+    }, DURATION - elapsed);
   }
 
-  resetTimer();
+  function pauseCarousel() {
+    if (paused) return;
+    paused = true;
+    clearTimeout(timer);
+    cancelAnimationFrame(rafId);
+    elapsed += startTime ? (performance.now() - startTime) : 0;
+    iconPause.style.display = 'none';
+    iconPlay.style.display  = '';
+  }
+
+  function playCarousel() {
+    if (!paused) return;
+    paused = false;
+    iconPause.style.display = '';
+    iconPlay.style.display  = 'none';
+    startCountdown();
+  }
+
+  btnPrev.addEventListener('click', () => { elapsed = 0; setSlide(current - 1); if (!paused) startCountdown(); });
+  btnNext.addEventListener('click', () => { elapsed = 0; setSlide(current + 1); if (!paused) startCountdown(); });
+  btnPause.addEventListener('click', () => paused ? playCarousel() : pauseCarousel());
+
+  startCountdown();
 </script>
 
 </body>
