@@ -42,8 +42,8 @@ body {
 /* MAIN */
 .main {
   max-width: 680px;
-  margin: 0 auto;
-  padding: 40px 24px 80px;
+  margin: 0;
+  padding: 40px 40px 80px;
 }
 
 /* WELCOME */
@@ -51,17 +51,46 @@ body {
   margin-bottom: 36px;
 }
 .welcome-title {
-  font-size: 22px;
-  font-weight: 800;
+  font-size: 32px;
+  font-weight: 900;
   color: #ffffff;
-  line-height: 1.3;
+  line-height: 1.2;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.welcome-title span {
+  color: #7EC8A4;
 }
 .welcome-sub {
-  font-size: 14px;
+  font-size: 15px;
   color: rgba(255,255,255,0.55);
-  line-height: 1.6;
+  line-height: 1.65;
+  max-width: 520px;
+}
+
+/* NEON BLINK */
+@keyframes neon-pulse {
+  0%, 100% {
+    box-shadow: 0 0 6px #39ff8a, 0 0 12px #39ff8a, 0 0 24px #39ff8a;
+    border-color: #39ff8a;
+  }
+  50% {
+    box-shadow: 0 0 2px #39ff8a55, 0 0 4px #39ff8a33;
+    border-color: rgba(57,255,138,0.3);
+  }
+}
+.card-sm-neon {
+  border: 1.5px solid #39ff8a;
+  animation: neon-pulse 1.8s ease-in-out infinite;
+}
+.card-sm-neon .card-sm-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+}
+.card-sm-neon .card-sm-tag {
+  color: #7EC8A4;
 }
 
 /* CARDS */
@@ -194,7 +223,7 @@ body {
 <main class="main">
 
   <div class="welcome">
-    <h1 class="welcome-title">Seu acesso está liberado.</h1>
+    <h1 class="welcome-title">Seu acesso está <span>liberado.</span></h1>
     <p class="welcome-sub">Abaixo você encontra a apresentação da palestra e os sistemas da Delta Academy mencionados pelo Gui Junqueira. Acesse quando quiser.</p>
   </div>
 
@@ -237,10 +266,10 @@ body {
     </a>
 
     <!-- Link LP Delta Board -->
-    <a class="card-sm" href="https://aplicacao.deltaacademy.com.br/landing-page-de-indicacao-para-participantes-do-ai-talks" target="_blank" rel="noopener">
+    <a class="card-sm card-sm-neon" href="https://aplicacao.deltaacademy.com.br/landing-page-de-indicacao-para-participantes-do-ai-talks" target="_blank" rel="noopener">
       <div>
         <div class="card-sm-tag">Plataforma</div>
-        <div class="card-sm-title">LP Delta Board</div>
+        <div class="card-sm-title">Imersão exclusiva Delta Board!</div>
       </div>
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
     </a>
