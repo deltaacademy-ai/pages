@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Talks — Conteúdo Exclusivo · Delta Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde: #1F3331;
+  --verde-mid: #2d4f3e;
+  --verde-light: #5a9a7a;
+  --gold: #C4A96B;
+  --gold-light: #e8d5a8;
+  --cream: #F7F4EF;
+  --cream-dark: #EDE9E2;
+  --text: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --text-light: #8a8a8a;
+  --white: #ffffff;
+  --border: rgba(31,51,49,.1);
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+.topbar {
+  background: var(--verde);
+  padding: 14px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.topbar-logo { display: flex; align-items: center; gap: 10px; }
+.topbar-logo svg { width: 28px; height: 28px; }
+.topbar-logo span { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.7); letter-spacing: .12em; text-transform: uppercase; }
+.topbar-tag { font-size: 10px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; padding: 4px 10px; border: 1px solid rgba(196,169,107,.3); border-radius: 20px; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #f7f4ef 0%, #ede9e2 100%);
+  padding: 56px 40px 40px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-inner { max-width: 880px; margin: 0 auto; }
+.hero-eyebrow { font-size: 11px; font-weight: 600; color: var(--verde-light); text-transform: uppercase; letter-spacing: .12em; margin-bottom: 10px; }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: 42px; color: var(--verde); line-height: 1.1; margin-bottom: 10px; }
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 14px; color: var(--text-mid); line-height: 1.6; max-width: 520px; }
+
+/* MAIN */
+.main { max-width: 880px; margin: 0 auto; padding: 40px 40px 80px; }
+
+/* SECTION LABEL */
+.section-label {
+  font-size: 10px; font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase; letter-spacing: .14em;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+/* CARD PRINCIPAL — apresentação */
+.card-main {
+  background: var(--verde);
+  border-radius: 16px;
+  padding: 32px 36px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 32px rgba(31,51,49,.15);
+  position: relative;
+  overflow: hidden;
+}
+.card-main::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.06);
+  pointer-events: none;
+}
+.card-main::after {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.03);
+  pointer-events: none;
+}
+.card-main:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(31,51,49,.25); }
+
+.card-main-icon {
+  width: 64px; height: 64px;
+  background: rgba(255,255,255,.08);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.card-main-icon svg { width: 32px; height: 32px; }
+
+.card-main-body { flex: 1; }
+.card-main-tag { font-size: 10px; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; }
+.card-main-title { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.2; }
+.card-main-desc { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.5; }
+
+.card-main-arrow {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,.08);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s;
+}
+.card-main:hover .card-main-arrow { background: rgba(255,255,255,.16); }
+.card-main-arrow svg { width: 18px; height: 18px; }
+
+/* GRID DE SISTEMAS */
+.sistemas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* CARD SISTEMA */
+.card-sistema {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s, border-color .2s;
+  position: relative;
+  overflow: hidden;
+}
+.card-sistema:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(31,51,49,.08);
+  border-color: rgba(31,51,49,.2);
+}
+.card-sistema-header { display: flex; align-items: flex-start; justify-content: space-between; }
+.card-sistema-icon {
+  width: 44px; height: 44px;
+  background: var(--cream);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--cream-dark);
+}
+.card-sistema-icon svg { width: 22px; height: 22px; }
+.card-sistema-arrow { color: var(--text-light); transition: color .2s; }
+.card-sistema:hover .card-sistema-arrow { color: var(--verde); }
+
+.card-sistema-tag { font-size: 10px; font-weight: 600; color: var(--verde-light); text-transform: uppercase; letter-spacing: .08em; }
+.card-sistema-title { font-size: 16px; font-weight: 700; color: var(--verde); line-height: 1.2; margin-top: 4px; }
+.card-sistema-desc { font-size: 12px; color: var(--text-mid); line-height: 1.6; }
+.card-sistema-cta {
+  font-size: 11px; font-weight: 600;
+  color: var(--verde);
+  display: flex; align-items: center; gap: 5px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  letter-spacing: .02em;
+}
+
+/* CARD EM BREVE */
+.card-breve {
+  background: var(--cream-dark);
+  border: 1px dashed rgba(31,51,49,.15);
+  border-radius: 14px;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: .6;
+}
+.card-breve-title { font-size: 14px; font-weight: 600; color: var(--text-mid); }
+.card-breve-desc { font-size: 12px; color: var(--text-light); }
+.card-breve-badge { font-size: 9px; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: .1em; background: rgba(31,51,49,.08); padding: 3px 8px; border-radius: 20px; width: fit-content; }
+
+/* FOOTER */
+.footer { background: var(--verde); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,.4); }
+.footer-logo { font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5); letter-spacing: .1em; text-transform: uppercase; }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .topbar, .hero, .main, .footer { padding-left: 20px; padding-right: 20px; }
+  .hero-title { font-size: 30px; }
+  .card-main { flex-direction: column; align-items: flex-start; gap: 20px; padding: 24px; }
+  .card-main-arrow { display: none; }
+  .sistemas-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-logo">
+    <svg viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2L28 24H4L16 2Z" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
+      <path d="M4 20H28" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+    </svg>
+    <span>Delta Academy</span>
+  </div>
+  <div class="topbar-tag">Conteúdo Exclusivo</div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">AI Talks · Material Exclusivo</div>
+    <h1 class="hero-title">Seu acesso está <em>liberado.</em></h1>
+    <p class="hero-sub">Abaixo você encontra a apresentação da palestra e os sistemas da Delta Academy que foram mencionados. Acesse quando quiser.</p>
+  </div>
+</section>
+
+<main class="main">
+
+  <div class="section-label">Apresentação</div>
+
+  <a class="card-main" href="https://drive.google.com/file/d/10pz7qNe6NR54HA9BFn7-KSwHv3z7Msu-/view?usp=drive_link" target="_blank" rel="noopener">
+    <div class="card-main-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8M12 17v4"/>
+        <path d="M7 8l5 3 5-3"/>
+      </svg>
+    </div>
+    <div class="card-main-body">
+      <div class="card-main-tag">Slides da palestra</div>
+      <div class="card-main-title">Vendas Aplicadas em AI-First Companies</div>
+      <div class="card-main-desc">Acesse a apresentação completa — frameworks, cases reais, benchmarks e o Sales AI-Stack utilizado pelo CEO.</div>
+    </div>
+    <div class="card-main-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </div>
+  </a>
+
+  <div class="section-label" style="margin-top: 8px;">Sistemas Delta Academy</div>
+
+  <div class="sistemas-grid">
+
+    <a class="card-sistema" href="https://radar.deltaacademy.com.br/" target="_blank" rel="noopener">
+      <div class="card-sistema-header">
+        <div class="card-sistema-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1F3331" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <div class="card-sistema-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <path d="M7 17L17 7M7 7h10v10"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="card-sistema-tag">Diagnóstico</div>
+        <div class="card-sistema-title">Radar de Maturidade Delta</div>
+        <div class="card-sistema-desc">Descubra em que estágio de adoção de IA sua empresa está e o que precisa avançar para se tornar AI-First.</div>
+      </div>
+      <div class="card-sistema-cta">
+        Acessar o Radar
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <div class="card-breve">
+      <div class="card-breve-badge">Em breve</div>
+      <div class="card-breve-title">Próximo sistema</div>
+      <div class="card-breve-desc">Novos recursos serão adicionados aqui após o lançamento.</div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-copy">© 2026 Delta Academy · Todos os direitos reservados</div>
+  <div class="footer-logo">Delta Academy</div>
+</footer>
+
+</body>
+</html>
