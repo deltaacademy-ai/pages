@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confirme seu e-mail · Delta Academy</title>
+<link rel="icon" type="image/png" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, #3D4A38 0%, #26342A 50%, #0E1815 100%);
+  min-height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.header-logo { height: 36px; width: auto; }
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.card {
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+.icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(126,200,164,0.12);
+  border: 1px solid rgba(126,200,164,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+.icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: #7EC8A4;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+h1 span { color: #7EC8A4; }
+
+p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+.tip {
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+}
+
+@media (max-width: 540px) {
+  .header { padding: 14px 20px; }
+  h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <img src="logo.png" alt="Delta Academy" class="header-logo">
+</header>
+
+<main class="main">
+  <div class="card">
+
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+    </div>
+
+    <h1>Verifique seu <span>e-mail.</span></h1>
+
+    <p>Enviamos um link de confirmação para o endereço cadastrado. Clique nele para acessar os materiais exclusivos da palestra.</p>
+    <p>O e-mail pode levar alguns minutos para chegar.</p>
+
+    <div class="tip">
+      Não encontrou? Verifique a caixa de <strong>spam</strong> ou <strong>lixo eletrônico</strong>. O e-mail vem de <strong>noreply@deltaacademy.com.br</strong> ou similar.
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
