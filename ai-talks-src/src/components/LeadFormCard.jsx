@@ -18,7 +18,7 @@ const TRACK_NAME = {
   mainChallenge: 'obstaculo', priorityArea: 'area_prioritaria',
 };
 
-const REDIRECT = 'https://tutoriais.deltaacademy.ai/ai-talks/confirme.html';
+const REDIRECT = 'https://tutoriais.deltaacademy.ai/ai-talks/conteudo.html';
 
 const inputClass =
   'w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20';
