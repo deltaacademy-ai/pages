@@ -15,7 +15,9 @@ const FIELD_MAP = {
   role:           { objectTypeId: CONTACT, name: 'qual_o_seu_cargo' },
   email:          { objectTypeId: CONTACT, name: 'email' },
   whatsapp:       { objectTypeId: CONTACT, name: 'hs_whatsapp_phone_number' },
-  companyName:    { objectTypeId: COMPANY, name: 'name' },
+  palestras:      { objectTypeId: CONTACT, name: 'palestras' },
+  companyName:    { objectTypeId: CONTACT, name: 'company' },
+  companyNameObj: { objectTypeId: COMPANY, name: 'name' },
   employeesRange: { objectTypeId: COMPANY, name: 'numberofemployees' },
   revenueRange:   { objectTypeId: COMPANY, name: 'faturamento_anual_estimado_' },
   sector:         { objectTypeId: COMPANY, name: 'setor' },
@@ -29,9 +31,18 @@ function readHubspotutk() {
 }
 
 export async function submitToHubspot(form) {
+  const getValue = (k) => {
+    if (k === 'palestras')      return 'AI Talks';
+    if (k === 'companyNameObj') return form.companyName;
+    return form[k];
+  };
+
   const fields = Object.entries(FIELD_MAP)
-    .filter(([k]) => form[k] != null && form[k] !== '')
-    .map(([k, { objectTypeId, name }]) => ({ objectTypeId, name, value: form[k] }));
+    .filter(([k]) => {
+      const v = getValue(k);
+      return v != null && v !== '';
+    })
+    .map(([k, { objectTypeId, name }]) => ({ objectTypeId, name, value: getValue(k) }));
 
   const context = { pageUri: window.location.href, pageName: document.title };
   const hutk = readHubspotutk();
