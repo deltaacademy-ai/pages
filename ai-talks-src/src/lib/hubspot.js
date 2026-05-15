@@ -32,7 +32,7 @@ function readHubspotutk() {
 
 export async function submitToHubspot(form) {
   const getValue = (k) => {
-    if (k === 'palestras')      return 'AI Talks';
+    if (k === 'palestras')      return 'Palestra';
     if (k === 'companyNameObj') return form.companyName;
     return form[k];
   };
