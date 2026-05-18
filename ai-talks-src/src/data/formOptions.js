@@ -3,8 +3,8 @@ export const employeeRanges = [
 ];
 
 export const revenueRanges = [
-  'Até R$ 1 mi', 'R$ 1 mi a R$ 5 mi', 'R$ 5 mi a R$ 20 mi',
-  'R$ 20 mi a R$ 100 mi', 'R$ 100 mi a R$ 500 mi', 'Acima de R$ 500 mi',
+  'Até R$ 1 milhão', 'R$ 1-5 milhões', 'R$ 5-20 milhões',
+  'R$ 20-100 milhões', 'Acima de R$ 100 milhões',
 ];
 
 export const sectors = [
