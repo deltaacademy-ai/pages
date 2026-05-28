@@ -105,9 +105,11 @@
 </div>
 
 <script>
+  const MOD_KEY = 'delta-mod-agentes-langchain';
   const SENHA = "delta123";
   function checkPwd() {
     if (document.getElementById('pwd').value === SENHA) {
+      localStorage.setItem(MOD_KEY, '1');
       document.getElementById('gate').style.display = 'none';
       document.getElementById('main-content').style.display = 'block';
     } else {
@@ -115,6 +117,10 @@
       document.getElementById('pwd').value = '';
       document.getElementById('pwd').focus();
     }
+  }
+  if (localStorage.getItem(MOD_KEY) === '1') {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
   }
   (function(){
     const KEY="delta-tut-palette";
