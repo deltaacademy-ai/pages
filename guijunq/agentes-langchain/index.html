@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentes de AI com LangChain e Llama API &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .container{max-width:600px;margin:0 auto}
+  .header-bar{background:var(--accent2);border-radius:14px;padding:26px 28px 22px;margin-bottom:28px}
+  .header-bar .label{font-size:0.72rem;color:var(--bg);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:6px}
+  .header-bar h1{font-size:1.3rem;font-weight:800;color:var(--bg);letter-spacing:0.01em}
+  .header-bar h2{font-size:0.7rem;font-weight:700;color:var(--bg);text-transform:uppercase;letter-spacing:0.12em;margin-top:6px;opacity:0.75}
+  .section-label{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 14px;padding-left:4px}
+  .card{display:block;text-decoration:none;border-radius:10px;overflow:hidden;margin-bottom:12px;box-shadow:var(--shadow-xs);transition:all 0.15s;border:1px solid var(--border)}
+  .card:hover{box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .card-head{background:var(--card-tag-bg);color:var(--card-tag-fg);padding:12px 18px;display:flex;align-items:center;gap:12px}
+  .card-num{font-size:0.78rem;font-weight:800;min-width:24px;opacity:0.7}
+  .card-title{font-size:0.95rem;font-weight:700;letter-spacing:-0.01em}
+  .card-body{background:#FFFFFF;padding:12px 18px}
+  [data-palette="dusk"] .card-body{background:#0F1918}
+  .card-desc{font-size:0.76rem;color:#4A4538;line-height:1.5}
+  [data-palette="dusk"] .card-desc{color:#C7CEC1}
+  .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+  .footer p{font-size:0.68rem;color:var(--text3);line-height:1.7}
+  .footer a{color:var(--accent);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
+  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
+    <g clip-path="url(#cl3)">
+      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
+      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
+      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
+      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
+      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
+    </g>
+    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401Z" fill="currentColor"/>
+    <defs><clipPath id="cl3"><rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/></clipPath></defs>
+  </svg>
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">Agentes de AI com LangChain</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPwd()" style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
+    <button onclick="checkPwd()" style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
+    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
+
+<div id="main-content" style="display:none">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="container">
+  <div class="header-bar">
+    <div class="label">M&oacute;dulo</div>
+    <h1>Agentes de AI com LangChain e Llama API</h1>
+    <h2>Delta Academy</h2>
+  </div>
+
+  <div class="section-label">AULAS</div>
+
+  <a class="card" href="tutorial-01-configurando-ambiente.html">
+    <div class="card-head">
+      <span class="card-num">01</span>
+      <span class="card-title">Configurando o Ambiente</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Instala&ccedil;&atilde;o, configura&ccedil;&atilde;o da Llama API Cloud e primeiro agente funcional em Python.</div>
+    </div>
+  </a>
+
+  <a class="card" href="tutorial-02-primeiro-agente-react.html">
+    <div class="card-head">
+      <span class="card-num">02</span>
+      <span class="card-title">Primeiro Agente ReAct</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Arquitetura Reason + Act, agente com 3 tools e ciclo Thought &rarr; Action &rarr; Observation ao vivo.</div>
+    </div>
+  </a>
+
+  <div class="footer">
+    <p><a href="https://deltaacademy.com.br">deltaacademy.com.br</a> &middot; Delta Academy &middot; 2026</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+  const SENHA = "delta123";
+  function checkPwd() {
+    if (document.getElementById('pwd').value === SENHA) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('pwd-error').style.display = 'block';
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){document.documentElement.setAttribute("data-palette",p);localStorage.setItem(KEY,p);const icon=document.getElementById("palette-icon");if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;const btn=document.getElementById("palette-toggle");if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";}
+    window.togglePalette=function(){apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");};
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+</script>
+</body>
+</html>
