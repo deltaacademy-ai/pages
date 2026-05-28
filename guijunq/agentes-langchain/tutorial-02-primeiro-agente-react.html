@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02. Primeiro Agente ReAct &middot; Agentes LangChain &mdash; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
+  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  [data-palette="dusk"] .inst-num{background:var(--green-light);color:var(--green)}
+  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
+  .inst-text strong{font-weight:700;color:var(--accent2)}
+  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.82rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  @media(max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}}
+</style>
+</head>
+<body>
+
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
+  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
+    <g clip-path="url(#cl2)">
+      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
+      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
+      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
+      <path d="M167.716 49.5452L162.051 61.1944L115.832 50.4639C111.435 45.5114 107.146 40.3034 103.142 35.0168L167.716 49.5452Z" fill="currentColor"/>
+      <path d="M293.013 34.0391L280.725 50.0414C267.439 53.5101 253.83 56.7136 240.353 59.7204L228.645 49.6041L293.013 34.0391Z" fill="currentColor"/>
+      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
+      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
+    </g>
+    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM12.8853 175.574H26.7443C28.7034 175.574 30.0458 175.32 31.0253 174.776C32.4402 174.014 33.0207 172.164 33.0207 168.427C33.0207 161.715 31.9686 160.373 26.7443 160.373H12.8853V175.574ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401Z" fill="currentColor"/>
+    <defs><clipPath id="cl2"><rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/></clipPath></defs>
+  </svg>
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">02. Primeiro Agente ReAct</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPwd()" style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
+    <button onclick="checkPwd()" style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
+    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
+
+<div id="main-content" style="display:none">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">&#8592; &Iacute;ndice do M&oacute;dulo</a>
+      <h2>Primeiro Agente ReAct</h2>
+      <p>Aula 02 &middot; Agentes LangChain</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">In&iacute;cio</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Vis&atilde;o Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdu&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Arquitetura ReAct<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstra&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Demo multi-tool<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> C&oacute;digo com 3 tools<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Ciclo Thought/Action<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Pr&aacute;tica</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Instru&ccedil;&atilde;o para voc&ecirc;<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> C&oacute;digo para adaptar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Desafio extra<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Agentes LangChain &rsaquo; <a href="index.html">&Iacute;ndice</a> &rsaquo; 02. Primeiro Agente ReAct</div>
+      <div class="sec-title"><span class="snum">00.</span> Vis&atilde;o Geral</div>
+      <div class="sec-desc">Aula 02 &mdash; Agentes de AI com LangChain e Llama API</div>
+      <p class="lead-text">Com o ambiente configurado, voc&ecirc; vai construir um <strong>agente ReAct com 3 tools</strong> e entender como o LLM decide, raciocina e age &mdash; ciclo completo vis&iacute;vel no terminal.</p>
+      <div class="overview-card">
+        <h3>Ficha t&eacute;cnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Demonstra&ccedil;&atilde;o + Atividade Pr&aacute;tica</td></tr>
+          <tr><td>Dura&ccedil;&atilde;o</td><td>30 minutos (10 min demo + 20 min pr&aacute;tica)</td></tr>
+          <tr><td>Pr&eacute;-requisito</td><td>Aula 01 conclu&iacute;da &mdash; ambiente configurado</td></tr>
+          <tr><td>Conceito central</td><td>Padr&atilde;o ReAct: Reason + Act</td></tr>
+        </tbody></table>
+      </div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">01.</span> Arquitetura ReAct</div>
+      <div class="sec-desc">Reason + Act: como o agente pensa e age</div>
+      <p class="lead-text">ReAct &eacute; um padr&atilde;o de prompt que instrui o LLM a <strong>intercalar racioc&iacute;nio e a&ccedil;&atilde;o</strong>. Cada ciclo tem 3 fases obrigat&oacute;rias antes de chegar na resposta final.</p>
+      <div class="overview-card">
+        <h3>O ciclo ReAct</h3>
+        <table class="ficha-table">
+          <thead><tr><th>Fase</th><th>O que acontece</th><th>Vis&iacute;vel no terminal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Thought</strong></td><td>O LLM raciocina sobre o que fazer</td><td><code>Thought: Preciso calcular...</code></td></tr>
+            <tr><td><strong>Action</strong></td><td>Escolhe e chama uma tool</td><td><code>Action: calcular</code></td></tr>
+            <tr><td><strong>Observation</strong></td><td>Recebe o retorno da tool</td><td><code>Observation: 17997.0</code></td></tr>
+            <tr><td><strong>Final Answer</strong></td><td>Sintetiza a resposta final</td><td><code>Final Answer: O total &eacute;...</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">Por que isso importa</div>
+        <p>O agente <strong>n&atilde;o adivinhe</strong> &mdash; ele raciocina em voz alta antes de agir. Isso torna o comportamento auditavel e previs&iacute;vel.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">02.</span> Demo multi-tool</div>
+      <div class="sec-desc">Agente com 3 tools respondendo uma pergunta composta</div>
+      <p class="lead-text">O professor vai rodar um agente com <strong>3 tools diferentes</strong>: pesquisa de produto, c&aacute;lculo de desconto e convers&atilde;o de moeda. A pergunta exige as 3 em sequ&ecirc;ncia.</p>
+      <div class="overview-card">
+        <h3>Pergunta usada na demo</h3>
+        <p style="font-family:'JetBrains Mono','Courier New',monospace;font-size:0.8rem;padding:10px;background:var(--accent-lighter);border-radius:6px;margin-top:8px">"Qual o pre&ccedil;o do iPhone 15 com 10% de desconto, convertido para USD?"</p>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">Por que essa pergunta</div>
+        <p>Ela for&ccedil;a o agente a usar as 3 tools em ordem: <strong>pesquisar_produto</strong> &rarr; <strong>calcular_desconto</strong> &rarr; <strong>converter_moeda</strong>. Nenhuma if/else no c&oacute;digo decide isso.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">03.</span> C&oacute;digo com 3 tools</div>
+      <div class="sec-desc">Agente completo usado na demonstra&ccedil;&atilde;o</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">agente_react_demo.py</span>
+        <div class="copy-block" id="blk-react">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-react').textContent)">Copiar</button>
+<span id="txt-react">import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain.tools import tool
+from langchain import hub
+
+load_dotenv()
+
+llm = ChatOpenAI(
+    base_url="https://api.llama-api.com",
+    api_key=os.getenv("LLAMA_API_KEY"),
+    model="llama3.1-70b"
+)
+
+@tool
+def pesquisar_produto(nome: str) -> str:
+    """Busca preco e disponibilidade de um produto pelo nome."""
+    catalogo = {
+        "iphone 15": "R$ 5.999,00 - Em estoque",
+        "samsung s24": "R$ 4.799,00 - Em estoque",
+        "pixel 8": "R$ 4.299,00 - Ultimas unidades"
+    }
+    return catalogo.get(nome.lower(), "Produto nao encontrado no catalogo")
+
+@tool
+def calcular_desconto(preco: float, percentual: float) -> str:
+    """Calcula o preco final apos aplicar um percentual de desconto."""
+    desconto = preco * (percentual / 100)
+    final = preco - desconto
+    return f"Preco original: R$ {preco:.2f} | Desconto: R$ {desconto:.2f} | Final: R$ {final:.2f}"
+
+@tool
+def converter_moeda(valor: float, moeda: str) -> str:
+    """Converte um valor em BRL para USD, EUR ou GBP."""
+    taxas = {"USD": 0.20, "EUR": 0.18, "GBP": 0.16}
+    moeda = moeda.upper()
+    if moeda in taxas:
+        convertido = valor * taxas[moeda]
+        return f"R$ {valor:.2f} = {moeda} {convertido:.2f}"
+    return "Moeda nao suportada. Opcoes: USD, EUR, GBP"
+
+tools = [pesquisar_produto, calcular_desconto, converter_moeda]
+prompt = hub.pull("hwchase17/react")
+agent = create_react_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True, max_iterations=6)
+
+resposta = executor.invoke({
+    "input": "Qual o preco do iPhone 15 com 10% de desconto, convertido para USD?"
+})
+print("\nResposta final:", resposta["output"])</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">04.</span> Ciclo Thought/Action/Observation</div>
+      <div class="sec-desc">O que cada linha do output significa</div>
+      <ul class="observation-list">
+        <li><strong>Thought: preciso saber o pre&ccedil;o do iPhone 15</strong> &mdash; o agente verbaliza sua inten&ccedil;&atilde;o antes de agir. Esse texto n&atilde;o chega ao usu&aacute;rio final.</li>
+        <li><strong>Action: pesquisar_produto / Action Input: "iphone 15"</strong> &mdash; o LLM escolheu a tool correta e passou o argumento certo, sem instru&ccedil;&atilde;o expl&iacute;cita.</li>
+        <li><strong>Observation: R$ 5.999,00 - Em estoque</strong> &mdash; retorno da tool injetado de volta no contexto do LLM para o pr&oacute;ximo racioc&iacute;nio.</li>
+        <li><strong>max_iterations=6</strong> &mdash; limite de ciclos para evitar loop infinito em casos de ambiguidade. Ajuste conforme a complexidade da tarefa.</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">05.</span> Instru&ccedil;&atilde;o para voc&ecirc;</div>
+      <div class="sec-desc">Crie um agente com tools do seu contexto profissional</div>
+      <p class="lead-text">Use o template da se&ccedil;&atilde;o 07 e substitua as tools por fun&ccedil;&otilde;es relevantes para o seu trabalho. A <strong>descri&ccedil;&atilde;o das tools</strong> &eacute; o que o LLM usa para decidir quando cham&aacute;-las &mdash; seja espec&iacute;fico.</p>
+      <div class="overview-card">
+        <h3>Exemplos de tools por &aacute;rea</h3>
+        <ul>
+          <li><strong>Vendas</strong> &mdash; consultar_crm, calcular_comissao, verificar_estoque</li>
+          <li><strong>Financeiro</strong> &mdash; buscar_cambio, calcular_roi, converter_unidade</li>
+          <li><strong>RH</strong> &mdash; consultar_politica, calcular_ferias, buscar_beneficio</li>
+          <li><strong>Opera&ccedil;&otilde;es</strong> &mdash; verificar_prazo, calcular_frete, buscar_fornecedor</li>
+        </ul>
+      </div>
+      <div class="warning-box">
+        <div class="warning-label">Aten&ccedil;&atilde;o</div>
+        <p>A descri&ccedil;&atilde;o da tool (o docstring) precisa ser <strong>clara e espec&iacute;fica</strong>. O LLM l&ecirc; esse texto para decidir quando usar a tool. Uma descri&ccedil;&atilde;o vaga resulta em chamadas erradas.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> Passo a passo</div>
+      <div class="sec-desc">Como montar seu agente personalizado</div>
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Abra o arquivo da Aula 01.</strong> <span class="time">(1 min)</span><br>Use o <code>agente.py</code> que voc&ecirc; criou como ponto de partida.</div></div>
+        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Defina 2 ou 3 tools.</strong> <span class="time">(5 min)</span><br>Pense em fun&ccedil;&otilde;es que respondem perguntas do seu dia a dia. Use o decorator <code>@tool</code> e escreva docstrings claras.</div></div>
+        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Monte uma pergunta que exija as 3 tools.</strong> <span class="time">(2 min)</span><br>Construa uma pergunta que o agente s&oacute; consiga responder usando todas as tools em sequ&ecirc;ncia.</div></div>
+        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Rode com verbose=True.</strong> <span class="time">(5 min)</span><br>Acompanhe o ciclo Thought &rarr; Action &rarr; Observation no terminal.</div></div>
+        <div class="inst"><div class="inst-num">5</div><div class="inst-text"><strong>Ajuste as descri&ccedil;&otilde;es.</strong> <span class="time">(5 min)</span><br>Se o agente escolheu a tool errada, melhore o docstring. Teste novamente.</div></div>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> C&oacute;digo para adaptar</div>
+      <div class="sec-desc">Template com 3 tools para personalizar</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">agente_meu_contexto.py</span>
+        <div class="copy-block" id="blk-meu">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-meu').textContent)">Copiar</button>
+<span id="txt-meu">import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain.tools import tool
+from langchain import hub
+
+load_dotenv()
+
+llm = ChatOpenAI(
+    base_url="https://api.llama-api.com",
+    api_key=os.getenv("LLAMA_API_KEY"),
+    model="llama3.1-70b"
+)
+
+# TOOL 1: substitua pela sua logica de consulta
+@tool
+def minha_tool_1(entrada: str) -> str:
+    """Descreva claramente o que esta tool faz e quando deve ser usada."""
+    return f"Resultado da tool 1 para: {entrada}"
+
+# TOOL 2: substitua pela sua logica de calculo
+@tool
+def minha_tool_2(valor: float) -> str:
+    """Descreva claramente o que esta tool faz e quando deve ser usada."""
+    return f"Resultado da tool 2 para valor: {valor}"
+
+# TOOL 3: substitua pela sua logica de conversao/busca
+@tool
+def minha_tool_3(parametro: str) -> str:
+    """Descreva claramente o que esta tool faz e quando deve ser usada."""
+    return f"Resultado da tool 3 para: {parametro}"
+
+tools = [minha_tool_1, minha_tool_2, minha_tool_3]
+prompt = hub.pull("hwchase17/react")
+agent = create_react_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True, max_iterations=8)
+
+# TROQUE pela sua pergunta que exige as 3 tools
+resposta = executor.invoke({
+    "input": "Sua pergunta aqui — deve exigir as 3 tools em sequencia."
+})
+print("\nResposta:", resposta["output"])</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Desafio extra</div>
+      <div class="sec-desc">Adicione mem&oacute;ria de conversa ao seu agente</div>
+      <p class="lead-text">O agente atual n&atilde;o lembra de intera&ccedil;&otilde;es anteriores. Para o desafio, adicione <strong>ConversationBufferMemory</strong> e fa&ccedil;a duas perguntas relacionadas em sequ&ecirc;ncia.</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Snippet &mdash; adicionando mem&oacute;ria</span>
+        <div class="copy-block" id="blk-mem">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-mem').textContent)">Copiar</button>
+<span id="txt-mem">from langchain.memory import ConversationBufferMemory
+from langchain.agents import create_react_agent, AgentExecutor
+
+# Adicione ao executor
+memory = ConversationBufferMemory(
+    memory_key="chat_history",
+    return_messages=True
+)
+
+executor = AgentExecutor(
+    agent=agent,
+    tools=tools,
+    memory=memory,
+    verbose=True
+)
+
+# Primeira pergunta
+executor.invoke({"input": "Qual o preco do iPhone 15?"})
+
+# Segunda pergunta referencia a primeira
+executor.invoke({"input": "E com 10% de desconto, quanto fica em USD?"})</span>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Parab&eacute;ns</div>
+        <p>Voc&ecirc; construiu um <strong>agente ReAct funcional</strong> com tools customizadas. O pr&oacute;ximo passo &eacute; conectar tools a APIs reais do seu negócio.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<script>
+  const SENHA = "delta123";
+  function checkPwd() {
+    if (document.getElementById('pwd').value === SENHA) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('pwd-error').style.display = 'block';
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){document.documentElement.setAttribute("data-palette",p);localStorage.setItem(KEY,p);const icon=document.getElementById("palette-icon");if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;const btn=document.getElementById("palette-toggle");if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";}
+    window.togglePalette=function(){apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");};
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+  const PKEY="delta-tut-primeiro-agente";
+  const completed=new Set(JSON.parse(localStorage.getItem(PKEY)||"[]"));
+  const TOTAL=9;
+  function renderProgress(){document.querySelectorAll(".nav-item").forEach(ni=>{ni.classList.toggle("completed",completed.has(ni.dataset.section));});const pct=Math.round((completed.size/TOTAL)*100);document.getElementById("pct").textContent=pct;document.getElementById("sp-fill").style.width=pct+"%";}
+  function showSection(id){document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));const sec=document.getElementById(id);if(sec)sec.classList.add("active");const nav=document.querySelector(`.nav-item[data-section="${id}"]`);if(nav)nav.classList.add("active");completed.add(id);localStorage.setItem(PKEY,JSON.stringify([...completed]));renderProgress();window.scrollTo({top:0,behavior:"smooth"});}
+  function copyText(btn,text){navigator.clipboard.writeText(text).then(()=>{const old=btn.textContent;btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent=old,1600);});}
+  (function init(){const last=localStorage.getItem(PKEY+":last")||"sec-home";completed.add("sec-home");renderProgress();const orig=showSection;window.showSection=function(id){orig(id);localStorage.setItem(PKEY+":last",id);};if(last!=="sec-home")window.showSection(last);})();
+</script>
+</body>
+</html>
