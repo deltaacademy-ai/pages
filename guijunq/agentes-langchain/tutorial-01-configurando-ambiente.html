@@ -103,35 +103,7 @@
 </head>
 <body>
 
-<div id="gate" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
-  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
-    <g clip-path="url(#cl1)">
-      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
-      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
-      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
-      <path d="M167.716 49.5452L162.051 61.1944L115.832 50.4639C111.435 45.5114 107.146 40.3034 103.142 35.0168C102.896 34.6925 102.503 34.609 102.655 34.0391L167.716 49.5452Z" fill="currentColor"/>
-      <path d="M293.013 34.0391L280.725 50.0414C267.439 53.5101 253.83 56.7136 240.353 59.7204C238.324 60.1725 236.28 60.6589 234.231 61.1011L228.645 49.6041L293.013 34.0391Z" fill="currentColor"/>
-      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
-      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
-    </g>
-    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM12.8853 175.574H26.7443C28.7034 175.574 30.0458 175.32 31.0253 174.776C32.4402 174.014 33.0207 172.164 33.0207 168.427C33.0207 161.715 31.9686 160.373 26.7443 160.373H12.8853V175.574ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401ZM73.6424 180V155.801H79.2295V175.465H96.8979V180H73.6424ZM104.749 180V160.336H93.3575V155.801H121.692V160.336H110.336V180H104.749ZM143.994 175.211H126.725L124.04 180H117.764L131.623 155.801H139.205L152.847 180H146.752L143.994 175.211ZM141.926 171.293L135.36 159.719L128.866 171.293H141.926Z" fill="currentColor"/>
-    <defs><clipPath id="cl1"><rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/></clipPath></defs>
-  </svg>
-  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
-    <div style="flex:1;height:1px;background:var(--border)"></div>
-  </div>
-  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
-    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
-    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">01. Configurando o Ambiente</div>
-    <input type="password" id="pwd" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPwd()" style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
-    <button onclick="checkPwd()" style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
-    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
-  </div>
-</div>
-
-<div id="main-content" style="display:none">
+<div id="main-content">
 
 <button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
   <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -497,6 +469,7 @@ print("\nResposta:", resposta["output"])</span>
     apply(localStorage.getItem(KEY)||"dusk");
   })();
 
+  if (localStorage.getItem('delta-mod-agentes-langchain') !== '1') { window.location.replace('index.html'); }
   const PKEY="delta-tut-config-ambiente";
   const completed=new Set(JSON.parse(localStorage.getItem(PKEY)||"[]"));
   const TOTAL=9;
