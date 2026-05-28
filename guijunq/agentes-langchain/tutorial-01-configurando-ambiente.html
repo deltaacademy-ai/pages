@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Configurando o Ambiente &middot; Agentes LangChain &mdash; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
+  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  [data-palette="dusk"] .inst-num{background:var(--green-light);color:var(--green)}
+  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
+  .inst-text strong{font-weight:700;color:var(--accent2)}
+  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.82rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .tool-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  .tool-link{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-decoration:none;transition:all 0.15s;box-shadow:var(--shadow-xs)}
+  .tool-link:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .tool-link .tl-name{font-size:0.78rem;font-weight:700;color:var(--accent2)}
+  .tool-link .tl-url{font-size:0.64rem;color:var(--text3);margin-top:1px}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  @media(max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.tool-links{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:20px;font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
+  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
+    <g clip-path="url(#cl1)">
+      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
+      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
+      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
+      <path d="M167.716 49.5452L162.051 61.1944L115.832 50.4639C111.435 45.5114 107.146 40.3034 103.142 35.0168C102.896 34.6925 102.503 34.609 102.655 34.0391L167.716 49.5452Z" fill="currentColor"/>
+      <path d="M293.013 34.0391L280.725 50.0414C267.439 53.5101 253.83 56.7136 240.353 59.7204C238.324 60.1725 236.28 60.6589 234.231 61.1011L228.645 49.6041L293.013 34.0391Z" fill="currentColor"/>
+      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
+      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
+    </g>
+    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM12.8853 175.574H26.7443C28.7034 175.574 30.0458 175.32 31.0253 174.776C32.4402 174.014 33.0207 172.164 33.0207 168.427C33.0207 161.715 31.9686 160.373 26.7443 160.373H12.8853V175.574ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401ZM73.6424 180V155.801H79.2295V175.465H96.8979V180H73.6424ZM104.749 180V160.336H93.3575V155.801H121.692V160.336H110.336V180H104.749ZM143.994 175.211H126.725L124.04 180H117.764L131.623 155.801H139.205L152.847 180H146.752L143.994 175.211ZM141.926 171.293L135.36 159.719L128.866 171.293H141.926Z" fill="currentColor"/>
+    <defs><clipPath id="cl1"><rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/></clipPath></defs>
+  </svg>
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">01. Configurando o Ambiente</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso" onkeydown="if(event.key==='Enter')checkPwd()" style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
+    <button onclick="checkPwd()" style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
+    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
+
+<div id="main-content" style="display:none">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">&#8592; &Iacute;ndice do M&oacute;dulo</a>
+      <h2>Configurando o Ambiente</h2>
+      <p>Aula 01 &middot; Agentes LangChain</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">In&iacute;cio</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Vis&atilde;o Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdu&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> LangChain e Llama API<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstra&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> C&oacute;digo da demo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Pr&aacute;tica</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Instru&ccedil;&atilde;o para voc&ecirc;<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> C&oacute;digo para adaptar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Validando a configura&ccedil;&atilde;o<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Agentes LangChain &rsaquo; <a href="index.html">&Iacute;ndice</a> &rsaquo; 01. Configurando o Ambiente</div>
+      <div class="sec-title"><span class="snum">00.</span> Vis&atilde;o Geral</div>
+      <div class="sec-desc">Aula 01 &mdash; Agentes de AI com LangChain e Llama API</div>
+      <p class="lead-text">Nesta aula voc&ecirc; vai configurar seu ambiente de desenvolvimento com <strong>LangChain</strong> e a <strong>Llama API Cloud</strong> e rodar seu primeiro agente de AI funcional em menos de 30 minutos.</p>
+      <div class="overview-card">
+        <h3>Ficha t&eacute;cnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Demonstra&ccedil;&atilde;o + Atividade Pr&aacute;tica</td></tr>
+          <tr><td>Dura&ccedil;&atilde;o</td><td>25 minutos (10 min demo + 15 min pr&aacute;tica)</td></tr>
+          <tr><td>Tecnologias</td><td>Python 3.10+ &middot; LangChain 0.3 &middot; Llama API Cloud</td></tr>
+          <tr><td>Pr&eacute;-requisito</td><td>Python instalado &middot; Conta no cloud.llamaapi.com</td></tr>
+        </tbody></table>
+      </div>
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">01.</span> O que s&atilde;o LangChain e Llama API Cloud</div>
+      <div class="sec-desc">Dois frameworks complementares para construir agentes</div>
+      <div class="overview-card">
+        <h3>LangChain</h3>
+        <p>Framework open-source em Python para construir aplica&ccedil;&otilde;es com LLMs. Fornece abstra&ccedil;&otilde;es para chains, memory, agentes e tools &mdash; voc&ecirc; orquestra o fluxo sem se preocupar com os detalhes de cada modelo.</p>
+        <ul>
+          <li><strong>Agentes</strong> &mdash; d&atilde;o autonomia ao LLM para decidir quais a&ccedil;&otilde;es tomar</li>
+          <li><strong>Tools</strong> &mdash; fun&ccedil;&otilde;es Python que o agente pode chamar</li>
+          <li><strong>Memory</strong> &mdash; mant&eacute;m contexto entre intera&ccedil;&otilde;es</li>
+        </ul>
+      </div>
+      <div class="overview-card">
+        <h3>Llama API Cloud</h3>
+        <p>API hospedada pela Meta para os modelos Llama 3.x. Interface compat&iacute;vel com OpenAI &mdash; qualquer SDK que usa OpenAI funciona com Llama API trocando apenas a <code>base_url</code> e a chave.</p>
+        <ul>
+          <li><strong>Modelos dispon&iacute;veis</strong> &mdash; Llama 3.1 8B, 70B, 405B e Llama 3.3 70B</li>
+          <li><strong>Velocidade</strong> &mdash; infraestrutura otimizada para infer&ecirc;ncia r&aacute;pida</li>
+          <li><strong>Custo</strong> &mdash; mais barato que GPT-4 para volumes altos</li>
+        </ul>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">Por que usar juntos</div>
+        <p>LangChain <strong>orquestra</strong> a l&oacute;gica do agente. Llama API <strong>executa</strong> o racioc&iacute;nio. Voc&ecirc; escreve o fluxo uma vez e pode trocar de modelo a qualquer hora.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">02.</span> O que o professor vai mostrar</div>
+      <div class="sec-desc">Setup completo e primeiro agente rodando ao vivo</div>
+      <p class="lead-text">O professor vai executar ao vivo todo o fluxo de configura&ccedil;&atilde;o e rodar um <strong>agente com duas tools</strong>: uma calculadora e um conversor de moeda.</p>
+      <div class="overview-card">
+        <h3>Sequ&ecirc;ncia da demo</h3>
+        <ul>
+          <li><strong>Criar conta</strong> em cloud.llamaapi.com e gerar a API key</li>
+          <li><strong>Instalar depend&ecirc;ncias</strong> em um ambiente virtual Python</li>
+          <li><strong>Escrever o agente</strong> com LangChain e conectar &agrave; Llama API</li>
+          <li><strong>Rodar ao vivo</strong> com <code>verbose=True</code> para ver o racioc&iacute;nio</li>
+        </ul>
+      </div>
+      <div class="tip-box">
+        <div class="tip-label">Dica de execu&ccedil;&atilde;o</div>
+        <p>Deixe o terminal com <strong>verbose=True</strong> vis&iacute;vel durante a demo. Os alunos v&ecirc;em o agente pensar em tempo real &mdash; isso &eacute; o que torna o conceito concreto.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">03.</span> C&oacute;digo da demo</div>
+      <div class="sec-desc">Instala&ccedil;&atilde;o e agente completo usado pelo professor</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Instala&ccedil;&atilde;o</span>
+        <div class="copy-block" id="blk-install">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-install').textContent)">Copiar</button>
+<span id="txt-install">pip install langchain langchain-openai python-dotenv langchainhub</span>
+        </div>
+      </div>
+
+      <div class="copy-wrap" style="margin-top:22px">
+        <span class="copy-label">agente_demo.py</span>
+        <div class="copy-block" id="blk-agent">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-agent').textContent)">Copiar</button>
+<span id="txt-agent">import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain.tools import tool
+from langchain import hub
+
+load_dotenv()
+
+# Conecta LangChain na Llama API Cloud
+llm = ChatOpenAI(
+    base_url="https://api.llama-api.com",
+    api_key=os.getenv("LLAMA_API_KEY"),
+    model="llama3.1-70b"
+)
+
+# Define as tools do agente
+@tool
+def calcular(expressao: str) -> str:
+    """Calcula uma expressao matematica simples. Ex: '10 * 5 + 3'"""
+    try:
+        return str(eval(expressao))
+    except Exception as e:
+        return f"Erro: {e}"
+
+@tool
+def converter_moeda(valor: float, moeda: str) -> str:
+    """Converte um valor em BRL para outra moeda. Moedas: USD, EUR, GBP"""
+    taxas = {"USD": 0.20, "EUR": 0.18, "GBP": 0.16}
+    moeda = moeda.upper()
+    if moeda in taxas:
+        resultado = valor * taxas[moeda]
+        return f"R$ {valor:.2f} = {moeda} {resultado:.2f}"
+    return "Moeda nao suportada. Use: USD, EUR ou GBP"
+
+# Cria o agente ReAct
+tools = [calcular, converter_moeda]
+prompt = hub.pull("hwchase17/react")
+agent = create_react_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# Executa
+resposta = executor.invoke({
+    "input": "Quanto custa 3 iPhones a R$ 5.999 cada, convertido para USD?"
+})
+print("\nResposta:", resposta["output"])</span>
+        </div>
+      </div>
+
+      <div class="tip-box" style="margin-top:16px">
+        <div class="tip-label">Arquivo .env</div>
+        <p>Crie um arquivo <code>.env</code> na raiz do projeto com: <code>LLAMA_API_KEY=sua_chave_aqui</code></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que observar na demo</div>
+      <div class="sec-desc">3 padr&otilde;es vis&iacute;veis no output do agente</div>
+      <ul class="observation-list">
+        <li><strong>Ciclo Thought &rarr; Action &rarr; Observation</strong> &mdash; o agente imprime seu racioc&iacute;nio antes de cada a&ccedil;&atilde;o. Isso &eacute; o padr&atilde;o ReAct em opera&ccedil;&atilde;o.</li>
+        <li><strong>Sele&ccedil;&atilde;o autom&aacute;tica de tool</strong> &mdash; o LLM decide sozinho quando usar <code>calcular</code> vs <code>converter_moeda</code>. Nenhuma l&oacute;gica if/else no seu c&oacute;digo.</li>
+        <li><strong>Composi&ccedil;&atilde;o de tools</strong> &mdash; para responder a pergunta, o agente usa <strong>calcular</strong> primeiro (3 &times; 5.999) e depois <strong>converter_moeda</strong> com o resultado.</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">05.</span> Instru&ccedil;&atilde;o para voc&ecirc;</div>
+      <div class="sec-desc">Configure seu ambiente e rode o agente</div>
+      <p class="lead-text">Voc&ecirc; vai replicar exatamente o que o professor fez &mdash; ao final ter&aacute; um agente funcional conectado &agrave; Llama API Cloud rodando na sua m&aacute;quina.</p>
+      <div class="overview-card">
+        <h3>Antes de come&ccedil;ar, confirme:</h3>
+        <ul>
+          <li>Python 3.10 ou superior instalado (<code>python --version</code>)</li>
+          <li>Conta criada em <strong>cloud.llamaapi.com</strong></li>
+          <li>API key gerada no painel da Llama API</li>
+        </ul>
+      </div>
+      <div class="tool-links">
+        <a class="tool-link" href="https://cloud.llamaapi.com" target="_blank"><div><div class="tl-name">Llama API Cloud</div><div class="tl-url">cloud.llamaapi.com</div></div></a>
+        <a class="tool-link" href="https://python.langchain.com" target="_blank"><div><div class="tl-name">LangChain Docs</div><div class="tl-url">python.langchain.com</div></div></a>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> Passo a passo</div>
+      <div class="sec-desc">5 passos para ter o agente rodando</div>
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Crie um ambiente virtual.</strong> <span class="time">(1 min)</span><br>No terminal: <code>python -m venv venv</code> e depois <code>source venv/bin/activate</code> (Mac/Linux) ou <code>venv\Scripts\activate</code> (Windows).</div></div>
+        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Instale as depend&ecirc;ncias.</strong> <span class="time">(2 min)</span><br>Copie e cole o comando de instala&ccedil;&atilde;o da se&ccedil;&atilde;o 03. Aguarde o pip terminar.</div></div>
+        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Crie o arquivo .env.</strong> <span class="time">(1 min)</span><br>Na pasta do projeto, crie <code>.env</code> com sua chave: <code>LLAMA_API_KEY=sua_chave_aqui</code></div></div>
+        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Cole o c&oacute;digo.</strong> <span class="time">(2 min)</span><br>Crie <code>agente.py</code>, cole o c&oacute;digo da se&ccedil;&atilde;o 07 e substitua a pergunta por algo do seu contexto profissional.</div></div>
+        <div class="inst"><div class="inst-num">5</div><div class="inst-text"><strong>Execute e observe.</strong> <span class="time">(5 min)</span><br>Rode <code>python agente.py</code> e acompanhe o racioc&iacute;nio do agente no terminal.</div></div>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> C&oacute;digo para adaptar</div>
+      <div class="sec-desc">Template com sua chave e uma tool para personalizar</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">agente.py &mdash; sua vers&atilde;o</span>
+        <div class="copy-block" id="blk-seu">
+<button class="copy-btn" onclick="copyText(this,document.getElementById('txt-seu').textContent)">Copiar</button>
+<span id="txt-seu">import os
+from dotenv import load_dotenv
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain.tools import tool
+from langchain import hub
+
+load_dotenv()
+
+llm = ChatOpenAI(
+    base_url="https://api.llama-api.com",
+    api_key=os.getenv("LLAMA_API_KEY"),
+    model="llama3.1-70b"
+)
+
+@tool
+def calcular(expressao: str) -> str:
+    """Calcula uma expressao matematica simples."""
+    try:
+        return str(eval(expressao))
+    except Exception as e:
+        return f"Erro: {e}"
+
+# PERSONALIZE AQUI: adicione uma tool do seu contexto
+@tool
+def minha_tool(entrada: str) -> str:
+    """Descreva o que sua tool faz. Seja claro — o LLM usa isso para decidir quando chamar."""
+    # Implemente sua logica aqui
+    return f"Resultado para: {entrada}"
+
+tools = [calcular, minha_tool]
+prompt = hub.pull("hwchase17/react")
+agent = create_react_agent(llm, tools, prompt)
+executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# TROQUE pela sua pergunta
+resposta = executor.invoke({
+    "input": "Escreva sua pergunta aqui — pode ser algo do seu trabalho."
+})
+print("\nResposta:", resposta["output"])</span>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Validando a configura&ccedil;&atilde;o</div>
+      <div class="sec-desc">Como confirmar que tudo est&aacute; funcionando</div>
+      <div class="overview-card">
+        <h3>Sinais de sucesso</h3>
+        <ul>
+          <li>Terminal mostra linhas come&ccedil;ando com <code>Thought:</code>, <code>Action:</code> e <code>Observation:</code></li>
+          <li>Resposta final impressa ap&oacute;s <code>Final Answer:</code></li>
+          <li>Sem erros de autentica&ccedil;&atilde;o (401) ou rate limit (429)</li>
+        </ul>
+      </div>
+      <div class="warning-box">
+        <div class="warning-label">Erros comuns</div>
+        <p><strong>AuthenticationError:</strong> verifique se o arquivo <code>.env</code> est&aacute; na pasta certa e se a chave est&aacute; correta. <strong>ModuleNotFoundError:</strong> confirme que o venv est&aacute; ativado antes de rodar.</p>
+      </div>
+      <div class="insight-box">
+        <div class="insight-label">Pr&oacute;xima aula</div>
+        <p>Com o ambiente configurado, na <strong>Aula 02</strong> voc&ecirc; vai construir um agente ReAct com <strong>m&uacute;ltiplas tools</strong> e entender o ciclo completo de racioc&iacute;nio.</p>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<script>
+  const SENHA = "delta123";
+  function checkPwd() {
+    if (document.getElementById('pwd').value === SENHA) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('pwd-error').style.display = 'block';
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){document.documentElement.setAttribute("data-palette",p);localStorage.setItem(KEY,p);const icon=document.getElementById("palette-icon");if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;const btn=document.getElementById("palette-toggle");if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";}
+    window.togglePalette=function(){apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");};
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  const PKEY="delta-tut-config-ambiente";
+  const completed=new Set(JSON.parse(localStorage.getItem(PKEY)||"[]"));
+  const TOTAL=9;
+
+  function renderProgress(){
+    document.querySelectorAll(".nav-item").forEach(ni=>{ni.classList.toggle("completed",completed.has(ni.dataset.section));});
+    const pct=Math.round((completed.size/TOTAL)*100);
+    document.getElementById("pct").textContent=pct;
+    document.getElementById("sp-fill").style.width=pct+"%";
+  }
+
+  function showSection(id){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n=>n.classList.remove("active"));
+    const sec=document.getElementById(id);if(sec)sec.classList.add("active");
+    const nav=document.querySelector(`.nav-item[data-section="${id}"]`);if(nav)nav.classList.add("active");
+    completed.add(id);localStorage.setItem(PKEY,JSON.stringify([...completed]));
+    renderProgress();window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function copyText(btn,text){
+    navigator.clipboard.writeText(text).then(()=>{const old=btn.textContent;btn.textContent="Copiado ✓";setTimeout(()=>btn.textContent=old,1600);});
+  }
+
+  (function init(){
+    const last=localStorage.getItem(PKEY+":last")||"sec-home";
+    completed.add("sec-home");renderProgress();
+    const orig=showSection;
+    window.showSection=function(id){orig(id);localStorage.setItem(PKEY+":last",id);};
+    if(last!=="sec-home")window.showSection(last);
+  })();
+</script>
+</body>
+</html>
