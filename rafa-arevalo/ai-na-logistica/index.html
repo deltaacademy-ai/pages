@@ -159,10 +159,15 @@
 
 <script>
   const SENHA = "deltaskills2026";
+  const AUTH_KEY = "delta-auth-rafa-arevalo-ai-na-logistica";
+  function unlock() {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  }
   function checkPwd() {
     if (document.getElementById('pwd').value === SENHA) {
-      document.getElementById('gate').style.display = 'none';
-      document.getElementById('main-content').style.display = 'block';
+      try { localStorage.setItem(AUTH_KEY, '1'); } catch(e) {}
+      unlock();
     } else {
       document.getElementById('pwd-error').style.display = 'none';
       setTimeout(() => document.getElementById('pwd-error').style.display = 'block', 10);
@@ -170,6 +175,7 @@
       document.getElementById('pwd').focus();
     }
   }
+  try { if (localStorage.getItem(AUTH_KEY) === '1') unlock(); } catch(e) {}
   (function(){
     const KEY="delta-tut-palette";
     const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
