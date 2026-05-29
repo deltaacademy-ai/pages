@@ -183,6 +183,57 @@
     </div>
   </div>
 
+  <!-- MÓDULO 02: Resultados de Mídia -->
+  <div class="modulo-card">
+    <div class="modulo-head" onclick="toggleModulo(this)">
+      <div class="modulo-head-left">
+        <span class="modulo-title">Resultados de Mídia</span>
+        <span class="modulo-meta">2 aulas · maio 2026</span>
+      </div>
+      <div class="modulo-head-actions" onclick="event.stopPropagation()">
+        <button class="mod-icon-btn" id="eye-mod-02" title="Ver senha"
+          onclick="toggleSenha(this, 'delta', 'senha-mod-02')">
+          <svg viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+          </svg>
+        </button>
+        <span class="mod-senha-reveal" id="senha-mod-02" style="display:none">
+          <span class="senha-label">Senha</span>delta
+        </span>
+        <button class="mod-action-btn"
+          onclick="copyMsg(this, 'Resultados de Mídia', 'https://tutoriais.deltaacademy.ai/rafa-arevalo/resultados-de-midia/tutorial-01-setup-project-resultados-midia-lumina.html', 'delta')">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Copiar Mensagem
+        </button>
+        <button class="mod-action-btn" onclick="copyLink(this, 'https://tutoriais.deltaacademy.ai/rafa-arevalo/resultados-de-midia/tutorial-01-setup-project-resultados-midia-lumina.html')">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copiar link
+        </button>
+      </div>
+      <span class="chevron">&#9660;</span>
+    </div>
+    <div class="modulo-body">
+      <div class="aula-row">
+        <div class="aula-top">
+          <span class="aula-num">01</span>
+          <a class="aula-title" href="https://tutoriais.deltaacademy.ai/rafa-arevalo/resultados-de-midia/tutorial-01-setup-project-resultados-midia-lumina.html" target="_blank">
+            Setup do Project &mdash; Lumina
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="aula-row">
+        <div class="aula-top">
+          <span class="aula-num">02</span>
+          <a class="aula-title" href="https://tutoriais.deltaacademy.ai/rafa-arevalo/resultados-de-midia/tutorial-02-consolidacao-resultados-midia.html" target="_blank">
+            Consolidação dos resultados de mídia
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer">
     <p><a href="https://deltaacademy.com.br">deltaacademy.com.br</a> &middot; Delta Academy &middot; 2026</p>
   </div>
@@ -249,14 +300,14 @@
           'text/plain': new Blob([plain], { type: 'text/plain' }),
           'text/html':  new Blob([html],  { type: 'text/html'  })
         })
-      ]).then(() => feedback(btn, 'Copiado \u2713'));
+      ]).then(() => feedback(btn, 'Copiado ✓'));
     } catch {
-      navigator.clipboard.writeText(plain).then(() => feedback(btn, 'Copiado \u2713'));
+      navigator.clipboard.writeText(plain).then(() => feedback(btn, 'Copiado ✓'));
     }
   }
 
   function copyLink(btn, url) {
-    navigator.clipboard.writeText(url).then(() => feedback(btn, 'Copiado \u2713'));
+    navigator.clipboard.writeText(url).then(() => feedback(btn, 'Copiado ✓'));
   }
 
   function feedback(btn, msg) {
