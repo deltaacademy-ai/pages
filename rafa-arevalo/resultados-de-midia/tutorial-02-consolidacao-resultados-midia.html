@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02. Consolidação dos resultados de mídia &middot; Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
+  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  [data-palette="dusk"] .inst-num{background:var(--green-light);color:var(--green)}
+  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
+  .inst-text strong{font-weight:700;color:var(--accent2)}
+  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:16px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .tool-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  .tool-link{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-decoration:none;transition:all 0.15s;box-shadow:var(--shadow-xs)}
+  .tool-link:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .tool-link .tl-name{font-size:0.78rem;font-weight:700;color:var(--accent2)}
+  .tool-link .tl-url{font-size:0.64rem;color:var(--text3);margin-top:1px}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  .compare-card{padding:14px 16px;border-radius:10px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .compare-card.bad{background:rgba(229,92,92,0.08);border-color:rgba(229,92,92,0.3)}
+  .compare-card.good{background:var(--green-light);border-color:var(--green-border)}
+  .compare-card h4{font-size:0.78rem;font-weight:800;margin-bottom:6px}
+  .compare-card.bad h4{color:#A32D2D}
+  [data-palette="dusk"] .compare-card.bad h4{color:#E08585}
+  .compare-card.good h4{color:var(--green-text)}
+  .compare-card p{font-size:0.74rem;color:var(--text2);line-height:1.55}
+  .download-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
+  .download-grid.single{grid-template-columns:1fr;max-width:380px}
+  .download-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:var(--shadow-xs)}
+  .download-card .dl-name{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.7rem;color:var(--accent2);font-weight:700;word-break:break-all}
+  .download-card .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.5;flex:1}
+  .download-btn{display:inline-flex;align-items:center;gap:6px;background:#1F3331;color:#F2ECE0;border:none;border-radius:7px;padding:8px 12px;font-family:'Montserrat',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.04em;cursor:pointer;text-decoration:none;justify-content:center;transition:opacity 0.15s}
+  .download-btn:hover{opacity:0.85}
+  .download-btn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2}
+  .delivery-banner{background:var(--insight-bg);border:1px solid var(--accent2);border-radius:14px;padding:18px 22px;margin:14px 0}
+  .delivery-banner .db-title{font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;font-weight:700;margin-bottom:10px}
+  .delivery-banner .db-card{background:var(--panel);border-radius:10px;padding:14px 16px;margin-bottom:10px;border-left:3px solid var(--gold)}
+  .delivery-banner .db-card h5{font-size:0.74rem;font-weight:800;color:var(--text);margin-bottom:6px}
+  .delivery-banner .db-card ul{list-style:none;font-size:0.7rem;color:var(--text2);line-height:1.6}
+  .delivery-banner .db-card ul li{padding-left:12px;position:relative}
+  .delivery-banner .db-card ul li::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:800}
+  .delivery-banner .db-closing{background:rgba(209,170,83,0.12);border:1px solid rgba(209,170,83,0.3);border-radius:8px;padding:10px 14px;font-size:0.72rem;color:var(--text);font-weight:600;text-align:center;margin-top:8px}
+  .duration-card{background:linear-gradient(135deg,#0A1211,#1F3331);border:1px solid var(--accent2);border-radius:12px;padding:16px 22px;display:inline-flex;align-items:center;gap:12px;margin:14px 0}
+  .duration-card .dc-label{font-size:0.58rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.12em;font-weight:700}
+  .duration-card .dc-value{font-size:1.4rem;color:#F2ECE0;font-weight:800;letter-spacing:-0.02em}
+  .model-card{background:#EEEDFE;border:1px solid #6B5B95;border-left:3px solid #6B5B95;border-radius:10px;padding:14px 16px;margin:14px 0}
+  [data-palette="dusk"] .model-card{background:rgba(107,91,149,0.18);border-color:#6B5B95}
+  .model-card .mc-label{font-size:0.58rem;color:#3C3489;text-transform:uppercase;letter-spacing:0.12em;font-weight:700;margin-bottom:4px}
+  [data-palette="dusk"] .model-card .mc-label{color:#B3A8D6}
+  .model-card .mc-name{font-size:0.92rem;font-weight:800;color:#3C3489;margin-bottom:6px}
+  [data-palette="dusk"] .model-card .mc-name{color:#D6CFE9}
+  .model-card .mc-just{font-size:0.72rem;color:#3C3489;line-height:1.55}
+  [data-palette="dusk"] .model-card .mc-just{color:#C7BCE0}
+  .feynman-card{background:#F5F2EB;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:12px 16px;margin:8px 0 14px}
+  [data-palette="dusk"] .feynman-card{background:rgba(209,170,83,0.08);border-color:rgba(209,170,83,0.25);border-left-color:var(--gold)}
+  .feynman-card .fc-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:4px}
+  .feynman-card p{font-size:0.74rem;color:var(--text);line-height:1.55}
+  .feynman-card p strong{color:var(--accent2);font-weight:700}
+  .glossario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  .glossario-item{background:#FBF7EC;border:1px solid var(--border);border-radius:8px;padding:10px 12px}
+  [data-palette="dusk"] .glossario-item{background:rgba(209,170,83,0.06);border-color:rgba(209,170,83,0.2)}
+  .glossario-item .gi-term{font-size:0.72rem;font-weight:800;color:var(--accent2);margin-bottom:3px}
+  [data-palette="dusk"] .glossario-item .gi-term{color:var(--accent2)}
+  .glossario-item .gi-def{font-size:0.68rem;color:var(--text2);line-height:1.5}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.tool-links,.compare-grid,.download-grid,.glossario-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="gate" style="display:flex;flex-direction:column;align-items:center;
+  justify-content:center;min-height:100vh;gap:20px;
+  font-family:'Montserrat',sans-serif;background:var(--bg);padding:24px">
+
+  <svg width="180" height="98" viewBox="0 0 396 216" xmlns="http://www.w3.org/2000/svg" style="display:block;color:var(--accent2)" fill="none">
+    <g clip-path="url(#delta-gate-clip)">
+      <path d="M250.181 106.995L197.948 79.9626L146.148 107L198.165 0L250.181 106.995ZM198.577 24.5317L168.98 83.3134L198.017 68.1856C207.854 72.691 216.972 78.6262 226.917 82.8909L198.577 24.5317Z" fill="currentColor"/>
+      <path d="M314.605 6.55859L298.573 28.3094L297.207 29.2331L227.15 46.5374L220.664 33.1882L314.605 6.55859Z" fill="currentColor"/>
+      <path d="M175.783 32.9524L169.096 46.7094L98.243 29.1201L97.4028 28.6484L81.3906 6.55859L175.783 32.9524Z" fill="currentColor"/>
+      <path d="M167.716 49.5452L162.051 61.1944L115.832 50.4639C111.435 45.5114 107.146 40.3034 103.142 35.0168C102.896 34.6925 102.503 34.609 102.655 34.0391L167.716 49.5452Z" fill="currentColor"/>
+      <path d="M293.013 34.0391L280.725 50.0414C267.439 53.5101 253.83 56.7136 240.353 59.7204C238.324 60.1725 236.28 60.6589 234.231 61.1011L228.645 49.6041L293.013 34.0391Z" fill="currentColor"/>
+      <path d="M160.638 64.1022L155.194 75.2995L136.371 69.8311L122.934 55.627L160.638 64.1022Z" fill="currentColor"/>
+      <path d="M272.73 55.627L259.39 70.0128L241.157 75.3486L235.625 63.9647L272.73 55.627Z" fill="currentColor"/>
+    </g>
+    <path d="M7.29821 180V155.801H27.3973C32.0049 155.801 34.9798 156.672 36.6124 158.45C38.0999 160.119 38.6804 162.84 38.6804 168.173C38.6804 173.578 37.9911 176.227 36.1408 177.932C34.617 179.347 32.0412 180 27.9778 180H7.29821ZM12.8853 175.574H26.7443C28.7034 175.574 30.0458 175.32 31.0253 174.776C32.4402 174.014 33.0207 172.164 33.0207 168.427C33.0207 161.715 31.9686 160.373 26.7443 160.373H12.8853V175.574ZM43.3401 180V155.801H69.0626V160.046H48.8547V165.778H68.0831V169.588H48.8547V175.755H69.2803V180H43.3401ZM73.6424 180V155.801H79.2295V175.465H96.8979V180H73.6424ZM104.749 180V160.336H93.3575V155.801H121.692V160.336H110.336V180H104.749ZM143.994 175.211H126.725L124.04 180H117.764L131.623 155.801H139.205L152.847 180H146.752L143.994 175.211ZM141.926 171.293L135.36 159.719L128.866 171.293H141.926ZM185.099 174.558H165.29L162.098 180H158.869L173.127 155.801H177.226L191.484 180H188.292L185.099 174.558ZM183.72 172.272L175.195 157.833L166.669 172.272H183.72ZM218.772 171.873H221.602V172.889C221.602 175.792 221.312 177.061 220.368 178.15C219.461 179.238 218.264 179.746 216.051 180C214.672 180.109 210.536 180.254 207.271 180.254C198.528 180.254 196.387 179.891 194.61 178.041C193.049 176.445 192.687 174.522 192.687 167.919C192.687 160.373 193.195 158.45 195.662 156.89C197.512 155.729 199.507 155.547 209.484 155.547C215.543 155.547 217.647 155.838 219.135 156.926C220.767 158.051 221.275 159.574 221.384 163.42H218.554V162.803C218.554 158.522 217.538 158.087 207.38 158.087C195.77 158.087 195.698 158.123 195.698 167.919C195.698 173.433 195.952 175.175 196.968 176.227C198.129 177.424 199.979 177.714 206.763 177.714C217.647 177.714 218.772 177.315 218.772 173.252V171.873ZM249.211 174.558H229.402L226.21 180H222.981L237.239 155.801H241.338L255.596 180H252.404L249.211 174.558ZM247.833 172.272L239.307 157.833L230.781 172.272H247.833ZM257.17 180V155.801H275.999C281.333 155.801 284.017 156.781 285.468 159.32C286.557 161.098 287.065 163.964 287.065 167.882C287.065 171.837 286.557 174.703 285.468 176.481C284.017 179.02 281.333 180 275.999 180H257.17ZM260.073 177.569H276.217C279.627 177.569 281.84 176.771 282.82 175.211C283.654 173.832 284.054 171.583 284.054 168.028C284.054 164.291 283.618 161.751 282.747 160.409C281.768 158.921 279.7 158.232 275.999 158.232H260.073V177.569ZM291.795 180V155.801H315.885V158.232H294.697V166.322H315.123V168.608H294.697V177.569H316.066V180H291.795ZM320.432 180V155.801H325.112L339.697 176.626L354.317 155.801H358.852V180H355.95V158.196L340.712 180H338.572L323.334 158.196V180H320.432ZM377.148 167.447L388.649 155.801H392.64L378.599 169.842V180H375.697V169.842L361.657 155.801H365.611L377.148 167.447Z" fill="currentColor"/>
+    <defs>
+      <clipPath id="delta-gate-clip">
+        <rect width="233.216" height="107" fill="white" transform="translate(81.3906)"/>
+      </clipPath>
+    </defs>
+  </svg>
+
+  <div style="display:flex;align-items:center;gap:12px;width:100%;max-width:280px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <span style="font-size:0.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.22em;font-weight:700">Tutoriais</span>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+
+  <div style="width:100%;max-width:320px;background:var(--panel);border:1px solid var(--border);
+    border-radius:14px;padding:28px 24px 24px;box-shadow:var(--shadow-sm)">
+    <div style="font-size:0.64rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.12em;
+      font-weight:600;text-align:center;margin-bottom:6px">Acesso restrito</div>
+    <div style="font-size:1rem;font-weight:800;color:var(--text);text-align:center;
+      letter-spacing:-0.02em;margin-bottom:22px;line-height:1.3">02. Consolidação dos resultados de mídia</div>
+    <input type="password" id="pwd" placeholder="Senha de acesso"
+      onkeydown="if(event.key==='Enter')checkPwd()"
+      style="display:block;width:100%;padding:10px 14px;border:1px solid var(--border2);
+      border-radius:8px;font-size:14px;font-family:'Montserrat',sans-serif;
+      background:var(--bg);color:var(--text);outline:none;box-sizing:border-box;margin-bottom:10px">
+    <button onclick="checkPwd()"
+      style="display:block;width:100%;padding:11px 0;background:var(--accent2);color:var(--bg);
+      border:none;border-radius:8px;font-size:13px;font-weight:700;
+      font-family:'Montserrat',sans-serif;cursor:pointer;letter-spacing:0.06em">ENTRAR</button>
+    <div id="pwd-error" style="color:#e05c5c;font-size:11px;text-align:center;
+      margin-top:10px;display:none">Senha incorreta. Tente novamente.</div>
+  </div>
+
+</div>
+
+<div id="main-content" style="display:none">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Consolidação dos resultados de mídia</h2>
+      <p>AP 02 &middot; Resultados de Mídia</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Skill como automação<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Glossário rápido<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Instrução e setup<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Skills 2026 &rsaquo; Resultados de Mídia &rsaquo; <a href="index.html">Índice</a> &rsaquo; 02. Consolidação</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">Atividade Prática 02 &mdash; Consolidação executiva da semana via Skill</div>
+
+      <p class="lead-text">Segunda das 6 atividades do bloco <strong>Resultados de Mídia</strong>. Pré-requisito: <strong>AP01 concluída</strong> (Project Lumina criado com os 2 arquivos de contexto). Nesta AP você adiciona a <strong>primeira Skill</strong> da aula e gera a consolidação executiva da semana 12-18 de maio de 2026.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Adicionar Skill + invocação com 1 prompt</td></tr>
+          <tr><td>Duração</td><td>12 minutos</td></tr>
+          <tr><td>Ferramenta</td><td>Claude (Sonnet 4.6 ou Opus 4.7)</td></tr>
+          <tr><td>Consumo</td><td>1 mensagem &mdash; acumulado da aula: 1 de 5</td></tr>
+          <tr><td>Próximo passo</td><td>AP03 abre o CRM e apura receita real</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O raio-x da semana saindo em menos de 1 minuto</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> Consolidação executiva da semana 12-18 de maio de 2026 de mídia paga da Lumina, gerada automaticamente pela Skill <code>consolidar-midia-lumina</code>.</p>
+
+      <p class="lead-text">Toda segunda-feira a Nathália precisa entregar ao CMO o "raio-x da semana" de mídia paga: quanto foi gasto em cada plataforma, quantas conversões cada campanha trouxe, qual o ROAS reportado. Ao final desta AP, esse raio-x sai pronto em menos de 1 minuto &mdash; bastando <strong>anexar 3 CSVs e digitar 1 linha</strong>.</p>
+
+      <div class="delivery-banner">
+        <div class="db-title">Prévia do entregável &mdash; 4 partes</div>
+
+        <div class="db-card">
+          <h5>Parte 1 &mdash; Tabela consolidada por plataforma</h5>
+          <ul>
+            <li>Linhas: Meta Ads, Google Ads, TOTAL ADS PAGOS</li>
+            <li>Colunas: Gasto, Impressões, Cliques, CTR, CPM, CPC, Conv. pixel, Valor pixel, CPA pixel, ROAS pixel</li>
+          </ul>
+        </div>
+
+        <div class="db-card">
+          <h5>Parte 2 &mdash; Tabela por campanha</h5>
+          <ul>
+            <li>8 campanhas (4 Meta + 4 Google) ordenadas por gasto descendente</li>
+          </ul>
+        </div>
+
+        <div class="db-card">
+          <h5>Parte 3 &mdash; Tráfego total via GA4</h5>
+          <ul>
+            <li>Sessões por canal default + % sobre o total</li>
+          </ul>
+        </div>
+
+        <div class="db-card">
+          <h5>Parte 4 &mdash; Comentário executivo</h5>
+          <ul>
+            <li>3 parágrafos curtos: número-síntese, destaque positivo, ponto de atenção</li>
+          </ul>
+        </div>
+
+        <div class="db-closing">1 mensagem ao Claude · ~45 segundos de processamento · toda segunda, do mesmo jeito.</div>
+      </div>
+
+      <p class="lead-text"><strong>Objetivo de aprendizagem:</strong> Adicionar a <strong>primeira Skill</strong> da aula (<code>consolidar-midia-lumina</code>) na sua conta Claude pela tela de Personalização e usá-la dentro do Project para consolidar os 3 exports brutos da semana em um único output executivo &mdash; sem precisar colar um prompt longo a cada execução.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Skill como automação reutilizável</div>
+      <div class="sec-desc">Mesma instrução completa, sem retrabalho semana a semana</div>
+
+      <p class="lead-text">Um <strong>prompt</strong> é uma instrução de uma única vez: você escreve, envia, descarta. Funciona uma vez bem feito &mdash; mas se você precisa rodar o mesmo trabalho toda semana, o prompt vira ônus: 800 palavras que você precisa colar, corrigir caso quebre, garantir que está atualizado.</p>
+
+      <p class="lead-text">Uma <strong>Skill</strong> é o mesmo prompt, mas embalado em um arquivo <code>.zip</code> e instalado na sua conta Claude. Depois de adicionada, você invoca o trabalho em 1 linha: <em>"use a skill consolidar-midia-lumina nos 3 CSVs anexos"</em>. Mesma instrução completa, com a mesma qualidade, sem retrabalho semana a semana &mdash; disponível em qualquer Project da sua conta.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <h4>Sem Skill</h4>
+          <p><em>"Toda segunda, copia e cola um prompt de 800 palavras"</em></p>
+          <p style="margin-top:8px">Risco de transcrição errada, esquecer uma instrução, trocar a ordem das tabelas. Inconsistência semana a semana. O prompt cresce com o tempo e fica impossível de versionar.</p>
+        </div>
+        <div class="compare-card good">
+          <h4>Com Skill</h4>
+          <p><em>"Toda segunda, digita 1 linha de invocação"</em></p>
+          <p style="margin-top:8px">A Skill instalada na conta carrega a instrução completa. Output consistente, formato padronizado, atualização centralizada. Mesma Skill disponível em qualquer Project.</p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Glossário rápido</div>
+      <div class="sec-desc">Defs curtas para acompanhar a AP sem se perder em jargão</div>
+
+      <div class="glossario-grid">
+        <div class="glossario-item">
+          <div class="gi-term">Skill (no Claude)</div>
+          <div class="gi-def">"Um prompt embalado em arquivo .zip" &mdash; adiciona uma vez na conta e invoca dizendo "use a skill X" em vez de colar 800 palavras toda segunda.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">Personalizar (no Claude)</div>
+          <div class="gi-def">Área da sua conta onde adiciona Skills, instruções padrão e preferências. Skills adicionadas ali ficam disponíveis em todos os seus Projects.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">Pixel</div>
+          <div class="gi-def">Pedacinho de código que Meta e Google instalam no site da empresa para "ver" quando um cliente comprou depois de clicar num anúncio.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">CTR (Click-Through Rate)</div>
+          <div class="gi-def">Percentual de pessoas que viram o anúncio e clicaram. Se 100 viram e 2 clicaram, o CTR é 2%.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">CPM (Custo por Mil Impressões)</div>
+          <div class="gi-def">Quanto a empresa paga para que 1.000 pessoas vejam o anúncio (sem precisar clicar). Quanto mais alto, mais cara está a audiência.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">CPC (Custo por Clique)</div>
+          <div class="gi-def">Quanto a empresa paga em média a cada clique no anúncio. Quanto menor, mais barato está captando interesse.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">ROAS (Return on Ad Spend)</div>
+          <div class="gi-def">"Quanto a empresa recebeu de receita para cada R$ 1 gasto em anúncio". Se gastou R$ 100 e vendeu R$ 300, o ROAS é 3,00x.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">Conversão (mídia paga)</div>
+          <div class="gi-def">Ação que a empresa quer que o cliente faça depois de clicar &mdash; geralmente uma compra. O pixel registra cada conversão rastreada via cookies.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">GA4 (Google Analytics 4)</div>
+          <div class="gi-def">Ferramenta da Google que mede tráfego do site &mdash; visitantes, origem, tempo de permanência. Complementar aos pixels de anúncio.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="gi-term">CSV (export bruto)</div>
+          <div class="gi-def">Formato de planilha simples, em texto puro. Meta, Google e GA4 exportam relatórios semanais em CSV &mdash; a matéria-prima que a Skill processa.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que o professor vai demonstrar</div>
+      <div class="sec-desc">A Skill em ação &mdash; 45 segundos, 4 partes prontas</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso</div>
+        <p>O prompt a seguir é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa testá-lo agora &mdash; você terá sua própria atividade prática logo depois desta seção.</p>
+      </div>
+
+      <p class="lead-text">O professor já tem a Skill <code>consolidar-midia-lumina</code> adicionada na conta dele. Vai abrir uma conversa nova dentro do Project "Resultados de Mídia &mdash; Lumina" (criado na AP01), anexar os 3 CSVs da semana 12-18 mai (Meta Ads + Google Ads + GA4) e disparar a Skill com um prompt de 1 linha.</p>
+
+      <p class="lead-text">Em ~45 segundos, o Claude devolve 4 partes: tabela consolidada por plataforma, tabela por campanha, tráfego total via GA4 e comentário executivo de 3 parágrafos. <strong>O ROAS pixel consolidado da semana é 3,80x &mdash; acima da meta de 3,5x. Tudo parece bem.</strong></p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Prompt da demo</span>
+        <div class="copy-block" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Use a skill consolidar-midia-lumina nos 3 CSVs anexos (Meta Ads, Google Ads e GA4 — semana 12 a 18 de maio de 2026).</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que observar durante a demo</div>
+      <div class="sec-desc">4 padrões visíveis quando a Skill assume o trabalho pesado</div>
+
+      <ul class="observation-list">
+        <li><strong>A invocação da Skill é uma única linha</strong> &mdash; o trabalho pesado está dentro do arquivo .zip da Skill, não no prompt.</li>
+        <li><strong>O Claude lê os 3 CSVs sozinho</strong>, calcula CTR/CPM/CPC/CPA/ROAS para cada plataforma e devolve já em formato de tabela.</li>
+        <li><strong>O comentário menciona a meta de ROAS pixel (3,5x)</strong> porque essa informação está no plano de mídia carregado no Project (AP01) &mdash; a Skill não inventou.</li>
+        <li><strong>O comentário NÃO menciona CRM ou ROAS real</strong> &mdash; esse cruzamento entra só na AP04. Esta Skill olha apenas o que o pixel reportou.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> Sua atividade prática</div>
+      <div class="sec-desc">Adicionar a Skill na conta + invocar dentro do Project</div>
+
+      <div class="duration-card">
+        <div>
+          <div class="dc-label">Duração</div>
+          <div class="dc-value">12 min</div>
+        </div>
+      </div>
+
+      <div class="model-card">
+        <div class="mc-label">Modelo recomendado</div>
+        <div class="mc-name">Claude Sonnet 4.6</div>
+        <div class="mc-just">Sonnet 4.6 é o modelo padrão do plano gratuito do Claude &mdash; não é necessário ter conta paga. O processamento dos 3 CSVs e a geração das tabelas + comentário cabem perfeitamente na capacidade do Sonnet 4.6.</div>
+      </div>
+
+      <p class="lead-text">Você vai <strong>adicionar a primeira Skill da aula</strong> (<code>consolidar-midia-lumina</code>) na sua conta Claude e usá-la dentro do Project criado na AP01 para gerar a consolidação executiva da semana 12-18 de maio de 2026. Esta AP consome <strong>1 mensagem</strong> do Claude &mdash; total acumulado da aula até aqui: 1 de 5 mensagens reservadas.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Onde a Skill vai morar &mdash; na conta, não no Project</div>
+        <p>Uma Skill adicionada na área "Personalizar" da sua conta Claude fica disponível em <strong>todos</strong> os seus Projects. Você não precisa adicionar a mesma Skill dentro de cada Project. Por isso os Passos 02 a 04 envolvem abrir uma aba nova do navegador &mdash; para acessar a área Personalizar sem fechar a aba do Project.</p>
+      </div>
+
+      <a class="tool-link" href="https://claude.ai" target="_blank" style="display:flex;max-width:280px">
+        <div><div class="tl-name">Claude</div><div class="tl-url">claude.ai</div></div>
+      </a>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Passo a passo</div>
+      <div class="sec-desc">8 passos &mdash; baixar Skill, adicionar na conta, anexar CSVs e invocar</div>
+
+      <div class="feynman-card">
+        <div class="fc-label">💬 Conceito-chave do Passo 01</div>
+        <p><strong>Skill (no Claude):</strong> "Um prompt embalado em arquivo .zip" &mdash; você adiciona uma vez na sua conta e depois invoca dizendo "use a skill X" em vez de colar 800 palavras toda segunda.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Baixe a Skill da página HTML.</strong><br>Use o botão abaixo para baixar o arquivo .zip da Skill direto desta página. O arquivo será salvo na pasta de Downloads do seu computador.</div></div>
+      </div>
+
+      <div class="download-grid single">
+        <div class="download-card">
+          <div class="dl-name">consolidar-midia-lumina.zip</div>
+          <div class="dl-desc">Skill que consolida exports brutos de Meta Ads, Google Ads e GA4 em uma tabela executiva semanal.</div>
+          <a class="download-btn" href="../assets/consolidar-midia-lumina.zip" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+      </div>
+
+      <div class="feynman-card">
+        <div class="fc-label">💬 Conceito-chave do Passo 02</div>
+        <p><strong>Personalizar (no Claude):</strong> Área da sua conta onde adiciona Skills, instruções padrão e preferências. Skills ali ficam disponíveis em <strong>todos os seus Projects</strong> &mdash; não precisa adicionar dentro de cada um.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Abra uma nova aba do navegador.</strong><br>Você vai precisar acessar a área <strong>Personalizar</strong> da sua conta Claude &mdash; que fica fora do Project. Para não fechar a aba do Project da AP01, abra uma nova aba e acesse <code>claude.ai</code>.</div></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante</div>
+        <p><strong>Mantenha a aba do Project aberta na aba anterior.</strong> Você vai voltar para ela no Passo 06 &mdash; e a conversa do Project precisa ser usada nas próximas APs em sequência.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Acesse a área Personalizar.</strong><br>Na nova aba do Claude, abra o menu da conta (avatar no canto superior direito ou "Configurações" no menu lateral). Clique em <strong>Personalizar</strong>. Na tela que abrir, clique na aba <strong>Skills</strong>.</div></div>
+        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Adicione a Skill na sua conta.</strong><br>Clique em <strong>+ Adicionar skill</strong> (canto superior direito). Selecione <strong>Carregar skill (.zip)</strong> ou <strong>Upload de arquivo</strong>. Faça upload do <code>consolidar-midia-lumina.zip</code> baixado no Passo 01. Aguarde a confirmação &mdash; o nome da Skill deve aparecer na lista. Depois, <strong>feche esta aba</strong> e volte para a aba do Project.</div></div>
+      </div>
+
+      <div class="feynman-card">
+        <div class="fc-label">💬 Conceito-chave do Passo 05</div>
+        <p><strong>CSV (export bruto):</strong> Formato de planilha simples, em texto puro. Meta Ads, Google Ads e GA4 exportam relatórios semanais em CSV &mdash; é a "matéria-prima" que a Skill vai processar.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">5</div><div class="inst-text"><strong>Baixe os 3 CSVs da semana.</strong><br>De volta à aba do Project, baixe os 3 exports brutos da semana 12-18 mai 2026 &mdash; Meta Ads, Google Ads e GA4.</div></div>
+      </div>
+
+      <div class="download-grid">
+        <div class="download-card">
+          <div class="dl-name">01-meta-ads-export-12a18mai.csv</div>
+          <div class="dl-desc">Export bruto do Meta Ads Manager &mdash; 4 campanhas × 7 dias.</div>
+          <a class="download-btn" href="../assets/01-meta-ads-export-12a18mai.csv" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+        <div class="download-card">
+          <div class="dl-name">02-google-ads-export-12a18mai.csv</div>
+          <div class="dl-desc">Export bruto do Google Ads Manager &mdash; 4 campanhas × 7 dias.</div>
+          <a class="download-btn" href="../assets/02-google-ads-export-12a18mai.csv" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+        <div class="download-card">
+          <div class="dl-name">03-ga4-export-12a18mai.csv</div>
+          <div class="dl-desc">Export do GA4 &mdash; sessões por canal × 7 dias.</div>
+          <a class="download-btn" href="../assets/03-ga4-export-12a18mai.csv" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">6</div><div class="inst-text"><strong>Abra uma nova conversa no Project e anexe os 3 CSVs.</strong><br>Dentro do Project "Resultados de Mídia &mdash; Lumina", clique em <strong>+ Nova conversa</strong>. No campo de mensagem, anexe os 3 CSVs baixados no Passo 05 &mdash; todos na mesma mensagem, antes de enviar. Arraste os 3 de uma vez ou use o botão de anexar com Cmd/Ctrl pressionado.</div></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante</div>
+        <p>Confirme visualmente que os <strong>3 arquivos .csv aparecem como anexos</strong> no campo de mensagem antes de prosseguir. Se faltar algum, anexe antes de enviar.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">7</div><div class="inst-text"><strong>Acione a Skill com o prompt de 1 linha.</strong><br>Copie o prompt abaixo, cole no campo de mensagem (com os 3 CSVs já anexados) e envie. O processamento leva <strong>45 a 60 segundos</strong>.</div></div>
+      </div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Passo 07 &mdash; Invocação da Skill</span>
+        <div class="copy-block" id="prompt-skill">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('prompt-skill-text').textContent)">Copiar</button>
+<span id="prompt-skill-text">Use a skill consolidar-midia-lumina nos 3 CSVs anexos (Meta Ads, Google Ads e GA4 — semana 12 a 18 de maio de 2026).</span></div>
+      </div>
+
+      <div class="feynman-card">
+        <div class="fc-label">💬 Conceito-chave do Passo 08</div>
+        <p><strong>ROAS reportado pelo pixel:</strong> ROAS que Meta ou Google mostram no painel deles, calculado com a receita que o pixel rastreou. Costuma ser inflado em relação ao ROAS real do CRM &mdash; essa diferença é o tema central da AP04.</p>
+      </div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">8</div><div class="inst-text"><strong>Valide a consolidação.</strong><br>Confira se o output trouxe as 4 partes esperadas e bata os números abaixo.</div></div>
+      </div>
+
+      <div class="overview-card">
+        <h3>4 partes que devem estar no output</h3>
+        <ul>
+          <li><strong>PARTE 1</strong> &mdash; Tabela consolidada por plataforma (Meta Ads, Google Ads, TOTAL ADS PAGOS)</li>
+          <li><strong>PARTE 2</strong> &mdash; Tabela com as 8 campanhas (4 Meta + 4 Google) ordenadas por gasto</li>
+          <li><strong>PARTE 3</strong> &mdash; Tabela de tráfego GA4 por canal default</li>
+          <li><strong>PARTE 4</strong> &mdash; Comentário executivo de 3 parágrafos</li>
+        </ul>
+      </div>
+
+      <ul class="observation-list">
+        <li><strong>Gasto Meta total</strong> &asymp; R$ 25.226,90</li>
+        <li><strong>Gasto Google total</strong> &asymp; R$ 13.086,70</li>
+        <li><strong>Gasto total</strong> &asymp; R$ 38.313,60</li>
+        <li><strong>ROAS pixel consolidado</strong> &asymp; 3,80x &mdash; acima da meta semanal de 3,5x</li>
+      </ul>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante</div>
+        <p>O comentário executivo da PARTE 4 deve dizer que o ROAS pixel está <strong>acima da meta</strong> e <strong>não</strong> deve mencionar ainda nada sobre CRM ou ROAS real. Essa comparação é a função da AP04. Se o comentário já entregou o "spoiler" do gap pixel × CRM, alguma coisa saiu errada &mdash; a Skill desta AP olha apenas o que o pixel reportou.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> O que você tem ao final</div>
+      <div class="sec-desc">Skill instalada + consolidação da semana + 4 mensagens reservadas</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com:</h3>
+        <ul>
+          <li><strong>Primeira Skill da aula</strong> (<code>consolidar-midia-lumina</code>) adicionada na sua conta Claude, disponível em qualquer Project futuro</li>
+          <li><strong>Consolidação executiva</strong> da semana 12-18 mai 2026 da Lumina, com 4 partes (3 tabelas + comentário) gerada via invocação de 1 linha</li>
+          <li>Os <strong>3 CSVs anexados na conversa do Project</strong> &mdash; permanecem no contexto e serão referenciados nas próximas APs</li>
+          <li>Confirmação de que, segundo o pixel, <strong>o ROAS da semana bateu a meta</strong> &mdash; narrativa que vai ser confrontada na AP04 com os dados reais do CRM</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo</div>
+        <p><strong>Primeira camada da semana fechada.</strong> Pelo pixel, ROAS bateu meta &mdash; parece que está tudo certo. Na AP03 você vai adicionar a <strong>segunda Skill</strong> e abrir o CRM da Lumina para apurar a receita real da mesma semana. <strong>A história começa a mudar.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  const SENHA = "delta";
+  function checkPwd() {
+    if (document.getElementById('pwd').value === SENHA) {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('main-content').style.display = 'block';
+    } else {
+      document.getElementById('pwd-error').style.display = 'none';
+      setTimeout(() => document.getElementById('pwd-error').style.display = 'block', 10);
+      document.getElementById('pwd').value = '';
+      document.getElementById('pwd').focus();
+    }
+  }
+
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  const PKEY = "delta-tut-resultados-midia-ap02";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 9;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
