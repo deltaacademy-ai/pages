@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IA na Cimed | Recomendações Executivas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#00833E;
+    --verde-esc:#005E2C;
+    --verde-claro:#E8F3EC;
+    --tinta:#15201A;
+    --cinza:#5C6B62;
+    --linha:#DCE5DF;
+    --papel:#FCFDFC;
+    --dourado:#C9A24B;
+    --branco:#fff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Libre Franklin',sans-serif;
+    background:var(--papel);
+    color:var(--tinta);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg,var(--verde-esc) 0%,var(--verde) 70%);
+    color:#fff;padding:84px 0 72px;position:relative;overflow:hidden;
+  }
+  .hero::after{
+    content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;
+    border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%);
+  }
+  .hero::before{
+    content:"+";position:absolute;left:-30px;bottom:-60px;font-size:380px;line-height:1;
+    font-family:'Fraunces',serif;color:rgba(255,255,255,.05);font-weight:700;
+  }
+  .eyebrow{
+    font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+    opacity:.85;margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow span{height:1px;width:42px;background:rgba(255,255,255,.5);display:inline-block}
+  .hero h1{
+    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(34px,5.4vw,56px);
+    line-height:1.08;letter-spacing:-.02em;max-width:14ch;position:relative;z-index:1;
+  }
+  .hero .lead{
+    margin-top:26px;font-size:18px;max-width:54ch;opacity:.95;font-weight:300;position:relative;z-index:1;
+  }
+  .hero .meta{
+    margin-top:38px;display:flex;gap:34px;flex-wrap:wrap;font-size:13px;opacity:.85;
+    border-top:1px solid rgba(255,255,255,.2);padding-top:22px;position:relative;z-index:1;
+  }
+  .hero .meta b{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.7;font-weight:600;margin-bottom:3px}
+
+  /* INTRO */
+  .intro{padding:64px 0 8px}
+  .intro p{font-size:19px;color:var(--cinza);max-width:62ch}
+  .intro .big{
+    font-family:'Fraunces',serif;font-size:24px;color:var(--tinta);font-weight:500;
+    line-height:1.45;border-left:3px solid var(--verde);padding-left:24px;margin:36px 0;max-width:60ch;
+  }
+
+  /* SECTION TITLES */
+  .sec-head{margin:72px 0 8px;display:flex;align-items:baseline;gap:16px}
+  .sec-head .num{
+    font-family:'Fraunces',serif;font-size:15px;color:var(--verde);font-weight:600;
+    letter-spacing:.05em;
+  }
+  .sec-head h2{
+    font-family:'Fraunces',serif;font-size:clamp(26px,3.6vw,36px);font-weight:600;
+    letter-spacing:-.015em;line-height:1.1;
+  }
+  .sec-sub{color:var(--cinza);font-size:16px;max-width:60ch;margin-bottom:34px}
+
+  /* RECO CARDS */
+  .reco{
+    border:1px solid var(--linha);border-radius:14px;padding:34px 36px;margin-bottom:20px;
+    background:var(--branco);transition:.35s;position:relative;overflow:hidden;
+  }
+  .reco::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--verde);
+    transform:scaleY(0);transform-origin:top;transition:.4s;
+  }
+  .reco:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(0,94,44,.35);border-color:#c7d8cd}
+  .reco:hover::before{transform:scaleY(1)}
+  .reco .tag{
+    font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+    color:var(--verde-esc);background:var(--verde-claro);padding:5px 12px;border-radius:30px;display:inline-block;margin-bottom:18px;
+  }
+  .reco h3{font-family:'Fraunces',serif;font-size:23px;font-weight:600;line-height:1.2;margin-bottom:12px}
+  .reco p{color:var(--cinza);font-size:16px}
+  .reco .why{
+    margin-top:22px;padding-top:20px;border-top:1px dashed var(--linha);
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+  }
+  .reco .why div b{
+    display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--tinta);font-weight:700;margin-bottom:6px;
+  }
+  .reco .why div b::before{content:"";display:inline-block;width:7px;height:7px;background:var(--dourado);border-radius:50%;margin-right:8px;vertical-align:middle}
+  .reco .why .roi b::before{background:var(--verde)}
+  .reco .why div span{font-size:14.5px;color:var(--cinza)}
+
+  /* ROI DUAL */
+  .dual{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:38px 0 8px}
+  .dual .box{border-radius:14px;padding:32px;border:1px solid var(--linha)}
+  .dual .tangivel{background:var(--verde-esc);color:#fff;border-color:var(--verde-esc)}
+  .dual .tangivel h4,.dual .intangivel h4{font-family:'Fraunces',serif;font-size:20px;margin-bottom:6px;font-weight:600}
+  .dual .tangivel .k{font-size:13px;opacity:.8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px}
+  .dual .intangivel .k{font-size:13px;color:var(--verde);letter-spacing:.1em;text-transform:uppercase;margin-bottom:24px;font-weight:600}
+  .dual ul{list-style:none}
+  .dual li{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.14);font-size:15px;display:flex;justify-content:space-between;gap:16px;align-items:baseline}
+  .dual .intangivel li{border-bottom:1px solid var(--linha);color:var(--cinza)}
+  .dual li:last-child{border-bottom:none}
+  .dual .tangivel li b{font-family:'Fraunces',serif;font-size:19px;white-space:nowrap}
+  .dual .intangivel li::before{content:"+";color:var(--verde);font-weight:700;margin-right:10px;font-family:'Fraunces',serif}
+  .dual .intangivel li span{flex:1}
+
+  /* TIMELINE */
+  .timeline{margin:40px 0 8px;position:relative;padding-left:8px}
+  .wave{display:grid;grid-template-columns:140px 1fr;gap:30px;padding:28px 0;border-top:1px solid var(--linha)}
+  .wave:last-child{border-bottom:1px solid var(--linha)}
+  .wave .when{font-family:'Fraunces',serif}
+  .wave .when .w{font-size:21px;color:var(--verde);font-weight:600}
+  .wave .when .t{font-size:13px;color:var(--cinza);font-family:'Libre Franklin'}
+  .wave .what h4{font-size:18px;font-weight:600;margin-bottom:6px;font-family:'Libre Franklin'}
+  .wave .what p{color:var(--cinza);font-size:15.5px}
+  .wave .what .pill{display:inline-block;margin-top:12px;font-size:12.5px;color:var(--verde-esc);font-weight:600;background:var(--verde-claro);padding:4px 12px;border-radius:20px}
+
+  /* CLOSING */
+  .closing{background:var(--tinta);color:#fff;margin-top:80px;padding:72px 0;position:relative;overflow:hidden}
+  .closing::before{content:"";position:absolute;right:-80px;bottom:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(0,131,62,.4),transparent 70%)}
+  .closing h2{font-family:'Fraunces',serif;font-size:clamp(26px,4vw,38px);font-weight:600;max-width:18ch;line-height:1.15;position:relative;z-index:1}
+  .closing p{margin-top:22px;font-size:18px;opacity:.85;max-width:56ch;font-weight:300;position:relative;z-index:1}
+  .closing .frase{margin-top:34px;font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:#fff;border-left:3px solid var(--verde);padding-left:22px;position:relative;z-index:1}
+
+  /* SIGNATURE */
+  .sign{padding:50px 0;text-align:center;border-top:1px solid var(--linha)}
+  .sign .powered{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cinza);margin-bottom:16px}
+  .logo-delta{display:inline-flex;align-items:center;gap:14px;font-family:'Fraunces',serif;font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--tinta)}
+  .logo-delta .tri{
+    width:34px;height:34px;background:linear-gradient(150deg,var(--verde),var(--verde-esc));
+    clip-path:polygon(50% 0,100% 100%,0 100%);display:inline-block;
+  }
+  .logo-delta small{display:block;font-family:'Libre Franklin';font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--cinza);text-align:left;margin-top:2px}
+  .sign .date{margin-top:18px;font-size:13px;color:var(--cinza)}
+
+  @media(max-width:680px){
+    .reco .why,.dual{grid-template-columns:1fr}
+    .wave{grid-template-columns:1fr;gap:8px}
+    .hero{padding:60px 0 50px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow"><span></span> Documento Executivo · Confidencial</div>
+    <h1>O que a IA muda na Cimed antes que a Cimed mude por causa dela</h1>
+    <p class="lead">Recomendações diretas para a liderança. Sem jargão técnico. Foco no que você ganha em caixa, em tempo, em marca e em controle do futuro do negócio.</p>
+    <div class="meta">
+      <div><b>Para</b>João Adibe Marques · CEO</div>
+      <div><b>Tema</b>Impacto da IA · Fábrica & Varejo</div>
+      <div><b>Horizonte</b>2026 — 2033</div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+    <p>Você não precisa entender de IA. Precisa entender <b>onde ela aperta e onde ela protege</b> o negócio que você construiu. A boa notícia: a Cimed começa essa corrida na frente. Distribuição própria em 98% das farmácias, marca forte, sell-out direto. A IA não destrói isso. Ela decide <em>quem</em> vai capturar valor desses ativos nos próximos anos: você, o varejista ou a big tech.</p>
+    <p class="big">A pergunta não é “quanto a IA vai me poupar”. É “quem vai ser dono da recomendação, do dado e da relação com o brasileiro que toma o remédio”.</p>
+    <p>Abaixo, sete recomendações. Cada uma diz <b>o que fazer</b>, <b>por que importa além do dinheiro</b> e <b>o retorno concreto</b>. Foi feito para ser lido em 10 minutos e levado ao board.</p>
+  </section>
+
+  <!-- BLOCO 1 -->
+  <div class="sec-head">
+    <span class="num">01</span>
+    <h2>As 7 jogadas que recomendamos</h2>
+  </div>
+  <p class="sec-sub">Ordenadas por urgência. As três primeiras pagam a conta das próximas quatro.</p>
+
+  <article class="reco">
+    <span class="tag">Ganho imediato · Caixa</span>
+    <h3>Automatizar o regulatório e a farmacovigilância</h3>
+    <p>Quase metade do trabalho intelectual da fábrica (dossiês ANVISA, relatórios, monitoramento de eventos adversos) é texto repetível. IA com revisão humana faz o rascunho; sua equipe vira o controle de qualidade, não o digitador.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Corta 70-80% do tempo de submissão. Mais lançamentos por ano com o mesmo time. Genérico que chega antes na prateleira é margem que o concorrente não pega.</span></div>
+      <div><b>Retorno além da grana</b><span>Seu time técnico para de queimar talento em planilha e passa a pensar em produto. Menos erro humano em algo que é vida do paciente.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Ganho imediato · Operação</span>
+    <h3>Acertar a previsão de demanda por SKU</h3>
+    <p>Hoje a previsão erra para mais em 2 de cada 3 casos: estoque parado e capital preso. A IA cruza seu sell-out com clima, busca e tendência de consumo e reduz esse erro em até um terço.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Libera 8-12% de capital de giro hoje imobilizado e reduz a venda perdida por ruptura. Dinheiro que volta para o caixa sem vender um real a mais.</span></div>
+      <div><b>Retorno além da grana</b><span>Farmácia que nunca fica sem o produto Cimed confia mais na Cimed. Disponibilidade é reputação no balcão.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Ganho imediato · Comercial</span>
+    <h3>Reposicionar a força de vendas, não demiti-la</h3>
+    <p>Metade do tempo do time comercial é planilha e PowerPoint que a IA faz melhor. Mantenha gente nas farmácias estratégicas; migre o pedido repetitivo para inside sales + IA.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Mesmo custo de equipe gerando mais relacionamento de alto valor. Cada vendedor cobre mais contas-chave com mais profundidade.</span></div>
+      <div><b>Retorno além da grana</b><span>Você protege um ativo histórico e o time, em vez de cortar. Transforma vendedor em consultor: moral mais alto, menos rotatividade.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Médio prazo · Defesa de margem</span>
+    <h3>Virar a recomendação "padrão" dos sistemas das farmácias</h3>
+    <p>Em breve a recompra na farmácia será sugerida por software, não por vendedor. Quem alimenta esse sistema com dado, preço e score clínico vira a escolha automática. Conecte a Cimed direto nos PDVs antes que o concorrente faça.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Defende a margem dos 70% do portfólio que viraria commodity comparada por algoritmo. Ser o "default" vale anos de market share.</span></div>
+      <div><b>Retorno além da grana</b><span>Controle do canal. Você deixa de depender da boa vontade do varejista para ser lembrado.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Médio prazo · Marca</span>
+    <h3>Dobrar a aposta nas marcas com alma (Carmed, Lavitan)</h3>
+    <p>O genérico puro vira commodity. O que a IA <em>não</em> replica é desejo de marca. Carmed viralizou porque tem emoção. É exatamente aí que sobra preço e fidelidade num mundo de comparação automática.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Pricing power preservado onde a margem é maior. Marca forte é o único pedaço do portfólio que o algoritmo não consegue baratear.</span></div>
+      <div><b>Retorno além da grana</b><span>Legado. A Cimed deixa de ser "fábrica de remédio" e vira casa de marcas que o brasileiro ama e confia.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Estratégico · O ativo do futuro</span>
+    <h3>Tratar o dado de consumo como o seu ouro - e não terceirizar</h3>
+    <p>A IA empurra o valor para quem tem o dado do paciente, não para quem tem a planta industrial. Hoje esse dado está escapando para apps, varejistas e big tech. Estruture o que é seu e construa internamente a camada de dado e recomendação.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Dado proprietário é o que sustenta o valuation da Cimed em 2030. É a diferença entre vender remédio e vender inteligência sobre saúde.</span></div>
+      <div><b>Retorno além da grana</b><span>Soberania. Você não vira refém de um parceiro de tecnologia que pode, amanhã, virar seu dono na camada que mais importa.</span></div>
+    </div>
+  </article>
+
+  <article class="reco">
+    <span class="tag">Estratégico · Novo negócio</span>
+    <h3>Migrar de "vender caixa" para "cuidar da jornada"</h3>
+    <p>Quando o assistente pessoal de IA do paciente virar o porteiro da recomendação, a margem do produto cai e sobra o serviço: adesão de crônicos, aplicação de injetáveis, monitoramento. A Cimed pode ser dona dessa relação contínua.</p>
+    <div class="why">
+      <div class="roi"><b>Retorno em grana</b><span>Receita recorrente de serviço de saúde, mais defensável e de margem maior que a caixa de genérico.</span></div>
+      <div><b>Retorno além da grana</b><span>Propósito. A Cimed deixa de competir por preço e passa a competir por <em>saúde real do brasileiro</em>. É o tipo de coisa que mobiliza um time e marca uma geração.</span></div>
+    </div>
+  </article>
+
+  <!-- BLOCO 2: ROI -->
+  <div class="sec-head">
+    <span class="num">02</span>
+    <h2>O retorno em duas moedas</h2>
+  </div>
+  <p class="sec-sub">A IA paga em dinheiro - mas o prêmio maior está nas coisas que dinheiro nenhum compra de volta depois que se perde.</p>
+
+  <div class="dual">
+    <div class="box tangivel">
+      <h4>O que entra no caixa</h4>
+      <div class="k">ROI tangível</div>
+      <ul>
+        <li><span>Tempo de regulatório / PV</span><b>−75%</b></li>
+        <li><span>Erro de previsão de demanda</span><b>−30%</b></li>
+        <li><span>Capital de giro liberado</span><b>8-12%</b></li>
+        <li><span>Perda por ruptura / vencimento</span><b>−50%</b></li>
+        <li><span>Capacidade do time comercial</span><b>+50%</b></li>
+      </ul>
+    </div>
+    <div class="box intangivel">
+      <h4>O que protege o futuro</h4>
+      <div class="k">ROI além da grana</div>
+      <ul>
+        <li><span>Controle da recomendação no PDV</span></li>
+        <li><span>Soberania sobre o dado do paciente</span></li>
+        <li><span>Marca preservada da guerra de preço</span></li>
+        <li><span>Time qualificado e mais engajado</span></li>
+        <li><span>Confiança e legado da Cimed no Brasil</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- BLOCO 3: TIMELINE -->
+  <div class="sec-head">
+    <span class="num">03</span>
+    <h2>A sequência das três ondas</h2>
+  </div>
+  <p class="sec-sub">Não é tudo de uma vez. É uma onda pagando a próxima.</p>
+
+  <div class="timeline">
+    <div class="wave">
+      <div class="when"><div class="w">Onda 1</div><div class="t">0 - 12 meses</div></div>
+      <div class="what">
+        <h4>Eficiência: arrumar a casa e gerar caixa</h4>
+        <p>Regulatório, farmacovigilância, previsão de demanda e produtividade comercial. Aqui você financia tudo que vem depois - sem pedir orçamento novo.</p>
+        <span class="pill">Piloto regulatório + demanda em 2026</span>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="when"><div class="w">Onda 2</div><div class="t">1 - 3 anos</div></div>
+      <div class="what">
+        <h4>Posição: virar o "default" e defender a margem</h4>
+        <p>Conectar a Cimed aos sistemas das farmácias, fortalecer as marcas com alma e começar a montar a jornada de saúde integrada antes do varejo e da big tech.</p>
+        <span class="pill">Cimed como recomendação padrão em farmácias-chave</span>
+      </div>
+    </div>
+    <div class="wave">
+      <div class="when"><div class="w">Onda 3</div><div class="t">3 - 7 anos</div></div>
+      <div class="what">
+        <h4>Reinvenção: dona de marca, dado e serviço</h4>
+        <p>A planta industrial vira commodity; o valor migra para quem tem a marca, o dado e a relação contínua com o paciente. A Cimed se posiciona como casa de saúde, não fábrica de remédio.</p>
+        <span class="pill">Plataforma de dados próprios + serviço de adesão</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="wrap">
+    <h2>A IA não vai decidir se a Cimed cresce. Vai decidir quem fica com o valor desse crescimento.</h2>
+    <p>Você já tem os ativos que importam: distribuição, marca e dado de sell-out. A janela é fazer a Onda 1 agora, com caixa próprio, e usar esse fôlego para garantir as Ondas 2 e 3 antes que o varejo ou a big tech ocupem o lugar da recomendação.</p>
+    <p class="frase">"Matar leão é fácil. Difícil é desviar das antas." A anta aqui é gastar energia em ferramenta de hype. O leão é dado, marca e relação. Mire no leão.</p>
+  </div>
+</section>
+
+<!-- SIGNATURE -->
+<footer class="sign">
+  <div class="wrap">
+    <div class="powered">Recomendações estratégicas · powered by</div>
+    <div class="logo-delta">
+      <span class="tri"></span>
+      <span>Delta Academy<small>AI-First Transformation</small></span>
+    </div>
+    <div class="date">Documento de apoio à decisão · 2026 · Uso interno Cimed</div>
+  </div>
+</footer>
+
+</body>
+</html>
