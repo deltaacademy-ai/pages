@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03. Extração da receita real do CRM &middot; Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:16px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .feynman-box{background:var(--ficha-td1-bg);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0 12px}
+  .feynman-label{font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+  .feynman-box p{font-size:0.74rem;color:var(--text2);line-height:1.55}
+  .feynman-box p strong{color:var(--text);font-weight:700}
+  .glossario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media (max-width:640px){.glossario-grid{grid-template-columns:1fr}}
+  .glossario-item{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;box-shadow:var(--shadow-xs)}
+  .glossario-item .g-term{font-size:0.74rem;font-weight:800;color:var(--accent2);margin-bottom:3px;letter-spacing:-0.01em}
+  .glossario-item .g-def{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Downloads-card (embutido em step-card) */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+
+  /* Check-list (entregáveis ao final) */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.glossario-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Extração da receita real do CRM</h2>
+      <p>AP03 &middot; Marketing &mdash; Resultados de Mídia</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Atribuição first-click<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Glossário rápido<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Prompt da demo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Skills 2026 &rsaquo; Marketing &mdash; Resultados de Mídia &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP03. Extração da receita real do CRM</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP03 &mdash; Receita real do CRM da semana 12&ndash;18 de maio de 2026</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> apuração executiva da receita real da semana segundo o CRM da Lumina, gerada pela segunda Skill da aula (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">extrair-receita-crm-lumina</code>) &mdash; atribuição first-click, por canal e por loja.</p>
+
+      <p class="lead-text">Na <strong>AP02</strong>, a Nathália fechou o lado pixel &mdash; Meta + Google + GA4 reportando ROAS 3,80x e a meta batida. Agora ela abre o CRM da Lumina, atribuído por first-click, e vê a receita real que entrou no caixa: por canal, por loja física, por dia. É a <strong>outra metade da história</strong> que vai permitir o cruzamento crítico na AP04.</p>
+
+      <div class="overview-card">
+        <h3>O que você sai com (4 partes)</h3>
+        <ul>
+          <li><strong>Parte 1:</strong> receita total por canal &mdash; Paid Social, Paid Search, Organic Search, Direct, Email, Organic Social, TOTAL (ordenado por receita)</li>
+          <li><strong>Parte 2:</strong> matriz canal &times; loja &mdash; e-commerce, Loja SP, Loja RJ</li>
+          <li><strong>Parte 3:</strong> isolamento dos canais pagos (Paid Social + Paid Search) com desdobramento entre e-commerce e lojas físicas</li>
+          <li><strong>Parte 4:</strong> observação preliminar &mdash; peso real de cada canal e leitura sobre lojas físicas captando digital</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática</td></tr>
+          <tr><td>Duração</td><td>10 minutos (atividade prática)</td></tr>
+          <tr><td>Pré-requisito</td><td>AP01 + AP02 concluídas &mdash; <strong>mesma conversa do Project</strong> aberta</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6 (plano gratuito atende)</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a invocação da Skill) &middot; acumulado da aula: 2 de 5</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">A semente do achado da semana</div>
+        <p>O que o CRM revela sobre os canais pagos vai ser <strong>confrontado com o pixel na AP04</strong> &mdash; preparando o aha da aula.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">Adicionar a segunda Skill e apurar receita real na MESMA conversa da AP02</div>
+
+      <p class="lead-text">Adicionar a <strong>segunda Skill</strong> da aula (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">extrair-receita-crm-lumina</code>) na sua conta Claude e usá-la na <strong>mesma conversa do Project</strong> da AP02 para apurar a receita real da semana segundo o CRM da Lumina &mdash; ordenada por canal de aquisição (first-click) e desdobrada por loja de fechamento.</p>
+
+      <div class="overview-card">
+        <h3>O que isso destrava</h3>
+        <ul>
+          <li>Receita real da semana, agregada por canal de aquisição e por loja, em ~30 segundos</li>
+          <li>Visibilidade sobre <strong>lojas físicas que captam clientes digitais</strong> &mdash; receita invisível ao pixel</li>
+          <li>Base contábil para a AP04 cruzar pixel (AP02) &times; CRM (AP03) e calcular ROAS real</li>
+          <li>Segunda Skill instalada na conta &mdash; o pipeline da semana começa a ficar completo</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Atribuição first-click como verdade contábil</div>
+      <div class="sec-desc">Por que o CRM fecha conta e o pixel não</div>
+
+      <p class="lead-text">Quando você vê os números do pixel (AP02), está vendo o que <strong>cada plataforma reivindica</strong> ter trazido em receita. O problema é que cada uma reivindica isoladamente: se o cliente clicou num anúncio do Meta e depois num do Google antes de comprar, <strong>ambas as plataformas atribuem 100% da venda para si mesmas</strong>. A soma das atribuições do pixel ultrapassa a receita real &mdash; não fecha conta.</p>
+
+      <p class="lead-text">A <strong>atribuição first-click do CRM</strong> resolve essa dupla contagem. Cada cliente é registrado com o canal que o trouxe pela primeira vez &mdash; uma única vez, em um único canal. A soma fecha em 100% da receita real, sem conflito. É a regra contábil que a Lumina usa para decidir onde investir a próxima rodada de budget.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Atribuição do pixel (last-touch via cookies)</div>
+          <div class="compare-title">&ldquo;Cada plataforma reivindica o crédito que viu&rdquo;</div>
+          <div class="compare-desc">Meta Ads atribui a si mesmo. Google Ads também. O mesmo cliente pode ser contado por <strong>2&ndash;3 plataformas</strong>. Soma das receitas pixel ultrapassa a receita real. Decisão de budget baseada aqui infla canais com pixel mais agressivo.</div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Atribuição first-click do CRM</div>
+          <div class="compare-title">&ldquo;Um cliente, um canal de origem, uma única atribuição&rdquo;</div>
+          <div class="compare-desc">O CRM registra qual canal trouxe o cliente <strong>na primeira visita</strong>. Sem dupla contagem. Soma fecha em 100% da receita real. É o número que entra na contabilidade &mdash; e o que orienta decisão de budget honesta.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Glossário rápido</div>
+      <div class="sec-desc">7 termos para você não se perder em jargão nesta AP</div>
+
+      <p class="lead-text">Para acompanhar esta AP sem se perder em jargão, use estas definições curtas:</p>
+
+      <div class="glossario-grid">
+        <div class="glossario-item">
+          <div class="g-term">CRM</div>
+          <div class="g-def">Sistema onde a empresa registra cada venda e cada cliente &mdash; com data, valor e canal. É a &ldquo;verdade contábil&rdquo;: se entrou dinheiro no caixa, está no CRM.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Atribuição</div>
+          <div class="g-def">Regra que decide qual canal &ldquo;ganha o crédito&rdquo; por uma venda. Existem vários modelos (first-click, last-click, multi-touch) &mdash; a Lumina usa first-click.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">First-click</div>
+          <div class="g-def">Modelo que dá o crédito da venda ao canal da <strong>primeira visita</strong> do cliente à marca. Revela qual canal está formando audiência, mesmo que a compra só aconteça semanas depois.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Last-click</div>
+          <div class="g-def">Modelo oposto &mdash; crédito vai para o canal da <strong>última visita</strong> antes da compra. Tende a superestimar canais de fundo de funil como Search de marca.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Receita real vs receita pixel</div>
+          <div class="g-def">A <strong>receita real</strong> é o dinheiro que entrou no caixa (CRM, first-click). A <strong>receita pixel</strong> é o que cada plataforma diz ter gerado &mdash; geralmente maior, porque o pixel se atribui vendas que viriam organicamente.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Ticket médio</div>
+          <div class="g-def">Valor médio gasto por pedido &mdash; se 10 clientes compraram R$ 1.000 no total, o ticket médio é R$ 100. Mostra se a empresa vende &ldquo;mais barato em volume&rdquo; ou &ldquo;mais caro com menos volume&rdquo;.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Matriz canal × loja</div>
+          <div class="g-def">Tabela que cruza &ldquo;de onde o cliente veio&rdquo; (canal) com &ldquo;onde ele comprou&rdquo; (loja). Revela, por exemplo, que clientes que conheceram a marca via Instagram fecharam venda na loja física.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Lojas físicas captando digital</div>
+          <div class="g-def">Fenômeno em que o cliente conhece a marca no Instagram mas decide comprar pessoalmente na loja física. O pixel <strong>não enxerga</strong> essa venda &mdash; o CRM enxerga, porque registra a loja de fechamento.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que o professor vai demonstrar</div>
+      <div class="sec-desc">CSV agregado do CRM + invocação da segunda Skill na mesma conversa</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>O prompt da seção seguinte é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa testá-lo agora &mdash; sua própria atividade prática começa na seção 07.</p>
+      </div>
+
+      <p class="lead-text">O professor abre o CSV bruto do CRM da Lumina e mostra a estrutura: cada linha representa &ldquo;quantos pedidos vieram do canal X, fecharam na loja Y, no dia Z &mdash; com a receita total e o ticket médio&rdquo;. É um <strong>agregado semanal</strong>, não um por pedido individual.</p>
+
+      <p class="lead-text">Em seguida, na <strong>mesma conversa do Project</strong> usada na demonstração da AP02, o professor anexa o CSV e dispara a Skill <code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">extrair-receita-crm-lumina</code> com um prompt de 1 linha. Em ~30 segundos, o Claude devolve 4 partes: receita por canal, matriz canal &times; loja, isolamento dos canais pagos e observação preliminar.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> Prompt da demonstração</div>
+      <div class="sec-desc">Mesma estrutura de invocação da AP02 &mdash; muda só o nome da Skill</div>
+
+      <p class="lead-text">O professor cola o prompt abaixo na <strong>mesma conversa do Project</strong> (com o CSV do CRM já anexado) e envia. Note que a invocação é a mesma estrutura da AP02 &mdash; <strong>Skills sempre se chamam assim</strong>, em 1 linha que referencia o nome exato da Skill.</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Prompt da demonstração</span>
+        <div class="copy-block" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Use a skill extrair-receita-crm-lumina no CSV anexo (CRM Lumina, mesma semana 12 a 18 de maio de 2026).</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">4 padrões que mostram o que o CRM revela &mdash; e o que ele ainda NÃO compara</div>
+
+      <ul class="observation-list">
+        <li><strong>Mesma estrutura de invocação da AP02.</strong> 1 linha com nome exato da Skill &mdash; o trabalho pesado está dentro do <code>.zip</code>.</li>
+        <li><strong>Skill ordena canais por receita descendente.</strong> O canal de maior peso aparece no topo automaticamente, sem precisar instruir.</li>
+        <li><strong>A matriz canal &times; loja revela algo invisível ao pixel:</strong> parte da receita de Paid Social fecha em loja física, não no e-commerce.</li>
+        <li><strong>A observação preliminar fala apenas do CRM.</strong> Ainda não compara com pixel. O cruzamento é a função da AP04.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Sua atividade prática</div>
+      <div class="sec-desc">10 minutos &middot; 7 passos &middot; consome 1 mensagem do Claude</div>
+
+      <p class="lead-text">Você vai <strong>adicionar a segunda Skill da aula</strong> (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">extrair-receita-crm-lumina</code>) na sua conta Claude e usá-la na <strong>mesma conversa do Project</strong> da AP02 para apurar a receita real da semana 12&ndash;18 de maio de 2026 segundo o CRM da Lumina.</p>
+
+      <div class="overview-card">
+        <h3>Ficha da atividade</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Duração estimada</td><td>10 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
+          <tr><td>Plano necessário</td><td>Gratuito (Sonnet 4.6 processa o CSV em ~30s)</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a invocação da Skill no Passo 06)</td></tr>
+          <tr><td>Total acumulado da aula</td><td>2 de 5 mensagens reservadas</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que continuar na mesma conversa</div>
+        <p>A Skill desta AP gera dados que serão <strong>cruzados com os dados da AP02</strong> pela Skill da AP04. Esse cruzamento só funciona se as 3 APs (02, 03 e 04) estiverem na <strong>mesma conversa do Project</strong> &mdash; o Claude usa a memória dessa conversa para combinar gasto pixel (AP02) com receita real CRM (AP03) e calcular o ROAS real (AP04). Se você abrir uma conversa nova, a AP04 vai falhar.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
+      <div class="sec-desc">7 passos &mdash; baixar Skill, adicionar na conta, anexar CSV CRM na mesma conversa e validar</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe a Skill da página</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Você vai baixar o arquivo <code>.zip</code> da <strong>segunda Skill</strong> da aula direto da página. Use o botão de download abaixo:</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP03 &middot; Skill</div>
+            <a class="dl-btn" href="extrair-receita-crm-lumina.zip" download>
+              <span class="dl-icon">&#128230;</span>
+              <span class="dl-meta">
+                <span class="dl-name">extrair-receita-crm-lumina.zip</span>
+                <span class="dl-desc">Skill que apura a receita real da semana segundo o CRM, com atribuição first-click &mdash; por canal, por loja e com isolamento dos canais pagos</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> o arquivo será salvo na pasta de Downloads do seu computador. Confirme que apareceu lá antes de seguir.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra uma nova aba do navegador</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>CRM:</strong> sistema onde a empresa registra cada venda e cada cliente &mdash; com data, valor e canal de aquisição. É a &ldquo;verdade contábil&rdquo;: se entrou dinheiro no caixa, está no CRM. Diferente do pixel, o CRM <strong>não tem dupla contagem</strong>.</p>
+          </div>
+          <p class="step-card-desc">Para adicionar a Skill na sua conta sem fechar a conversa do Project (que precisa ficar intacta para a AP04), abra uma <strong>nova aba do navegador</strong>. Na nova aba, acesse <code>claude.ai</code> e faça login se necessário.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; aba do Project é crítica</div>
+            <p><strong>Mantenha a aba do Project aberta na aba anterior.</strong> A conversa do Project tem os dados da AP02 carregados na memória &mdash; se você fechar essa aba ou recarregar a página, a <strong>AP04 vai falhar</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Acesse Personalizar e adicione a Skill</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na nova aba, abra o menu da sua conta (avatar do canto superior direito ou <strong>Configurações</strong> no menu lateral) e clique em <strong>Personalizar</strong> &rarr; aba <strong>Skills</strong>. Clique em <strong>+ Adicionar skill</strong> &rarr; <strong>Carregar skill (.zip)</strong> e faça upload do <code>extrair-receita-crm-lumina.zip</code> baixado no Passo 01.</p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> aguarde a confirmação &mdash; o nome <code>extrair-receita-crm-lumina</code> deve aparecer na lista, junto com a <code>consolidar-midia-lumina</code> que você adicionou na AP02. Depois da confirmação, <strong>feche esta aba</strong> e volte para a aba do Project.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Baixe o CSV do CRM</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>First-click:</strong> modelo de atribuição que dá o crédito da venda ao canal que trouxe o cliente <strong>pela primeira vez</strong> à marca, mesmo que ele só compre semanas depois. É a regra contábil que a Lumina usa para decidir onde investir budget &mdash; revela qual canal está formando audiência de verdade.</p>
+          </div>
+          <p class="step-card-desc">Na aba do Project (que está aberta desde a AP02), você precisa baixar o arquivo do CRM da Lumina da mesma semana. Use o botão de download abaixo:</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP03 &middot; CRM da semana</div>
+            <a class="dl-btn" href="04-crm-export-12a18mai.csv" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">04-crm-export-12a18mai.csv</span>
+                <span class="dl-desc">Export do CRM Lumina &mdash; 77 linhas agregadas por canal &times; loja &times; dia, com receita total e ticket médio. Atribuição first-click</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> confirme que o arquivo apareceu na sua pasta de Downloads antes de seguir.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Anexe o CSV na MESMA conversa do Project</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Dentro da aba do Project &mdash; <strong>na mesma conversa que você usou na AP02</strong> &mdash;, anexe o arquivo <code>04-crm-export-12a18mai.csv</code> na próxima mensagem. Você pode arrastar o arquivo para o campo de mensagem ou usar o botão de anexar.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; NÃO abra conversa nova</div>
+            <p>O CSV do CRM precisa entrar na <strong>mesma conversa</strong> onde os 3 CSVs de mídia da AP02 já estão. <strong>Validação visual:</strong> o novo anexo <code>04-crm-export-12a18mai.csv</code> aparece no campo de mensagem, e a conversa acima ainda mostra a consolidação que a Skill gerou na AP02. Se você abrir conversa nova, a AP04 vai falhar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Acione a Skill com o prompt de 1 linha</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> abaixo para copiar o prompt de invocação da segunda Skill. Cole no campo de mensagem (com o CSV do CRM já anexado) e envie. O processamento leva aproximadamente <strong>30 a 45 segundos</strong>.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt de invocação da Skill</span>
+            <div class="copy-block" id="skill-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('skill-prompt-text').textContent)">Copiar</button>
+<span id="skill-prompt-text">Use a skill extrair-receita-crm-lumina no CSV anexo (CRM Lumina, mesma semana 12 a 18 de maio de 2026).</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Valide a apuração</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Matriz canal &times; loja:</strong> tabela que cruza &ldquo;de onde o cliente veio&rdquo; (canal) com &ldquo;onde ele comprou&rdquo; (loja). Permite identificar clientes que conheceram a marca em canais digitais mas fecharam compra em loja física &mdash; <strong>receita invisível para o pixel</strong>.</p>
+          </div>
+          <p class="step-card-desc">Confira se o output trouxe as <strong>4 partes esperadas</strong>:</p>
+          <ul class="check-list">
+            <li><strong>PARTE 1</strong> &mdash; Tabela de receita por canal (ordenada por receita descendente, com linha TOTAL no fim).</li>
+            <li><strong>PARTE 2</strong> &mdash; Matriz canal &times; loja (e-commerce, Loja SP, Loja RJ).</li>
+            <li><strong>PARTE 3</strong> &mdash; Tabela isolada dos canais pagos com desdobramento por loja.</li>
+            <li><strong>PARTE 4</strong> &mdash; Observação preliminar de 2 parágrafos.</li>
+          </ul>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> use os números abaixo para conferir se a Skill processou corretamente:</p>
+          <ul class="observation-list">
+            <li><strong>Receita CRM total da semana</strong> &asymp; R$ 157.237</li>
+            <li><strong>Paid Social receita</strong> &asymp; R$ 57.521 &mdash; canal #1</li>
+            <li><strong>Direct receita</strong> &asymp; R$ 40.257 &mdash; canal #2 (sinal de força orgânica / brand)</li>
+            <li><strong>Paid Search receita</strong> &asymp; R$ 24.342</li>
+            <li><strong>Combinado dos canais pagos</strong> (Paid Social + Paid Search) &asymp; R$ 81.863</li>
+          </ul>
+          <p class="step-card-desc"><strong>Sinais a observar na matriz canal &times; loja:</strong></p>
+          <ul class="observation-list">
+            <li><strong>E-commerce</strong> concentra cerca de <strong>75% da receita total</strong> da semana.</li>
+            <li><strong>Paid Social aparece nas duas lojas físicas</strong> &mdash; não só no e-commerce. Isso vai ser importante na AP04.</li>
+            <li><strong>Loja RJ não tem vendas no domingo</strong> &mdash; loja fechada (validação de coerência dos dados).</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; sem spoiler do gap pixel × CRM</div>
+            <p>A observação preliminar (PARTE 4) deve falar sobre o peso real de Paid Social no CRM e sinalizar que <strong>lojas físicas captam canais digitais</strong>. <strong>Não deve comparar com o pixel ainda</strong> &mdash; esse cruzamento é o trabalho da AP04. Se a observação já entregou o &ldquo;spoiler&rdquo; do gap pixel &times; CRM, a Skill saiu da raia esperada.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Entregável + ponte para a AP04 (momento aha da aula)</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li><strong>Segunda Skill da aula</strong> (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">extrair-receita-crm-lumina</code>) adicionada na sua conta Claude, disponível em qualquer Project futuro.</li>
+          <li><strong>Apuração executiva</strong> da receita real da semana 12&ndash;18 de maio de 2026 da Lumina, com 4 partes (3 tabelas + observação) gerada via invocação de 1 linha.</li>
+          <li>O <strong>CSV do CRM anexado na mesma conversa do Project</strong> &mdash; agora a conversa tem os 4 CSVs no contexto (3 de mídia da AP02 + 1 do CRM desta AP).</li>
+          <li>A <strong>outra metade da história</strong> da semana: receita real, atribuição first-click, por canal e por loja. O lado pixel veio na AP02; o lado contábil chegou agora.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo &mdash; o aha está chegando</div>
+        <p><strong>A outra metade da história está apurada.</strong> Pelo pixel (AP02), ROAS bateu meta. Pelo CRM (AP03), a receita real por canal está visível. Na <strong>AP04</strong> a terceira Skill cruza os dois lados e calcula o ROAS real vs ROAS reportado &mdash; é o <strong>momento aha da aula</strong>. A Nathália está a uma mensagem do número que ela vai levar para a reunião das 14h.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-marketing-lumina-ap03";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 10;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+data_pedido,canal_first_click,loja,qtd_pedidos,receita_total_brl,ticket_medio_brl
+2026-05-12,Paid Social,ecommerce,38,5396.0,142.0
+2026-05-12,Paid Search,ecommerce,18,2484.0,138.0
+2026-05-12,Organic Search,ecommerce,16,2320.0,145.0
+2026-05-12,Direct,ecommerce,14,2072.0,148.0
+2026-05-12,Email,ecommerce,9,1368.0,152.0
+2026-05-12,Organic Social,ecommerce,5,690.0,138.0
+2026-05-12,Paid Social,loja_sp,8,1344.0,168.0
+2026-05-12,Paid Search,loja_sp,4,700.0,175.0
+2026-05-12,Organic Search,loja_sp,3,516.0,172.0
+2026-05-12,Direct,loja_sp,12,1980.0,165.0
+2026-05-12,Paid Social,loja_rj,5,790.0,158.0
+2026-05-12,Direct,loja_rj,8,1296.0,162.0
+2026-05-13,Paid Social,ecommerce,42,6048.0,144.0
+2026-05-13,Paid Search,ecommerce,20,2800.0,140.0
+2026-05-13,Organic Search,ecommerce,18,2628.0,146.0
+2026-05-13,Direct,ecommerce,16,2384.0,149.0
+2026-05-13,Email,ecommerce,10,1530.0,153.0
+2026-05-13,Organic Social,ecommerce,6,840.0,140.0
+2026-05-13,Paid Social,loja_sp,9,1530.0,170.0
+2026-05-13,Paid Search,loja_sp,5,880.0,176.0
+2026-05-13,Direct,loja_sp,13,2158.0,166.0
+2026-05-13,Paid Social,loja_rj,6,954.0,159.0
+2026-05-13,Direct,loja_rj,9,1467.0,163.0
+2026-05-14,Paid Social,ecommerce,34,4760.0,140.0
+2026-05-14,Paid Search,ecommerce,15,2040.0,136.0
+2026-05-14,Organic Search,ecommerce,14,2002.0,143.0
+2026-05-14,Direct,ecommerce,12,1752.0,146.0
+2026-05-14,Email,ecommerce,7,1050.0,150.0
+2026-05-14,Organic Social,ecommerce,4,544.0,136.0
+2026-05-14,Paid Social,loja_sp,7,1162.0,166.0
+2026-05-14,Direct,loja_sp,11,1804.0,164.0
+2026-05-14,Paid Social,loja_rj,4,624.0,156.0
+2026-05-14,Direct,loja_rj,7,1120.0,160.0
+2026-05-15,Paid Social,ecommerce,48,7008.0,146.0
+2026-05-15,Paid Search,ecommerce,23,3266.0,142.0
+2026-05-15,Organic Search,ecommerce,21,3108.0,148.0
+2026-05-15,Direct,ecommerce,19,2869.0,151.0
+2026-05-15,Email,ecommerce,13,2015.0,155.0
+2026-05-15,Organic Social,ecommerce,8,1136.0,142.0
+2026-05-15,Paid Social,loja_sp,11,1892.0,172.0
+2026-05-15,Paid Search,loja_sp,6,1068.0,178.0
+2026-05-15,Organic Search,loja_sp,4,696.0,174.0
+2026-05-15,Direct,loja_sp,14,2352.0,168.0
+2026-05-15,Paid Social,loja_rj,7,1127.0,161.0
+2026-05-15,Direct,loja_rj,10,1650.0,165.0
+2026-05-16,Paid Social,ecommerce,54,7992.0,148.0
+2026-05-16,Paid Search,ecommerce,26,3744.0,144.0
+2026-05-16,Organic Search,ecommerce,24,3600.0,150.0
+2026-05-16,Direct,ecommerce,22,3366.0,153.0
+2026-05-16,Email,ecommerce,15,2355.0,157.0
+2026-05-16,Organic Social,ecommerce,10,1440.0,144.0
+2026-05-16,Paid Social,loja_sp,13,2262.0,174.0
+2026-05-16,Paid Search,loja_sp,7,1260.0,180.0
+2026-05-16,Organic Search,loja_sp,5,880.0,176.0
+2026-05-16,Direct,loja_sp,16,2720.0,170.0
+2026-05-16,Paid Social,loja_rj,8,1304.0,163.0
+2026-05-16,Paid Search,loja_rj,3,504.0,168.0
+2026-05-16,Direct,loja_rj,12,2004.0,167.0
+2026-05-17,Paid Social,ecommerce,30,4260.0,142.0
+2026-05-17,Paid Search,ecommerce,13,1794.0,138.0
+2026-05-17,Organic Search,ecommerce,12,1728.0,144.0
+2026-05-17,Direct,ecommerce,10,1470.0,147.0
+2026-05-17,Email,ecommerce,5,755.0,151.0
+2026-05-17,Organic Social,ecommerce,3,414.0,138.0
+2026-05-17,Paid Social,loja_sp,18,3168.0,176.0
+2026-05-17,Paid Search,loja_sp,8,1456.0,182.0
+2026-05-17,Organic Search,loja_sp,6,1068.0,178.0
+2026-05-17,Direct,loja_sp,22,3784.0,172.0
+2026-05-17,Paid Social,loja_rj,12,1980.0,165.0
+2026-05-17,Paid Search,loja_rj,5,850.0,170.0
+2026-05-17,Direct,loja_rj,16,2704.0,169.0
+2026-05-18,Paid Social,ecommerce,28,3920.0,140.0
+2026-05-18,Paid Search,ecommerce,11,1496.0,136.0
+2026-05-18,Organic Search,ecommerce,10,1430.0,143.0
+2026-05-18,Direct,ecommerce,9,1305.0,145.0
+2026-05-18,Email,ecommerce,4,596.0,149.0
+2026-05-18,Organic Social,ecommerce,3,408.0,136.0
