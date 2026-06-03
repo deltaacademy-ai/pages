@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05. Painel HTML Semanal &middot; Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:16px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  /* Variante para prompts longos — scroll vertical, conteúdo inteiro continua copiável */
+  .copy-block.long{max-height:480px;overflow-y:auto;padding-right:48px}
+  .copy-block.long::-webkit-scrollbar{width:6px}
+  .copy-block.long::-webkit-scrollbar-track{background:transparent}
+  .copy-block.long::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;z-index:2}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .feynman-box{background:var(--ficha-td1-bg);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0 12px}
+  .feynman-label{font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+  .feynman-box p{font-size:0.74rem;color:var(--text2);line-height:1.55}
+  .feynman-box p strong{color:var(--text);font-weight:700}
+  .glossario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media (max-width:640px){.glossario-grid{grid-template-columns:1fr}}
+  .glossario-item{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;box-shadow:var(--shadow-xs)}
+  .glossario-item .g-term{font-size:0.74rem;font-weight:800;color:var(--accent2);margin-bottom:3px;letter-spacing:-0.01em}
+  .glossario-item .g-def{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.glossario-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Painel HTML Semanal</h2>
+      <p>AP05 &middot; Marketing &mdash; Resultados de Mídia</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Artefato HTML<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Glossário rápido<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Prompt da demo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Skills 2026 &rsaquo; Marketing &mdash; Resultados de Mídia &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP05. Painel HTML Semanal</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP05 &mdash; A história da semana vira peça visual</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> painel HTML autocontido da semana 12&ndash;18 de maio de 2026 da Lumina &mdash; <strong>um único arquivo visual</strong>, dentro da identidade da marca, pronto para a Nathália abrir no notebook na reunião das 14h com o CMO.</p>
+
+      <p class="lead-text">A AP04 te entregou o reconciliation report em formato de tabela e bullets &mdash; números e narrativa, mas em prosa. Agora você vai pedir ao Claude para <strong>transformar tudo isso em peça visual única</strong>: hero metrics em destaque, gráfico comparativo pixel × real, comentário executivo formatado e recomendação em coral. O Claude vai gerar um arquivo HTML como artefato &mdash; pronto para baixar e apresentar.</p>
+
+      <div class="overview-card">
+        <h3>O que você sai com (8 seções do painel)</h3>
+        <ul>
+          <li><strong>Header</strong> com logo Lumina (SVG inline), título da semana e data de geração</li>
+          <li><strong>Hero metric row</strong> &mdash; 3 cards: ROAS real consolidado · Gap pixel → real · Status vs meta semanal</li>
+          <li><strong>Tabela reconciliation</strong> &mdash; pixel × real lado a lado, full-width, com gap absoluto e gap %</li>
+          <li><strong>Gráfico de barras</strong> pixel vs real para Meta e Google (SVG inline)</li>
+          <li><strong>Mix de canais</strong> no CRM (first-click) em donut ou tabela</li>
+          <li><strong>Highlight card</strong> sobre lojas físicas captando mídia paga digital</li>
+          <li><strong>Comentário executivo</strong> em 4 blocos com bullets (🎯 🔍 💎 🚀)</li>
+          <li><strong>Card destacado em coral</strong> com a recomendação única da semana</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática</td></tr>
+          <tr><td>Duração</td><td>15 minutos (atividade prática)</td></tr>
+          <tr><td>Pré-requisito</td><td>AP01 + AP02 + AP03 + AP04 concluídas &mdash; <strong>MESMA conversa do Project</strong> com os outputs das 3 Skills</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6 (plano gratuito atende)</td></tr>
+          <tr><td>Downloads</td><td>Nenhum &mdash; a AP é puro prompt</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a geração do painel) &middot; acumulado da aula: 4 de 5</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">O entregável da Nathália</div>
+        <p><strong>1 arquivo HTML autocontido.</strong> Abre em qualquer navegador. Identidade visual da Lumina aplicada. <strong>Pronto para a reunião das 14h.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">Pedir ao Claude para gerar um artefato HTML autocontido com a história da semana</div>
+
+      <p class="lead-text">Pedir ao Claude para gerar um <strong>artefato HTML autocontido</strong> que sintetize, em uma única peça visual, todos os números e narrativas geradas nas AP02, AP03 e AP04 &mdash; aplicando automaticamente a identidade visual da Lumina <strong>carregada no Project desde a AP01</strong>.</p>
+
+      <div class="overview-card">
+        <h3>O que isso destrava</h3>
+        <ul>
+          <li>Um artefato visual único pronto para o CMO &mdash; sem planilha, sem 4 anexos, sem &ldquo;copia isso pra mim&rdquo;</li>
+          <li>Identidade visual da marca aplicada automaticamente &mdash; vem do brand book da AP01</li>
+          <li>Domínio do padrão de <strong>prompt embutido</strong> para gerar peças visuais &mdash; reutilizável em qualquer Project futuro</li>
+          <li>4 horas de planilha viram 1 página de decisão executiva</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Claude como gerador de artefato HTML</div>
+      <div class="sec-desc">A diferença entre &ldquo;aqui estão os dados&rdquo; e &ldquo;aqui está a história da semana&rdquo;</div>
+
+      <p class="lead-text">O Claude pode fazer mais do que responder em texto. Quando você pede uma peça visual &mdash; página HTML, dashboard, relatório formatado &mdash; ele entrega um <strong>artefato HTML autocontido</strong>: um arquivo único, com CSS embutido, gráficos em SVG inline, pronto para abrir em qualquer navegador. Essa é uma <strong>capacidade padrão do Claude</strong>, disponível tanto no plano gratuito quanto no pago.</p>
+
+      <p class="lead-text">A diferença entre <strong>mandar uma planilha</strong> e <strong>mandar um painel HTML</strong> para o CMO é grande. A planilha pede que o CMO faça o trabalho de interpretar &mdash; onde está o número crítico? O que cada linha significa? O painel HTML faz o trabalho oposto: apresenta os números <strong>já interpretados</strong>, com o destaque visual no lugar certo, a recomendação no lugar de honra e a marca da empresa aplicada.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Mandar a planilha bruta</div>
+          <div class="compare-title">&ldquo;Excel com 4 abas, sem destaque, sem cor de marca&rdquo;</div>
+          <div class="compare-desc">O CMO precisa abrir, ler, filtrar, interpretar. Não há hierarquia visual entre &ldquo;número da semana&rdquo; e &ldquo;tráfego total do GA4&rdquo;. A discussão da reunião gasta tempo <strong>descobrindo o que olhar primeiro</strong>.</div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Mandar o painel HTML</div>
+          <div class="compare-title">&ldquo;Arquivo único, hero metrics em destaque, recomendação em coral&rdquo;</div>
+          <div class="compare-desc">O CMO abre uma única página e em <strong>10 segundos</strong> vê o ROAS real, o gap pixel × real e a recomendação da semana. A reunião começa direto na <strong>discussão do que fazer</strong>, não em descobrir o que aconteceu.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Glossário rápido</div>
+      <div class="sec-desc">7 termos para você não se perder em jargão nesta AP</div>
+
+      <p class="lead-text">Para acompanhar esta AP sem se perder em jargão, use estas definições curtas:</p>
+
+      <div class="glossario-grid">
+        <div class="glossario-item">
+          <div class="g-term">Artefato (no Claude)</div>
+          <div class="g-def">Qualquer arquivo gerado pelo Claude que aparece como uma <strong>janela separada</strong> na conversa, com botão de baixar. Pode ser HTML, código, documento. Feature padrão, disponível no plano gratuito.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">HTML autocontido</div>
+          <div class="g-def">Arquivo HTML com todo o CSS e os gráficos <strong>embutidos dentro dele</strong>, sem depender de arquivos externos. Abre em qualquer navegador, mesmo sem internet (exceto Google Fonts).</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">SVG inline</div>
+          <div class="g-def">Gráfico vetorial escrito <strong>diretamente dentro do HTML</strong> (em vez de ser um arquivo <code>.svg</code> separado). Permite barras, donuts e ícones sem carregar imagens externas.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Hero metric</div>
+          <div class="g-def">Número-protagonista do painel, exibido em fonte grande no topo. No painel da Lumina, o hero principal é o <strong>ROAS real consolidado</strong> da semana.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Identidade visual (brand book)</div>
+          <div class="g-def">Regras estéticas da marca &mdash; paleta, tipografia, princípios de design. Foi carregado no Project na AP01 (<code>identidade-visual-lumina.md</code>) e o Claude consulta <strong>automaticamente</strong>.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Painel executivo</div>
+          <div class="g-def">Arquivo único que mostra os números mais importantes de forma visual, pronto para apresentar à chefia em 30 segundos. Planilha pede interpretação; painel <strong>entrega interpretação</strong>.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Prompt embutido</div>
+          <div class="g-def">Prompt longo (50&ndash;100 linhas) que descreve detalhadamente ao Claude como gerar uma peça visual &mdash; estrutura, paleta, tipografia, conteúdo de cada seção. Diferente do prompt curto de Skill (1 linha), aqui o <strong>&ldquo;como&rdquo;</strong> é todo escrito.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que o professor vai demonstrar</div>
+      <div class="sec-desc">Prompt longo embutido + artefato HTML completo em ~2-3 minutos</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>O prompt da seção seguinte é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa testá-lo agora &mdash; sua própria atividade prática começa na seção 07.</p>
+      </div>
+
+      <p class="lead-text">O professor está na <strong>mesma conversa do Project</strong> onde já rodou as 3 Skills da aula (AP02, AP03 e AP04). Sem anexar nenhum arquivo novo, ele cola um <strong>prompt longo (~80 linhas)</strong> que descreve em detalhes a estrutura do painel desejado &mdash; seção por seção, com paleta, tipografia e comportamento visual.</p>
+
+      <p class="lead-text">Em ~2 a 3 minutos, o Claude gera um <strong>artefato HTML completo</strong>: aparece no canto direito da tela como uma &ldquo;janela visual&rdquo; com botão de baixar. O professor abre o artefato em tela cheia, percorre as 8 seções do painel (header → hero metrics → tabela reconciliation → gráfico → mix de canais → highlight lojas físicas → comentário em bullets → recomendação em coral → footer) e mostra que <strong>todos os números vieram da memória da conversa</strong> das APs anteriores. Nenhum dado foi reinventado.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> Prompt da demonstração</div>
+      <div class="sec-desc">~80 linhas &mdash; o prompt mais longo da aula (o aluno vai colá-lo na atividade prática)</div>
+
+      <p class="lead-text">Este é o prompt longo embutido &mdash; o aluno <strong>não precisa lê-lo</strong> durante a aula. Será exatamente o mesmo prompt que ele vai colar no Passo 02 da Atividade Prática. Role o bloco abaixo para ver o conteúdo completo:</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Prompt embutido do painel (preview)</span>
+        <div class="copy-block long" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Gere agora o PAINEL SEMANAL DE RESULTADOS DE MÍDIA — Semana 12-18 de maio de 2026 — como UM ÚNICO ARTEFATO HTML autocontido para a Lumina. O painel será aberto no navegador pela liderança às segundas-feiras de manhã.
+
+═══════════════════════════════════════════
+ESTRUTURA OBRIGATÓRIA DO PAINEL (top → bottom)
+═══════════════════════════════════════════
+
+1) HEADER — logo Lumina à esquerda (SVG inline: pequeno círculo verde-musgo vazado + "lumina" em lowercase serifada), título "Resultados de Mídia · Semana 12–18 mai 2026" centralizado, data de geração à direita.
+
+2) HERO METRIC ROW — 3 cards grandes lado a lado:
+   - Card 1: ROAS REAL CONSOLIDADO — número grande (60-80px), abaixo "vs ROAS pixel: 3.80x" em cinza
+   - Card 2: GAP PIXEL → REAL — em % (ex: −44%), abaixo "Pixel reportou R$ 145.396, CRM real R$ 81.863"
+   - Card 3: STATUS VS META SEMANAL — IMPORTANTE: NÃO usar apenas cor verde/amarelo/vermelho. Usar texto explícito "META BATIDA EM X%" (verde) ou "DENTRO DA META — X%" (amarelo) ou "ABAIXO DA META EM X%" (vermelho). Abaixo do texto, listar as metas batidas em bullets pequenos (ex: "✓ ROAS real total batido em 7%", "✓ Meta isolado batido em 14%", "✗ Google isolado abaixo em 7%").
+
+3) RECONCILIATION TABLE — tabela do reconciliation da AP04, full-width, linhas finas, cabeçalho em verde-musgo, números à direita, valores monetários formatados.
+
+4) GRÁFICO DE BARRAS PIXEL vs REAL POR PLATAFORMA — barras horizontais simples, Meta e Google, 2 barras por plataforma (pixel + real), legendado.
+
+5) MIX DE CANAIS NO CRM (first-click) — donut chart ou tabela simples com % por canal de aquisição. Destacar Paid Social vs Direct/Organic.
+
+6) CANAIS PAGOS NAS LOJAS FÍSICAS — pequeno highlight card: "X% dos pedidos das lojas físicas começou em mídia paga digital — invisível no pixel".
+
+7) COMENTÁRIO EXECUTIVO — IMPORTANTE: NÃO usar texto corrido. Usar 4 blocos, cada bloco com título em destaque + bullets curtos:
+
+   🎯 O número da semana
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+
+   🔍 Por que o pixel está superestimando
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+   • [bullet 3 — máximo 2 frases]
+
+   💎 Onde está o ouro escondido
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+
+   🚀 Recomendação para a próxima semana
+   • [APENAS 1 bullet com uma recomendação concreta — máximo 3 frases]
+
+8) FOOTER — pequena nota "Atribuição CRM: first-click | Geração: Claude · Lumina Performance"
+
+═══════════════════════════════════════════
+DIRETRIZES DE DESIGN (NÃO VIOLAR)
+═══════════════════════════════════════════
+- Paleta: #FBF9F5 (fundo) / #5C7A5A (verde-musgo, primária) / #C97A5A (coral, destaque) / #8A857D (cinza-taupe, textos secundários) / #1F2A26 (textos primários) / #D4DDC9 (fundos suaves)
+- Tipografia: Fraunces para títulos (Google Fonts), Inter para corpo (Google Fonts)
+- Linhas finas (1px máximo). Sem bordas grossas. Sem sombras pesadas.
+- Muito espaço negativo entre seções (mínimo 64px)
+- Números grandes para hero metrics
+- Tabelas sem grid visível — só linha fina horizontal entre linhas
+- Mobile-friendly mas otimizado para 1280px de largura
+
+═══════════════════════════════════════════
+TÉCNICO
+═══════════════════════════════════════════
+- HTML autocontido (CSS inline, sem dependências externas exceto Google Fonts)
+- Gráficos em SVG inline (sem libs de chart)
+- Pronto para abrir no navegador local
+
+Use TODOS os números das tabelas geradas pelas Skills nas mensagens anteriores. Não invente. Não use dados ilustrativos.</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">5 padrões que mostram como funciona um prompt embutido + artefato HTML</div>
+
+      <ul class="observation-list">
+        <li><strong>Prompt longo (~80 linhas) e específico.</strong> Diferente do prompt curto de invocação de Skill (1 linha). Aqui o aluno está fazendo o papel de &ldquo;diretor de arte&rdquo;: descreve estrutura, paleta, tipografia e cada seção. <strong>Quanto mais específico, mais previsível o output.</strong></li>
+        <li><strong>Claude não recebe arquivo anexado.</strong> Assim como na AP04, ele puxa os números da memória da conversa (outputs das 3 Skills anteriores). O brand book carregado no Project na AP01 entra automaticamente no momento de aplicar paleta e tipografia.</li>
+        <li><strong>O artefato aparece como janela visual no canto direito</strong> com botão de baixar. É a mesma feature que o Claude usa para gerar qualquer arquivo (HTML, código, documento) &mdash; disponível no plano gratuito.</li>
+        <li><strong>Tempo de geração maior</strong> que nas APs anteriores (~2&ndash;3 minutos vs ~30&ndash;60 segundos das Skills). É o custo do tamanho do output &mdash; o HTML completo tem centenas de linhas.</li>
+        <li><strong>O painel respeita a identidade visual da Lumina</strong> porque o arquivo <code>identidade-visual-lumina.md</code> foi carregado no Project na AP01. Se a paleta no painel saiu errada, o problema provavelmente está naquele arquivo de contexto, não no prompt.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Sua atividade prática</div>
+      <div class="sec-desc">15 minutos &middot; 5 passos &middot; puro prompt &mdash; nenhum download nesta AP</div>
+
+      <p class="lead-text">Você vai pedir ao Claude para gerar o <strong>painel HTML semanal da Lumina</strong> na mesma conversa do Project. <strong>Não vai instalar nenhuma Skill nova nem anexar nenhum arquivo</strong> &mdash; o Claude vai usar os números das mensagens anteriores (AP02, AP03 e AP04) e o brand book carregado no Project.</p>
+
+      <div class="overview-card">
+        <h3>Ficha da atividade</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Duração estimada</td><td>15 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
+          <tr><td>Plano necessário</td><td>Gratuito (artefato HTML é feature padrão do Claude)</td></tr>
+          <tr><td>Downloads</td><td>Nenhum &mdash; tudo está no prompt do Passo 02</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a geração do painel no Passo 02)</td></tr>
+          <tr><td>Total acumulado da aula</td><td>4 de 5 mensagens reservadas</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que o prompt é tão longo nesta AP</div>
+        <p>Nas AP02, AP03 e AP04 você usou prompts de 1 linha porque as Skills carregam as instruções detalhadas. Nesta AP <strong>não tem Skill</strong> &mdash; o &ldquo;como gerar o painel&rdquo; está todo escrito dentro do prompt. Essa é a <strong>forma original</strong> de pedir ao Claude para gerar peças visuais: você escreve as regras (estrutura, paleta, tipografia) e o Claude executa. Skills são apenas a versão &ldquo;embalada&rdquo; desse mesmo padrão.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
+      <div class="sec-desc">5 passos &mdash; confirmar conversa, colar prompt longo, aguardar, validar e baixar</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Confirme que você está na mesma conversa do Project</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Artefato (no Claude):</strong> qualquer arquivo gerado pelo Claude que aparece como uma janela separada na conversa, com botão de baixar. Pode ser HTML, código, documento. É uma feature padrão do Claude &mdash; disponível inclusive no plano gratuito.</p>
+          </div>
+          <p class="step-card-desc">Antes de disparar o prompt do painel, confirme visualmente:</p>
+          <ul class="check-list">
+            <li>A aba aberta do Claude está dentro do Project <strong>&ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong>.</li>
+            <li>A conversa atual mostra no histórico os outputs da <strong>AP02</strong> (consolidação de mídia), <strong>AP03</strong> (receita do CRM) e <strong>AP04</strong> (reconciliation report).</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; histórico da conversa é o ativo desta AP</div>
+            <p>Se você fechou ou recarregou a conversa do Project entre a AP04 e agora, o Claude <strong>não vai ter acesso</strong> aos números do reconciliation e o painel sai errado. Nesse caso, você precisa refazer AP02, AP03 e AP04 antes de continuar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Cole o prompt do painel</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Prompt embutido:</strong> prompt longo (50&ndash;100 linhas) que descreve detalhadamente ao Claude como gerar uma peça visual. Diferente do prompt curto de invocação de Skill (1 linha), aqui o <strong>&ldquo;como&rdquo; está todo escrito</strong> dentro do próprio prompt.</p>
+          </div>
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> abaixo para copiar o prompt completo do painel (~80 linhas). Cole no campo de mensagem da conversa do Project e envie.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt embutido do painel</span>
+            <div class="copy-block long" id="painel-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('painel-prompt-text').textContent)">Copiar</button>
+<span id="painel-prompt-text">Gere agora o PAINEL SEMANAL DE RESULTADOS DE MÍDIA — Semana 12-18 de maio de 2026 — como UM ÚNICO ARTEFATO HTML autocontido para a Lumina. O painel será aberto no navegador pela liderança às segundas-feiras de manhã.
+
+═══════════════════════════════════════════
+ESTRUTURA OBRIGATÓRIA DO PAINEL (top → bottom)
+═══════════════════════════════════════════
+
+1) HEADER — logo Lumina à esquerda (SVG inline: pequeno círculo verde-musgo vazado + "lumina" em lowercase serifada), título "Resultados de Mídia · Semana 12–18 mai 2026" centralizado, data de geração à direita.
+
+2) HERO METRIC ROW — 3 cards grandes lado a lado:
+   - Card 1: ROAS REAL CONSOLIDADO — número grande (60-80px), abaixo "vs ROAS pixel: 3.80x" em cinza
+   - Card 2: GAP PIXEL → REAL — em % (ex: −44%), abaixo "Pixel reportou R$ 145.396, CRM real R$ 81.863"
+   - Card 3: STATUS VS META SEMANAL — IMPORTANTE: NÃO usar apenas cor verde/amarelo/vermelho. Usar texto explícito "META BATIDA EM X%" (verde) ou "DENTRO DA META — X%" (amarelo) ou "ABAIXO DA META EM X%" (vermelho). Abaixo do texto, listar as metas batidas em bullets pequenos (ex: "✓ ROAS real total batido em 7%", "✓ Meta isolado batido em 14%", "✗ Google isolado abaixo em 7%").
+
+3) RECONCILIATION TABLE — tabela do reconciliation da AP04, full-width, linhas finas, cabeçalho em verde-musgo, números à direita, valores monetários formatados.
+
+4) GRÁFICO DE BARRAS PIXEL vs REAL POR PLATAFORMA — barras horizontais simples, Meta e Google, 2 barras por plataforma (pixel + real), legendado.
+
+5) MIX DE CANAIS NO CRM (first-click) — donut chart ou tabela simples com % por canal de aquisição. Destacar Paid Social vs Direct/Organic.
+
+6) CANAIS PAGOS NAS LOJAS FÍSICAS — pequeno highlight card: "X% dos pedidos das lojas físicas começou em mídia paga digital — invisível no pixel".
+
+7) COMENTÁRIO EXECUTIVO — IMPORTANTE: NÃO usar texto corrido. Usar 4 blocos, cada bloco com título em destaque + bullets curtos:
+
+   🎯 O número da semana
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+
+   🔍 Por que o pixel está superestimando
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+   • [bullet 3 — máximo 2 frases]
+
+   💎 Onde está o ouro escondido
+   • [bullet 1 — máximo 2 frases]
+   • [bullet 2 — máximo 2 frases]
+
+   🚀 Recomendação para a próxima semana
+   • [APENAS 1 bullet com uma recomendação concreta — máximo 3 frases]
+
+8) FOOTER — pequena nota "Atribuição CRM: first-click | Geração: Claude · Lumina Performance"
+
+═══════════════════════════════════════════
+DIRETRIZES DE DESIGN (NÃO VIOLAR)
+═══════════════════════════════════════════
+- Paleta: #FBF9F5 (fundo) / #5C7A5A (verde-musgo, primária) / #C97A5A (coral, destaque) / #8A857D (cinza-taupe, textos secundários) / #1F2A26 (textos primários) / #D4DDC9 (fundos suaves)
+- Tipografia: Fraunces para títulos (Google Fonts), Inter para corpo (Google Fonts)
+- Linhas finas (1px máximo). Sem bordas grossas. Sem sombras pesadas.
+- Muito espaço negativo entre seções (mínimo 64px)
+- Números grandes para hero metrics
+- Tabelas sem grid visível — só linha fina horizontal entre linhas
+- Mobile-friendly mas otimizado para 1280px de largura
+
+═══════════════════════════════════════════
+TÉCNICO
+═══════════════════════════════════════════
+- HTML autocontido (CSS inline, sem dependências externas exceto Google Fonts)
+- Gráficos em SVG inline (sem libs de chart)
+- Pronto para abrir no navegador local
+
+Use TODOS os números das tabelas geradas pelas Skills nas mensagens anteriores. Não invente. Não use dados ilustrativos.</span></div>
+          </div>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> o botão <strong>Copiar</strong> copia o conteúdo inteiro do prompt &mdash; mesmo a parte que não está visível pela barra de rolagem. Confirme no campo de mensagem do Claude que o prompt completo foi colado antes de enviar.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Aguarde a geração do artefato</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>HTML autocontido:</strong> arquivo HTML que tem todo o CSS e os gráficos <strong>embutidos dentro dele</strong>, sem depender de arquivos externos. Abre em qualquer navegador, em qualquer computador, mesmo sem internet (exceto Google Fonts).</p>
+          </div>
+          <p class="step-card-desc">O Claude vai começar a gerar o painel. Esta é a AP com a geração mais demorada da aula &mdash; aproximadamente <strong>2 a 3 minutos</strong>, porque o HTML completo tem centenas de linhas de código.</p>
+          <p class="step-card-desc"><strong>Durante a geração, você verá:</strong></p>
+          <ul class="check-list">
+            <li>Uma <strong>janela visual aparece no lado direito</strong> da tela (é o artefato HTML sendo construído).</li>
+            <li>O conteúdo da janela vai se preenchendo progressivamente &mdash; primeiro o header, depois as seções, depois o comentário.</li>
+            <li>O Claude pode mostrar texto no chat principal entre as gerações &mdash; isso é normal.</li>
+          </ul>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> não recarregue a página, não feche a aba. Aguarde até o artefato aparecer completo, com botão de baixar visível.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Valide o painel gerado</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Identidade visual (brand book):</strong> conjunto de regras estéticas de uma marca &mdash; paleta de cores, tipografia, princípios de design. Foi carregado no Project na AP01 (<code>identidade-visual-lumina.md</code>) e o Claude consulta automaticamente ao gerar o painel.</p>
+          </div>
+          <p class="step-card-desc">Confira se o painel gerado tem as <strong>8 seções esperadas</strong>, na ordem:</p>
+          <ul class="check-list">
+            <li><strong>Header</strong> com logo Lumina (SVG inline: círculo verde-musgo + tipografia serifada), título da semana e data.</li>
+            <li><strong>3 hero cards</strong> em destaque: ROAS real consolidado &middot; Gap pixel → real &middot; Status vs meta semanal.</li>
+            <li><strong>Tabela reconciliation</strong> full-width com pixel × real lado a lado, gap absoluto e gap % visíveis.</li>
+            <li><strong>Gráfico de barras</strong> comparando pixel × real para Meta e Google (4 barras totais).</li>
+            <li><strong>Mix de canais no CRM</strong> em donut ou tabela com percentuais por canal first-click.</li>
+            <li><strong>Highlight card</strong> sobre lojas físicas captando mídia paga digital.</li>
+            <li><strong>Comentário executivo em bullets</strong> &mdash; 4 blocos com 🎯 🔍 💎 🚀, NÃO em texto corrido.</li>
+            <li><strong>Card destacado em coral</strong> com a recomendação única da semana.</li>
+            <li><strong>Footer</strong> com nota de atribuição first-click.</li>
+          </ul>
+          <p class="step-card-desc"><strong>Validações da identidade visual:</strong></p>
+          <ul class="observation-list">
+            <li>Verde-musgo <code>#5C7A5A</code> como cor primária do painel.</li>
+            <li>Coral <code>#C97A5A</code> no card da recomendação (chamada visual).</li>
+            <li>Fundo branco quente <code>#FBF9F5</code> (não branco puro).</li>
+            <li>Tipografia <strong>Fraunces</strong> (serifada) nos títulos, <strong>Inter</strong> (sans-serif) no corpo.</li>
+            <li>Linhas finas, espaçamento generoso entre seções.</li>
+          </ul>
+          <p class="step-card-desc"><strong>Validações dos números</strong> (vêm da memória da conversa &mdash; devem coincidir com AP04):</p>
+          <ul class="observation-list">
+            <li><strong>ROAS real consolidado:</strong> 2,14x</li>
+            <li><strong>Gap pixel → real:</strong> −44%</li>
+            <li><strong>ROAS real Meta:</strong> 2,28x (acima da meta)</li>
+            <li><strong>ROAS real Google:</strong> 1,86x (abaixo da meta)</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; não refine o artefato nesta aula</div>
+            <p>Se algum elemento visual saiu fora do padrão (cor errada, comentário em texto corrido, mais de 1 bullet na recomendação), você <em>pode</em> pedir ao Claude para refinar o artefato &mdash; mas isso consumiria mais uma mensagem. <strong>Para esta aula, aceite o resultado da primeira geração</strong> e siga para o Passo 05. Em uso real na sua empresa, você refinaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Baixe o painel HTML</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no botão <strong>Baixar</strong> no canto superior direito do artefato. O arquivo será salvo na pasta de Downloads do seu computador com nome como <code>painel-resultados-midia-lumina.html</code> ou similar.</p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> abra o arquivo no seu navegador (Chrome, Safari, Firefox) com <strong>duplo-clique</strong> no arquivo baixado. Confirme que:</p>
+          <ul class="check-list">
+            <li>As fontes do Google (Fraunces e Inter) <strong>carregam corretamente</strong> &mdash; pode demorar 1&ndash;2 segundos na primeira abertura.</li>
+            <li>O layout não quebra em desktop (1280px ou mais).</li>
+            <li>Os números, gráficos e cards aparecem como você viu no artefato dentro do Claude.</li>
+            <li>Você consegue <strong>enviar este arquivo por e-mail ou Slack</strong> sem precisar de nenhum outro arquivo anexo &mdash; ele é totalmente autocontido.</li>
+          </ul>
+          <p class="step-card-desc">Pronto. Este é o painel da semana &mdash; exatamente o que a Nathália abriria no notebook para a reunião das 14h com o CMO.</p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Painel pronto + ponte para a AP06 (automação semanal)</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Um <strong>arquivo HTML autocontido</strong> com o painel semanal de Resultados de Mídia da Lumina &mdash; pronto para abrir em qualquer navegador, mesmo sem internet (exceto Google Fonts).</li>
+          <li><strong>Identidade visual da marca aplicada automaticamente</strong> &mdash; paleta verde-musgo + coral + branco quente, tipografia Fraunces + Inter, espaço negativo e linhas finas. Tudo veio do brand book carregado no Project na AP01.</li>
+          <li><strong>Domínio do padrão de prompt embutido</strong> para gerar artefatos visuais &mdash; você sabe como descrever uma peça em texto para o Claude executar.</li>
+          <li>A <strong>história da semana em uma única página</strong> &mdash; pronta para enviar à liderança da Lumina por Slack ou e-mail.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo &mdash; falta a última peça</div>
+        <p><strong>Em 15 minutos, a Nathália transformou 4 horas de planilha em 1 página de decisão executiva.</strong> O painel está pronto, a recomendação destacada em coral, a história da semana num único arquivo. Falta uma última peça do quebra-cabeça: <strong>fazer isso tudo rodar sozinho toda segunda-feira às 8h</strong>. Na <strong>AP06</strong> você configura a automação semanal via Claude Cowork (plano pago) ou recebe o playbook manual equivalente (plano gratuito) &mdash; fechando o pipeline completo da aula.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-marketing-lumina-ap05";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 10;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
