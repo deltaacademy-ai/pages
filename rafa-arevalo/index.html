@@ -242,17 +242,11 @@
         <span class="modulo-meta">1 aula · junho 2026</span>
       </div>
       <div class="modulo-head-actions" onclick="event.stopPropagation()">
-        <button class="mod-icon-btn" id="eye-mod-03" title="Ver senha"
-          onclick="toggleSenha(this, 'delta2026', 'senha-mod-03')">
-          <svg viewBox="0 0 24 24">
-            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-          </svg>
-        </button>
-        <span class="mod-senha-reveal" id="senha-mod-03" style="display:none">
-          <span class="senha-label">Senha</span>delta2026
+        <span class="mod-senha-reveal" style="background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2)">
+          <span class="senha-label">Acesso</span>Aberto
         </span>
         <button class="mod-action-btn"
-          onclick="copyMsg(this, 'Marketing — Análise de Resultados de Mídia', 'https://tutoriais.deltaacademy.ai/rafa-arevalo/marketing-analise-de-resultados-de-midia/', 'delta2026')">
+          onclick="copyMsg(this, 'Marketing — Análise de Resultados de Mídia', 'https://tutoriais.deltaacademy.ai/rafa-arevalo/marketing-analise-de-resultados-de-midia/', '')">
           <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           Copiar Mensagem
         </button>
@@ -324,18 +318,21 @@
   }
 
   function copyMsg(btn, titulo, url, senha) {
+    const linhaSenhaPlain = senha ? ('\n\nSenha de acesso: ' + senha) : '';
+    const linhaSenhaHtml  = senha
+      ? '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">'
+        + 'Senha de acesso: <strong>' + senha + '</strong></p>'
+      : '';
     const plain =
       'Conteúdo da aula: ' + titulo + '\n\n' +
-      'Clique para acessar:\n' + url + '\n\n' +
-      'Senha de acesso: ' + senha;
+      'Clique para acessar:\n' + url + linhaSenhaPlain;
     const html =
       '<p style="font-family:sans-serif;font-size:15px;color:#1A1A1A">' +
       '<strong>' + titulo + '</strong></p>' +
       '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">' +
       '<a href="' + url + '" style="color:#1F3331;font-weight:600">' +
       'Clique aqui para acessar: ' + titulo + '</a></p>' +
-      '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">' +
-      'Senha de acesso: <strong>' + senha + '</strong></p>';
+      linhaSenhaHtml;
     try {
       navigator.clipboard.write([
         new ClipboardItem({
