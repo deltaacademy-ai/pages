@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Setup do Project &middot; Resultados de Mídia &middot; Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
+  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  [data-palette="dusk"] .inst-num{background:var(--green-light);color:var(--green)}
+  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
+  .inst-text strong{font-weight:700;color:var(--accent2)}
+  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .tool-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  .tool-link{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;text-decoration:none;transition:all 0.15s;box-shadow:var(--shadow-xs)}
+  .tool-link:hover{border-color:var(--accent);box-shadow:var(--shadow-sm);transform:translateY(-1px)}
+  .tool-link .tl-name{font-size:0.78rem;font-weight:700;color:var(--accent2)}
+  .tool-link .tl-url{font-size:0.64rem;color:var(--text3);margin-top:1px}
+  .download-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.download-grid{grid-template-columns:1fr}}
+  .dl-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;box-shadow:var(--shadow-xs);display:flex;flex-direction:column;gap:10px}
+  .dl-head{display:flex;align-items:center;gap:10px}
+  .dl-icon{width:34px;height:34px;border-radius:8px;background:var(--accent-lighter);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent2)}
+  .dl-icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.74rem;font-weight:600;color:var(--text);word-break:break-all}
+  .dl-desc{font-size:0.7rem;color:var(--text2);line-height:1.45}
+  .dl-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--accent2);color:var(--bg);font-family:'Montserrat',system-ui,sans-serif;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:8px 14px;border-radius:6px;text-decoration:none;border:1px solid var(--accent2);transition:all 0.15s;align-self:flex-start}
+  .dl-btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .dl-btn svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.tool-links{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Setup do Project &middot; Lumina</h2>
+      <p>AP01 &middot; Marketing &mdash; Resultados de Mídia</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Project como contexto<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Prompt comparativo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Skills 2026 &rsaquo; Marketing &mdash; Resultados de Mídia &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP01. Setup do Project</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP01 &mdash; Setup do Project &ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> um Claude Project configurado e pronto para receber as 3 Skills das próximas APs &mdash; o ambiente onde a Nathália Raoli (Head de Marketing da Lumina) vai operar toda segunda-feira de manhã para fechar a análise da semana.</p>
+
+      <div class="overview-card">
+        <h3>O que você sai com</h3>
+        <ul>
+          <li><strong>Identificação:</strong> nome, descrição e regra de atribuição contábil first-click via CRM</li>
+          <li><strong>Instruções (System Prompt):</strong> identidade do analista, regras de atribuição, stack de 3 Skills, identidade visual da marca</li>
+          <li><strong>Arquivos de contexto:</strong> <code>plano-de-midia-lumina-mai2026.md</code> e <code>identidade-visual-lumina.md</code></li>
+          <li><strong>Zero mensagens consumidas:</strong> as 5 mensagens do plano gratuito ficam reservadas para as AP02 a AP06</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática</td></tr>
+          <tr><td>Duração</td><td>12 minutos (atividade prática)</td></tr>
+          <tr><td>Ferramenta</td><td>Claude (claude.ai)</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6 (plano gratuito atende)</td></tr>
+          <tr><td>Consumo de mensagens</td><td>Zero &mdash; puro setup via interface</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">Por que configurar um Project antes de qualquer análise</div>
+
+      <p class="lead-text">Configurar um Claude Project que carregue <strong>permanentemente</strong> o contexto da operação de mídia da Lumina &mdash; budget, metas, regras de atribuição, identidade visual &mdash; para que toda análise futura comece já briefada, <strong>sem precisar reexplicar nada toda segunda-feira</strong>.</p>
+
+      <div class="overview-card">
+        <h3>O que isso destrava</h3>
+        <ul>
+          <li>Análises que comparam com a meta real (ROAS 3.5x pixel, 2.0x CRM) em vez de números genéricos</li>
+          <li>Outputs no formato Lumina (tabela + 1 frase de &ldquo;o que isso significa&rdquo;) por padrão</li>
+          <li>Linguagem executiva, sem explicar termos básicos para um profissional de marketing</li>
+          <li>Atribuição first-click via CRM sempre separada do que o pixel reporta &mdash; sem confusão de fonte</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Project como ambiente que carrega contexto permanente</div>
+      <div class="sec-desc">A diferença entre freelancer e analista interno</div>
+
+      <p class="lead-text">Conversar com o Claude em um chat solto é como <strong>contratar um analista freelancer toda segunda-feira</strong>: o profissional é competente, mas começa do zero. Você precisa explicar o que é a Lumina, quais são os canais, quanto é o budget, qual a meta de ROAS, qual a identidade visual da marca. A cada nova conversa, o mesmo briefing.</p>
+
+      <p class="lead-text">Um <strong>Project</strong> resolve isso de forma permanente. Você configura o contexto uma vez &mdash; descrição da empresa, regras de atribuição, identidade visual, arquivos de referência &mdash; e o Claude carrega tudo automaticamente em cada nova conversa dentro daquele Project. É a diferença entre freelancer e analista interno: o segundo já chega sabendo onde o cafezinho fica.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Chat solto, sem Project</div>
+          <div class="compare-title">&ldquo;Analise este export do Meta Ads da semana 12-18 mai&rdquo;</div>
+          <div class="compare-desc">Resposta genérica. Claude calcula CTR e CPM, mas <strong>não sabe qual o budget alvo</strong>, não conhece a meta de ROAS, não sabe se o resultado é bom ou ruim para a Lumina. Faltam todos os ganchos contextuais.</div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Mesma planilha dentro do Project</div>
+          <div class="compare-title">Mesmo prompt curto, agora dentro do Project Lumina</div>
+          <div class="compare-desc">Resposta executiva. Claude compara com o <strong>budget mensal de R$ 164k</strong>, sinaliza se bateu a meta de ROAS, menciona o lançamento de whey daquela semana, e devolve já no formato padrão da Lumina. Pronto pra reunião.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">03.</span> O que o professor vai demonstrar</div>
+      <div class="sec-desc">Duas análises consecutivas com o mesmo prompt</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>O prompt da seção seguinte é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa testá-lo agora &mdash; sua própria atividade prática começa na seção 06.</p>
+      </div>
+
+      <p class="lead-text">O professor mostra ao vivo a mesma planilha (export de Meta Ads da Lumina) sendo analisada de dois jeitos diferentes:</p>
+
+      <div class="overview-card">
+        <h3>Sequência da demo</h3>
+        <ul>
+          <li>Em um <strong>chat solto</strong> (sem Project) &mdash; você vê a resposta genérica</li>
+          <li>Em um <strong>Project com contexto carregado</strong> &mdash; você vê a resposta executiva</li>
+        </ul>
+        <p style="margin-top:10px">A diferença é dramática mesmo o prompt sendo idêntico.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> Prompt comparativo da demonstração</div>
+      <div class="sec-desc">O mesmo prompt, rodado em duas conversas separadas</div>
+
+      <p class="lead-text">O mesmo prompt curto é rodado em duas conversas separadas &mdash; uma sem Project, outra dentro do Project Lumina já configurado. A única variável é o contexto carregado.</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Prompt da demonstração</span>
+        <div class="copy-block" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Analise este export do Meta Ads da Lumina referente à semana de 12 a 18 de maio de 2026. Resuma o que aconteceu na semana e diga se a performance foi boa.</span></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Dica do professor</div>
+        <p>Rode o prompt no chat solto primeiro &mdash; o output curto cabe na tela e dá tempo de comparar com o output do Project lado a lado. Quando entrar no Project, mantenha a janela do chat solto visível para os alunos verem a diferença em tempo real.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">6 padrões visíveis ao comparar os dois outputs</div>
+
+      <ul class="observation-list">
+        <li><strong>Sem Project, sem meta.</strong> O Claude diz &ldquo;ROAS de 3.8x é geralmente considerado bom&rdquo;, sem referência da Lumina.</li>
+        <li><strong>Sem Project, explica termos básicos.</strong> CTR, CPM, ROAS &mdash; tudo é explicado, como se o usuário fosse leigo.</li>
+        <li><strong>Com Project, compara com a meta mensal.</strong> ROAS 3.5x pixel é o piso aceito &mdash; aparece automaticamente.</li>
+        <li><strong>Com Project, menciona o lançamento de whey.</strong> O evento de maio está carregado no plano de mídia.</li>
+        <li><strong>Com Project, devolve no formato padrão Lumina.</strong> Tabela + 1 frase de &ldquo;o que isso significa&rdquo;.</li>
+        <li><strong>A diferença não está no prompt.</strong> Está no contexto que foi configurado uma vez e está disponível para sempre.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> Sua atividade prática</div>
+      <div class="sec-desc">12 minutos &middot; setup puro via interface &middot; zero mensagens consumidas</div>
+
+      <p class="lead-text">Você vai configurar o <strong>Project &ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong> copiando 3 blocos de texto prontos e fazendo upload de 2 arquivos de contexto. Esta AP <strong>não envia nenhuma mensagem ao Claude</strong> &mdash; é puro setup via interface.</p>
+
+      <div class="overview-card">
+        <h3>Ficha da atividade</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Duração estimada</td><td>12 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
+          <tr><td>Plano necessário</td><td>Gratuito (Sonnet 4.6 é o modelo padrão do plano free)</td></tr>
+          <tr><td>Mensagens consumidas</td><td>Zero &mdash; apenas preenchimento de campos e upload</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que esta AP não consome mensagens</div>
+        <p>O plano gratuito do Claude permite cerca de <strong>5 mensagens a cada 5 horas</strong>. Esta aula foi calibrada para caber exatamente nesse limite: as 5 mensagens ficam reservadas para as <strong>AP02 a AP06</strong>, onde o Claude processa dados e gera outputs. A AP01 é apenas configuração &mdash; você preenche campos e faz upload, sem disparar processamento.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Passo a passo</div>
+      <div class="sec-desc">7 passos &mdash; copiar 3 blocos, baixar e subir 2 arquivos</div>
+
+      <div class="instructions">
+        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Acesse a área de Projects do Claude.</strong> <span class="time">(30 seg)</span><br>Abra <code>claude.ai</code>, faça login e clique em <strong>Projetos</strong> no menu lateral. Depois clique em <strong>+ Novo projeto</strong>.</div></div>
+        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Cole o Nome do Project</strong> no campo &ldquo;No que você está trabalhando?&rdquo;. <span class="time">(20 seg)</span><br>O bloco para copiar está logo abaixo deste passo a passo, identificado como <strong>Bloco A &mdash; Nome</strong>.</div></div>
+        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Cole a Descrição do Project</strong> no campo &ldquo;O que você quer realizar?&rdquo;. <span class="time">(30 seg)</span><br>Use o <strong>Bloco B &mdash; Descrição</strong>. Depois clique em <strong>Criar projeto</strong>.</div></div>
+        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Abra o editor de Instruções.</strong> <span class="time">(30 seg)</span><br>Na tela do Project, localize a seção <strong>Instruções</strong> e clique em <strong>Editar instruções</strong>.</div></div>
+        <div class="inst"><div class="inst-num">5</div><div class="inst-text"><strong>Cole as Instruções do Project</strong> &mdash; é o System Prompt. <span class="time">(1 min)</span><br>Use o <strong>Bloco C &mdash; Instruções</strong> (mais longo, ~600 palavras). Cole tudo e clique em <strong>Salvar instruções</strong>.</div></div>
+        <div class="inst"><div class="inst-num">6</div><div class="inst-text"><strong>Baixe os 2 arquivos de contexto.</strong> <span class="time">(30 seg)</span><br>Use os botões de download mais abaixo, na seção <strong>Arquivos de contexto para download</strong>. Os 2 arquivos vão para sua pasta de Downloads.</div></div>
+        <div class="inst"><div class="inst-num">7</div><div class="inst-text"><strong>Faça upload dos 2 arquivos no Project.</strong> <span class="time">(1 min)</span><br>Volte ao Project, abra a seção <strong>Arquivos</strong>, clique em <strong>+</strong> &rarr; <strong>Carregar do aparelho</strong> e selecione os 2 arquivos. Confirme que aparecem listados.</div></div>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante &mdash; System Prompt</div>
+        <p>O conteúdo das <strong>Instruções</strong> (Bloco C) é o System Prompt do Project &mdash; ele define a identidade e as regras que o Claude vai seguir em todas as conversas deste Project. É a peça mais valiosa do setup.</p>
+      </div>
+
+      <h3 style="font-size:0.9rem;font-weight:800;color:var(--text);margin:24px 0 8px;text-transform:uppercase;letter-spacing:0.1em">Blocos para copiar</h3>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Bloco A &mdash; Nome do Project</span>
+        <div class="copy-block" id="bloco-a">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-a-text').textContent)">Copiar</button>
+<span id="bloco-a-text">Resultados de Mídia — Lumina</span></div>
+      </div>
+
+      <div class="copy-wrap" style="margin-top:22px">
+        <span class="copy-label">Bloco B &mdash; Descrição do Project</span>
+        <div class="copy-block" id="bloco-b">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-b-text').textContent)">Copiar</button>
+<span id="bloco-b-text">Project para análise semanal de performance de mídia paga da Lumina. Toda segunda-feira de manhã consolida Meta Ads + Google Ads + GA4 + CRM da semana anterior, apura ROAS real via atribuição first-click e gera painel HTML executivo + comentário para o CMO.</span></div>
+      </div>
+
+      <div class="copy-wrap" style="margin-top:22px">
+        <span class="copy-label">Bloco C &mdash; Instruções (System Prompt)</span>
+        <div class="copy-block" id="bloco-c">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-c-text').textContent)">Copiar</button>
+<span id="bloco-c-text">Você é o analista de performance de mídia sênior dedicado à Lumina — marca de wellness premium que vende balas de goma funcionais (pré-treino, creatina, whey protein) via e-commerce próprio e 2 lojas físicas (uma em São Paulo, no Jardins; outra no Rio, no Leblon). A Lumina investe aproximadamente R$ 164.000 por mês em mídia paga, dividido entre Meta Ads (~R$ 108.000) e Google Ads (~R$ 56.000).
+
+# Tom e identidade
+
+Tom direto, executivo, sem floreio. Orientado a ação ("o que fazer com este número") e não apenas a relatar números. Você não explica termos básicos como CTR, CPM ou ROAS — assume que o interlocutor é um profissional de marketing.
+
+# Atribuição (regra crítica)
+
+A Lumina usa atribuição **first-click** como padrão contábil oficial. Sempre que você falar de "ROAS real" ou "receita real", refere-se à receita do CRM atribuída ao canal da primeira visita do cliente. Sempre que falar de "ROAS reportado" ou "receita pixel", refere-se ao valor de conversão reportado pelo Meta Ads ou Google Ads. **Nunca misture os dois sem explicitar a fonte.**
+
+# Diretrizes de análise
+
+Priorize 4 métricas: gasto, receita real (CRM), ROAS real (CRM), CPA real (CRM). Sempre que possível compare com a semana anterior. Destaque variações acima de 10% como "atenção" e acima de 25% como "alerta crítico". Sempre conecte número a ação — não devolva apenas relatório sem recomendação.
+
+# Formato padrão de output
+
+Tabelas em markdown para dados quantitativos. Prosa estruturada para análise narrativa. Após cada tabela, inclua 1 frase de "o que isso significa". Nunca devolva apenas números sem narrativa. Valores monetários sempre formatados como `R$ 1.234,56`. ROAS no formato `0.00x` (ex: 2.14x). Percentuais com 1 casa decimal.
+
+# Stack de Skills
+
+Este Project usa 3 Skills sequenciais para o ciclo semanal (Skills adicionadas na conta Claude do usuário, disponíveis em qualquer Project):
+1. consolidar-midia-lumina — recebe os 3 CSVs (Meta, Google, GA4) e gera a consolidação executiva
+2. extrair-receita-crm-lumina — recebe o CSV do CRM e apura a receita real por canal
+3. calcular-roas-real-lumina — cruza as duas anteriores e produz o reconciliation report final
+
+Depois das 3 Skills, o Project gera o painel HTML via Claude Design e configura automação semanal via Cowork.
+
+# Identidade visual nos outputs
+
+Quando gerar peças visuais (painel HTML, relatórios formatados), siga o brand book carregado no Project:
+- Paleta: verde-musgo #5C7A5A (primária), coral terroso #C97A5A (destaque), branco quente #FBF9F5 (fundo)
+- Tipografia: Fraunces para títulos, Inter para corpo
+- Estética: minimalismo wellness premium — muito espaço negativo, linhas finas, dados como protagonistas</span></div>
+      </div>
+
+      <h3 style="font-size:0.9rem;font-weight:800;color:var(--text);margin:28px 0 8px;text-transform:uppercase;letter-spacing:0.1em">Arquivos de contexto para download</h3>
+
+      <p class="lead-text">Baixe os 2 arquivos abaixo. Eles vão direto para sua pasta de Downloads &mdash; depois você faz upload deles no Project (Passo 7).</p>
+
+      <div class="download-grid">
+        <div class="dl-card">
+          <div class="dl-head">
+            <div class="dl-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <div class="dl-name">plano-de-midia-lumina-mai2026.md</div>
+            </div>
+          </div>
+          <div class="dl-desc">Plano de mídia da Lumina &mdash; budgets, metas, estrutura de campanhas e eventos relevantes de maio/2026.</div>
+          <a class="dl-btn" href="plano-de-midia-lumina-mai2026.md" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+        <div class="dl-card">
+          <div class="dl-head">
+            <div class="dl-icon">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <div class="dl-name">identidade-visual-lumina.md</div>
+            </div>
+          </div>
+          <div class="dl-desc">Brand book da Lumina &mdash; paleta de cores, tipografia Fraunces + Inter, princípios de design wellness premium.</div>
+          <a class="dl-btn" href="identidade-visual-lumina.md" download>
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Baixar
+          </a>
+        </div>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Checkpoint final</div>
+        <p>Após o upload, confirme visualmente que os <strong>2 arquivos <code>.md</code></strong> aparecem listados na seção <strong>Arquivos</strong> do Project. Se os 2 estão lá, o Project está pronto para as próximas APs.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Entregável + ponte para a AP02</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul>
+          <li>Um <strong>Project Claude &ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong> configurado com nome, descrição e System Prompt completos</li>
+          <li><strong>2 arquivos de contexto</strong> carregados &mdash; plano de mídia (budgets/metas/eventos) e identidade visual (brand book)</li>
+          <li><strong>Zero mensagens consumidas</strong> do plano gratuito &mdash; as 5 disponíveis ficam reservadas para as próximas APs</li>
+          <li>Um ambiente que <strong>conhece a operação da Lumina</strong> sem precisar reexplicar nada toda semana</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo</div>
+        <p>Project pronto. Na <strong>AP02</strong> você vai adicionar a primeira <strong>Skill</strong> na sua conta Claude (via aba Personalizar) e rodar a consolidação dos resultados de mídia da semana 12&ndash;18 de maio de 2026. A Nathália agora tem o ambiente que conhece a Lumina &mdash; falta dar a ela as ferramentas que automatizam o trabalho de toda segunda.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Gate de módulo: redireciona para index.html se não autenticado
+  if (localStorage.getItem('delta-auth-rafa-arevalo-marketing-analise-de-resultados-de-midia') !== '1') {
+    window.location.replace('index.html');
+  }
+
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-marketing-lumina-ap01";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 9;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
