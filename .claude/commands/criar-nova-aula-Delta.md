@@ -286,6 +286,118 @@ Ao adicionar aula em módulo existente, consultar o repositório para saber quan
 
 ---
 
+## PASSO 3C — Padrão obrigatório do "Passo a Passo" da Atividade Prática
+
+> **Regra absoluta:** sempre que a aula tiver uma seção de **"Passo a Passo"** dentro da **Atividade Prática**, ela DEVE usar o padrão `.step-card` abaixo. Não usar `.instructions`+`.inst` (bolinhas verdes), `.step-header` (borda inferior) ou qualquer outro formato alternativo para a lista de passos da Atividade Prática.
+
+### Por que existe esse padrão
+
+Cada passo vira um **card completo** com cabeçalho escuro pinho (`var(--accent2)`) + label dourada `PASSO XX` (`var(--gold)`) + título branco. Conteúdos auxiliares — bloco copiável, downloads, warning, conceito-chave — ficam **dentro do `.step-card-body`** do passo correspondente, e não em seções separadas no fim da página. Isso mantém o aluno em fluxo linear sem perder contexto.
+
+### CSS obrigatório (adicionar ao `<style>` da aula, antes do `@media`)
+
+```css
+/* Step-card pattern (Passo a Passo da Atividade Prática) */
+.step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+.step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+.step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+.step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+.step-card-body{padding:16px 18px}
+.step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+.step-card-desc:last-child{margin-bottom:0}
+.step-card-desc strong{color:var(--accent2);font-weight:700}
+.step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+.step-card-desc em{color:var(--text2);font-style:italic}
+
+/* Downloads-card (verde, embutido em step-card que precisa de downloads) */
+.downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+.downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+.downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+.downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+.downloads-card .dl-btn:last-child{margin-bottom:0}
+.downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+.downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+.downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+.downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+.downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+
+/* Check-list (entregáveis ao final — usar no overview-card "Você sai com") */
+.check-list{list-style:none;margin:10px 0}
+.check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+.check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+.check-list li strong{color:var(--accent2);font-weight:700}
+```
+
+### Skeleton HTML do passo
+
+Cada passo segue **exatamente** esta estrutura. Os blocos opcionais (feynman/copy/downloads/warning) ficam **dentro do `.step-card-body`**, na ordem que fizer sentido didático.
+
+```html
+<div class="step-card">
+  <div class="step-card-head">
+    <span class="step-card-num">PASSO 01</span>
+    <span class="step-card-title">Título descritivo curto do passo</span>
+  </div>
+  <div class="step-card-body">
+    <!-- (opcional) feynman-box — conceito-chave didático -->
+    <div class="feynman-box">
+      <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+      <p><strong>Termo:</strong> definição Feynman curta + aplicação.</p>
+    </div>
+
+    <!-- Instrução principal -->
+    <p class="step-card-desc">Texto principal do passo, com <strong>negritos</strong>, <code>código</code> e <em>itálico</em>.</p>
+
+    <!-- (opcional) Detalhamento — sempre como 2º parágrafo, prefixado com "Detalhamento:" -->
+    <p class="step-card-desc"><strong>Detalhamento:</strong> contexto adicional, validação ou nuance.</p>
+
+    <!-- (opcional) Bloco copiável -->
+    <div class="copy-wrap">
+      <span class="copy-label">Label do bloco</span>
+      <div class="copy-block" id="prompt-id">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('prompt-id-text').textContent)">Copiar</button>
+<span id="prompt-id-text">Conteúdo do prompt.</span></div>
+    </div>
+
+    <!-- (opcional) Downloads-card -->
+    <div class="downloads-card">
+      <div class="dc-head">&#128229; Material da APXX</div>
+      <a class="dl-btn" href="arquivo.ext" download>
+        <span class="dl-icon">&#128196;</span>
+        <span class="dl-meta">
+          <span class="dl-name">arquivo.ext</span>
+          <span class="dl-desc">Descrição curta do arquivo</span>
+        </span>
+        <span class="dl-arrow">&darr;</span>
+      </a>
+    </div>
+
+    <!-- (opcional) Warning-box -->
+    <div class="warning-box">
+      <div class="warning-label">Importante</div>
+      <p>Aviso ou checkpoint.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Regras de uso
+
+1. **Sempre `.step-card` para os passos da Atividade Prática.** Nada de `.instructions`+`.inst` com bolinhas verdes, nada de `.step-header` com borda inferior, nada de `<h3>` solto.
+2. **Conteúdos auxiliares vão DENTRO do `.step-card-body`** do passo a que pertencem — não em seções separadas no fim. Isso vale para bloco copiável, downloads, warning, feynman, listas.
+3. **`.downloads-card` (verde) substitui qualquer `.download-grid` com `.dl-card` em colunas.** Os botões `.dl-btn` ficam empilhados, sem grid, independente do número de arquivos (1, 2, 3, 4+).
+4. **Ícones dos botões de download:** usar entidades HTML — 📦 `&#128230;` para `.zip`, 📄 `&#128196;` para `.csv`/`.md`/`.pdf`, 📥 `&#128229;` no cabeçalho `.dc-head`. NÃO usar SVG inline pesado aqui.
+5. **`.check-list` no card "Você sai desta atividade com"** (geralmente a última seção da aula). Pontos com ✓ verde em vez de bolinhas.
+6. **Listas de validação numérica** (ex: "Gasto Meta ≈ R$ X" para conferir output de uma Skill) usam `.observation-list` (azul, lateral) — distintas da `.check-list`.
+7. **Padrão didático do `.step-card-body`:** quando o passo tem conceito-chave, usar `.feynman-box` no topo, depois `.step-card-desc` para instrução principal, e um segundo `.step-card-desc` opcional prefixado com `<strong>Detalhamento:</strong>` para texto secundário.
+
+### Quando NÃO usar `.step-card`
+
+- Listas curtas inline dentro de uma seção qualquer (ex: "5 sub-passos rápidos" como contexto, sem ser um passo a passo principal) — pode usar `.instructions`+`.inst` aqui.
+- Seções de Demonstração ou Introdução — apenas Atividade Prática usa step-card para passos.
+
+---
+
 ## PASSO 4 — Publicar via GitHub
 
 Executar os comandos abaixo no terminal (ou via Claude Code):
@@ -434,6 +546,15 @@ Após push bem-sucedido, retornar com todos os placeholders substituídos. Usar 
 - [ ] Sidebar: grupos 0.82rem 800, subitens 0.74rem 400
 - [ ] PKEY único por aula, TOTAL reflete número real de seções
 - [ ] Nenhuma emoji que não estava no roteiro
+
+**Passo a Passo da Atividade Prática (PASSO 3C):**
+- [ ] Cada passo usa `.step-card` com `.step-card-head` (escuro pinho) + `.step-card-num` (label dourada `PASSO XX`) + `.step-card-title` (branco)
+- [ ] CSS de `.step-card`/`.step-card-*` inline dentro de `<style>`
+- [ ] Bloco copiável, downloads, warning, feynman ficam DENTRO do `.step-card-body` do passo correspondente — nada em seção separada no fim da página
+- [ ] Downloads usam `.downloads-card` verde com `.dl-btn` (empilhado, sem grid) — não `.download-grid` com `.dl-card`
+- [ ] Ícones de download via entidade HTML (📦 zip, 📄 csv/md/pdf, 📥 cabeçalho `.dc-head`) — não SVG inline
+- [ ] Lista de "Você sai desta atividade com" usa `.check-list` (✓ verde) — não `<ul>` com bolinhas
+- [ ] Nenhum `.instructions`+`.inst` nem `.step-header` usado como container de passos da Atividade Prática
 
 **Painel do professor (index.html):**
 - [ ] Gate de senha com `const SENHA = "{SENHA_DO_PAINEL}"` correta

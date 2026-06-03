@@ -40,6 +40,9 @@ Estas decisões vieram de iterações diretas do Rafa no Claude Design. Não rei
 8. **Header da home:** card único com apenas o box verde escuro (`.header-bar`). H1 = título do curso em cor clara `var(--bg)`, H2 = literal **"Delta Academy"** em gold `var(--gold)`, menor, uppercase, tracking `0.1em`. **Sem** `.header-info` com metadados (professor/duração).
 9. **Seção label "AULAS"** (entre header e cards): literal `<div class="section-label">AULAS</div>`, tamanho `1.15rem`, peso `800`, sage `var(--accent)`, uppercase, tracking `0.14em`. **Maior** que títulos das aulas (`0.95rem`).
 10. **Botão `.palette-toggle`** fixo no top-right sempre presente em ambas as páginas — ícone sol (☀) em dusk, lua (☾) em cream. Alterna apenas entre dusk e cream. Não existe mais a paleta Forest como opção de UI.
+11. **Passos da Atividade Prática usam `.step-card`** — cabeçalho escuro pinho (`var(--accent2)`) + label dourada `PASSO XX` (`var(--gold)`) + título branco. Bloco copiável, downloads, warning, feynman ficam **dentro do `.step-card-body`** do passo correspondente — nunca em seções separadas no fim da página. **Substitui** `.instructions`+`.inst` (bolinhas verdes) e qualquer outro container para passos.
+12. **Downloads dentro de um passo usam `.downloads-card` verde** (não `.download-grid` em colunas). Botões `.dl-btn` ficam empilhados, com ícone de entidade HTML (📦 `.zip`, 📄 `.csv`/`.md`/`.pdf`), nome em mono, descrição curta e seta `↓` à direita.
+13. **Lista de entregáveis no card "Você sai com" usa `.check-list`** (✓ verde) em vez de `<ul>` com bolinhas. Diferente da `.observation-list` (azul, para validação numérica).
 
 ---
 
@@ -185,6 +188,55 @@ Primeira coluna em background `var(--ficha-td1-bg)`, peso 600. Headers em `var(-
 </ul>
 ```
 
+### `.step-card` (passos da Atividade Prática — **OBRIGATÓRIO**)
+
+Cada passo do "Passo a Passo" da Atividade Prática é um card completo. Conteúdos auxiliares (bloco copiável, downloads, warning, feynman) ficam **dentro do `.step-card-body`** do passo correspondente — nunca em seções separadas no fim da página.
+
+```html
+<div class="step-card">
+  <div class="step-card-head">
+    <span class="step-card-num">PASSO 01</span>
+    <span class="step-card-title">Título descritivo curto do passo</span>
+  </div>
+  <div class="step-card-body">
+    <p class="step-card-desc">Instrução principal, com <strong>negritos</strong> e <code>código</code>.</p>
+    <p class="step-card-desc"><strong>Detalhamento:</strong> contexto adicional opcional.</p>
+    <!-- (opcional) .copy-wrap, .downloads-card, .warning-box, .feynman-box aqui -->
+  </div>
+</div>
+```
+
+Cabeçalho: fundo `var(--accent2)` pinho. Label `PASSO XX` em `var(--gold)` dourado. Título em branco `var(--bg)`. Body branco com `.step-card-desc` (parágrafos) onde `<strong>` vira `var(--accent2)` e `<code>` ganha background `var(--ficha-td1-bg)`. **Substitui** `.instructions`+`.inst` para passos da Atividade Prática.
+
+### `.downloads-card` (botões de download dentro de um `.step-card-body`)
+
+```html
+<div class="downloads-card">
+  <div class="dc-head">&#128229; Material da APXX</div>
+  <a class="dl-btn" href="arquivo.ext" download>
+    <span class="dl-icon">&#128196;</span>
+    <span class="dl-meta">
+      <span class="dl-name">arquivo.ext</span>
+      <span class="dl-desc">Descrição curta do arquivo</span>
+    </span>
+    <span class="dl-arrow">&darr;</span>
+  </a>
+</div>
+```
+
+Container verde (`var(--green-light)` + borda esquerda 4px `var(--green)`). Botões `.dl-btn` empilhados (sem grid), independente do número de arquivos. Ícones via entidade HTML: 📦 `&#128230;` para `.zip`, 📄 `&#128196;` para `.csv`/`.md`/`.pdf`, 📥 `&#128229;` para `.dc-head`.
+
+### `.check-list` (entregáveis ao final da atividade)
+
+```html
+<ul class="check-list">
+  <li>Item concluído <strong>com destaque</strong>.</li>
+  <li>Outro item.</li>
+</ul>
+```
+
+Lista com ✓ verde em vez de bolinhas. Usar dentro do `.overview-card` da seção "Você sai desta atividade com" (geralmente a última seção da aula). Distinta de `.observation-list` (que é azul, para validação numérica).
+
 ### `.nav-buttons` (rodapé da seção)
 ```html
 <div class="nav-buttons">
@@ -312,3 +364,6 @@ function copyText(btn, text) {
 - [ ] JS: `PKEY` único por aula, `TOTAL` reflete número real de seções
 - [ ] Nenhum `<link href="palettes.css">` ou `<link href="tokens.css">` — tudo inline
 - [ ] Nenhuma emoji inserida que não estivesse no roteiro
+- [ ] **Passo a passo da Atividade Prática:** usa `.step-card` (cabeçalho escuro + label dourada `PASSO XX`); auxiliares (`.copy-wrap`, `.downloads-card`, `.warning-box`, `.feynman-box`) ficam dentro do `.step-card-body` do passo correspondente
+- [ ] **Downloads dentro de um passo:** usam `.downloads-card` verde com `.dl-btn` empilhados — não `.download-grid` em colunas
+- [ ] **Card "Você sai com" usa `.check-list`** (✓ verde) — não `<ul>` com bolinhas

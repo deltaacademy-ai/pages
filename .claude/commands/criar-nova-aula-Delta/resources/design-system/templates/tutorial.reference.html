@@ -101,6 +101,33 @@
   .observation-list{list-style:none;margin:12px 0}
   .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
   .observation-list li strong{color:var(--blue-text);font-weight:700}
+  /* Step-card pattern (Passo a Passo da Atividade Prática — OBRIGATÓRIO) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  /* Downloads-card (verde, embutido em step-card que tem downloads) */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+  /* Check-list (entregáveis ao final — usar no overview-card "Você sai com") */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
   @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.tool-links{grid-template-columns:1fr}}
 </style>
 </head>
@@ -376,12 +403,43 @@ Entregue em formato de relatório executivo com fontes citadas. Priorize dados d
       <div class="sec-title pratica"><span class="snum">06.</span> Passo a passo</div>
       <div class="sec-desc">5 passos em 10 minutos (com Deep Research rodando em paralelo)</div>
 
-      <div class="instructions">
-        <div class="inst"><div class="inst-num">1</div><div class="inst-text"><strong>Abra o Claude.</strong> <span class="time">(30 seg)</span><br>Acesse claude.ai e crie uma nova conversa.</div></div>
-        <div class="inst"><div class="inst-num">2</div><div class="inst-text"><strong>Inicie o Deep Research.</strong> <span class="time">(30 seg)</span><br>Cole o <strong>Prompt B</strong> da seção 07, substituindo [SETOR ESCOLHIDO] pelo seu setor. Rode e deixe processando em background.</div></div>
-        <div class="inst"><div class="inst-num">3</div><div class="inst-text"><strong>Execute a busca rápida.</strong> <span class="time">(2 min)</span><br>Em outra conversa do Claude (ou no Perplexity), cole o <strong>Prompt A</strong> com o mesmo setor. Leia a resposta.</div></div>
-        <div class="inst"><div class="inst-num">4</div><div class="inst-text"><strong>Acompanhe o Deep Research.</strong> <span class="time">(5 min)</span><br>Enquanto finaliza, compare a profundidade esperada com o que a busca rápida te deu.</div></div>
-        <div class="inst"><div class="inst-num">5</div><div class="inst-text"><strong>Salve o relatório final.</strong> <span class="time">(2 min)</span><br>Quando terminar, copie e salve em um Google Doc ou Notion. <strong>Você vai usar na Atividade 5 (Projects).</strong></div></div>
+      <!-- PADRÃO OBRIGATÓRIO: passos da Atividade Prática usam .step-card.
+           Auxiliares (copy-wrap, downloads-card, warning-box, feynman-box) ficam
+           DENTRO do .step-card-body do passo correspondente. -->
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abra o Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Acesse <code>claude.ai</code> e crie uma nova conversa.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Inicie o Deep Research</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Cole o <strong>Prompt B</strong> da seção 07, substituindo <code>[SETOR ESCOLHIDO]</code> pelo seu setor. Rode e deixe processando em background.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Execute a busca rápida</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Em outra conversa do Claude (ou no Perplexity), cole o <strong>Prompt A</strong> com o mesmo setor. Leia a resposta.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Acompanhe o Deep Research</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Enquanto finaliza, compare a profundidade esperada com o que a busca rápida te deu.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Salve o relatório final</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Quando terminar, copie e salve em um Google Doc ou Notion. <strong>Você vai usar na Atividade 5 (Projects).</strong></p>
+        </div>
       </div>
 
       <div class="nav-buttons">
