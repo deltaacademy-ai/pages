@@ -1,0 +1,289 @@
+/* =========================================================
+   Delta Academy — Colors & Typography
+   Base tokens + semantic styles.
+   ========================================================= */
+
+/* ---- Fonts ---------------------------------------------- */
+@font-face {
+  font-family: "Aeonik";
+  src: url("fonts/Aeonik-Light.otf") format("opentype");
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face { font-family: "Aeonik"; src: url("fonts/Aeonik-LightItalic.otf") format("opentype"); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: "Aeonik"; src: url("fonts/Aeonik-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aeonik"; src: url("fonts/Aeonik-RegularItalic.otf") format("opentype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Aeonik"; src: url("fonts/Aeonik-Bold.otf") format("opentype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Aeonik"; src: url("fonts/Aeonik-BoldItalic.otf") format("opentype"); font-weight: 700; font-style: italic; font-display: swap; }
+
+:root {
+  /* =====================================================
+     COLOR — Brand
+     Primary palette sourced from the logo marks:
+       #1f3331  deep pine   (DELTA wordmark + icon strokes)
+       #5c6c51  sage olive  (ACADEMY subtitle + lighter fill)
+     These two are militant, grounded, forest-y — avoid
+     bright saturations, keep the system low-chroma.
+     ===================================================== */
+
+  --color-pine-900: #141f1d;   /* darker step for depth */
+  --color-pine-800: #1a2927;
+  --color-pine-700: #1f3331;   /* brand primary */
+  --color-pine-600: #2a433f;
+  --color-pine-500: #385652;
+
+  --color-sage-700: #3f4d36;
+  --color-sage-600: #4d5c42;
+  --color-sage-500: #5c6c51;   /* brand secondary */
+  --color-sage-400: #7d8b74;
+  --color-sage-300: #a4ae9c;
+  --color-sage-200: #c7cec1;
+  --color-sage-100: #e3e6de;
+  --color-sage-50:  #f2f4ee;
+
+  /* Gold — reserved for "DeltaBoard" / premium accent */
+  --color-gold-700: #8a6e2c;
+  --color-gold-500: #b8933e;
+  --color-gold-400: #d1aa53;
+  --color-gold-300: #e6c784;
+
+  /* Neutrals */
+  --color-ink-900:  #0f1413;
+  --color-ink-700:  #2d3734;
+  --color-ink-500:  #5b6663;
+  --color-ink-400:  #8a938f;
+  --color-ink-300:  #b5bcb8;
+  --color-ink-200:  #d6dbd7;
+  --color-ink-100:  #eceeeb;
+  --color-paper:    #f7f8f4;  /* warm off-white, matches logo backgrounds */
+  --color-white:    #ffffff;
+
+  /* Semantic — status */
+  --color-success: #4d6b3a;
+  --color-warning: #b8933e;
+  --color-danger:  #8b3a2f;
+  --color-info:    #385652;
+
+  /* =====================================================
+     COLOR — Semantic tokens (use these in components)
+     ===================================================== */
+  --fg-1: var(--color-pine-700);     /* primary text / icons */
+  --fg-2: var(--color-sage-500);     /* secondary text */
+  --fg-3: var(--color-ink-500);      /* tertiary / metadata */
+  --fg-on-dark: var(--color-sage-50);
+  --fg-muted-on-dark: var(--color-sage-300);
+
+  --bg-1: var(--color-paper);        /* default page */
+  --bg-2: var(--color-white);        /* cards, panels */
+  --bg-3: var(--color-sage-50);      /* inset wells */
+  --bg-dark-1: var(--color-pine-700);
+  --bg-dark-2: var(--color-pine-800);
+
+  --brand-primary: var(--color-pine-700);
+  --brand-secondary: var(--color-sage-500);
+  --brand-accent: var(--color-gold-500);
+
+  --border-1: var(--color-ink-200);
+  --border-2: var(--color-sage-200);
+  --border-strong: var(--color-pine-700);
+
+  /* =====================================================
+     TYPE — Families + scale
+     Delta Academy uses Aeonik throughout.
+     Light (300) for elegant intros, Regular (400) for body,
+     Bold (700) for DELTA-style display weights.
+     ===================================================== */
+
+  --font-sans: "Aeonik", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Aeonik", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale (rem-ish, defined in px for clarity) */
+  --text-2xs: 11px;
+  --text-xs:  12px;
+  --text-sm:  14px;
+  --text-base: 16px;
+  --text-md:  18px;
+  --text-lg:  20px;
+  --text-xl:  24px;
+  --text-2xl: 32px;
+  --text-3xl: 44px;
+  --text-4xl: 60px;
+  --text-5xl: 80px;
+  --text-6xl: 112px;
+
+  /* Weights */
+  --w-light: 300;
+  --w-regular: 400;
+  --w-bold: 700;
+
+  /* Line heights */
+  --lh-tight: 1.05;
+  --lh-snug: 1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed: 1.6;
+
+  /* Tracking */
+  --track-display: -0.02em;   /* tight, like DELTA wordmark */
+  --track-normal: 0;
+  --track-wide: 0.08em;       /* ACADEMY subtitle spacing */
+  --track-wider: 0.16em;      /* eyebrows / labels */
+
+  /* =====================================================
+     SPACING / RADII / SHADOW
+     ===================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-pill: 999px;
+
+  /* Shadows — restrained, low spread; the brand is grounded,
+     not floaty. Avoid big purple glows. */
+  --shadow-xs: 0 1px 2px rgba(15, 20, 19, 0.06);
+  --shadow-sm: 0 2px 6px rgba(15, 20, 19, 0.08);
+  --shadow-md: 0 6px 18px rgba(15, 20, 19, 0.10);
+  --shadow-lg: 0 18px 40px rgba(15, 20, 19, 0.14);
+  --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 360ms;
+}
+
+/* =========================================================
+   Semantic element styles
+   ========================================================= */
+
+html, body {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.h-display, h1.display {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  color: var(--fg-1);
+  text-transform: uppercase;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-display);
+  color: var(--fg-1);
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: var(--w-bold);
+  font-size: var(--text-3xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--track-display);
+  color: var(--fg-1);
+}
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-bold);
+  font-size: var(--text-2xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-bold);
+  font-size: var(--text-xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-regular);
+  font-size: var(--text-lg);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+/* ACADEMY-style subtitle: light weight, wide tracking, uppercase */
+.eyebrow, .kicker {
+  font-family: var(--font-sans);
+  font-weight: var(--w-light);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--track-wider);
+  color: var(--fg-2);
+}
+
+.subtitle-wide {
+  font-family: var(--font-sans);
+  font-weight: var(--w-light);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  letter-spacing: var(--track-wide);
+  color: var(--fg-2);
+}
+
+p, .p {
+  font-family: var(--font-sans);
+  font-weight: var(--w-regular);
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+.lead {
+  font-size: var(--text-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-1);
+  font-weight: var(--w-light);
+}
+small, .small {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+}
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--bg-3);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  color: var(--fg-1);
+}
+
+a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+a:hover { color: var(--brand-secondary); }
+
+::selection {
+  background: var(--color-sage-200);
+  color: var(--color-pine-900);
+}
