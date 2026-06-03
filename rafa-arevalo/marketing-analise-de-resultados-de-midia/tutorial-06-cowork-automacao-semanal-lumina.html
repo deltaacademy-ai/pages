@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>06. Cowork &mdash; Automação Semanal &middot; Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .badge-desafio{background:var(--gold);color:var(--accent2)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:16px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-block.long{max-height:480px;overflow-y:auto;padding-right:48px}
+  .copy-block.long::-webkit-scrollbar{width:6px}
+  .copy-block.long::-webkit-scrollbar-track{background:transparent}
+  .copy-block.long::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;z-index:2}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box.final{padding:26px 24px;border:1px solid var(--gold)}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .insight-box.final p{font-size:0.96rem}
+  .feynman-box{background:var(--ficha-td1-bg);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;margin:10px 0 12px}
+  .feynman-label{font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;display:flex;align-items:center;gap:4px}
+  .feynman-box p{font-size:0.74rem;color:var(--text2);line-height:1.55}
+  .feynman-box p strong{color:var(--text);font-weight:700}
+  .glossario-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media (max-width:640px){.glossario-grid{grid-template-columns:1fr}}
+  .glossario-item{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px;box-shadow:var(--shadow-xs)}
+  .glossario-item .g-term{font-size:0.74rem;font-weight:800;color:var(--accent2);margin-bottom:3px;letter-spacing:-0.01em}
+  .glossario-item .g-def{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Variantes do step-card para bifurcação plano pago × plano gratuito */
+  .step-card.path-pago .step-card-head{background:var(--accent2)}
+  .step-card.path-pago .step-card-num{background:var(--gold);color:var(--accent2)}
+  .step-card.path-pago .step-card-title{color:var(--bg)}
+  .step-card.path-free .step-card-head{background:#1A4A6F}
+  .step-card.path-free .step-card-num{background:#E6F0F8;color:#1A4A6F}
+  .step-card.path-free .step-card-title{color:#FFFFFF}
+
+  /* Banner de bifurcação */
+  .bifurcacao-banner{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:4px solid var(--warn-accent);border-radius:10px;padding:16px 20px;text-align:center;margin:24px 0 14px}
+  .bifurcacao-banner .bif-title{font-size:0.86rem;font-weight:800;color:var(--warn-label);margin-bottom:6px;letter-spacing:-0.01em}
+  .bifurcacao-banner .bif-sub{font-size:0.7rem;color:var(--warn-text);line-height:1.6}
+  .bifurcacao-banner .bif-sub strong{font-weight:800}
+
+  /* Grid 2 colunas para os caminhos 04A e 04B em paralelo */
+  .path-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media (max-width:900px){.path-grid{grid-template-columns:1fr}}
+  .path-grid .step-card{margin-bottom:0}
+
+  /* Etapa-card (5 etapas do Desafio) */
+  .etapa-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;box-shadow:var(--shadow-xs);border-left:4px solid var(--green)}
+  .etapa-tag{display:inline-block;font-size:0.6rem;font-weight:800;color:var(--green-text);background:var(--green-light);padding:3px 10px;border-radius:4px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+  [data-palette="dusk"] .etapa-tag{background:var(--green-light);color:var(--green)}
+  .etapa-titulo{font-size:0.88rem;font-weight:800;color:var(--text);margin-bottom:6px;letter-spacing:-0.01em}
+  .etapa-card ul{list-style:none;margin-top:6px}
+  .etapa-card ul li{padding:3px 0 3px 14px;position:relative;font-size:0.74rem;color:var(--text2);line-height:1.5}
+  .etapa-card ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--green)}
+  .etapa-card ul li strong{color:var(--text);font-weight:700}
+
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.glossario-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Cowork &mdash; Automação Semanal</h2>
+      <p>AP06 &middot; Marketing &mdash; Resultados de Mídia</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Cowork como execução agendada<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Glossário rápido<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que o professor mostra<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Prompt da demo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Skills 2026 &rsaquo; Marketing &mdash; Resultados de Mídia &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP06. Cowork &mdash; Automação Semanal</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP06 &mdash; O ciclo fechado: pipeline rodando sozinho toda segunda 8h</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> pipeline semanal de Resultados de Mídia da Lumina configurado para rodar <strong>toda segunda-feira sem intervenção humana</strong> &mdash; em uma de duas formas, conforme seu plano do Claude.</p>
+
+      <div class="overview-card">
+        <h3>Dois caminhos, mesmo resultado</h3>
+        <ul>
+          <li><strong>🟢 Caminho A &mdash; Plano pago (Cowork):</strong> Tarefa Agendada que dispara sozinha às 8h da manhã, roda o pipeline inteiro e envia o painel pronto para o Slack <code>#marketing-leadership</code></li>
+          <li><strong>🔵 Caminho B &mdash; Plano gratuito (Manual):</strong> playbook manual de 5 bullets que você executa em ~15 minutos toda segunda, usando as 3 Skills já adicionadas na sua conta</li>
+        </ul>
+        <p style="margin-top:10px">As duas formas entregam o mesmo resultado: o painel da semana publicado às segundas-feiras de manhã. A diferença é apenas se o disparador é uma <strong>programação automática</strong> ou um <strong>lembrete na sua agenda</strong>.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática + <strong>Desafio</strong> (5h distribuídas)</td></tr>
+          <tr><td>Duração da AP</td><td>12 minutos (atividade prática) &middot; 5h (Desafio na sua empresa)</td></tr>
+          <tr><td>Pré-requisito</td><td>AP01 + AP02 + AP03 + AP04 + AP05 concluídas &mdash; <strong>MESMA conversa do Project</strong> com todo o histórico</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6 (plano gratuito atende)</td></tr>
+          <tr><td>Downloads</td><td>Nenhum &mdash; a AP é puro prompt</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a geração dos 4 entregáveis) &middot; acumulado da aula: <strong>5 de 5 mensagens</strong> (no limite gratuito)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">O ciclo fechado</div>
+        <p>A aula A13 termina aqui &mdash; <strong>o pipeline está completo</strong>. O Desafio é o salto para fora da Lumina e dentro da sua empresa real.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">Configurar o pipeline para execução recorrente &mdash; com Cowork OU manual</div>
+
+      <p class="lead-text">Configurar o pipeline semanal de Resultados de Mídia para <strong>execução recorrente</strong> &mdash; via Tarefa Agendada do Claude Cowork (alunos com plano pago) ou via playbook manual semanal (alunos com plano gratuito) &mdash; e receber a estrutura completa de instruções para replicar tudo na sua empresa real em <strong>5 horas distribuídas</strong> pelo Desafio final da aula.</p>
+
+      <div class="overview-card">
+        <h3>O que isso destrava</h3>
+        <ul>
+          <li>O pipeline da semana <strong>roda sozinho toda segunda 8h</strong> (Cowork) ou em rotina previsível de 15 min (manual)</li>
+          <li>O painel da semana chega no Slack do CMO <strong>antes da reunião das 14h</strong>, sem você precisar lembrar</li>
+          <li>Estrutura completa para você replicar o pipeline na <strong>sua empresa real</strong> em 5 horas</li>
+          <li>Padrão mental claro: <strong>Project + Skills + Painel + Cowork</strong> &mdash; aplicável a qualquer departamento (marketing, comercial, financeiro, RH)</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Cowork como execução agendada do pipeline</div>
+      <div class="sec-desc">A analogia da cafeteira programada</div>
+
+      <p class="lead-text">As Skills das AP02, AP03 e AP04 são como uma <strong>máquina de café espresso de cápsula</strong>: você coloca a cápsula (anexa os CSVs), aperta o botão (escreve &ldquo;use a skill X&rdquo;), e o café sai pronto. Funciona bem &mdash; mas exige que você esteja na cozinha, acordado, com vontade de fazer café.</p>
+
+      <p class="lead-text">O <strong>Claude Cowork</strong> é a <strong>programação automática da cafeteira</strong> para ligar às 6h30 da manhã. Mesmo equipamento, mesmo processo, mesma qualidade &mdash; só que sem você precisar estar lá. Toda segunda-feira às 8h, o Cowork puxa dados dos conectores (Meta Ads, Google Ads, GA4, CRM), dispara as 3 Skills em sequência, gera o painel e envia para o Slack. A Nathália chega no escritório e o painel já está esperando.</p>
+
+      <p class="lead-text"><strong>Para alunos do plano gratuito:</strong> o Cowork não está disponível, mas você consegue o mesmo resultado executando o pipeline manualmente toda segunda &mdash; em ~15 minutos, usando as 3 Skills já adicionadas na sua conta. O <strong>playbook manual</strong> desta AP entrega exatamente isso: o roteiro passo a passo para você seguir.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Pipeline ad-hoc (sem rotina)</div>
+          <div class="compare-title">&ldquo;Cada semana é um novo improviso&rdquo;</div>
+          <div class="compare-desc">Aluno abre o Claude quando lembra, anexa os CSVs que conseguiu baixar, espera dar tempo de fazer antes da reunião. <strong>Risco real</strong> de atrasar ou esquecer toda vez que a semana fica corrida. Análise vira jogo de sorte.</div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Pipeline com rotina (Cowork ou manual)</div>
+          <div class="compare-title">&ldquo;Toda segunda 8h, o painel está pronto&rdquo;</div>
+          <div class="compare-desc">Ou o Cowork rodou sozinho (plano pago), ou você executou o playbook manual em 15 min (plano gratuito). Em qualquer cenário, <strong>às 9h da segunda o painel está no Slack do CMO</strong>. Análise vira rotina previsível.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Glossário rápido</div>
+      <div class="sec-desc">7 termos para você não se perder em jargão nesta AP</div>
+
+      <p class="lead-text">Para acompanhar esta AP sem se perder em jargão, use estas definições curtas:</p>
+
+      <div class="glossario-grid">
+        <div class="glossario-item">
+          <div class="g-term">Claude Cowork</div>
+          <div class="g-def">Feature do Claude que conecta o assistente a serviços externos (Meta Ads, Google Ads, Slack, Drive) e permite executar tarefas automatizadas. <strong>Disponível apenas no plano pago</strong> (Pro ou Max).</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Tarefa Agendada</div>
+          <div class="g-def">Instrução salva no Cowork para rodar automaticamente em horários definidos. Na aula: <strong>toda segunda-feira às 8h</strong>, o Cowork executa o pipeline da Lumina sem intervenção humana.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Conector</div>
+          <div class="g-def">A &ldquo;ponte autorizada&rdquo; entre o Claude e um serviço externo. Para puxar dados do Meta Ads, você autoriza o conector <strong>uma vez</strong> &mdash; depois o Claude tem permissão sempre que a Tarefa rodar.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Pipeline</div>
+          <div class="g-def">Sequência ordenada de etapas que transforma uma entrada (CSVs brutos) em uma saída (painel pronto). Nesta aula, 4 etapas: <strong>consolidar mídia → extrair CRM → calcular ROAS real → gerar painel</strong>.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Plano gratuito vs pago do Claude</div>
+          <div class="g-def"><strong>Gratuito (Free):</strong> Sonnet 4.6, ~5 mensagens/5h, <strong>sem Cowork</strong>. <strong>Pago (Pro/Max):</strong> mais mensagens, Opus 4.7, Cowork e Tarefas Agendadas.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Playbook manual</div>
+          <div class="g-def">Roteiro de execução semanal que substitui a automação para alunos no plano gratuito. Em vez do Cowork rodar sozinho, você executa o mesmo pipeline manualmente toda segunda em <strong>~15 minutos</strong>.</div>
+        </div>
+        <div class="glossario-item">
+          <div class="g-term">Recorrência</div>
+          <div class="g-def">Configuração que define quando uma Tarefa Agendada vai rodar &mdash; toda segunda às 8h, todo dia 1 do mês, etc. É o &ldquo;alarme&rdquo; da automação.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que o professor vai demonstrar</div>
+      <div class="sec-desc">4 entregáveis numa única mensagem + configuração ao vivo da Tarefa</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>O prompt da seção seguinte é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa testá-lo agora &mdash; sua própria atividade prática começa na seção 07.</p>
+      </div>
+
+      <p class="lead-text">O professor está na <strong>mesma conversa do Project</strong> onde todas as APs anteriores foram executadas &mdash; com a consolidação de mídia (AP02), receita do CRM (AP03), reconciliation report (AP04) e painel HTML (AP05) já no histórico. Sem anexar nenhum arquivo, ele cola o prompt da AP06 e pede ao Claude para gerar <strong>4 entregáveis simultâneos</strong>:</p>
+
+      <div class="overview-card">
+        <ul>
+          <li>O <strong>prompt completo</strong> da Tarefa Agendada do Cowork (texto pronto pra colar)</li>
+          <li>A <strong>lista de conectores</strong> necessários para a automação funcionar</li>
+          <li>O <strong>playbook manual semanal</strong> em 5 bullets (alternativa para plano gratuito)</li>
+          <li>As <strong>instruções de teste</strong> antes da próxima segunda-feira</li>
+        </ul>
+      </div>
+
+      <p class="lead-text">Em ~45 segundos, os 4 entregáveis aparecem. O professor então mostra <strong>ao vivo</strong> a interface do Cowork (alunos com plano pago acompanham junto na tela) e demonstra a configuração da Tarefa Agendada. Para alunos do plano gratuito, mostra como salvar o playbook manual no Notion ou Google Drive como nota semanal.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> Prompt da demonstração</div>
+      <div class="sec-desc">Estrutura clara &ldquo;PARTE 1, 2, 3, 4&rdquo; garante 4 entregáveis distintos numa só mensagem</div>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Prompt da demonstração</span>
+        <div class="copy-block long" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text">Vou configurar uma Tarefa Agendada do Claude Cowork para automatizar a análise semanal de Resultados de Mídia da Lumina toda segunda-feira às 8h da manhã (horário de São Paulo). Por favor, gere agora:
+
+PARTE 1 — Prompt da Tarefa Agendada: texto único pronto para colar no campo "Instrução" da Tarefa do Cowork. Deve pedir para puxar dados dos conectores Meta Ads, Google Ads, GA4 e CRM (via Google Drive/Sheets) referentes aos últimos 7 dias completos, executar as 3 skills (consolidar-midia-lumina → extrair-receita-crm-lumina → calcular-roas-real-lumina), gerar o painel HTML, salvar no Google Drive da Lumina e enviar mensagem no Slack #marketing-leadership com link + 3 bullets.
+
+PARTE 2 — Checklist de conectores necessários: lista dos conectores do Cowork que precisam estar autorizados (Meta Ads, Google Ads, GA4, Google Drive/Sheets, Slack), com 1 linha explicando o papel de cada.
+
+PARTE 3 — Plano de fallback (plano gratuito): playbook manual semanal equivalente em 5 bullets, com tempo total ≤15 minutos.
+
+PARTE 4 — Como testar a Tarefa Agendada antes de esperar a próxima segunda.</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">6 padrões que mostram como Cowork transforma execução em rotina</div>
+
+      <ul class="observation-list">
+        <li><strong>Prompt mais longo que nas AP02/AP03/AP04</strong> porque pede 4 entregáveis distintos numa única mensagem. Estrutura clara com &ldquo;PARTE 1, 2, 3, 4&rdquo; garante que o Claude organize a resposta.</li>
+        <li><strong>Claude não recebe arquivo anexado</strong> &mdash; usa a memória da conversa para entender o pipeline já executado nas APs anteriores.</li>
+        <li><strong>PARTE 1 (prompt da Tarefa Agendada)</strong> vem como bloco de texto único, pronto para colar no campo de instrução do Cowork. Não vem em pedaços, não vem com explicações &mdash; <strong>vem pronto</strong>.</li>
+        <li><strong>PARTE 3 (playbook manual)</strong> vem em <strong>exatamente 5 bullets</strong> &mdash; não mais, não menos. Estrutura desenhada para o aluno do plano gratuito conseguir executar em 15 minutos.</li>
+        <li><strong>PARTE 4 (como testar)</strong> é o passo que mais alunos pulam na vida real e depois descobrem na pior hora (segunda-feira às 8h) que a automação falhou. <strong>Estar na resposta é decisão pedagógica.</strong></li>
+        <li><strong>A demo ao vivo do Cowork</strong> acontece apenas para quem tem plano pago &mdash; alunos no plano gratuito acompanham para entender o conceito, mas executam o playbook manual em vez.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Sua atividade prática</div>
+      <div class="sec-desc">12 minutos &middot; bifurcação no Passo 04 conforme seu plano do Claude</div>
+
+      <p class="lead-text">Você vai pedir ao Claude para gerar a <strong>estrutura completa de automação semanal</strong> do pipeline de Resultados de Mídia da Lumina. Em uma única mensagem, o Claude vai entregar 4 partes:</p>
+
+      <div class="overview-card">
+        <ul>
+          <li>O <strong>prompt da Tarefa Agendada do Cowork</strong> (para alunos com plano pago configurarem)</li>
+          <li>A <strong>lista de conectores necessários</strong> com explicação de cada um</li>
+          <li>O <strong>playbook manual semanal</strong> em 5 bullets (alternativa equivalente para alunos do plano gratuito)</li>
+          <li>As <strong>instruções de teste</strong> antes da próxima segunda-feira</li>
+        </ul>
+        <p style="margin-top:10px">Depois disso, você escolhe seu caminho: <strong>Passo 04A se tem plano pago</strong> (configura Cowork) ou <strong>Passo 04B se está no plano gratuito</strong> (salva o playbook manual).</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha da atividade</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Duração estimada</td><td>12 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
+          <tr><td>Plano necessário</td><td>Gratuito atende (Cowork é opcional &mdash; playbook manual é equivalente)</td></tr>
+          <tr><td>Mensagens consumidas</td><td>1 (a geração dos 4 entregáveis no Passo 02)</td></tr>
+          <tr><td>Total acumulado da aula</td><td><strong>5 de 5 mensagens reservadas</strong> &mdash; exatamente no limite gratuito</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que a alternativa manual entrega o mesmo resultado</div>
+        <p>O playbook manual da PARTE 3 <strong>não é uma versão reduzida do Cowork</strong> &mdash; é o mesmo pipeline disparado de forma diferente. As 3 Skills que rodam dentro do Cowork são exatamente as mesmas que você adicionou na conta nas AP02, AP03 e AP04. O painel HTML que o playbook gera é exatamente o mesmo da AP05. <strong>A diferença é apenas se o gatilho é uma programação automática (Cowork) ou um lembrete na sua agenda de segunda 8h.</strong> O resultado entregue à liderança é idêntico.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
+      <div class="sec-desc">3 passos sequenciais (01–03) + bifurcação visual + 2 passos paralelos (04A / 04B)</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Confirme que você está na mesma conversa do Project</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Memória da conversa:</strong> capacidade do Claude de lembrar de tudo que foi dito naquele chat específico. Nesta AP, o Claude vai usar a memória das AP02&ndash;AP05 para gerar o prompt da Tarefa Agendada com o pipeline correto.</p>
+          </div>
+          <p class="step-card-desc">Antes de disparar o prompt da AP06, confirme visualmente:</p>
+          <ul class="check-list">
+            <li>A aba aberta do Claude está dentro do Project <strong>&ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong>.</li>
+            <li>A conversa atual mostra no histórico <strong>todos os outputs anteriores</strong>: consolidação de mídia (AP02), receita do CRM (AP03), reconciliation report (AP04) e painel HTML (AP05).</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; histórico completo é o ativo desta AP</div>
+            <p>Se você recarregou ou fechou a conversa do Project entre a AP05 e agora, o Claude <strong>não vai ter contexto suficiente</strong> para gerar o prompt da Tarefa Agendada com qualidade. Você precisa refazer AP02&ndash;AP05 antes de continuar.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Cole o prompt da AP06</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Tarefa Agendada:</strong> instrução salva no Cowork para rodar automaticamente em horários definidos. Esta AP gera o <strong>prompt</strong> que vai dentro dessa Tarefa &mdash; quem tem plano pago cola no Cowork; quem tem plano gratuito usa como referência para o playbook manual.</p>
+          </div>
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> abaixo para copiar o prompt completo da AP06. Cole no campo de mensagem da conversa do Project e envie. Aguarde aproximadamente <strong>45 a 60 segundos</strong>.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt da AP06 &mdash; 4 entregáveis em uma mensagem</span>
+            <div class="copy-block long" id="ap06-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('ap06-prompt-text').textContent)">Copiar</button>
+<span id="ap06-prompt-text">Vou configurar uma Tarefa Agendada do Claude Cowork para automatizar a análise semanal de Resultados de Mídia da Lumina toda segunda-feira às 8h da manhã (horário de São Paulo). Por favor, gere agora:
+
+PARTE 1 — Prompt da Tarefa Agendada: texto único pronto para colar no campo "Instrução" da Tarefa do Cowork. Deve pedir para puxar dados dos conectores Meta Ads, Google Ads, GA4 e CRM (via Google Drive/Sheets) referentes aos últimos 7 dias completos, executar as 3 skills (consolidar-midia-lumina → extrair-receita-crm-lumina → calcular-roas-real-lumina), gerar o painel HTML, salvar no Google Drive da Lumina e enviar mensagem no Slack #marketing-leadership com link + 3 bullets.
+
+PARTE 2 — Checklist de conectores necessários: lista dos conectores do Cowork que precisam estar autorizados (Meta Ads, Google Ads, GA4, Google Drive/Sheets, Slack), com 1 linha explicando o papel de cada.
+
+PARTE 3 — Plano de fallback (plano gratuito): playbook manual semanal equivalente em 5 bullets, com tempo total ≤15 minutos.
+
+PARTE 4 — Como testar a Tarefa Agendada antes de esperar a próxima segunda.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Valide as 4 partes da resposta</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Confira se o output trouxe as 4 partes esperadas, claramente identificadas:</p>
+          <ul class="check-list">
+            <li><strong>PARTE 1</strong> &mdash; Prompt da Tarefa Agendada como <strong>bloco único de texto</strong>, pronto para copiar e colar no Cowork. Não vem fatiado nem comentado.</li>
+            <li><strong>PARTE 2</strong> &mdash; Lista de conectores: Meta Ads, Google Ads, GA4, Google Drive/Sheets, Slack. Cada um com 1 linha explicando o papel.</li>
+            <li><strong>PARTE 3</strong> &mdash; Playbook manual em <strong>exatamente 5 bullets</strong> (não mais, não menos), com tempo total ≤15 min.</li>
+            <li><strong>PARTE 4</strong> &mdash; Como testar a Tarefa Agendada: rodar uma execução manual primeiro antes de esperar a próxima segunda.</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; não peça refino nesta AP</div>
+            <p>Se alguma das 4 partes veio confusa ou misturada, você pode pedir ao Claude para refazer com mais clareza &mdash; mas isso consumiria mais uma mensagem (e essa AP já é a 5ª e última da aula). <strong>Para esta aula, aceite o output da primeira geração</strong> e siga para o Passo 04A ou 04B conforme seu plano do Claude.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bifurcacao-banner">
+        <div class="bif-title">&#128159; Escolha apenas um dos caminhos abaixo conforme seu plano do Claude</div>
+        <div class="bif-sub">🟢 <strong>Passo 04A</strong> se você tem Claude Pro ou Max &middot; 🔵 <strong>Passo 04B</strong> se você está no plano gratuito do Claude</div>
+      </div>
+
+      <div class="path-grid">
+
+        <div class="step-card path-pago">
+          <div class="step-card-head"><span class="step-card-num">🟢 PASSO 04A</span><span class="step-card-title">Plano pago: configure a Tarefa Agendada no Cowork</span></div>
+          <div class="step-card-body">
+            <div class="feynman-box">
+              <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+              <p><strong>Conector:</strong> ponte autorizada entre o Claude e um serviço externo. Você autoriza uma vez (faz login no Meta Ads, por exemplo) e o Claude tem permissão de acessar os dados sempre que a Tarefa rodar.</p>
+            </div>
+            <p class="step-card-desc">Se você tem Claude Pro ou Max, siga estes sub-passos:</p>
+            <ul class="check-list">
+              <li><strong>04A.1</strong> &mdash; Acesse a interface do Claude Cowork (<code>claude.ai/cowork</code> ou pelo menu lateral).</li>
+              <li><strong>04A.2</strong> &mdash; Em <strong>Tarefas Agendadas</strong>, clique em <strong>+ Nova tarefa</strong>.</li>
+              <li><strong>04A.3</strong> &mdash; Copie a <strong>PARTE 1</strong> da resposta (prompt da Tarefa) e cole no campo <strong>Instrução</strong>.</li>
+              <li><strong>04A.4</strong> &mdash; Configure a recorrência: <strong>toda segunda-feira, 8h, horário de São Paulo</strong>.</li>
+              <li><strong>04A.5</strong> &mdash; Aba <strong>Conectores</strong>: autorize os 5 conectores da PARTE 2 (Meta Ads, Google Ads, GA4, Drive, Slack). Para cada, vai abrir uma janela OAuth &mdash; confirme acesso.</li>
+              <li><strong>04A.6</strong> &mdash; Salve a Tarefa e siga a <strong>PARTE 4</strong> (rodar teste manual) antes de esperar a próxima segunda. Isso valida se os conectores foram autorizados corretamente e se o pipeline roda do início ao fim sem erro.</li>
+            </ul>
+            <p class="step-card-desc"><strong>Validação final:</strong> na sua próxima segunda 8h, o painel da semana deve aparecer no Slack <code>#marketing-leadership</code> sem você precisar fazer nada.</p>
+          </div>
+        </div>
+
+        <div class="step-card path-free">
+          <div class="step-card-head"><span class="step-card-num">🔵 PASSO 04B</span><span class="step-card-title">Plano gratuito: salve o playbook manual</span></div>
+          <div class="step-card-body">
+            <div class="feynman-box">
+              <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+              <p><strong>Playbook manual:</strong> roteiro de execução semanal que substitui a automação para quem não tem plano pago. Você executa os 5 bullets toda segunda em ~15 minutos &mdash; mesmo pipeline da AP02&ndash;AP05, só que disparado por você em vez de pelo Cowork.</p>
+            </div>
+            <p class="step-card-desc">Se você está no plano gratuito do Claude, siga estes sub-passos:</p>
+            <ul class="check-list">
+              <li><strong>04B.1</strong> &mdash; Copie a <strong>PARTE 3</strong> da resposta (playbook manual em 5 bullets).</li>
+              <li><strong>04B.2</strong> &mdash; Cole o playbook em um local que você consulte toda segunda: <strong>Notion, Drive, planner pessoal, app de notas</strong>. Nome: &ldquo;Pipeline Semanal Lumina &mdash; Toda segunda 8h&rdquo;.</li>
+              <li><strong>04B.3</strong> &mdash; Configure um <strong>lembrete recorrente</strong> na sua agenda: toda segunda 8h, com link para o playbook salvo.</li>
+              <li><strong>04B.4</strong> &mdash; Execute o playbook na <strong>próxima segunda</strong> seguindo os 5 bullets. Esperado: ~15 minutos do início ao fim, usando as 3 Skills já adicionadas na sua conta nas AP02&ndash;AP04.</li>
+              <li><strong>04B.5</strong> &mdash; Quando migrar para o plano pago no futuro, copie a <strong>PARTE 1</strong> da resposta e cole no Cowork (Passo 04A). Mesmo pipeline, agora automático.</li>
+            </ul>
+            <p class="step-card-desc"><strong>Validação final:</strong> na sua próxima segunda 8h, você executa o playbook em ~15 min e o painel da semana é enviado à liderança como produto da sua rotina semanal de análise.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Pipeline completo + ponte para o Desafio</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>A <strong>estrutura completa de automação semanal</strong> do pipeline da Lumina &mdash; 4 entregáveis numa única resposta do Claude (prompt da Tarefa, conectores, playbook manual, plano de teste).</li>
+          <li><strong>Um dos dois caminhos configurado</strong> &mdash; Tarefa Agendada no Cowork (plano pago) ou playbook manual salvo (plano gratuito). Em qualquer cenário, <strong>a próxima segunda 8h o painel está pronto</strong>.</li>
+          <li>O <strong>trio completo de Skills</strong> na sua conta Claude, disponível para qualquer Project futuro: <code>consolidar-midia-lumina</code> &middot; <code>extrair-receita-crm-lumina</code> &middot; <code>calcular-roas-real-lumina</code>.</li>
+          <li>O <strong>pipeline completo da Lumina executado</strong> &mdash; Project, 3 Skills, painel HTML, automação. <strong>A aula A13 está completa.</strong></li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">A aula A13 termina aqui &mdash; mas o trabalho real começa agora</div>
+        <p>Até este ponto você executou o pipeline na Lumina, uma empresa fictícia. O salto que faz toda a diferença é <strong>replicar tudo isso para a sua empresa real</strong>, com seus dados, sua identidade e suas decisões. O <strong>Desafio</strong> abaixo é o caminho &mdash; 5 horas de trabalho, distribuídas como você preferir, para sair da Lumina e entrar na sua realidade.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Ir ao Desafio &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 — DESAFIO -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">10.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">5 horas distribuídas pelo aluno &mdash; 5 etapas de 1 hora cada</div>
+
+      <p class="lead-text">Agora que o pipeline completo está rodando para a Lumina, replique a estrutura para a empresa real onde você trabalha. <strong>Tempo total estimado: 5 horas</strong>, distribuídas como você preferir &mdash; pode ser um sábado de manhã, 1 hora por dia durante 5 dias, ou meia-hora por dia em 10 dias. <strong>O conteúdo é o mesmo &mdash; só o cronograma muda.</strong></p>
+
+      <p class="lead-text">Ao final dessas 5 horas, você sai com o pipeline operando com <strong>dados reais da sua empresa</strong>, pronto para gerar painéis semanais que serão apresentados em reuniões reais.</p>
+
+      <h3 style="font-size:0.9rem;font-weight:800;color:var(--text);margin:24px 0 10px;text-transform:uppercase;letter-spacing:0.1em">Estrutura do Desafio &mdash; 5 etapas de 1h cada</h3>
+
+      <div class="etapa-card">
+        <span class="etapa-tag">Etapa 1 &middot; 1h</span>
+        <div class="etapa-titulo">Adaptar o Project</div>
+        <ul>
+          <li>Pegar os 3 blocos da AP01 (Nome, Descrição, Instruções).</li>
+          <li>Trocar &ldquo;Lumina&rdquo; pelo nome real da sua empresa.</li>
+          <li>No System Prompt: descrever segmento, produtos principais, canais de venda e <strong>budget mensal aproximado</strong> em mídia.</li>
+          <li>Confirmar (ou ajustar) a janela de atribuição (Lumina usa first-click; sua empresa pode usar last-click).</li>
+          <li>Trocar a identidade visual pela paleta e tipografia da <strong>sua marca</strong>.</li>
+          <li>Criar o Project na sua conta Claude.</li>
+          <li>Subir 2 arquivos de contexto: plano de mídia mensal real + brand book real.</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card">
+        <span class="etapa-tag">Etapa 2 &middot; 1h</span>
+        <div class="etapa-titulo">Adaptar a Skill <code style="font-family:'JetBrains Mono',monospace;font-size:0.86em">consolidar-midia-[suaempresa]</code></div>
+        <ul>
+          <li>Baixar o <code>.zip</code> da Skill <code>consolidar-midia-lumina</code> da AP02.</li>
+          <li>Editar o <code>SKILL.md</code> (passos de processamento e tom) para refletir sua empresa.</li>
+          <li>Se sua empresa exporta CSVs com colunas diferentes, ajustar a lista de colunas esperadas.</li>
+          <li>Recompactar em <code>.zip</code> com o nome <code>consolidar-midia-[suaempresa]</code>.</li>
+          <li>Adicionar na sua conta via <strong>Personalizar → Skills</strong>.</li>
+          <li>Testar com 1 semana real de exports da sua empresa.</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card">
+        <span class="etapa-tag">Etapa 3 &middot; 1h</span>
+        <div class="etapa-titulo">Adaptar a Skill <code style="font-family:'JetBrains Mono',monospace;font-size:0.86em">extrair-receita-crm-[suaempresa]</code></div>
+        <ul>
+          <li>Mesmo processo da Etapa 2 com a <strong>2ª Skill</strong>.</li>
+          <li>Ajustar o formato esperado do CRM da sua empresa.</li>
+          <li>Se sua empresa não tem lojas físicas, <strong>simplificar a Skill</strong> removendo a matriz canal × loja.</li>
+          <li>Se sua empresa tem mais lojas ou regiões, <strong>adicionar essas colunas</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card">
+        <span class="etapa-tag">Etapa 4 &middot; 1h</span>
+        <div class="etapa-titulo">Adaptar a Skill <code style="font-family:'JetBrains Mono',monospace;font-size:0.86em">calcular-roas-real-[suaempresa]</code></div>
+        <ul>
+          <li>Ajustar o mapeamento entre <strong>plataforma pixel e canal first-click</strong> do seu CRM.</li>
+          <li>Atualizar as metas com os números reais da sua empresa (a Lumina usa ROAS real ≥ 2,0x &mdash; sua empresa pode ter outro piso).</li>
+          <li>Manter a regra de &ldquo;<strong>apenas 1 recomendação</strong>&rdquo; no comentário executivo.</li>
+        </ul>
+      </div>
+
+      <div class="etapa-card">
+        <span class="etapa-tag">Etapa 5 &middot; 1h</span>
+        <div class="etapa-titulo">Painel HTML real + automação</div>
+        <ul>
+          <li>Rodar o <strong>pipeline manual completo</strong> com dados reais da semana atual.</li>
+          <li>Pedir ao Claude o painel HTML (mesmo prompt da AP05, ajustado para sua identidade).</li>
+          <li>Se você tem plano pago: configurar Tarefa Agendada no Cowork (PARTE 1 da AP06, ajustada).</li>
+          <li>Se você está no plano gratuito: ativar o playbook manual (PARTE 3 da AP06).</li>
+          <li><strong>Apresentar o primeiro painel real</strong> na próxima reunião de mídia da sua empresa.</li>
+        </ul>
+      </div>
+
+      <h3 style="font-size:0.9rem;font-weight:800;color:var(--text);margin:32px 0 10px;text-transform:uppercase;letter-spacing:0.1em">Conexão com o programa Delta Skills</h3>
+
+      <p class="lead-text">A aula A13 fecha o ciclo de aulas de maio sobre departamentos do programa Delta Skills 2026. A A10 ensinou pipeline comercial, a A11 ensinou pipeline financeiro, a A12 ensinou pipeline de RH, e a A13 fechou com pipeline de marketing/performance.</p>
+
+      <p class="lead-text">O aluno que completou as 4 aulas tem agora um <strong>padrão mental claro</strong> de como aplicar <strong>Project + Skills + Painel + Cowork</strong> em qualquer departamento. Esse padrão é o que destrava o avanço para os próximos níveis Δ da certificação <strong>AI-READY</strong> do Delta Skills.</p>
+
+      <div class="insight-box final">
+        <div class="insight-label">Insight de fechamento da aula A13</div>
+        <p>Em <strong>75 minutos de aula</strong>, você passou de &ldquo;abre o Meta Ads pra olhar números&rdquo; para &ldquo;tem um pipeline semanal automático rodando análise de performance&rdquo;. A Nathália Raoli sai da reunião das 14h com decisão tomada &mdash; você sai da aula com o método pronto para aplicar na sua empresa em 5 horas. <strong>O salto não está no Claude &mdash; está em você decidir trazer esse padrão para a sua rotina semanal real.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-marketing-lumina-ap06";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 11;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
