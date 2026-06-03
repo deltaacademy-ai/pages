@@ -135,12 +135,37 @@
   .observation-list{list-style:none;margin:12px 0}
   .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
   .observation-list li strong{color:var(--blue-text);font-weight:700}
-  .step-header{margin:28px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--accent2)}
-  .step-header .step-num{font-size:0.6rem;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:0.16em}
-  .step-header h3{font-size:0.94rem;font-weight:800;color:var(--text);letter-spacing:-0.01em;margin-top:2px}
-  .step-body{font-size:0.78rem;color:var(--text);line-height:1.6;margin-bottom:8px}
-  .step-body strong{color:var(--accent2);font-weight:700}
-  .step-body code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.74rem;background:var(--ficha-td1-bg);border:1px solid var(--border);padding:1px 6px;border-radius:4px;color:var(--accent2)}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Downloads-card (embutido em step-card) */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+
+  /* Check-list (entregáveis ao final da atividade) */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
   @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.tool-links{grid-template-columns:1fr}.glossario-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -432,173 +457,150 @@
       <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
       <div class="sec-desc">8 passos &mdash; baixar Skill, adicionar na conta, anexar 3 CSVs, invocar e validar</div>
 
-      <!-- PASSO 01 -->
-      <div class="step-header">
-        <div class="step-num">Passo 01</div>
-        <h3>Baixe a Skill da página</h3>
-      </div>
-      <div class="feynman-box">
-        <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
-        <p><strong>Skill (no Claude):</strong> uma Skill é &ldquo;um prompt embalado em arquivo <code>.zip</code>&rdquo; &mdash; você adiciona uma vez na sua conta e depois invoca dizendo &ldquo;use a skill X&rdquo; em vez de colar 800 palavras toda segunda.</p>
-      </div>
-      <p class="step-body">Você vai baixar o arquivo <code>.zip</code> da Skill direto da página da aula. Use o botão de download abaixo:</p>
-      <div class="download-grid cols-1">
-        <div class="dl-card">
-          <div class="dl-head">
-            <div class="dl-icon">
-              <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><line x1="3.27" y1="6.96" x2="12" y2="12.01"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-            </div>
-            <div>
-              <div class="dl-name">consolidar-midia-lumina.zip</div>
-            </div>
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe a Skill da página</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Skill (no Claude):</strong> uma Skill é &ldquo;um prompt embalado em arquivo <code>.zip</code>&rdquo; &mdash; você adiciona uma vez na sua conta e depois invoca dizendo &ldquo;use a skill X&rdquo; em vez de colar 800 palavras toda segunda.</p>
           </div>
-          <div class="dl-desc">Skill que consolida exports brutos de Meta Ads, Google Ads e GA4 em uma tabela executiva semanal.</div>
-          <a class="dl-btn" href="consolidar-midia-lumina.zip" download>
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Baixar
-          </a>
+          <p class="step-card-desc">Você vai baixar o arquivo <code>.zip</code> da Skill direto da página da aula. Use o botão de download abaixo:</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP02 &middot; Skill</div>
+            <a class="dl-btn" href="consolidar-midia-lumina.zip" download>
+              <span class="dl-icon">&#128230;</span>
+              <span class="dl-meta">
+                <span class="dl-name">consolidar-midia-lumina.zip</span>
+                <span class="dl-desc">Skill que consolida exports brutos de Meta Ads, Google Ads e GA4 em uma tabela executiva semanal</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> o arquivo será salvo na pasta de Downloads do seu computador. Confirme que apareceu lá antes de seguir.</p>
         </div>
       </div>
 
-      <!-- PASSO 02 -->
-      <div class="step-header">
-        <div class="step-num">Passo 02</div>
-        <h3>Abra uma nova aba do navegador</h3>
-      </div>
-      <div class="feynman-box">
-        <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
-        <p><strong>Personalizar (no Claude):</strong> área da conta Claude onde você adiciona Skills, instruções padrão e preferências. Skills adicionadas ali ficam disponíveis em <strong>todos os seus Projects</strong> &mdash; não precisa adicionar dentro de cada um.</p>
-      </div>
-      <p class="step-body">Você vai precisar acessar a área <strong>Personalizar</strong> da sua conta Claude &mdash; que fica fora do Project. Para não fechar a aba onde está o Project da AP01, abra uma <strong>nova aba do navegador</strong>. Na nova aba, acesse <code>claude.ai</code> e faça login (se ainda não estiver logado).</p>
-      <div class="warning-box">
-        <div class="warning-label">Importante</div>
-        <p><strong>Mantenha a aba do Project aberta na aba anterior.</strong> Você vai voltar para ela no Passo 06 &mdash; e a conversa do Project precisa ser usada nas próximas APs em sequência.</p>
-      </div>
-
-      <!-- PASSO 03 -->
-      <div class="step-header">
-        <div class="step-num">Passo 03</div>
-        <h3>Acesse a área Personalizar</h3>
-      </div>
-      <p class="step-body">Na nova aba do Claude, abra o menu da sua conta (geralmente clicando no avatar do canto superior direito ou em <strong>Configurações</strong> no menu lateral). Localize e clique em <strong>Personalizar</strong>. A tela de Personalização vai abrir mostrando as áreas disponíveis (Skills, Instruções, Preferências). Clique na aba ou seção <strong>Skills</strong>.</p>
-
-      <!-- PASSO 04 -->
-      <div class="step-header">
-        <div class="step-num">Passo 04</div>
-        <h3>Adicione a Skill na sua conta</h3>
-      </div>
-      <p class="step-body">Na tela de Skills, clique em <strong>+ Adicionar skill</strong> (botão geralmente no canto superior direito). Selecione <strong>Carregar skill (.zip)</strong> ou <strong>Upload de arquivo</strong>. Faça upload do <code>consolidar-midia-lumina.zip</code> baixado no Passo 01. Aguarde a confirmação de que a Skill foi adicionada &mdash; o nome <code>consolidar-midia-lumina</code> deve aparecer na lista de Skills da sua conta. Depois da confirmação, <strong>feche esta aba</strong> &mdash; você não precisa mais dela. Volte para a aba do Project.</p>
-
-      <!-- PASSO 05 -->
-      <div class="step-header">
-        <div class="step-num">Passo 05</div>
-        <h3>Baixe os 3 CSVs da semana</h3>
-      </div>
-      <div class="feynman-box">
-        <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
-        <p><strong>CSV (export bruto):</strong> formato de planilha simples, em texto puro, que toda plataforma de anúncios exporta. Meta Ads, Google Ads e GA4 exportam relatórios semanais em CSV &mdash; é a &ldquo;matéria-prima&rdquo; que a Skill vai processar.</p>
-      </div>
-      <p class="step-body">De volta à aba do Project, agora você precisa baixar os 3 exports brutos da semana 12&ndash;18 de maio de 2026 &mdash; Meta Ads, Google Ads e GA4. Use os botões de download abaixo:</p>
-      <div class="download-grid cols-3">
-        <div class="dl-card">
-          <div class="dl-head">
-            <div class="dl-icon">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div>
-              <div class="dl-name">01-meta-ads-export-12a18mai.csv</div>
-            </div>
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra uma nova aba do navegador</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>Personalizar (no Claude):</strong> área da conta Claude onde você adiciona Skills, instruções padrão e preferências. Skills adicionadas ali ficam disponíveis em <strong>todos os seus Projects</strong> &mdash; não precisa adicionar dentro de cada um.</p>
           </div>
-          <div class="dl-desc">Export bruto do Meta Ads Manager &mdash; 4 campanhas &times; 7 dias da semana.</div>
-          <a class="dl-btn" href="01-meta-ads-export-12a18mai.csv" download>
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Baixar
-          </a>
-        </div>
-        <div class="dl-card">
-          <div class="dl-head">
-            <div class="dl-icon">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div>
-              <div class="dl-name">02-google-ads-export-12a18mai.csv</div>
-            </div>
+          <p class="step-card-desc">Você vai precisar acessar a área <strong>Personalizar</strong> da sua conta Claude &mdash; que fica fora do Project. Para não fechar a aba onde está o Project da AP01, abra uma <strong>nova aba do navegador</strong>. Na nova aba, acesse <code>claude.ai</code> e faça login (se ainda não estiver logado).</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p><strong>Mantenha a aba do Project aberta na aba anterior.</strong> Você vai voltar para ela no Passo 06 &mdash; e a conversa do Project precisa ser usada nas próximas APs em sequência.</p>
           </div>
-          <div class="dl-desc">Export bruto do Google Ads Manager &mdash; 4 campanhas &times; 7 dias da semana.</div>
-          <a class="dl-btn" href="02-google-ads-export-12a18mai.csv" download>
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Baixar
-          </a>
-        </div>
-        <div class="dl-card">
-          <div class="dl-head">
-            <div class="dl-icon">
-              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            </div>
-            <div>
-              <div class="dl-name">03-ga4-export-12a18mai.csv</div>
-            </div>
-          </div>
-          <div class="dl-desc">Export do Google Analytics 4 &mdash; sessões por canal &times; 7 dias.</div>
-          <a class="dl-btn" href="03-ga4-export-12a18mai.csv" download>
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Baixar
-          </a>
         </div>
       </div>
 
-      <!-- PASSO 06 -->
-      <div class="step-header">
-        <div class="step-num">Passo 06</div>
-        <h3>Abra uma nova conversa no Project e anexe os 3 CSVs</h3>
-      </div>
-      <p class="step-body">Dentro do Project <strong>&ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong> (na aba que você manteve aberta do Passo 02), clique em <strong>+ Nova conversa</strong>. No campo de mensagem, <strong>anexe os 3 CSVs baixados no Passo 05</strong> &mdash; todos na mesma mensagem, antes de enviar. Você pode arrastar os 3 arquivos de uma vez ou usar o botão de anexar e selecionar os 3 com Cmd/Ctrl pressionado.</p>
-      <div class="warning-box">
-        <div class="warning-label">Importante</div>
-        <p>Confirme visualmente que os <strong>3 arquivos <code>.csv</code></strong> aparecem como anexos no campo de mensagem antes de prosseguir. Se faltar algum, anexe antes de enviar a mensagem.</p>
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Acesse a área Personalizar</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na nova aba do Claude, abra o menu da sua conta (geralmente clicando no avatar do canto superior direito ou em <strong>Configurações</strong> no menu lateral). Localize e clique em <strong>Personalizar</strong>.</p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> a tela de Personalização vai abrir mostrando as áreas disponíveis (Skills, Instruções, Preferências). Clique na aba ou seção <strong>Skills</strong>.</p>
+        </div>
       </div>
 
-      <!-- PASSO 07 -->
-      <div class="step-header">
-        <div class="step-num">Passo 07</div>
-        <h3>Acione a Skill com o prompt de 1 linha</h3>
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Adicione a Skill na sua conta</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na tela de Skills, clique em <strong>+ Adicionar skill</strong> (botão geralmente no canto superior direito). Selecione <strong>Carregar skill (.zip)</strong> ou <strong>Upload de arquivo</strong>. Faça upload do <code>consolidar-midia-lumina.zip</code> baixado no Passo 01.</p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> aguarde a confirmação de que a Skill foi adicionada &mdash; o nome <code>consolidar-midia-lumina</code> deve aparecer na lista de Skills da sua conta. Depois da confirmação, <strong>feche esta aba</strong> &mdash; você não precisa mais dela. Volte para a aba do Project.</p>
+        </div>
       </div>
-      <p class="step-body">Use o botão <strong>Copiar</strong> abaixo para copiar o prompt de invocação. Cole no campo de mensagem (com os 3 CSVs já anexados) e envie. O processamento leva aproximadamente <strong>45 a 60 segundos</strong>.</p>
-      <div class="copy-wrap">
-        <span class="copy-label">Prompt de invocação da Skill</span>
-        <div class="copy-block" id="skill-prompt">
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Baixe os 3 CSVs da semana</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>CSV (export bruto):</strong> formato de planilha simples, em texto puro, que toda plataforma de anúncios exporta. Meta Ads, Google Ads e GA4 exportam relatórios semanais em CSV &mdash; é a &ldquo;matéria-prima&rdquo; que a Skill vai processar.</p>
+          </div>
+          <p class="step-card-desc">De volta à aba do Project, agora você precisa baixar os 3 exports brutos da semana 12&ndash;18 de maio de 2026 &mdash; Meta Ads, Google Ads e GA4. Use os botões de download abaixo:</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP02 &middot; 3 CSVs da semana</div>
+            <a class="dl-btn" href="01-meta-ads-export-12a18mai.csv" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">01-meta-ads-export-12a18mai.csv</span>
+                <span class="dl-desc">Export bruto do Meta Ads Manager &mdash; 4 campanhas &times; 7 dias da semana</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="02-google-ads-export-12a18mai.csv" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">02-google-ads-export-12a18mai.csv</span>
+                <span class="dl-desc">Export bruto do Google Ads Manager &mdash; 4 campanhas &times; 7 dias da semana</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="03-ga4-export-12a18mai.csv" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">03-ga4-export-12a18mai.csv</span>
+                <span class="dl-desc">Export do Google Analytics 4 &mdash; sessões por canal &times; 7 dias</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> confirme que os 3 arquivos <code>.csv</code> apareceram na sua pasta de Downloads antes de seguir.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Abra uma nova conversa no Project e anexe os 3 CSVs</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Dentro do Project <strong>&ldquo;Resultados de Mídia &mdash; Lumina&rdquo;</strong> (na aba que você manteve aberta do Passo 02), clique em <strong>+ Nova conversa</strong>. No campo de mensagem, <strong>anexe os 3 CSVs baixados no Passo 05</strong> &mdash; todos na mesma mensagem, antes de enviar.</p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> você pode arrastar os 3 arquivos de uma vez ou usar o botão de anexar e selecionar os 3 com <code>Cmd</code>/<code>Ctrl</code> pressionado.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p>Confirme visualmente que os <strong>3 arquivos <code>.csv</code></strong> aparecem como anexos no campo de mensagem antes de prosseguir. Se faltar algum, anexe antes de enviar a mensagem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Acione a Skill com o prompt de 1 linha</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> abaixo para copiar o prompt de invocação. Cole no campo de mensagem (com os 3 CSVs já anexados) e envie. O processamento leva aproximadamente <strong>45 a 60 segundos</strong>.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt de invocação da Skill</span>
+            <div class="copy-block" id="skill-prompt">
 <button class="copy-btn" onclick="copyText(this, document.getElementById('skill-prompt-text').textContent)">Copiar</button>
 <span id="skill-prompt-text">Use a skill consolidar-midia-lumina nos 3 CSVs anexos (Meta Ads, Google Ads e GA4 — semana 12 a 18 de maio de 2026).</span></div>
+          </div>
+        </div>
       </div>
 
-      <!-- PASSO 08 -->
-      <div class="step-header">
-        <div class="step-num">Passo 08</div>
-        <h3>Valide a consolidação</h3>
-      </div>
-      <div class="feynman-box">
-        <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
-        <p><strong>ROAS reportado pelo pixel:</strong> ROAS que Meta Ads ou Google Ads mostram no painel deles, calculado com a receita que o pixel rastreou. Tende a ser inflado em relação ao ROAS real do CRM &mdash; essa diferença é o tema central da AP04.</p>
-      </div>
-      <p class="step-body">Confira se o output trouxe as 4 partes esperadas:</p>
-      <div class="overview-card">
-        <ul>
-          <li><strong>PARTE 1</strong> &mdash; Tabela consolidada por plataforma (Meta Ads, Google Ads, TOTAL ADS PAGOS)</li>
-          <li><strong>PARTE 2</strong> &mdash; Tabela com as 8 campanhas (4 Meta + 4 Google) ordenadas por gasto</li>
-          <li><strong>PARTE 3</strong> &mdash; Tabela de tráfego GA4 por canal default</li>
-          <li><strong>PARTE 4</strong> &mdash; Comentário executivo de 3 parágrafos</li>
-        </ul>
-      </div>
-      <p class="step-body">Use os números abaixo para conferir se a Skill processou corretamente:</p>
-      <ul class="observation-list">
-        <li><strong>Gasto Meta total</strong> &asymp; R$ 25.226,90</li>
-        <li><strong>Gasto Google total</strong> &asymp; R$ 13.086,70</li>
-        <li><strong>Gasto total</strong> &asymp; R$ 38.313,60</li>
-        <li><strong>ROAS pixel consolidado</strong> &asymp; 3,80x &mdash; acima da meta semanal de 3,5x</li>
-      </ul>
-      <div class="warning-box">
-        <div class="warning-label">Importante &mdash; sem spoiler do gap pixel × CRM</div>
-        <p>O comentário executivo da PARTE 4 deve dizer que o ROAS pixel está <strong>acima da meta</strong> e <strong>não</strong> deve mencionar ainda nada sobre CRM ou ROAS real. Essa comparação é a função da AP04. Se o comentário já entregou o &ldquo;spoiler&rdquo; do gap pixel &times; CRM, alguma coisa saiu errada &mdash; a Skill desta AP olha apenas o que o pixel reportou.</p>
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Valide a consolidação</span></div>
+        <div class="step-card-body">
+          <div class="feynman-box">
+            <div class="feynman-label">&#128172; Conceito-chave deste passo</div>
+            <p><strong>ROAS reportado pelo pixel:</strong> ROAS que Meta Ads ou Google Ads mostram no painel deles, calculado com a receita que o pixel rastreou. Tende a ser inflado em relação ao ROAS real do CRM &mdash; essa diferença é o tema central da AP04.</p>
+          </div>
+          <p class="step-card-desc">Confira se o output trouxe as <strong>4 partes esperadas</strong>:</p>
+          <ul class="check-list">
+            <li><strong>PARTE 1</strong> &mdash; Tabela consolidada por plataforma (Meta Ads, Google Ads, TOTAL ADS PAGOS).</li>
+            <li><strong>PARTE 2</strong> &mdash; Tabela com as 8 campanhas (4 Meta + 4 Google) ordenadas por gasto.</li>
+            <li><strong>PARTE 3</strong> &mdash; Tabela de tráfego GA4 por canal default.</li>
+            <li><strong>PARTE 4</strong> &mdash; Comentário executivo de 3 parágrafos.</li>
+          </ul>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> use os números abaixo para conferir se a Skill processou corretamente:</p>
+          <ul class="observation-list">
+            <li><strong>Gasto Meta total</strong> &asymp; R$ 25.226,90</li>
+            <li><strong>Gasto Google total</strong> &asymp; R$ 13.086,70</li>
+            <li><strong>Gasto total</strong> &asymp; R$ 38.313,60</li>
+            <li><strong>ROAS pixel consolidado</strong> &asymp; 3,80x &mdash; acima da meta semanal de 3,5x</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Importante &mdash; sem spoiler do gap pixel × CRM</div>
+            <p>O comentário executivo da PARTE 4 deve dizer que o ROAS pixel está <strong>acima da meta</strong> e <strong>não</strong> deve mencionar ainda nada sobre CRM ou ROAS real. Essa comparação é a função da AP04. Se o comentário já entregou o &ldquo;spoiler&rdquo; do gap pixel &times; CRM, alguma coisa saiu errada &mdash; a Skill desta AP olha apenas o que o pixel reportou.</p>
+          </div>
+        </div>
       </div>
 
       <div class="nav-buttons">
@@ -615,11 +617,11 @@
 
       <div class="overview-card">
         <h3>Você sai desta atividade com</h3>
-        <ul>
-          <li><strong>Primeira Skill da aula</strong> (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">consolidar-midia-lumina</code>) adicionada na sua conta Claude, disponível em qualquer Project futuro</li>
-          <li><strong>Consolidação executiva</strong> da semana 12&ndash;18 de maio de 2026 da Lumina, com 4 partes (3 tabelas + comentário) gerada via invocação de 1 linha</li>
-          <li>Os <strong>3 CSVs anexados na conversa do Project</strong> &mdash; eles permanecem no contexto da conversa e serão referenciados nas próximas APs</li>
-          <li>Confirmação de que, <strong>segundo o pixel</strong>, o ROAS da semana bateu a meta &mdash; narrativa que vai ser confrontada na AP04 com os dados reais do CRM</li>
+        <ul class="check-list">
+          <li><strong>Primeira Skill da aula</strong> (<code style="font-family:'JetBrains Mono',monospace;color:var(--accent2)">consolidar-midia-lumina</code>) adicionada na sua conta Claude, disponível em qualquer Project futuro.</li>
+          <li><strong>Consolidação executiva</strong> da semana 12&ndash;18 de maio de 2026 da Lumina, com 4 partes (3 tabelas + comentário) gerada via invocação de 1 linha.</li>
+          <li>Os <strong>3 CSVs anexados na conversa do Project</strong> &mdash; eles permanecem no contexto da conversa e serão referenciados nas próximas APs.</li>
+          <li>Confirmação de que, <strong>segundo o pixel</strong>, o ROAS da semana bateu a meta &mdash; narrativa que vai ser confrontada na AP04 com os dados reais do CRM.</li>
         </ul>
       </div>
 
