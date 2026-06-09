@@ -125,6 +125,12 @@
   .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
   .step-card-desc em{color:var(--text2);font-style:italic}
 
+  /* Step image (print do Scribe embutido em step-card-body) */
+  .step-img{margin:14px 0 4px;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--ficha-td1-bg);box-shadow:var(--shadow-xs)}
+  .step-img img{display:block;width:100%;height:auto}
+  .step-img figcaption{font-size:0.66rem;color:var(--text3);padding:8px 12px;border-top:1px solid var(--border);font-weight:600;line-height:1.4;background:var(--panel)}
+  .step-img + .step-img{margin-top:10px}
+
   /* Check-list (entregáveis no overview-card "Você sai com") */
   .check-list{list-style:none;margin:10px 0}
   .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
@@ -342,6 +348,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abrir o Finder a partir do Dock</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Clique no ícone do <strong>Finder</strong> no Dock do macOS para abri-lo. O Finder vai abrir na janela padrão configurada no seu sistema &mdash; pode ser Recentes, Documentos ou outro local. <em>Não importa onde abriu; nos próximos passos você vai navegar para o lugar certo.</em></p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3883d58e-dc0b-4565-9e86-20339cd8a995/user_cropped_screenshot_14a231ba7f1a4822b1d67547f0b17712_text_export.jpeg" alt="Ícone do Finder no Dock destacado com seta indicando o clique" loading="lazy">
+            <figcaption>Ícone do Finder no Dock destacado com seta indicando o clique.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -349,6 +359,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Navegar até o diretório home</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">No Finder aberto, vá até o <strong>diretório home</strong> do seu usuário (a pasta com o ícone de casinha, geralmente chamada com o seu nome de usuário). Você pode usar o atalho <code>Cmd + Shift + H</code> ou clicar na pasta do seu nome na barra lateral do Finder.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3f62b058-303c-416c-a4d1-71869413f85a/sps-redacted-3a7fe0fdb41f40f49b87ed5bd4495499_73b403e45b7f4b6c90a2290407c65c6a_text_export.jpeg" alt="Janela do Finder com o diretório home aberto mostrando as pastas padrão" loading="lazy">
+            <figcaption>Janela do Finder com o diretório home aberto mostrando as pastas padrão.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -356,6 +370,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Localizar a pasta <code>pages</code></span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Dentro do diretório home, <strong>localize a pasta chamada <code>pages</code></strong>. Essa é a pasta do repositório <code>deltaacademy-ai/pages</code> que você clonou como pré-requisito desta aula. Se você não encontrar essa pasta, é sinal de que o repositório ainda não foi clonado &mdash; pare aqui e clone antes de continuar.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/52ce2990-fd1b-4284-ba40-67abe9d5a132/sps-redacted-26d09a0f213a4a81a8078da4b3f356bc_d4f5634acbce412795c97c09d1c0f599_text_export.jpeg" alt="Finder no diretório home com a pasta pages visível e destacada" loading="lazy">
+            <figcaption>Finder no diretório home com a pasta <code>pages</code> visível e destacada.</figcaption>
+          </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
             <p>Se a pasta <code>pages</code> não existir no seu home, abra o Terminal e rode <code>git clone git@github.com:deltaacademy-ai/pages.git</code> no diretório home antes de seguir. Sem essa pasta clonada, a skill não tem onde gravar a aula.</p>
@@ -367,6 +385,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Selecionar a pasta <code>pages</code></span></div>
         <div class="step-card-body">
           <p class="step-card-desc"><strong>Clique uma vez sobre a pasta <code>pages</code></strong> para selecioná-la (não entre dentro dela &mdash; só selecionar é suficiente). A pasta deve aparecer destacada/azulada indicando que está selecionada. Mantenha o Finder aberto nesse estado &mdash; você vai precisar dele aberto para o próximo passo.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3485d2ba-1c92-40f2-83d6-05a1a2d45ce9/sps-redacted-38cbbf36fcf84c60875a1663d00ed77f_dd9002ecabee47ad9ef2713e1984efcb_text_export.jpeg" alt="Finder mostrando a pasta pages selecionada com destaque visual azul" loading="lazy">
+            <figcaption>Finder mostrando a pasta <code>pages</code> selecionada com destaque visual azul.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -374,6 +396,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">No Claude Code, clicar em "Abrir pasta..."</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Agora abra o <strong>Claude Code</strong> (se ele já não estiver aberto). Na interface inicial do Claude Code, clique em <strong>"Abrir pasta..."</strong> (ou "Open folder..." dependendo do idioma da interface). Isso vai abrir um diálogo de seleção de pasta nativo do macOS.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3444c81a-ba3e-4bf9-9b7c-d5ccd5e12afd/sps-redacted-e685d4eafb7547f3a384bb00f9172fcb_7cc12d89ef90497a8828a226bfb11ed0_text_export.jpeg" alt="Tela inicial do Claude Code com o botão Abrir pasta destacado" loading="lazy">
+            <figcaption>Tela inicial do Claude Code com o botão "Abrir pasta..." destacado.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -381,6 +407,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Selecionar a pasta do repositório no diálogo</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">No diálogo de seleção que abriu, navegue até o diretório home e <strong>selecione a pasta <code>pages</code></strong> (ou a pasta exata em que você executou o <code>git clone</code> se foi em outro lugar). Confirme que a pasta selecionada é a do repositório <code>deltaacademy-ai/pages</code>.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/d333fb37-1be3-4939-af2a-18da147a4b1c/sps-redacted-5728a0959b2c48f79322ed0d60cbc111_b1bb2fb913ec4cd48463cc88259b3f69_text_export.jpeg" alt="Diálogo de seleção de pasta do macOS com a pasta pages destacada" loading="lazy">
+            <figcaption>Diálogo de seleção de pasta do macOS com a pasta <code>pages</code> destacada.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -388,6 +418,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Confirmar a abertura clicando em "Abrir"</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">No canto inferior direito do diálogo de seleção, clique no botão <strong>"Abrir"</strong> para confirmar a escolha da pasta. O Claude Code vai começar a carregar o workspace apontando para essa pasta.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/4134fa54-e3cf-4557-b03c-aa3416dc6466/sps-redacted-d475cdf347074a9a86c9e7bc9ebe6a37_89f0095c6d9a4273be724f8b453bc4f7_text_export.jpeg" alt="Diálogo de seleção com o botão Abrir destacado no canto inferior direito" loading="lazy">
+            <figcaption>Diálogo de seleção com o botão "Abrir" destacado no canto inferior direito.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -395,6 +429,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Confiar no workspace</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Na primeira vez que você abre uma pasta no Claude Code, ele pede confirmação de segurança. Uma janela vai aparecer perguntando se você confia no conteúdo dessa pasta. <strong>Clique em "Confiar no Workspace"</strong> (ou "Trust Workspace") para autorizar o Claude Code a ler e executar arquivos dentro da pasta.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/c0fd4c87-1530-4107-8f8c-480638f4d7fe/sps-redacted-e3e1b212af4f4aa2869d152578a87e8d_08b41fbcdf5849648f032df0f17e3967_text_export.jpeg" alt="Diálogo de confiança do Claude Code com o botão Confiar no Workspace destacado" loading="lazy">
+            <figcaption>Diálogo de confiança do Claude Code com o botão "Confiar no Workspace" destacado.</figcaption>
+          </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
             <p>Esse aviso só aparece <strong>na primeira vez</strong>. Nas próximas vezes que você abrir a pasta <code>pages</code>, o Claude Code já vai considerá-la confiável e pular esse passo.</p>
@@ -419,6 +457,10 @@
 <button class="copy-btn" onclick="copyText(this, document.getElementById('cmd-skill-text').textContent)">Copiar</button>
 <span id="cmd-skill-text">/criar-nova-aula-Delta</span></div>
           </div>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/93c7f7d3-c288-444c-806c-06f32b93d148/sps-redacted-8f42e05a58974277aec7afb64927a8bc_77c63eb2fd0c4896878fa30d3dddd62c_text_export.jpeg" alt="Campo de prompt do Claude Code com o comando criar-nova-aula-Delta digitado" loading="lazy">
+            <figcaption>Campo de prompt do Claude Code com <code>/criar-nova-aula-Delta</code> digitado e prestes a ser enviado.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -426,6 +468,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 10</span><span class="step-card-title">Inserir seu username de professor</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">A skill vai perguntar qual é o seu <strong>username de professor da Delta Academy</strong>. Se você já é professor cadastrado, insira o username que você já usa. Se essa é sua primeira aula, <strong>invente um username novo</strong> (algo curto, em lowercase, sem espaços &mdash; ex: <code>rafa</code>, <code>mariag</code>, <code>pedrocosta</code>). Esse username vai te identificar como autor das aulas que criar.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/9b495201-a5b3-4daa-bc9d-004cce9cc1f7/sps-redacted-7bb30580d09b4c789e5eaf1b7d12ddc3_76e9b4c986124b6c8886dd9ffba963a5_text_export.jpeg" alt="Claude Code mostrando o prompt pedindo o username e o usuário digitando o seu" loading="lazy">
+            <figcaption>Claude Code com o prompt pedindo o username e o professor digitando o seu.</figcaption>
+          </figure>
           <div class="tip-box">
             <div class="tip-label">Dica</div>
             <p>Anote seu username em algum lugar fácil de acessar. Você vai precisar dele <strong>toda vez</strong> que criar uma aula nova &mdash; e ele precisa ser <strong>exatamente o mesmo</strong> para a skill reconhecer suas aulas anteriores.</p>
@@ -437,6 +483,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 11</span><span class="step-card-title">Selecionar "A &mdash; Módulo novo com aulas"</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">A skill vai te mostrar uma lista de opções de fluxo. Como esta é sua primeira aula e você quer <strong>criar um módulo novo do zero</strong> com pelo menos uma aula dentro, <strong>selecione a opção "A &mdash; Módulo novo com aulas"</strong>. Não selecione as opções de "adicionar aula a módulo existente" &mdash; essas você vai usar quando voltar para complementar um módulo já criado.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3b9cf974-0933-47ce-8eff-eeabee937bf7/sps-redacted-d4924cd74e054beeaa6a1adbb4023606_74d6f97e4ec34410aeece52aba392230_text_export.jpeg" alt="Lista de opções da skill com A — Módulo novo com aulas destacada" loading="lazy">
+            <figcaption>Lista de opções da skill com "A &mdash; Módulo novo com aulas" destacada.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -444,6 +494,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 12</span><span class="step-card-title">Confirmar a criação do módulo digitando "A"</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">A skill vai pedir uma <strong>confirmação adicional</strong> antes de começar a gerar os arquivos. Digite a letra <strong>"A"</strong> no campo de prompt e envie. Isso confirma a sua escolha e libera a skill para começar a gerar o módulo novo com a aula dentro. A partir daqui a skill assume o controle: ela vai criar a pasta do módulo, gerar o HTML, o CSS, configurar a sidebar e preparar o commit.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/38daa1b0-d36d-4fa8-90e7-f06bbfcffc6c/sps-redacted-b8e4d72d6ca54f1ba7c11194d8d6a619_5594689c5db746d193c5cfaf9b5f2b9e_text_export.jpeg" alt="Campo de prompt do Claude Code com a letra A digitada para confirmar" loading="lazy">
+            <figcaption>Campo de prompt do Claude Code com a letra "A" digitada para confirmar.</figcaption>
+          </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
             <p>A partir desse passo, <strong>não interrompa a execução da skill</strong>. Ela vai rodar vários comandos em sequência (criar arquivos, fazer commit, fazer push para o GitHub). Se você cancelar no meio, pode deixar o repositório em estado inconsistente. Aguarde até a skill terminar e mostrar a URL da aula publicada.</p>
@@ -462,6 +516,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 13</span><span class="step-card-title">Copiar a URL da aula publicada</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Quando a skill terminar a execução, ela vai exibir no terminal a <strong>URL pública da aula</strong> que acabou de ser publicada no GitHub Pages. A URL tem o formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>. <strong>Selecione e copie essa URL</strong> (<code>Cmd+C</code>) &mdash; você vai colá-la no navegador no próximo passo.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/f5153f34-32e8-4cb5-b49e-1abe9a64ecc4/sps-redacted-71cbcc4213a14ec489d8de8ec3388384_e4a8c385f0cc4da7a710be69e8ff6dfb_text_export.jpeg" alt="Terminal do Claude Code exibindo a URL da aula publicada com a URL selecionada" loading="lazy">
+            <figcaption>Terminal do Claude Code exibindo a URL da aula publicada, com a URL selecionada.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -469,6 +527,14 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 14</span><span class="step-card-title">Colar a URL no navegador e abrir</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Abra seu <strong>navegador padrão</strong> (Chrome, Safari, Firefox), clique na barra de endereço, <strong>cole a URL</strong> (<code>Cmd+V</code>) e aperte Enter. O GitHub Pages pode levar de <strong>30 segundos a 2 minutos</strong> para terminar de fazer o deploy nas primeiras vezes &mdash; se a página não abrir de cara, espere um pouco e atualize.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/aa8fd65c-ceaa-450c-be9a-26776f079024/sps-redacted-949a20247339419588ed3d7ab8deb185_c744052cf3524ff293e1cc645faf591f_text_export.jpeg" alt="Navegador com a URL colada na barra de endereço prestes a carregar" loading="lazy">
+            <figcaption>Navegador com a URL colada na barra de endereço, prestes a carregar.</figcaption>
+          </figure>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/c23394fd-bbd4-4bc7-af1c-f5d9b9b34db3/sps-redacted-5230e380010449aead33e4db938b47fd_38325642c37b48aea1417d891e7c06aa_text_export.jpeg" alt="Página inicial do site Delta carregada no navegador após a URL aberta" loading="lazy">
+            <figcaption>Página inicial do site Delta carregada no navegador depois de aberta a URL.</figcaption>
+          </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
             <p>Se a página exibir erro 404 mesmo depois de 2 minutos, abra o GitHub do repositório <code>deltaacademy-ai/pages</code> e verifique se o último commit (feito pela skill) está listado nos commits. Se estiver, o deploy ainda está rodando &mdash; espere mais 1 minuto e atualize. Se o commit não aparecer, algo travou no push e você precisa rerodar a skill.</p>
@@ -480,6 +546,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 15</span><span class="step-card-title">Clicar no link da aula recém-criada</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">A URL pode te levar para a <strong>página índice do módulo</strong> que você criou (não direto para a aula). Nesse caso, você vai ver uma lista com o título da aula que a skill gerou &mdash; algo como <strong>"Benchmark da Vaga"</strong> ou similar dependendo do conteúdo. <strong>Clique nesse link</strong> para abrir a página da aula em si.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/42f0bc5e-768b-476e-90c7-7ceb37cb9b13/sps-redacted-960df06a1f9a4d4387ff2fe0d385dfdc_8a5e11cf74c04ccf85af6eb62da90cef_text_export.jpeg" alt="Página índice do módulo no navegador com o link da aula destacado" loading="lazy">
+            <figcaption>Página índice do módulo no navegador com o link da aula destacado.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -487,6 +557,10 @@
         <div class="step-card-head"><span class="step-card-num">PASSO 16</span><span class="step-card-title">Verificar a aula publicada</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">A aula deve carregar com a <strong>identidade visual completa da Delta Academy</strong>: sidebar à esquerda com a navegação dos itens, breadcrumb no topo, banner do entregável na introdução, paleta de cores Delta Board (verde escuro, dourado, cream). <strong>Navegue pelas seções da aula</strong> clicando nos itens da sidebar para confirmar que tudo está funcionando.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/974f2f96-2d6c-4a56-9668-13d00a7fb62e/sps-redacted-0a0f1a9353944fdca033f724120ef135_7022d4e221284eb5ba36a8bb396e9d3f_text_export.jpeg" alt="Aula completa renderizada no navegador mostrando sidebar conteúdo principal e identidade Delta aplicada" loading="lazy">
+            <figcaption>Aula completa renderizada no navegador mostrando sidebar, conteúdo principal e identidade Delta aplicada.</figcaption>
+          </figure>
           <div class="tip-box">
             <div class="tip-label">Dica</div>
             <p>Se algo visualmente estiver fora do padrão Delta (cor errada, sidebar quebrada, fonte diferente), provavelmente o cache do GitHub Pages ainda está servindo uma versão antiga. Faça um <strong>hard refresh</strong> no navegador (<code>Cmd + Shift + R</code> no Chrome/Firefox, <code>Cmd + Option + R</code> no Safari) e o problema costuma resolver.</p>
