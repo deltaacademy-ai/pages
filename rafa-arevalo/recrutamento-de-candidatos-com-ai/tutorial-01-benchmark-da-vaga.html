@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Benchmark da Vaga &middot; Recrutamento de candidatos com AI &mdash; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--red-light:#FBE9E7;--red-border:#E5B6B0;--red-text:#7A2E22;--purple-bg:#EEEDFE;--purple-border:#6B5B95;--purple-text:#3D3266;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--red-light:#3A1F1A;--red-border:#7A3A30;--red-text:#E8B5AB;--purple-bg:#2D2A4F;--purple-border:#9C8FBF;--purple-text:#CFC5EA;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--red-light:#FBE9E7;--red-border:#E5B6B0;--red-text:#7A2E22;--purple-bg:#EEEDFE;--purple-border:#6B5B95;--purple-text:#3D3266;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .instructions{display:flex;flex-direction:column;gap:4px;margin:14px 0}
+  .inst{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:flex-start;padding:11px 14px;background:var(--panel);border-radius:8px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .inst-num{font-size:0.58rem;font-weight:700;color:#fff;background:var(--green);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+  [data-palette="dusk"] .inst-num{background:var(--green-light);color:var(--green)}
+  .inst-text{font-size:0.78rem;color:var(--text);line-height:1.55;flex:1;min-width:0}
+  .inst-text strong{font-weight:700;color:var(--accent2)}
+  .inst-text .time{color:var(--text3);font-size:0.7rem;font-weight:500}
+  .inst-step-title{font-size:0.92rem;font-weight:800;color:var(--accent2);margin:18px 0 8px;letter-spacing:-0.01em}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .tip-box strong{color:var(--accent2);font-weight:700}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .warning-box strong{font-weight:700}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .step-print{display:block;width:100%;margin:14px 0;border-radius:10px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+  .step-print img{display:block;width:100%;height:auto}
+
+  /* === BANNER DO ENTREGÁVEL === */
+  .deliverable-banner{background:linear-gradient(135deg,#1F3331 0%,#0E1A19 100%);border:1px solid var(--gold);border-radius:14px;padding:24px;margin:18px 0;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+  [data-palette="dusk"] .deliverable-banner{background:linear-gradient(135deg,#0A1211 0%,#000 100%);border-color:var(--gold)}
+  .deliverable-banner .db-label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:8px}
+  .deliverable-banner .db-title{font-size:1rem;font-weight:800;color:#F2ECE0;margin-bottom:14px;letter-spacing:-0.01em}
+  .deliverable-window{background:#FFFFFF;border-radius:10px;padding:18px 20px;color:#1A1A1A}
+  .deliverable-window .dw-title{font-size:0.82rem;font-weight:800;color:#1F3331;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid #E1D8C2}
+  .dw-block{background:#FAF8F4;border-left:4px solid #C8A968;border-radius:0 6px 6px 0;padding:8px 12px;margin-bottom:6px}
+  .dw-block .dwb-name{font-size:0.7rem;font-weight:800;color:#1F3331;letter-spacing:0.02em;margin-bottom:2px}
+  .dw-block .dwb-desc{font-size:0.68rem;color:#4A4A4A;line-height:1.5}
+  .dw-why{background:#FBF1D4;border:1px solid #E6D08C;border-radius:8px;padding:10px 14px;margin-top:12px}
+  .dw-why .dww-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#8A6E2C;margin-bottom:4px}
+  .dw-why p{font-size:0.72rem;color:#5A4414;line-height:1.5;font-weight:500}
+
+  /* === COMPARATIVO LADO A LADO === */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+  .compare-card{border-radius:10px;padding:16px 18px;border:1px solid;box-shadow:var(--shadow-xs)}
+  .compare-card.bad{background:var(--red-light);border-color:var(--red-border)}
+  .compare-card.good{background:var(--green-light);border-color:var(--green-border)}
+  .compare-card .cc-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;margin-bottom:6px}
+  .compare-card.bad .cc-label{color:var(--red-text)}
+  .compare-card.good .cc-label{color:var(--green-text)}
+  .compare-card .cc-quote{font-size:0.78rem;font-weight:700;font-style:italic;margin-bottom:8px;line-height:1.4}
+  .compare-card.bad .cc-quote{color:var(--red-text)}
+  .compare-card.good .cc-quote{color:var(--green-text)}
+  .compare-card .cc-desc{font-size:0.72rem;line-height:1.55}
+  .compare-card.bad .cc-desc{color:var(--red-text)}
+  .compare-card.good .cc-desc{color:var(--green-text)}
+
+  /* === CARDS DE DURAÇÃO + MODELO === */
+  .meta-cards{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:16px 0}
+  .meta-duration{background:linear-gradient(135deg,#1F3331 0%,#0A1211 100%);border:1px solid var(--gold);border-radius:10px;padding:18px;text-align:center;display:flex;flex-direction:column;justify-content:center}
+  .meta-duration .md-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:4px}
+  .meta-duration .md-value{font-size:1.6rem;font-weight:800;color:#F2ECE0;letter-spacing:-0.02em;line-height:1}
+  .meta-duration .md-unit{font-size:0.62rem;color:rgba(242,236,224,0.7);margin-top:2px;font-weight:600}
+  .meta-tool{background:var(--purple-bg);border:1px solid var(--purple-border);border-radius:10px;padding:14px 18px}
+  .meta-tool .mt-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--purple-border);margin-bottom:4px}
+  .meta-tool .mt-name{font-size:0.86rem;font-weight:800;color:var(--purple-text);margin-bottom:6px;letter-spacing:-0.01em}
+  .meta-tool .mt-desc{font-size:0.7rem;color:var(--purple-text);line-height:1.5;font-style:italic;opacity:0.92}
+
+  /* === GERADOR INTERATIVO DE PROMPT === */
+  .prompt-gen{margin:18px 0 24px;border:1px solid var(--accent-border);border-radius:12px;overflow:hidden;background:var(--panel);box-shadow:var(--shadow-sm)}
+  .prompt-gen-head{background:var(--accent-lighter);padding:14px 18px;border-bottom:1px solid var(--border)}
+  .prompt-gen-head .pg-title{font-size:0.82rem;font-weight:800;color:var(--accent2);letter-spacing:-0.01em;margin-bottom:2px}
+  .prompt-gen-head .pg-subtitle{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .prompt-gen-inputs{padding:16px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;background:var(--panel)}
+  .prompt-gen-inputs label{display:flex;flex-direction:column;gap:5px}
+  .prompt-gen-inputs .pg-l{font-size:0.62rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.08em}
+  .prompt-gen-inputs .pg-h{font-size:0.6rem;color:var(--text3);font-weight:500;font-style:italic;margin-top:1px}
+  .prompt-gen-inputs input{padding:9px 12px;border:1px solid var(--border2);border-radius:7px;background:var(--bg);color:var(--text);font-size:0.8rem;font-family:'Montserrat',system-ui,sans-serif;font-weight:500;outline:none;transition:border-color 0.15s,box-shadow 0.15s}
+  .prompt-gen-inputs input:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(209,170,83,0.18)}
+  .prompt-preview{position:relative;background:#FFFFFF;border-top:1px solid var(--border);padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.78rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;max-height:340px;overflow-y:auto}
+  [data-palette="dusk"] .prompt-preview{background:#0F1918;color:#F4F1E3}
+  .var-slot{display:inline-block;padding:1px 7px;border-radius:4px;font-weight:600;transition:all 0.18s;background:rgba(184,147,62,0.15);color:#8A6E2C;border:1px dashed rgba(184,147,62,0.4)}
+  [data-palette="dusk"] .var-slot{background:rgba(209,170,83,0.18);color:#E6C784;border-color:rgba(209,170,83,0.4)}
+  .var-slot.filled{background:rgba(79,107,62,0.16);color:#33491F;border:1px solid rgba(79,107,62,0.4);font-weight:700}
+  [data-palette="dusk"] .var-slot.filled{background:rgba(168,198,140,0.18);color:#D4E5BF;border-color:rgba(168,198,140,0.4)}
+  .prompt-copy-bar{padding:12px 18px;border-top:1px solid var(--border);background:var(--accent-lighter);display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .prompt-copy-bar .pg-status{font-size:0.66rem;color:var(--text3);font-weight:500;flex:1}
+  .prompt-copy-bar .pg-status.ready{color:var(--green)}
+  .prompt-copy-btn{padding:9px 18px;background:var(--accent2);color:var(--bg);border:none;border-radius:7px;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;font-family:'Montserrat',system-ui,sans-serif;transition:all 0.15s}
+  .prompt-copy-btn:hover{opacity:0.92;transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .prompt-copy-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+  .prompt-copy-btn.done{background:var(--green);color:var(--bg)}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.compare-grid,.meta-cards,.prompt-gen-inputs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Benchmark da Vaga</h2>
+      <p>Aula 01 &middot; Recrutamento de candidatos com AI</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Objetivo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Conceito<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que você vai fazer<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Resultado final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Desafio</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Implementando na empresa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Recrutamento de candidatos com AI &rsaquo; <a href="index.html">Índice</a> &rsaquo; 01. Benchmark da Vaga</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">Aula 01 &mdash; Benchmark da Vaga</div>
+
+      <p class="lead-text">Primeira aula do módulo de <strong>Recrutamento de candidatos com AI</strong>. Você vai usar a <strong>Pesquisa Profunda do Perplexity</strong> para gerar a base factual de qualquer vaga &mdash; Job Description ideal, perfis comportamentais, faixa salarial atualizada, KPIs e red flags &mdash; tudo em um único relatório com fontes citadas.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Atividade Prática + Desafio</td></tr>
+          <tr><td>Duração</td><td>10 minutos (atividade prática)</td></tr>
+          <tr><td>Técnica de AI</td><td>Pesquisa Profunda (Deep Research) com citação de fontes</td></tr>
+          <tr><td>Ferramenta</td><td>Perplexity &mdash; modo Pesquisa Profunda</td></tr>
+          <tr><td>Entregável</td><td>Conteúdo de benchmark com 7 blocos &mdash; pronto para copiar e usar na AP02</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao módulo</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">Veja o que você vai conquistar ao final desta atividade prática</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> Conteúdo de benchmark da vaga com 7 blocos de inteligência &mdash; pronto para copiar e usar na AP02. Um relatório de pesquisa profunda gerado pelo Perplexity com Job Description ideal, JTBD, perfis comportamentais, hiring strategies modernas, faixa salarial atualizada, KPIs de sucesso e red flags do processo seletivo. Tudo com fontes e pronto para alimentar a AP02.</p>
+
+      <div class="deliverable-banner">
+        <div class="db-label">Prévia do entregável</div>
+        <div class="db-title">Conteúdo pronto para copiar &middot; 7 blocos</div>
+        <div class="deliverable-window">
+          <div class="dw-title">Benchmark da vaga: Gerente Comercial &middot; Wellness Premium</div>
+
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 1 &mdash; Job Description Ideal</div>
+            <div class="dwb-desc">Estrutura de JD usada por empresas referência (missão, responsabilidades, requisitos, faixa salarial)</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 2 &mdash; Job To Be Done (JTBD)</div>
+            <div class="dwb-desc">Resultados esperados da função e dores que ela resolve</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 3 &mdash; Perfis Comportamentais + Técnicos</div>
+            <div class="dwb-desc">DISC ou framework equivalente, baseado em dados de alta performance</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 4 &mdash; Hiring Strategies Modernas</div>
+            <div class="dwb-desc">Hunting outbound, entrevistas por competência, uso de IA, cases práticos</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 5 &mdash; Faixa Salarial (Brasil + LATAM)</div>
+            <div class="dwb-desc">Base + variável, com referências atualizadas</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 6 &mdash; KPIs e Métricas de Sucesso</div>
+            <div class="dwb-desc">Curto e médio prazo, para acompanhamento do desempenho</div>
+          </div>
+          <div class="dw-block">
+            <div class="dwb-name">Bloco 7 &mdash; Red Flags</div>
+            <div class="dwb-desc">Sinais de alerta no processo seletivo</div>
+          </div>
+
+          <div class="dw-why">
+            <div class="dww-label">Por que esse benchmark importa</div>
+            <p>Sem base factual de mercado, a Ficha de Vaga vira opinião. Com pesquisa profunda citada, vira critério defensável diante do gestor.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">O que você vai conseguir fazer ao final</div>
+
+      <p class="lead-text">Usar a <strong>Pesquisa Profunda</strong> do Perplexity para mapear, em um único relatório com fontes citadas, todos os elementos de mercado que vão ancorar o processo de recrutamento da vaga &mdash; Job Description ideal, perfis de alta performance, faixa salarial atualizada, KPIs e red flags.</p>
+
+      <p class="lead-text">O documento gerado aqui é a <strong>fundação factual</strong> sobre a qual a AP02 vai construir o workflow completo de R&amp;S.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Pesquisa Profunda como base factual</div>
+      <div class="sec-desc">Por que a Deep Research é diferente do Google</div>
+
+      <p class="lead-text">Quando alguém precisa redigir uma vaga ou definir um processo seletivo, o caminho mais comum é abrir o Google, ler 3 ou 4 anúncios de empresas concorrentes, e copiar o que parece fazer sentido. Funciona, mas o resultado fica preso ao que cada empresa decidiu publicar &mdash; sem benchmark de remuneração, sem framework comportamental validado, sem KPIs de mercado, sem red flags documentados.</p>
+
+      <p class="lead-text">A <strong>Pesquisa Profunda</strong> (Deep Research) do Perplexity faz algo diferente: navega autonomamente por dezenas de fontes (relatórios de mercado, estudos de RH, artigos de referência, sites especializados), lê, sintetiza e devolve um único documento estruturado <strong>com as fontes citadas em cada afirmação</strong>. Em minutos e não em horas, você tem material que normalmente exigiria um analista de RH dedicado por meio dia.</p>
+
+      <div class="insight-box">
+        <div class="insight-label">Mental Model</div>
+        <p>É como ter um <strong>consultor de R&amp;S sênior</strong> que pesquisou por 3 horas antes de você abrir o Word para escrever a vaga.</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="cc-label">Pesquisa rasa no Google</div>
+          <div class="cc-quote">&ldquo;Vou ver como SmartFit e Bio Ritmo descrevem essa vaga&rdquo;</div>
+          <div class="cc-desc">Você abre 3 anúncios, copia trechos, monta uma JD genérica. Sem faixa salarial validada, sem perfil comportamental, sem KPIs de mercado, sem red flags. Resultado: vaga publicada por opinião, não por critério.</div>
+        </div>
+        <div class="compare-card good">
+          <div class="cc-label">Pesquisa Profunda no Perplexity</div>
+          <div class="cc-quote">Mesma vaga + modo Pesquisa Profunda ativado</div>
+          <div class="cc-desc">Perplexity pesquisa dezenas de fontes, cita os relatórios, traz faixa salarial atualizada (Brasil + LATAM), perfil DISC validado por dados, KPIs e red flags documentados. Pronto para defender as decisões com o gestor.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">04.</span> O que você vai fazer</div>
+      <div class="sec-desc">Uma única pesquisa profunda &mdash; em 10 minutos</div>
+
+      <div class="meta-cards">
+        <div class="meta-duration">
+          <div class="md-label">Duração total</div>
+          <div class="md-value">10 min</div>
+          <div class="md-unit">atividade prática</div>
+        </div>
+        <div class="meta-tool">
+          <div class="mt-label">Ferramenta recomendada</div>
+          <div class="mt-name">Perplexity &mdash; modo Pesquisa Profunda (Deep Research)</div>
+          <div class="mt-desc">O Perplexity é a ferramenta de referência para pesquisa profunda com citação de fontes. O modo Pesquisa Profunda está disponível no plano gratuito com limite diário &mdash; suficiente para esta aula.</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai rodar <strong>uma única pesquisa profunda no Perplexity</strong> sobre a vaga que vai abrir, com 2 variáveis simples (a vaga e o setor). O Perplexity devolve um relatório estruturado em <strong>7 blocos com fontes</strong>. Ao final, você <strong>copia a resposta completa</strong> &mdash; esse conteúdo vai direto para a AP02, sem precisar salvar nenhum arquivo.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Dica</div>
+        <p>Mesmo que você ainda <strong>não tenha decidido todos os detalhes da vaga</strong> (faixa salarial exata, perfil técnico fechado), o benchmark do Perplexity vai te dar as referências de mercado para tomar essas decisões com base em dados, não em palpite.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">05.</span> Passo a passo</div>
+      <div class="sec-desc">5 passos &middot; ~10 minutos no total</div>
+
+      <!-- Passo 01 -->
+      <div class="inst-step-title">Passo 01 &mdash; Acesse o Perplexity</div>
+      <p class="lead-text">Acesse o <a href="https://www.perplexity.ai" target="_blank" style="color:var(--accent2);font-weight:700">Perplexity</a> e faça login com sua conta Google ou e-mail.</p>
+      <div class="step-print"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/d9d9d401-96ef-41b9-8a6e-adb18b852e2f/user_cropped_screenshot_8261dbd5b171407a92185adc8c0aa224_text_export.jpeg" alt="Passo 01 — Tela inicial do Perplexity"></div>
+
+      <!-- Passo 02 -->
+      <div class="inst-step-title">Passo 02 &mdash; Personalize o prompt com a vaga e o setor</div>
+      <p class="lead-text">Preencha os 2 campos abaixo com a vaga que você vai abrir e o setor da sua empresa. O prompt aparece pronto na pré-visualização &mdash; clique em <strong>Copiar prompt</strong> quando os dois campos estiverem preenchidos.</p>
+
+      <div class="prompt-gen">
+        <div class="prompt-gen-head">
+          <div class="pg-title">Prompt de benchmark da vaga personalizado</div>
+          <div class="pg-subtitle">Preencha os 2 campos &mdash; o prompt aparece pronto abaixo, com seus dados destacados em verde.</div>
+        </div>
+        <div class="prompt-gen-inputs">
+          <label>
+            <span class="pg-l">Vaga que você vai abrir</span>
+            <input id="var-vaga" type="text" placeholder="ex: Gerente Comercial" oninput="updatePromptVar('vaga', this.value)">
+            <span class="pg-h">ex: Gerente Comercial</span>
+          </label>
+          <label>
+            <span class="pg-l">Setor da sua empresa</span>
+            <input id="var-setor" type="text" placeholder="ex: wellness premium" oninput="updatePromptVar('setor', this.value)">
+            <span class="pg-h">ex: wellness premium</span>
+          </label>
+        </div>
+        <div class="prompt-preview" id="prompt-preview">Faça uma pesquisa aprofundada com base nas melhores práticas e benchmarks globais sobre recrutamento e seleção para a vaga de <span class="var-slot" data-var="vaga">{vaga}</span>, no setor de <span class="var-slot" data-var="setor">{setor}</span>.
+
+Estruture a resposta abordando:
+
+(1) Job Description Ideal com exemplos utilizados por empresas referencia no setor;
+
+(2) Job To Be Done (JTBD) da função e com foco em resultados esperados e dores que a função resolve;
+
+(3) Perfis comportamentais (DISC ou framework equivalente) e perfis técnicos recomendados, com base em dados de alta performance;
+
+(4) Hiring Strategies modernas de hunting outbound, entrevistas por competência, uso de IA no processo, cases práticos/roleplays;
+
+(5) Benchmark de faixa salarial e remuneração variável atualizados para Brasil e América Latina;
+
+(6) Principais KPIs e métricas de sucesso para acompanhamento do desempenho no curto e médio prazo;
+
+(7) Red Flags comuns no processo seletivo que devem ser observados.
+
+Retorne APENAS o conteúdo solicitado. Sem emojis. Sem introduções, sem conclusões, sem perguntas de acompanhamento, sem frases como "aqui está", "conforme pesquisado", "espero que ajude", "para refinar ainda mais" ou qualquer texto antes ou depois do resultado. Comece diretamente com o conteúdo do item (1) e termine na última palavra do item (7).</div>
+        <div class="prompt-copy-bar">
+          <span class="pg-status" id="pg-status">Preencha os 2 campos para liberar a cópia</span>
+          <button class="prompt-copy-btn" id="prompt-copy-btn" disabled onclick="copyPrompt(this)">Copiar prompt</button>
+        </div>
+      </div>
+
+      <div class="step-print"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/0a4a5926-1bd9-4988-a4a1-04239169f438/user_cropped_screenshot_7515df88a9e04fe4b6c71eda7b45d504_text_export.jpeg" alt="Passo 02 — Campo de pesquisa do Perplexity com prompt colado"></div>
+
+      <!-- Passo 03 -->
+      <div class="inst-step-title">Passo 03 &mdash; Selecione o modo de pesquisa e envie</div>
+      <p class="lead-text">Cole o prompt copiado no campo de pesquisa do Perplexity (Cmd+V no Mac ou Ctrl+V no Windows). Antes de enviar, escolha o modo de pesquisa:</p>
+
+      <div class="overview-card">
+        <ul>
+          <li><strong>Plano pago (recomendado):</strong> selecione <strong>Pesquisa Profunda</strong> &mdash; navega em dezenas de fontes e entrega o relatório mais completo e citado.</li>
+          <li><strong>Plano gratuito:</strong> selecione <strong>Pesquisar</strong> &mdash; resultado igualmente estruturado, com menos fontes consultadas. Suficiente para esta atividade.</li>
+        </ul>
+      </div>
+
+      <div class="step-print"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/85d2c605-644e-4a82-8a8f-ed2ccb7effb3/ascreenshot_afe13a3777e64c09aaf1904b0a4a996d_text_export.jpeg" alt="Passo 03a — Seleção do modo de pesquisa"></div>
+
+      <p class="lead-text">Após selecionar o modo, clique em <strong>Enviar</strong>. O Perplexity vai começar a pesquisar &mdash; acompanhe as fontes sendo consultadas em tempo real.</p>
+
+      <div class="step-print"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/74049bf6-a75b-49ac-a1e2-fe1390a147a8/ascreenshot_23f154afde54487e93a0c91c44141036_text_export.jpeg" alt="Passo 03b — Perplexity consultando fontes em tempo real"></div>
+
+      <!-- Passo 04 -->
+      <div class="inst-step-title">Passo 04 &mdash; Revise o relatório</div>
+      <p class="lead-text">Quando a pesquisa terminar, role o relatório de cima a baixo e confirme que os <strong>7 blocos solicitados</strong> estão presentes (JD Ideal, JTBD, Perfis, Hiring Strategies, Faixa Salarial, KPIs, Red Flags). Cada afirmação importante deve ter uma fonte clicável ao lado.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Se algum bloco estiver raso</div>
+        <p>Peça ao Perplexity para aprofundar &mdash; por exemplo: <em>&ldquo;Aprofunde o bloco 5 com faixas salariais por região do Brasil.&rdquo;</em></p>
+      </div>
+
+      <!-- Passo 05 -->
+      <div class="inst-step-title">Passo 05 &mdash; Copie a resposta do Perplexity</div>
+      <p class="lead-text">Quando a pesquisa terminar, role a resposta até o final e confirme que ela termina no <strong>último item do bloco (7) Red Flags</strong> &mdash; sem nenhuma pergunta de acompanhamento depois. Se o Perplexity adicionou uma frase como <em>&ldquo;Para refinar ainda mais...&rdquo;</em> ao final, selecione a resposta apenas até a última linha do item (7) e ignore o restante.</p>
+
+      <p class="lead-text">Selecione todo o conteúdo da resposta (do início do item (1) até a última linha do item (7)), copie e <strong>mantenha na área de transferência</strong> &mdash; você vai colar esse conteúdo diretamente no Manus AI na AP02.</p>
+
+      <div class="step-print"><img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/7eeb3cbc-fb8d-405c-9698-effe33c4234b/sps-redacted-842c060376fa4176a3ff5421a561a624_9c88ca4c19d54a41b0ec54282d60b732_text_export.jpeg" alt="Passo 05 — Copiar resposta do Perplexity"></div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> O que você tem ao final</div>
+      <div class="sec-desc">Resultado consolidado da atividade prática</div>
+
+      <p class="lead-text"><strong>Você tem agora:</strong></p>
+
+      <div class="overview-card">
+        <ul>
+          <li>O <strong>conteúdo do benchmark</strong> com os <strong>7 blocos</strong> copiado e pronto para usar</li>
+          <li><strong>Fontes e referências de mercado</strong> para defender decisões da vaga diante do gestor</li>
+          <li>A base factual que vai alimentar a próxima atividade prática (<strong>AP02 &mdash; Workflow Completo</strong>)</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Insight</div>
+        <p>O <strong>benchmark da vaga não é a vaga</strong>. É a <strong>base factual</strong> sobre a qual a vaga vai ser construída. Sem pesquisa profunda, você decide por opinião. Com pesquisa profunda, você decide por <strong>critério defensável</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">07.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Replique o processo com uma vaga real &middot; 15&ndash;20 min</div>
+
+      <p class="lead-text">Agora replique exatamente o mesmo processo para uma vaga <strong>real que você vai abrir</strong> na sua empresa nos próximos 30 dias.</p>
+
+      <div class="overview-card">
+        <h3>Passos do desafio &mdash; Benchmark da sua próxima vaga real</h3>
+        <ul>
+          <li>Identifique a próxima <strong>vaga crítica</strong> que sua empresa vai abrir (ou já está aberta e mal definida).</li>
+          <li>Use o mesmo <strong>gerador de prompt</strong> da Atividade Prática, mas substitua as variáveis pelos dados reais: sua vaga real + seu setor real.</li>
+          <li>Rode no <strong>Perplexity com Pesquisa Profunda</strong> ativada, revise os 7 blocos e <strong>copie a resposta</strong>.</li>
+          <li>Leve o conteúdo para a <strong>próxima reunião de alinhamento</strong> com o gestor da vaga &mdash; use os 7 blocos como pauta para validar a Ficha de Vaga.</li>
+        </ul>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante &mdash; plano gratuito do Perplexity</div>
+        <p>A Pesquisa Profunda tem <strong>limite diário</strong> (geralmente 3 a 5 buscas profundas por dia). Use com critério &mdash; vale mais uma pesquisa bem formulada do que cinco perguntas rasas.</p>
+      </div>
+
+      <p class="lead-text"><strong>Tempo estimado para o desafio:</strong> 15 a 20 minutos (a maior parte é revisar o relatório e validar as fontes mais relevantes).</p>
+
+      <div class="insight-box">
+        <div class="insight-label">Por que cada AP tem um desafio</div>
+        <p>Cada AP desta aula tem um desafio na sua empresa. <strong>Em conjunto, eles formam o pipeline de R&amp;S com IA aplicado ao contexto real.</strong> Comece pela AP01 esta semana &mdash; sem benchmark factual, nenhuma das próximas APs entrega valor real.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao módulo</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-rec-candidatos-ai-benchmark";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 8;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  // Restore last section + initial progress
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+
+  // === Interactive prompt generator ===
+  const promptState = { vaga: '', setor: '' };
+
+  function updatePromptVar(name, value) {
+    promptState[name] = value.trim();
+    document.querySelectorAll('.var-slot[data-var="' + name + '"]').forEach(span => {
+      if (promptState[name]) {
+        span.textContent = promptState[name];
+        span.classList.add('filled');
+      } else {
+        span.textContent = '{' + name + '}';
+        span.classList.remove('filled');
+      }
+    });
+    const ready = promptState.vaga && promptState.setor;
+    const btn = document.getElementById('prompt-copy-btn');
+    const status = document.getElementById('pg-status');
+    btn.disabled = !ready;
+    if (ready) {
+      status.textContent = 'Prompt pronto para copiar';
+      status.classList.add('ready');
+    } else {
+      status.textContent = 'Preencha os 2 campos para liberar a cópia';
+      status.classList.remove('ready');
+    }
+  }
+
+  function copyPrompt(btn) {
+    const text = document.getElementById('prompt-preview').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = 'Copiado! Agora cole no Perplexity.';
+      btn.classList.add('done');
+      setTimeout(() => {
+        btn.textContent = old;
+        btn.classList.remove('done');
+      }, 2500);
+    });
+  }
+</script>
+</body>
+</html>
