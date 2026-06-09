@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como criar aulas da Delta Academy &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .container{max-width:620px;margin:0 auto}
+  .header-bar{background:var(--accent2);border-radius:14px;padding:26px 28px 22px;margin-bottom:32px}
+  .header-bar h2{font-size:0.73rem;color:var(--bg);text-transform:uppercase;letter-spacing:0.12em;font-weight:800;margin-bottom:8px}
+  .header-bar h1{font-size:1.35rem;font-weight:800;color:var(--bg);letter-spacing:0.01em}
+  .header-bar p{font-size:0.8rem;color:var(--bg);margin-top:6px;font-weight:700}
+  .section-label{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 14px;padding-left:4px}
+
+  .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+  .footer p{font-size:0.68rem;color:var(--text3);line-height:1.7}
+  .footer a{color:var(--accent);text-decoration:none;font-weight:600}
+
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="container">
+  <div class="header-bar">
+    <h2>Delta Academy &middot; Onboarding de Professores</h2>
+    <h1>Como criar aulas da Delta Academy</h1>
+    <p>O fluxo oficial de publicação de aulas no GitHub Pages</p>
+  </div>
+
+  <div class="section-label">Aulas</div>
+
+  <a class="card" href="tutorial-01-publicar-aula-delta.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
+    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
+      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">01</span>
+      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">Como criar uma aula HTML da Delta Academy</span>
+    </div>
+    <div style="background:#FFFFFF;padding:14px 18px">
+      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">Em <strong>30 minutos</strong>, publique seu primeiro módulo no repositório oficial da Delta Academy. Você vai rodar os <strong>16 passos do fluxo oficial</strong> (Configuração do workspace &middot; Execução da skill <code style="font-family:'JetBrains Mono',monospace;font-size:0.88em;background:#F5EED9;padding:1px 5px;border-radius:3px;color:#1F3331">/criar-nova-aula-Delta</code> &middot; Verificação no GitHub Pages) e sair com seu username de professor cadastrado e uma aula viva acessível por URL pública.</div>
+    </div>
+  </a>
+
+  <div class="footer">
+    <p><a href="https://deltaacademy.com.br">deltaacademy.com.br</a> &middot; Delta Academy &middot; 2026</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+</script>
+</body>
+</html>

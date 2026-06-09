@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Como criar uma aula HTML da Delta Academy &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:820px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card strong{color:var(--accent2);font-weight:700}
+  .overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .ficha-table td code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.92em;background:var(--bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .tip-box p strong{color:var(--accent2);font-weight:700}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .warning-box p strong{color:var(--warn-label);font-weight:700}
+  .warning-box p code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(0,0,0,0.18);padding:1px 5px;border-radius:3px}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+
+  /* Delivery banner (banner do entregável) — fundo escuro pinho, borda dourada, cards internos */
+  .delivery-banner{background:var(--insight-bg);border:2px solid var(--gold);border-radius:14px;padding:22px 22px 18px;margin:14px 0 18px;box-shadow:var(--shadow-sm)}
+  .delivery-banner .db-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:4px;text-align:center}
+  .delivery-banner .db-title{font-size:0.95rem;font-weight:800;color:var(--insight-fg);text-align:center;letter-spacing:-0.01em;margin-bottom:14px}
+  .delivery-banner .db-cards{display:flex;flex-direction:column;gap:9px}
+  .delivery-banner .db-card{background:rgba(255,255,255,0.04);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px}
+  .delivery-banner .db-card .db-card-title{font-size:0.74rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+  .delivery-banner .db-card .db-card-body{font-size:0.74rem;color:var(--insight-fg);line-height:1.55}
+  .delivery-banner .db-card .db-card-body code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.88em;background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;color:var(--gold)}
+  .delivery-banner .db-footer{margin-top:14px;background:rgba(209,170,83,0.12);border:1px solid rgba(209,170,83,0.35);border-radius:8px;padding:10px 14px;font-size:0.74rem;color:var(--insight-fg);text-align:center;line-height:1.5}
+  .delivery-banner .db-footer strong{color:var(--gold);font-weight:800}
+
+  /* Stat cards (duração + modelo recomendado) — grid 2 colunas */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 16px}
+  .stat-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow-xs)}
+  .stat-card .sc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:6px}
+  .stat-card .sc-value{font-size:1rem;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:4px}
+  .stat-card .sc-sub{font-size:0.66rem;color:var(--text3);font-weight:600}
+  .stat-card .sc-desc{font-size:0.7rem;color:var(--text2);line-height:1.5;margin-top:6px}
+  .stat-card.sc-model{border-left:3px solid var(--accent2)}
+  .stat-card.sc-model .sc-label{color:var(--accent2)}
+  .stat-card.sc-model .sc-value{color:var(--accent2)}
+
+  /* Phase separator */
+  .phase-sep{margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--accent);font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);display:flex;align-items:baseline;gap:10px}
+  .phase-sep .ps-num{background:var(--accent);color:var(--bg);padding:3px 9px;border-radius:3px;font-size:0.66rem;letter-spacing:0.08em}
+  .phase-sep .ps-meta{margin-left:auto;font-size:0.62rem;font-weight:600;color:var(--text3);letter-spacing:0.08em}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Check-list (entregáveis no overview-card "Você sai com") */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.stat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Como criar uma aula HTML da Delta Academy</h2>
+      <p>Aula 01 &middot; Como criar aulas da Delta Academy</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 3 elementos do fluxo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Skill como conhecimento empacotado<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Sua atividade prática<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Como criar aulas da Delta Academy &rsaquo; <a href="index.html">Índice</a> &rsaquo; 01. Como criar uma aula HTML da Delta Academy</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">Atividade 01 &mdash; Como criar uma aula HTML da Delta Academy</div>
+
+      <p class="lead-text">Sua primeira aula publicada no repositório oficial da Delta Academy. Ao final, você terá um <strong>módulo novo no GitHub</strong>, com pelo menos <strong>uma aula viva e acessível por URL pública</strong>, e seu <strong>username de professor cadastrado</strong> para reutilizar em todas as próximas aulas.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Atividade Prática hands-on</td></tr>
+          <tr><td>Duração</td><td>30 minutos (16 passos &middot; 3 fases)</td></tr>
+          <tr><td>Ferramenta</td><td>Claude Code + Skill <code>/criar-nova-aula-Delta</code></td></tr>
+          <tr><td>Pré-requisito</td><td>Repositório <code>deltaacademy-ai/pages</code> clonado localmente + Claude Code instalado</td></tr>
+          <tr><td>Bloco</td><td>Onboarding de Professores Delta</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O entregável da atividade prática</div>
+
+      <p class="lead-text">Ao final desta atividade, você terá publicado seu <strong>primeiro módulo novo no repositório oficial da Delta Academy</strong>, contendo pelo menos uma aula HTML viva e acessível por URL no GitHub Pages. Esse é o entregável de cada professor recém-chegado: sair desta aula com sua primeira página publicada e funcionando.</p>
+
+      <div class="delivery-banner">
+        <div class="db-label">Entregável da atividade</div>
+        <div class="db-title">Módulo novo publicado no repositório Delta</div>
+        <div class="db-cards">
+          <div class="db-card">
+            <div class="db-card-title">Módulo criado no repositório</div>
+            <div class="db-card-body">Local: <code>deltaacademy-ai/pages</code> (branch principal). Pasta nova do módulo com pelo menos 1 aula HTML dentro, commitada e enviada para o GitHub.</div>
+          </div>
+          <div class="db-card">
+            <div class="db-card-title">Aula publicada no GitHub Pages</div>
+            <div class="db-card-body">URL viva no formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>, com acesso público navegável por qualquer aluno e identidade Delta aplicada (sidebar, breadcrumb, paleta).</div>
+          </div>
+          <div class="db-card">
+            <div class="db-card-title">Username de professor criado</div>
+            <div class="db-card-body">Cadastrado na primeira execução da skill, reutilizado em todas as próximas aulas que você criar.</div>
+          </div>
+        </div>
+        <div class="db-footer">Esse é o <strong>mesmo fluxo</strong> que você vai repetir toda vez que criar uma aula nova &mdash; uma vez aprendido, ele dura todo o programa.</div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Os 3 elementos do fluxo de publicação</div>
+      <div class="sec-desc">O que precisa estar pronto antes de rodar a skill</div>
+
+      <p class="lead-text">Publicar uma aula da Delta envolve <strong>três elementos</strong> que precisam estar prontos antes de você rodar a skill. Conhecer cada um evita travas no meio do caminho.</p>
+
+      <div class="overview-card">
+        <h3>Elementos do fluxo</h3>
+        <ul>
+          <li><strong>Repositório clonado localmente</strong> &mdash; a pasta <code>pages</code> do <code>deltaacademy-ai</code> precisa estar no seu computador, dentro do <code>/Users/seunome/</code> (ou caminho equivalente). Esse é o diretório onde a skill vai gravar os arquivos da sua aula.</li>
+          <li><strong>Claude Code aberto na pasta certa</strong> &mdash; o Claude Code precisa estar com o workspace apontando para a pasta <code>pages</code> que você clonou. Sem isso, a skill <code>/criar-nova-aula-Delta</code> não enxerga onde gravar.</li>
+          <li><strong>Skill <code>/criar-nova-aula-Delta</code> disponível</strong> &mdash; é a skill da organização Delta Academy que automatiza toda a geração da página HTML, do CSS, da sidebar e do deploy para o GitHub Pages.</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Skill como conhecimento empacotado</div>
+      <div class="sec-desc">Por que existe a skill <code>/criar-nova-aula-Delta</code></div>
+
+      <p class="lead-text">A Delta Academy tem dezenas de aulas no ar, todas com a mesma identidade visual, a mesma navegação, a mesma estrutura de pílulas, prints, blocos de copiar e insight-boxes. Se cada professor precisasse construir tudo isso do zero a cada aula nova, seriam <strong>horas de CSS, HTML e configuração</strong> &mdash; antes mesmo de pensar no conteúdo pedagógico.</p>
+
+      <p class="lead-text">A skill <code>criar-nova-aula-Delta</code> resolve isso de uma vez. Ela é o <strong>conhecimento da Delta Academy empacotado em uma instrução executável</strong>: paleta de cores, fontes, componentes, layout, deploy no GitHub Pages &mdash; tudo encapsulado. Você só descreve o conteúdo da aula, e a skill aplica todo o padrão Delta automaticamente.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Dica</div>
+        <p>Pense numa skill como uma <strong>receita de bolo que já vem com o forno embutido</strong>. Você fornece os ingredientes (o conteúdo da sua aula), e a skill cuida do resto &mdash; temperatura, tempo, decoração final, entrega. Toda aula que sai por essa skill vem com o mesmo padrão visual da Delta, sem você precisar se preocupar com isso.</p>
+      </div>
+
+      <p class="lead-text">A vantagem para o programa é a <strong>consistência</strong>: 100 aulas criadas por 30 professores diferentes ficam visualmente idênticas, porque todas passaram pela mesma skill. A vantagem para você como professor é o <strong>foco</strong>: você gasta sua energia no que importa &mdash; o conteúdo pedagógico &mdash; e não em decisões de design.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">04.</span> Sua atividade prática</div>
+      <div class="sec-desc">30 minutos &middot; 16 passos &middot; 3 fases</div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="sc-label">Duração total</div>
+          <div class="sc-value">30 min</div>
+          <div class="sc-sub">16 passos &middot; 3 fases</div>
+        </div>
+        <div class="stat-card sc-model">
+          <div class="sc-label">Modelo recomendado</div>
+          <div class="sc-value">Sonnet 4.6</div>
+          <div class="sc-sub">via Claude Code</div>
+          <div class="sc-desc">Padrão do Claude Code, dá conta com folga da skill. Como roda localmente, não consome créditos do plano gratuito da web.</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai executar os <strong>16 passos do fluxo oficial de publicação</strong> de uma aula da Delta Academy. O fluxo está dividido em <strong>três fases sequenciais</strong>:</p>
+
+      <div class="overview-card">
+        <h3>As 3 fases do fluxo</h3>
+        <ul>
+          <li><strong>Fase 1 &mdash; Configuração do workspace</strong> &middot; abrir o Finder, navegar até a pasta <code>pages</code> e apontar o Claude Code para ela (Passos 01 a 08).</li>
+          <li><strong>Fase 2 &mdash; Execução da skill</strong> &middot; rodar o slash command <code>/criar-nova-aula-Delta</code>, configurar seu username de professor e escolher a opção de módulo novo (Passos 09 a 12).</li>
+          <li><strong>Fase 3 &mdash; Verificação no GitHub Pages</strong> &middot; copiar a URL gerada, abrir no navegador e validar que a aula está publicada e visualmente correta (Passos 13 a 16).</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Dica</div>
+        <p>Esse fluxo de 16 passos é o mesmo que você vai repetir toda vez que criar uma aula nova. Faça uma vez agora com atenção &mdash; depois vira automático. A maior parte do tempo nesse fluxo é navegação de interface; <strong>o trabalho pesado (gerar HTML, CSS, sidebar, deploy) fica todo com a skill</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">05.</span> Passo a passo</div>
+      <div class="sec-desc">16 passos separados por fase</div>
+
+      <!-- FASE 1 -->
+      <div class="phase-sep">
+        <span class="ps-num">Fase 1</span>
+        <span>Configuração do workspace</span>
+        <span class="ps-meta">Passos 01&ndash;08</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abrir o Finder a partir do Dock</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no ícone do <strong>Finder</strong> no Dock do macOS para abri-lo. O Finder vai abrir na janela padrão configurada no seu sistema &mdash; pode ser Recentes, Documentos ou outro local. <em>Não importa onde abriu; nos próximos passos você vai navegar para o lugar certo.</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Navegar até o diretório home</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Finder aberto, vá até o <strong>diretório home</strong> do seu usuário (a pasta com o ícone de casinha, geralmente chamada com o seu nome de usuário). Você pode usar o atalho <code>Cmd + Shift + H</code> ou clicar na pasta do seu nome na barra lateral do Finder.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Localizar a pasta <code>pages</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Dentro do diretório home, <strong>localize a pasta chamada <code>pages</code></strong>. Essa é a pasta do repositório <code>deltaacademy-ai/pages</code> que você clonou como pré-requisito desta aula. Se você não encontrar essa pasta, é sinal de que o repositório ainda não foi clonado &mdash; pare aqui e clone antes de continuar.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p>Se a pasta <code>pages</code> não existir no seu home, abra o Terminal e rode <code>git clone git@github.com:deltaacademy-ai/pages.git</code> no diretório home antes de seguir. Sem essa pasta clonada, a skill não tem onde gravar a aula.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Selecionar a pasta <code>pages</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc"><strong>Clique uma vez sobre a pasta <code>pages</code></strong> para selecioná-la (não entre dentro dela &mdash; só selecionar é suficiente). A pasta deve aparecer destacada/azulada indicando que está selecionada. Mantenha o Finder aberto nesse estado &mdash; você vai precisar dele aberto para o próximo passo.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">No Claude Code, clicar em "Abrir pasta..."</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Agora abra o <strong>Claude Code</strong> (se ele já não estiver aberto). Na interface inicial do Claude Code, clique em <strong>"Abrir pasta..."</strong> (ou "Open folder..." dependendo do idioma da interface). Isso vai abrir um diálogo de seleção de pasta nativo do macOS.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Selecionar a pasta do repositório no diálogo</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No diálogo de seleção que abriu, navegue até o diretório home e <strong>selecione a pasta <code>pages</code></strong> (ou a pasta exata em que você executou o <code>git clone</code> se foi em outro lugar). Confirme que a pasta selecionada é a do repositório <code>deltaacademy-ai/pages</code>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Confirmar a abertura clicando em "Abrir"</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No canto inferior direito do diálogo de seleção, clique no botão <strong>"Abrir"</strong> para confirmar a escolha da pasta. O Claude Code vai começar a carregar o workspace apontando para essa pasta.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Confiar no workspace</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na primeira vez que você abre uma pasta no Claude Code, ele pede confirmação de segurança. Uma janela vai aparecer perguntando se você confia no conteúdo dessa pasta. <strong>Clique em "Confiar no Workspace"</strong> (ou "Trust Workspace") para autorizar o Claude Code a ler e executar arquivos dentro da pasta.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p>Esse aviso só aparece <strong>na primeira vez</strong>. Nas próximas vezes que você abrir a pasta <code>pages</code>, o Claude Code já vai considerá-la confiável e pular esse passo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="phase-sep">
+        <span class="ps-num">Fase 2</span>
+        <span>Execução da skill</span>
+        <span class="ps-meta">Passos 09&ndash;12</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 09</span><span class="step-card-title">Digitar o comando <code>/criar-nova-aula-Delta</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Com o workspace já aberto e confiável, vá até o <strong>campo de prompt do Claude Code</strong> (a caixa de texto onde você normalmente conversa com o Claude). Digite o slash command exato e aperte Enter. O Claude Code vai detectar que é um comando de skill da organização Delta Academy e iniciar o fluxo de criação.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Slash command</span>
+            <div class="copy-block" id="cmd-skill">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('cmd-skill-text').textContent)">Copiar</button>
+<span id="cmd-skill-text">/criar-nova-aula-Delta</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 10</span><span class="step-card-title">Inserir seu username de professor</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">A skill vai perguntar qual é o seu <strong>username de professor da Delta Academy</strong>. Se você já é professor cadastrado, insira o username que você já usa. Se essa é sua primeira aula, <strong>invente um username novo</strong> (algo curto, em lowercase, sem espaços &mdash; ex: <code>rafa</code>, <code>mariag</code>, <code>pedrocosta</code>). Esse username vai te identificar como autor das aulas que criar.</p>
+          <div class="tip-box">
+            <div class="tip-label">Dica</div>
+            <p>Anote seu username em algum lugar fácil de acessar. Você vai precisar dele <strong>toda vez</strong> que criar uma aula nova &mdash; e ele precisa ser <strong>exatamente o mesmo</strong> para a skill reconhecer suas aulas anteriores.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 11</span><span class="step-card-title">Selecionar "A &mdash; Módulo novo com aulas"</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">A skill vai te mostrar uma lista de opções de fluxo. Como esta é sua primeira aula e você quer <strong>criar um módulo novo do zero</strong> com pelo menos uma aula dentro, <strong>selecione a opção "A &mdash; Módulo novo com aulas"</strong>. Não selecione as opções de "adicionar aula a módulo existente" &mdash; essas você vai usar quando voltar para complementar um módulo já criado.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 12</span><span class="step-card-title">Confirmar a criação do módulo digitando "A"</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">A skill vai pedir uma <strong>confirmação adicional</strong> antes de começar a gerar os arquivos. Digite a letra <strong>"A"</strong> no campo de prompt e envie. Isso confirma a sua escolha e libera a skill para começar a gerar o módulo novo com a aula dentro. A partir daqui a skill assume o controle: ela vai criar a pasta do módulo, gerar o HTML, o CSS, configurar a sidebar e preparar o commit.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p>A partir desse passo, <strong>não interrompa a execução da skill</strong>. Ela vai rodar vários comandos em sequência (criar arquivos, fazer commit, fazer push para o GitHub). Se você cancelar no meio, pode deixar o repositório em estado inconsistente. Aguarde até a skill terminar e mostrar a URL da aula publicada.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="phase-sep">
+        <span class="ps-num">Fase 3</span>
+        <span>Verificação no GitHub Pages</span>
+        <span class="ps-meta">Passos 13&ndash;16</span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 13</span><span class="step-card-title">Copiar a URL da aula publicada</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Quando a skill terminar a execução, ela vai exibir no terminal a <strong>URL pública da aula</strong> que acabou de ser publicada no GitHub Pages. A URL tem o formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>. <strong>Selecione e copie essa URL</strong> (<code>Cmd+C</code>) &mdash; você vai colá-la no navegador no próximo passo.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 14</span><span class="step-card-title">Colar a URL no navegador e abrir</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra seu <strong>navegador padrão</strong> (Chrome, Safari, Firefox), clique na barra de endereço, <strong>cole a URL</strong> (<code>Cmd+V</code>) e aperte Enter. O GitHub Pages pode levar de <strong>30 segundos a 2 minutos</strong> para terminar de fazer o deploy nas primeiras vezes &mdash; se a página não abrir de cara, espere um pouco e atualize.</p>
+          <div class="warning-box">
+            <div class="warning-label">Importante</div>
+            <p>Se a página exibir erro 404 mesmo depois de 2 minutos, abra o GitHub do repositório <code>deltaacademy-ai/pages</code> e verifique se o último commit (feito pela skill) está listado nos commits. Se estiver, o deploy ainda está rodando &mdash; espere mais 1 minuto e atualize. Se o commit não aparecer, algo travou no push e você precisa rerodar a skill.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 15</span><span class="step-card-title">Clicar no link da aula recém-criada</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">A URL pode te levar para a <strong>página índice do módulo</strong> que você criou (não direto para a aula). Nesse caso, você vai ver uma lista com o título da aula que a skill gerou &mdash; algo como <strong>"Benchmark da Vaga"</strong> ou similar dependendo do conteúdo. <strong>Clique nesse link</strong> para abrir a página da aula em si.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 16</span><span class="step-card-title">Verificar a aula publicada</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">A aula deve carregar com a <strong>identidade visual completa da Delta Academy</strong>: sidebar à esquerda com a navegação dos itens, breadcrumb no topo, banner do entregável na introdução, paleta de cores Delta Board (verde escuro, dourado, cream). <strong>Navegue pelas seções da aula</strong> clicando nos itens da sidebar para confirmar que tudo está funcionando.</p>
+          <div class="tip-box">
+            <div class="tip-label">Dica</div>
+            <p>Se algo visualmente estiver fora do padrão Delta (cor errada, sidebar quebrada, fonte diferente), provavelmente o cache do GitHub Pages ainda está servindo uma versão antiga. Faça um <strong>hard refresh</strong> no navegador (<code>Cmd + Shift + R</code> no Chrome/Firefox, <code>Cmd + Option + R</code> no Safari) e o problema costuma resolver.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Os 5 entregáveis garantidos</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Um <strong>username de professor da Delta Academy</strong> criado e registrado &mdash; vai ser reutilizado em todas as próximas aulas que você publicar.</li>
+          <li>Um <strong>módulo novo</strong> no repositório <code>deltaacademy-ai/pages</code> com pasta criada, arquivos commitados e push feito para a branch principal.</li>
+          <li>Pelo menos <strong>uma aula HTML publicada no GitHub Pages</strong> acessível por URL pública, com a identidade visual Delta aplicada (sidebar, breadcrumb, paleta, componentes).</li>
+          <li>O <strong>fluxo de 16 passos rodado de ponta a ponta</strong> uma vez &mdash; da próxima vez que você criar uma aula, esse fluxo vai estar muito mais rápido porque já é familiar.</li>
+          <li>A <strong>prova viva de que a skill <code>criar-nova-aula-Delta</code> funciona no seu setup</strong> &mdash; workspace configurado, autenticação OK, deploy automatizado funcionando.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Insight</div>
+        <p>Você acabou de publicar sua <strong>primeira aula da Delta Academy</strong>. A partir daqui, toda vez que tiver um rascunho de aula pronto, basta repetir esse fluxo de 16 passos &mdash; e em <strong>menos de 30 minutos</strong> você tem uma aula nova no ar. <strong>A skill faz o trabalho pesado; você foca no conteúdo pedagógico.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-publicar-aula-delta";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 7;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
