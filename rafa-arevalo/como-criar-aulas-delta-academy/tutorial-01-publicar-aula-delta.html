@@ -75,6 +75,7 @@
   .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
   .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
   .tip-box p strong{color:var(--accent2);font-weight:700}
+  .tip-box p code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(0,0,0,0.18);padding:1px 5px;border-radius:3px}
   .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
   .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
   .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
@@ -91,7 +92,8 @@
   .delivery-banner .db-title{font-size:0.95rem;font-weight:800;color:var(--insight-fg);text-align:center;letter-spacing:-0.01em;margin-bottom:14px}
   .delivery-banner .db-cards{display:flex;flex-direction:column;gap:9px}
   .delivery-banner .db-card{background:rgba(255,255,255,0.04);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px}
-  .delivery-banner .db-card .db-card-title{font-size:0.74rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+  .delivery-banner .db-card .db-card-title{font-size:0.74rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;display:flex;align-items:center;gap:7px}
+  .delivery-banner .db-card .db-card-title .db-emoji{font-size:0.9rem;line-height:1}
   .delivery-banner .db-card .db-card-body{font-size:0.74rem;color:var(--insight-fg);line-height:1.55}
   .delivery-banner .db-card .db-card-body code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.88em;background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:3px;color:var(--gold)}
   .delivery-banner .db-footer{margin-top:14px;background:rgba(209,170,83,0.12);border:1px solid rgba(209,170,83,0.35);border-radius:8px;padding:10px 14px;font-size:0.74rem;color:var(--insight-fg);text-align:center;line-height:1.5}
@@ -107,11 +109,6 @@
   .stat-card.sc-model{border-left:3px solid var(--accent2)}
   .stat-card.sc-model .sc-label{color:var(--accent2)}
   .stat-card.sc-model .sc-value{color:var(--accent2)}
-
-  /* Phase separator */
-  .phase-sep{margin:24px 0 12px;padding-bottom:8px;border-bottom:2px solid var(--accent);font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);display:flex;align-items:baseline;gap:10px}
-  .phase-sep .ps-num{background:var(--accent);color:var(--bg);padding:3px 9px;border-radius:3px;font-size:0.66rem;letter-spacing:0.08em}
-  .phase-sep .ps-meta{margin-left:auto;font-size:0.62rem;font-weight:600;color:var(--text3);letter-spacing:0.08em}
 
   /* Step-card pattern (Passo a Passo da Atividade Prática) */
   .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
@@ -129,6 +126,7 @@
   .step-img{margin:14px 0 4px;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--ficha-td1-bg);box-shadow:var(--shadow-xs)}
   .step-img img{display:block;width:100%;height:auto}
   .step-img figcaption{font-size:0.66rem;color:var(--text3);padding:8px 12px;border-top:1px solid var(--border);font-weight:600;line-height:1.4;background:var(--panel)}
+  .step-img figcaption code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.92em;color:var(--accent2)}
   .step-img + .step-img{margin-top:10px}
 
   /* Check-list (entregáveis no overview-card "Você sai com") */
@@ -136,6 +134,7 @@
   .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
   .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
   .check-list li strong{color:var(--accent2);font-weight:700}
+  .check-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
 
   .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
   .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
@@ -190,15 +189,15 @@
       <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
       <div class="sec-desc">Atividade 01 &mdash; Como criar uma aula HTML da Delta Academy</div>
 
-      <p class="lead-text">Sua primeira aula publicada no repositório oficial da Delta Academy. Ao final, você terá um <strong>módulo novo no GitHub</strong>, com pelo menos <strong>uma aula viva e acessível por URL pública</strong>, e seu <strong>username de professor cadastrado</strong> para reutilizar em todas as próximas aulas.</p>
+      <p class="lead-text">Sua primeira aula publicada no repositório oficial da Delta Academy. Ao final, você terá um <strong>módulo novo no GitHub</strong>, uma <strong>aula viva e acessível por URL pública</strong>, e seu <strong>username do GitHub registrado</strong> para reutilizar em todas as próximas aulas que criar.</p>
 
       <div class="overview-card">
         <h3>Ficha técnica</h3>
         <table class="ficha-table"><tbody>
           <tr><td>Tipo</td><td>Atividade Prática hands-on</td></tr>
-          <tr><td>Duração</td><td>30 minutos (16 passos &middot; 3 fases)</td></tr>
-          <tr><td>Ferramenta</td><td>Claude Code + Skill <code>/criar-nova-aula-Delta</code></td></tr>
-          <tr><td>Pré-requisito</td><td>Repositório <code>deltaacademy-ai/pages</code> clonado localmente + Claude Code instalado</td></tr>
+          <tr><td>Duração</td><td>20 minutos &middot; 8 passos</td></tr>
+          <tr><td>Ferramenta</td><td>Claude Code + Skill <code>/criar-nova-aula-delta</code></td></tr>
+          <tr><td>Pré-requisito</td><td>Claude Code instalado no computador + conta no GitHub</td></tr>
           <tr><td>Bloco</td><td>Onboarding de Professores Delta</td></tr>
         </tbody></table>
       </div>
@@ -222,16 +221,16 @@
         <div class="db-title">Módulo novo publicado no repositório Delta</div>
         <div class="db-cards">
           <div class="db-card">
-            <div class="db-card-title">Módulo criado no repositório</div>
-            <div class="db-card-body">Local: <code>deltaacademy-ai/pages</code> (branch principal). Pasta nova do módulo com pelo menos 1 aula HTML dentro, commitada e enviada para o GitHub.</div>
+            <div class="db-card-title"><span class="db-emoji">&#128193;</span> Módulo no repositório</div>
+            <div class="db-card-body">Local: <code>deltaacademy-ai/pages</code> (branch principal). Pasta nova com pelo menos 1 aula HTML dentro, commit + push enviados para o GitHub.</div>
           </div>
           <div class="db-card">
-            <div class="db-card-title">Aula publicada no GitHub Pages</div>
-            <div class="db-card-body">URL viva no formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>, com acesso público navegável por qualquer aluno e identidade Delta aplicada (sidebar, breadcrumb, paleta).</div>
+            <div class="db-card-title"><span class="db-emoji">&#127760;</span> Aula no GitHub Pages</div>
+            <div class="db-card-body">URL viva no formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>, acesso público navegável por qualquer aluno, com identidade visual Delta aplicada.</div>
           </div>
           <div class="db-card">
-            <div class="db-card-title">Username de professor criado</div>
-            <div class="db-card-body">Cadastrado na primeira execução da skill, reutilizado em todas as próximas aulas que você criar.</div>
+            <div class="db-card-title"><span class="db-emoji">&#128100;</span> Username GitHub registrado</div>
+            <div class="db-card-body">Fornecido na primeira execução da skill, reutilizado em todas as próximas aulas que você criar.</div>
           </div>
         </div>
         <div class="db-footer">Esse é o <strong>mesmo fluxo</strong> que você vai repetir toda vez que criar uma aula nova &mdash; uma vez aprendido, ele dura todo o programa.</div>
@@ -254,9 +253,9 @@
       <div class="overview-card">
         <h3>Elementos do fluxo</h3>
         <ul>
-          <li><strong>Repositório clonado localmente</strong> &mdash; a pasta <code>pages</code> do <code>deltaacademy-ai</code> precisa estar no seu computador, dentro do <code>/Users/seunome/</code> (ou caminho equivalente). Esse é o diretório onde a skill vai gravar os arquivos da sua aula.</li>
-          <li><strong>Claude Code aberto na pasta certa</strong> &mdash; o Claude Code precisa estar com o workspace apontando para a pasta <code>pages</code> que você clonou. Sem isso, a skill <code>/criar-nova-aula-Delta</code> não enxerga onde gravar.</li>
-          <li><strong>Skill <code>/criar-nova-aula-Delta</code> disponível</strong> &mdash; é a skill da organização Delta Academy que automatiza toda a geração da página HTML, do CSS, da sidebar e do deploy para o GitHub Pages.</li>
+          <li><strong>Terminal + Git</strong> &mdash; você usa o terminal do macOS para clonar o repositório oficial <code>deltaacademy-ai/pages</code> na sua máquina. Esse é o diretório onde a skill vai gravar os arquivos da sua aula.</li>
+          <li><strong>Claude Code apontado para a pasta <code>pages</code></strong> &mdash; o Claude Code precisa estar com o workspace aberto exatamente na pasta clonada. Sem isso, a skill <code>/criar-nova-aula-delta</code> não enxerga onde gravar.</li>
+          <li><strong>Skill <code>/criar-nova-aula-delta</code> + roteiro <code>.md</code></strong> &mdash; a skill da organização Delta Academy automatiza a geração da página HTML, CSS, sidebar e deploy. Ela precisa receber o roteiro <code>.md</code> da aula para gerar o conteúdo.</li>
         </ul>
       </div>
 
@@ -270,15 +269,15 @@
     <div class="section" id="sec-step3">
       <span class="section-badge">Introdução</span>
       <div class="sec-title"><span class="snum">03.</span> Skill como conhecimento empacotado</div>
-      <div class="sec-desc">Por que existe a skill <code>/criar-nova-aula-Delta</code></div>
+      <div class="sec-desc">Por que existe a skill <code>/criar-nova-aula-delta</code></div>
 
       <p class="lead-text">A Delta Academy tem dezenas de aulas no ar, todas com a mesma identidade visual, a mesma navegação, a mesma estrutura de pílulas, prints, blocos de copiar e insight-boxes. Se cada professor precisasse construir tudo isso do zero a cada aula nova, seriam <strong>horas de CSS, HTML e configuração</strong> &mdash; antes mesmo de pensar no conteúdo pedagógico.</p>
 
-      <p class="lead-text">A skill <code>criar-nova-aula-Delta</code> resolve isso de uma vez. Ela é o <strong>conhecimento da Delta Academy empacotado em uma instrução executável</strong>: paleta de cores, fontes, componentes, layout, deploy no GitHub Pages &mdash; tudo encapsulado. Você só descreve o conteúdo da aula, e a skill aplica todo o padrão Delta automaticamente.</p>
+      <p class="lead-text">A skill <code>criar-nova-aula-delta</code> resolve isso de uma vez. Ela é o <strong>conhecimento da Delta Academy empacotado em uma instrução executável</strong>: paleta de cores, fontes, componentes, layout, deploy no GitHub Pages &mdash; tudo encapsulado. Você só descreve o conteúdo da aula no <code>.md</code>, e a skill aplica todo o padrão Delta automaticamente.</p>
 
       <div class="tip-box">
         <div class="tip-label">Dica</div>
-        <p>Pense numa skill como uma <strong>receita de bolo que já vem com o forno embutido</strong>. Você fornece os ingredientes (o conteúdo da sua aula), e a skill cuida do resto &mdash; temperatura, tempo, decoração final, entrega. Toda aula que sai por essa skill vem com o mesmo padrão visual da Delta, sem você precisar se preocupar com isso.</p>
+        <p>Pense numa skill como uma <strong>receita de bolo que já vem com o forno embutido</strong>. Você fornece os ingredientes (o roteiro <code>.md</code> da aula), e a skill cuida do resto &mdash; temperatura, tempo, decoração, entrega. Toda aula que sai por essa skill vem com o mesmo padrão visual da Delta, sem você precisar se preocupar com isso.</p>
       </div>
 
       <p class="lead-text">A vantagem para o programa é a <strong>consistência</strong>: 100 aulas criadas por 30 professores diferentes ficam visualmente idênticas, porque todas passaram pela mesma skill. A vantagem para você como professor é o <strong>foco</strong>: você gasta sua energia no que importa &mdash; o conteúdo pedagógico &mdash; e não em decisões de design.</p>
@@ -293,13 +292,13 @@
     <div class="section" id="sec-step4">
       <span class="section-badge">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">04.</span> Sua atividade prática</div>
-      <div class="sec-desc">30 minutos &middot; 16 passos &middot; 3 fases</div>
+      <div class="sec-desc">20 minutos &middot; 8 passos sequenciais</div>
 
       <div class="stat-grid">
         <div class="stat-card">
           <div class="sc-label">Duração total</div>
-          <div class="sc-value">30 min</div>
-          <div class="sc-sub">16 passos &middot; 3 fases</div>
+          <div class="sc-value">20 min</div>
+          <div class="sc-sub">8 passos</div>
         </div>
         <div class="stat-card sc-model">
           <div class="sc-label">Modelo recomendado</div>
@@ -309,20 +308,16 @@
         </div>
       </div>
 
-      <p class="lead-text">Você vai executar os <strong>16 passos do fluxo oficial de publicação</strong> de uma aula da Delta Academy. O fluxo está dividido em <strong>três fases sequenciais</strong>:</p>
-
-      <div class="overview-card">
-        <h3>As 3 fases do fluxo</h3>
-        <ul>
-          <li><strong>Fase 1 &mdash; Configuração do workspace</strong> &middot; abrir o Finder, navegar até a pasta <code>pages</code> e apontar o Claude Code para ela (Passos 01 a 08).</li>
-          <li><strong>Fase 2 &mdash; Execução da skill</strong> &middot; rodar o slash command <code>/criar-nova-aula-Delta</code>, configurar seu username de professor e escolher a opção de módulo novo (Passos 09 a 12).</li>
-          <li><strong>Fase 3 &mdash; Verificação no GitHub Pages</strong> &middot; copiar a URL gerada, abrir no navegador e validar que a aula está publicada e visualmente correta (Passos 13 a 16).</li>
-        </ul>
-      </div>
+      <p class="lead-text">Você vai executar os <strong>8 passos do fluxo oficial de publicação</strong> de uma aula da Delta Academy &mdash; do clone do repositório à verificação da página publicada no GitHub Pages.</p>
 
       <div class="tip-box">
         <div class="tip-label">Dica</div>
-        <p>Esse fluxo de 16 passos é o mesmo que você vai repetir toda vez que criar uma aula nova. Faça uma vez agora com atenção &mdash; depois vira automático. A maior parte do tempo nesse fluxo é navegação de interface; <strong>o trabalho pesado (gerar HTML, CSS, sidebar, deploy) fica todo com a skill</strong>.</p>
+        <p>Esse fluxo é o mesmo que você vai repetir toda vez que criar uma aula nova. Faça uma vez agora com atenção &mdash; depois vira automático. A maior parte do tempo é navegação de interface; <strong>o trabalho pesado (gerar HTML, CSS, sidebar, deploy) fica todo com a skill</strong>.</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante</div>
+        <p>Em <strong>nenhum momento</strong> desta aula a skill, o GitHub ou o Claude Code vai pedir que você crie ou forneça uma senha. Se em algum ponto o terminal sugerir criar uma senha, <strong>negue/ignore</strong>. Toda autenticação necessária acontece via a sua conta já logada no Claude Code e no GitHub.</p>
       </div>
 
       <div class="nav-buttons">
@@ -335,154 +330,87 @@
     <div class="section" id="sec-step5">
       <span class="section-badge">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">05.</span> Passo a passo</div>
-      <div class="sec-desc">16 passos separados por fase</div>
-
-      <!-- FASE 1 -->
-      <div class="phase-sep">
-        <span class="ps-num">Fase 1</span>
-        <span>Configuração do workspace</span>
-        <span class="ps-meta">Passos 01&ndash;08</span>
-      </div>
+      <div class="sec-desc">8 passos sequenciais &mdash; do clone à verificação</div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abrir o Finder a partir do Dock</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Clonar o repositório do GitHub da Delta Academy</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Clique no ícone do <strong>Finder</strong> no Dock do macOS para abri-lo. O Finder vai abrir na janela padrão configurada no seu sistema &mdash; pode ser Recentes, Documentos ou outro local. <em>Não importa onde abriu; nos próximos passos você vai navegar para o lugar certo.</em></p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3883d58e-dc0b-4565-9e86-20339cd8a995/user_cropped_screenshot_14a231ba7f1a4822b1d67547f0b17712_text_export.jpeg" alt="Ícone do Finder no Dock destacado com seta indicando o clique" loading="lazy">
-            <figcaption>Ícone do Finder no Dock destacado com seta indicando o clique.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Navegar até o diretório home</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">No Finder aberto, vá até o <strong>diretório home</strong> do seu usuário (a pasta com o ícone de casinha, geralmente chamada com o seu nome de usuário). Você pode usar o atalho <code>Cmd + Shift + H</code> ou clicar na pasta do seu nome na barra lateral do Finder.</p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3f62b058-303c-416c-a4d1-71869413f85a/sps-redacted-3a7fe0fdb41f40f49b87ed5bd4495499_73b403e45b7f4b6c90a2290407c65c6a_text_export.jpeg" alt="Janela do Finder com o diretório home aberto mostrando as pastas padrão" loading="lazy">
-            <figcaption>Janela do Finder com o diretório home aberto mostrando as pastas padrão.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Localizar a pasta <code>pages</code></span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">Dentro do diretório home, <strong>localize a pasta chamada <code>pages</code></strong>. Essa é a pasta do repositório <code>deltaacademy-ai/pages</code> que você clonou como pré-requisito desta aula. Se você não encontrar essa pasta, é sinal de que o repositório ainda não foi clonado &mdash; pare aqui e clone antes de continuar.</p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/52ce2990-fd1b-4284-ba40-67abe9d5a132/sps-redacted-26d09a0f213a4a81a8078da4b3f356bc_d4f5634acbce412795c97c09d1c0f599_text_export.jpeg" alt="Finder no diretório home com a pasta pages visível e destacada" loading="lazy">
-            <figcaption>Finder no diretório home com a pasta <code>pages</code> visível e destacada.</figcaption>
-          </figure>
-          <div class="warning-box">
-            <div class="warning-label">Importante</div>
-            <p>Se a pasta <code>pages</code> não existir no seu home, abra o Terminal e rode <code>git clone git@github.com:deltaacademy-ai/pages.git</code> no diretório home antes de seguir. Sem essa pasta clonada, a skill não tem onde gravar a aula.</p>
+          <p class="step-card-desc">Abra o <strong>Terminal</strong> do macOS e digite o comando abaixo para clonar o repositório oficial de aulas da Delta Academy na sua máquina. Esse comando cria uma pasta chamada <code>pages</code> no diretório onde você executou o comando (geralmente o seu diretório home <code>/Users/{seu-usuario}/</code>).</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Comando para clonar o repositório</span>
+            <div class="copy-block" id="cmd-clone">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('cmd-clone-text').textContent)">Copiar</button>
+<span id="cmd-clone-text">git clone https://github.com/deltaacademy-ai/pages</span></div>
           </div>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Selecionar a pasta <code>pages</code></span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc"><strong>Clique uma vez sobre a pasta <code>pages</code></strong> para selecioná-la (não entre dentro dela &mdash; só selecionar é suficiente). A pasta deve aparecer destacada/azulada indicando que está selecionada. Mantenha o Finder aberto nesse estado &mdash; você vai precisar dele aberto para o próximo passo.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3485d2ba-1c92-40f2-83d6-05a1a2d45ce9/sps-redacted-38cbbf36fcf84c60875a1663d00ed77f_dd9002ecabee47ad9ef2713e1984efcb_text_export.jpeg" alt="Finder mostrando a pasta pages selecionada com destaque visual azul" loading="lazy">
-            <figcaption>Finder mostrando a pasta <code>pages</code> selecionada com destaque visual azul.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/2a99be9e-9693-45c3-8fa6-0a3e1b1fc6fe/user_cropped_screenshot_14a231ba7f1a4822b1d67547f0b17712_text_export.jpeg" alt="Terminal do macOS mostrando o comando git clone para o repositório pages da Delta Academy" loading="lazy">
+            <figcaption>Terminal do macOS com o comando <code>git clone</code> do repositório <code>pages</code> da Delta Academy.</figcaption>
           </figure>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">No Claude Code, clicar em "Abrir pasta..."</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Verificar a pasta <code>pages</code> no seu computador</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Agora abra o <strong>Claude Code</strong> (se ele já não estiver aberto). Na interface inicial do Claude Code, clique em <strong>"Abrir pasta..."</strong> (ou "Open folder..." dependendo do idioma da interface). Isso vai abrir um diálogo de seleção de pasta nativo do macOS.</p>
+          <p class="step-card-desc">Após o clone terminar, abra o Finder e <strong>verifique que existe uma pasta chamada <code>pages</code></strong> dentro do seu usuário (no exemplo, dentro de <code>rafael-arevalo</code>). Essa pasta é o repositório local que vai receber os arquivos da sua aula.</p>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/52ce2990-fd1b-4284-ba40-67abe9d5a132/sps-redacted-26d09a0f213a4a81a8078da4b3f356bc_d4f5634acbce412795c97c09d1c0f599_text_export.jpeg" alt="Finder mostrando a pasta pages criada dentro do diretório do usuário rafael-arevalo" loading="lazy">
+            <figcaption>Finder mostrando a pasta <code>pages</code> criada dentro do diretório do usuário.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Abrir a pasta <code>pages</code> no Claude Code</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o <strong>Claude Code</strong> e use a opção <strong>"Abrir pasta..."</strong> para selecionar a pasta <code>pages</code> criada no passo anterior. O Claude Code vai carregar o workspace apontando para essa pasta.</p>
           <figure class="step-img">
             <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3444c81a-ba3e-4bf9-9b7c-d5ccd5e12afd/sps-redacted-e685d4eafb7547f3a384bb00f9172fcb_7cc12d89ef90497a8828a226bfb11ed0_text_export.jpeg" alt="Tela inicial do Claude Code com o botão Abrir pasta destacado" loading="lazy">
             <figcaption>Tela inicial do Claude Code com o botão "Abrir pasta..." destacado.</figcaption>
           </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Selecionar a pasta do repositório no diálogo</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">No diálogo de seleção que abriu, navegue até o diretório home e <strong>selecione a pasta <code>pages</code></strong> (ou a pasta exata em que você executou o <code>git clone</code> se foi em outro lugar). Confirme que a pasta selecionada é a do repositório <code>deltaacademy-ai/pages</code>.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/d333fb37-1be3-4939-af2a-18da147a4b1c/sps-redacted-5728a0959b2c48f79322ed0d60cbc111_b1bb2fb913ec4cd48463cc88259b3f69_text_export.jpeg" alt="Diálogo de seleção de pasta do macOS com a pasta pages destacada" loading="lazy">
-            <figcaption>Diálogo de seleção de pasta do macOS com a pasta <code>pages</code> destacada.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/4134fa54-e3cf-4557-b03c-aa3416dc6466/sps-redacted-d475cdf347074a9a86c9e7bc9ebe6a37_89f0095c6d9a4273be724f8b453bc4f7_text_export.jpeg" alt="Diálogo de seleção de pasta do macOS com o botão Abrir destacado após selecionar a pasta pages" loading="lazy">
+            <figcaption>Diálogo de seleção de pasta do macOS com o botão "Abrir" destacado após selecionar a pasta <code>pages</code>.</figcaption>
           </figure>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Confirmar a abertura clicando em "Abrir"</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Chamar a skill <code>/criar-nova-aula-delta</code></span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">No canto inferior direito do diálogo de seleção, clique no botão <strong>"Abrir"</strong> para confirmar a escolha da pasta. O Claude Code vai começar a carregar o workspace apontando para essa pasta.</p>
+          <p class="step-card-desc">No campo de prompt do Claude Code, <strong>chame a skill</strong> digitando o slash command abaixo. A partir daqui, a skill vai começar a fazer perguntas no terminal &mdash; responda cada uma à medida que aparecerem.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Slash command da skill</span>
+            <div class="copy-block" id="cmd-skill">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('cmd-skill-text').textContent)">Copiar</button>
+<span id="cmd-skill-text">/criar-nova-aula-delta</span></div>
+          </div>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/4134fa54-e3cf-4557-b03c-aa3416dc6466/sps-redacted-d475cdf347074a9a86c9e7bc9ebe6a37_89f0095c6d9a4273be724f8b453bc4f7_text_export.jpeg" alt="Diálogo de seleção com o botão Abrir destacado no canto inferior direito" loading="lazy">
-            <figcaption>Diálogo de seleção com o botão "Abrir" destacado no canto inferior direito.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/405a0d2d-3b94-461b-80d0-5fe52bfa5efd/user_cropped_screenshot_77c63eb2fd0c4896878fa30d3dddd62c_text_export.jpeg" alt="Campo de prompt do Claude Code com a skill criar-nova-aula-delta sendo chamada" loading="lazy">
+            <figcaption>Campo de prompt do Claude Code com a skill <code>/criar-nova-aula-delta</code> sendo chamada.</figcaption>
           </figure>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Confiar no workspace</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Fornecer seu username do GitHub</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Na primeira vez que você abre uma pasta no Claude Code, ele pede confirmação de segurança. Uma janela vai aparecer perguntando se você confia no conteúdo dessa pasta. <strong>Clique em "Confiar no Workspace"</strong> (ou "Trust Workspace") para autorizar o Claude Code a ler e executar arquivos dentro da pasta.</p>
+          <p class="step-card-desc">A skill vai perguntar qual é o seu <strong>username do GitHub</strong>. Digite o seu username (o mesmo que você usa no <code>github.com</code>) e envie.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/c0fd4c87-1530-4107-8f8c-480638f4d7fe/sps-redacted-e3e1b212af4f4aa2869d152578a87e8d_08b41fbcdf5849648f032df0f17e3967_text_export.jpeg" alt="Diálogo de confiança do Claude Code com o botão Confiar no Workspace destacado" loading="lazy">
-            <figcaption>Diálogo de confiança do Claude Code com o botão "Confiar no Workspace" destacado.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/9b495201-a5b3-4daa-bc9d-004cce9cc1f7/sps-redacted-7bb30580d09b4c789e5eaf1b7d12ddc3_76e9b4c986124b6c8886dd9ffba963a5_text_export.jpeg" alt="Claude Code mostrando o prompt pedindo o username do GitHub e o usuário digitando" loading="lazy">
+            <figcaption>Claude Code com o prompt pedindo o username do GitHub e o professor digitando o seu.</figcaption>
           </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
-            <p>Esse aviso só aparece <strong>na primeira vez</strong>. Nas próximas vezes que você abrir a pasta <code>pages</code>, o Claude Code já vai considerá-la confiável e pular esse passo.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FASE 2 -->
-      <div class="phase-sep">
-        <span class="ps-num">Fase 2</span>
-        <span>Execução da skill</span>
-        <span class="ps-meta">Passos 09&ndash;12</span>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 09</span><span class="step-card-title">Digitar o comando <code>/criar-nova-aula-Delta</code></span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">Com o workspace já aberto e confiável, vá até o <strong>campo de prompt do Claude Code</strong> (a caixa de texto onde você normalmente conversa com o Claude). Digite o slash command exato e aperte Enter. O Claude Code vai detectar que é um comando de skill da organização Delta Academy e iniciar o fluxo de criação.</p>
-          <div class="copy-wrap">
-            <span class="copy-label">Slash command</span>
-            <div class="copy-block" id="cmd-skill">
-<button class="copy-btn" onclick="copyText(this, document.getElementById('cmd-skill-text').textContent)">Copiar</button>
-<span id="cmd-skill-text">/criar-nova-aula-Delta</span></div>
-          </div>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/93c7f7d3-c288-444c-806c-06f32b93d148/sps-redacted-8f42e05a58974277aec7afb64927a8bc_77c63eb2fd0c4896878fa30d3dddd62c_text_export.jpeg" alt="Campo de prompt do Claude Code com o comando criar-nova-aula-Delta digitado" loading="lazy">
-            <figcaption>Campo de prompt do Claude Code com <code>/criar-nova-aula-Delta</code> digitado e prestes a ser enviado.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 10</span><span class="step-card-title">Inserir seu username de professor</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">A skill vai perguntar qual é o seu <strong>username de professor da Delta Academy</strong>. Se você já é professor cadastrado, insira o username que você já usa. Se essa é sua primeira aula, <strong>invente um username novo</strong> (algo curto, em lowercase, sem espaços &mdash; ex: <code>rafa</code>, <code>mariag</code>, <code>pedrocosta</code>). Esse username vai te identificar como autor das aulas que criar.</p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/9b495201-a5b3-4daa-bc9d-004cce9cc1f7/sps-redacted-7bb30580d09b4c789e5eaf1b7d12ddc3_76e9b4c986124b6c8886dd9ffba963a5_text_export.jpeg" alt="Claude Code mostrando o prompt pedindo o username e o usuário digitando o seu" loading="lazy">
-            <figcaption>Claude Code com o prompt pedindo o username e o professor digitando o seu.</figcaption>
-          </figure>
-          <div class="tip-box">
-            <div class="tip-label">Dica</div>
-            <p>Anote seu username em algum lugar fácil de acessar. Você vai precisar dele <strong>toda vez</strong> que criar uma aula nova &mdash; e ele precisa ser <strong>exatamente o mesmo</strong> para a skill reconhecer suas aulas anteriores.</p>
+            <p>Se em algum momento o terminal pedir para você <strong>criar ou fornecer uma senha</strong>, recuse/ignore. A skill <strong>não precisa</strong> de senha nenhuma &mdash; autenticação já está coberta pela sua conta logada no Claude Code e no GitHub.</p>
           </div>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 11</span><span class="step-card-title">Selecionar "A &mdash; Módulo novo com aulas"</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Selecionar a opção "A" (módulo novo com aulas)</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">A skill vai te mostrar uma lista de opções de fluxo. Como esta é sua primeira aula e você quer <strong>criar um módulo novo do zero</strong> com pelo menos uma aula dentro, <strong>selecione a opção "A &mdash; Módulo novo com aulas"</strong>. Não selecione as opções de "adicionar aula a módulo existente" &mdash; essas você vai usar quando voltar para complementar um módulo já criado.</p>
+          <p class="step-card-desc">A skill vai mostrar uma lista de opções de fluxo. <strong>Selecione a opção "A &mdash; Módulo novo com aulas"</strong> para criar um módulo novo do zero. Em seguida, <strong>adicione o arquivo <code>.md</code> com o roteiro da aula</strong> quando a skill solicitar.</p>
           <figure class="step-img">
             <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/3b9cf974-0933-47ce-8eff-eeabee937bf7/sps-redacted-d4924cd74e054beeaa6a1adbb4023606_74d6f97e4ec34410aeece52aba392230_text_export.jpeg" alt="Lista de opções da skill com A — Módulo novo com aulas destacada" loading="lazy">
             <figcaption>Lista de opções da skill com "A &mdash; Módulo novo com aulas" destacada.</figcaption>
@@ -491,79 +419,39 @@
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 12</span><span class="step-card-title">Confirmar a criação do módulo digitando "A"</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Confirmar criação do módulo novo</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">A skill vai pedir uma <strong>confirmação adicional</strong> antes de começar a gerar os arquivos. Digite a letra <strong>"A"</strong> no campo de prompt e envie. Isso confirma a sua escolha e libera a skill para começar a gerar o módulo novo com a aula dentro. A partir daqui a skill assume o controle: ela vai criar a pasta do módulo, gerar o HTML, o CSS, configurar a sidebar e preparar o commit.</p>
+          <p class="step-card-desc">Caso a skill peça uma confirmação adicional, <strong>confirme que você quer criar um novo módulo de conteúdo Delta</strong>. A partir daqui a skill assume o controle: ela vai criar a pasta do módulo, gerar o HTML a partir do seu <code>.md</code>, configurar a sidebar, fazer commit e push para o GitHub.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/38daa1b0-d36d-4fa8-90e7-f06bbfcffc6c/sps-redacted-b8e4d72d6ca54f1ba7c11194d8d6a619_5594689c5db746d193c5cfaf9b5f2b9e_text_export.jpeg" alt="Campo de prompt do Claude Code com a letra A digitada para confirmar" loading="lazy">
-            <figcaption>Campo de prompt do Claude Code com a letra "A" digitada para confirmar.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/38daa1b0-d36d-4fa8-90e7-f06bbfcffc6c/sps-redacted-b8e4d72d6ca54f1ba7c11194d8d6a619_5594689c5db746d193c5cfaf9b5f2b9e_text_export.jpeg" alt="Campo de prompt do Claude Code com a confirmação de criação do novo módulo" loading="lazy">
+            <figcaption>Campo de prompt do Claude Code com a confirmação de criação do novo módulo.</figcaption>
           </figure>
           <div class="warning-box">
             <div class="warning-label">Importante</div>
-            <p>A partir desse passo, <strong>não interrompa a execução da skill</strong>. Ela vai rodar vários comandos em sequência (criar arquivos, fazer commit, fazer push para o GitHub). Se você cancelar no meio, pode deixar o repositório em estado inconsistente. Aguarde até a skill terminar e mostrar a URL da aula publicada.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- FASE 3 -->
-      <div class="phase-sep">
-        <span class="ps-num">Fase 3</span>
-        <span>Verificação no GitHub Pages</span>
-        <span class="ps-meta">Passos 13&ndash;16</span>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 13</span><span class="step-card-title">Copiar a URL da aula publicada</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">Quando a skill terminar a execução, ela vai exibir no terminal a <strong>URL pública da aula</strong> que acabou de ser publicada no GitHub Pages. A URL tem o formato <code>https://tutoriais.deltaacademy.ai/{seu-modulo}/{sua-aula}</code>. <strong>Selecione e copie essa URL</strong> (<code>Cmd+C</code>) &mdash; você vai colá-la no navegador no próximo passo.</p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/f5153f34-32e8-4cb5-b49e-1abe9a64ecc4/sps-redacted-71cbcc4213a14ec489d8de8ec3388384_e4a8c385f0cc4da7a710be69e8ff6dfb_text_export.jpeg" alt="Terminal do Claude Code exibindo a URL da aula publicada com a URL selecionada" loading="lazy">
-            <figcaption>Terminal do Claude Code exibindo a URL da aula publicada, com a URL selecionada.</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 14</span><span class="step-card-title">Colar a URL no navegador e abrir</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">Abra seu <strong>navegador padrão</strong> (Chrome, Safari, Firefox), clique na barra de endereço, <strong>cole a URL</strong> (<code>Cmd+V</code>) e aperte Enter. O GitHub Pages pode levar de <strong>30 segundos a 2 minutos</strong> para terminar de fazer o deploy nas primeiras vezes &mdash; se a página não abrir de cara, espere um pouco e atualize.</p>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/aa8fd65c-ceaa-450c-be9a-26776f079024/sps-redacted-949a20247339419588ed3d7ab8deb185_c744052cf3524ff293e1cc645faf591f_text_export.jpeg" alt="Navegador com a URL colada na barra de endereço prestes a carregar" loading="lazy">
-            <figcaption>Navegador com a URL colada na barra de endereço, prestes a carregar.</figcaption>
-          </figure>
-          <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/c23394fd-bbd4-4bc7-af1c-f5d9b9b34db3/sps-redacted-5230e380010449aead33e4db938b47fd_38325642c37b48aea1417d891e7c06aa_text_export.jpeg" alt="Página inicial do site Delta carregada no navegador após a URL aberta" loading="lazy">
-            <figcaption>Página inicial do site Delta carregada no navegador depois de aberta a URL.</figcaption>
-          </figure>
-          <div class="warning-box">
-            <div class="warning-label">Importante</div>
-            <p>Se a página exibir erro 404 mesmo depois de 2 minutos, abra o GitHub do repositório <code>deltaacademy-ai/pages</code> e verifique se o último commit (feito pela skill) está listado nos commits. Se estiver, o deploy ainda está rodando &mdash; espere mais 1 minuto e atualize. Se o commit não aparecer, algo travou no push e você precisa rerodar a skill.</p>
+            <p>A partir desse passo, <strong>não interrompa a execução da skill</strong>. Ela vai rodar vários comandos em sequência (criar arquivos, fazer commit, fazer push). Se cancelar no meio, pode deixar o repositório em estado inconsistente. Aguarde até a skill mostrar a URL da aula publicada.</p>
           </div>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 15</span><span class="step-card-title">Clicar no link da aula recém-criada</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Verificar a página HTML publicada</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">A URL pode te levar para a <strong>página índice do módulo</strong> que você criou (não direto para a aula). Nesse caso, você vai ver uma lista com o título da aula que a skill gerou &mdash; algo como <strong>"Benchmark da Vaga"</strong> ou similar dependendo do conteúdo. <strong>Clique nesse link</strong> para abrir a página da aula em si.</p>
+          <p class="step-card-desc">Quando a skill terminar, ela vai fornecer a <strong>URL pública da aula</strong> publicada no GitHub Pages. <strong>Copie essa URL, cole no navegador</strong> e confirme que a página carrega com a identidade visual Delta aplicada. Em seguida, navegue até o item <strong>Passo a passo</strong> dentro da seção <strong>ATIVIDADE PRÁTICA</strong> da aula para verificar que o conteúdo do seu roteiro <code>.md</code> foi renderizado corretamente.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/42f0bc5e-768b-476e-90c7-7ceb37cb9b13/sps-redacted-960df06a1f9a4d4387ff2fe0d385dfdc_8a5e11cf74c04ccf85af6eb62da90cef_text_export.jpeg" alt="Página índice do módulo no navegador com o link da aula destacado" loading="lazy">
-            <figcaption>Página índice do módulo no navegador com o link da aula destacado.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/f5153f34-32e8-4cb5-b49e-1abe9a64ecc4/sps-redacted-71cbcc4213a14ec489d8de8ec3388384_e4a8c385f0cc4da7a710be69e8ff6dfb_text_export.jpeg" alt="Terminal do Claude Code exibindo a URL da aula publicada após a skill terminar" loading="lazy">
+            <figcaption>Terminal do Claude Code exibindo a URL da aula publicada depois da skill terminar.</figcaption>
           </figure>
-        </div>
-      </div>
-
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 16</span><span class="step-card-title">Verificar a aula publicada</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">A aula deve carregar com a <strong>identidade visual completa da Delta Academy</strong>: sidebar à esquerda com a navegação dos itens, breadcrumb no topo, banner do entregável na introdução, paleta de cores Delta Board (verde escuro, dourado, cream). <strong>Navegue pelas seções da aula</strong> clicando nos itens da sidebar para confirmar que tudo está funcionando.</p>
           <figure class="step-img">
-            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/974f2f96-2d6c-4a56-9668-13d00a7fb62e/sps-redacted-0a0f1a9353944fdca033f724120ef135_7022d4e221284eb5ba36a8bb396e9d3f_text_export.jpeg" alt="Aula completa renderizada no navegador mostrando sidebar conteúdo principal e identidade Delta aplicada" loading="lazy">
-            <figcaption>Aula completa renderizada no navegador mostrando sidebar, conteúdo principal e identidade Delta aplicada.</figcaption>
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/aa8fd65c-ceaa-450c-be9a-26776f079024/sps-redacted-949a20247339419588ed3d7ab8deb185_c744052cf3524ff293e1cc645faf591f_text_export.jpeg" alt="Navegador com a URL da aula colada na barra de endereço prestes a carregar" loading="lazy">
+            <figcaption>Navegador com a URL da aula colada na barra de endereço, prestes a carregar.</figcaption>
+          </figure>
+          <figure class="step-img">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-09/0d9cc2a0-00d4-475c-8d02-140221a26c0f/ascreenshot_b3f0b348e7dc44bb86571a0b53868502_text_export.jpeg" alt="Aula publicada aberta no navegador com a seção ATIVIDADE PRÁTICA e o item Passo a passo destacados" loading="lazy">
+            <figcaption>Aula publicada aberta no navegador com a seção ATIVIDADE PRÁTICA e o item Passo a passo destacados.</figcaption>
           </figure>
           <div class="tip-box">
             <div class="tip-label">Dica</div>
-            <p>Se algo visualmente estiver fora do padrão Delta (cor errada, sidebar quebrada, fonte diferente), provavelmente o cache do GitHub Pages ainda está servindo uma versão antiga. Faça um <strong>hard refresh</strong> no navegador (<code>Cmd + Shift + R</code> no Chrome/Firefox, <code>Cmd + Option + R</code> no Safari) e o problema costuma resolver.</p>
+            <p>Se algo visualmente estiver fora do padrão Delta, ou se a página retornar 404, o cache do GitHub Pages pode estar servindo uma versão antiga ou o deploy ainda está rodando. Espere 1&ndash;2 minutos e faça um <strong>hard refresh</strong> (<code>Cmd + Shift + R</code> no Chrome/Firefox, <code>Cmd + Option + R</code> no Safari).</p>
           </div>
         </div>
       </div>
@@ -583,17 +471,17 @@
       <div class="overview-card">
         <h3>Você sai desta atividade com</h3>
         <ul class="check-list">
-          <li>Um <strong>username de professor da Delta Academy</strong> criado e registrado &mdash; vai ser reutilizado em todas as próximas aulas que você publicar.</li>
           <li>Um <strong>módulo novo</strong> no repositório <code>deltaacademy-ai/pages</code> com pasta criada, arquivos commitados e push feito para a branch principal.</li>
           <li>Pelo menos <strong>uma aula HTML publicada no GitHub Pages</strong> acessível por URL pública, com a identidade visual Delta aplicada (sidebar, breadcrumb, paleta, componentes).</li>
-          <li>O <strong>fluxo de 16 passos rodado de ponta a ponta</strong> uma vez &mdash; da próxima vez que você criar uma aula, esse fluxo vai estar muito mais rápido porque já é familiar.</li>
-          <li>A <strong>prova viva de que a skill <code>criar-nova-aula-Delta</code> funciona no seu setup</strong> &mdash; workspace configurado, autenticação OK, deploy automatizado funcionando.</li>
+          <li>Seu <strong>username do GitHub registrado</strong> na skill &mdash; reutilizado em todas as próximas aulas que você publicar.</li>
+          <li>O <strong>fluxo de 8 passos rodado de ponta a ponta</strong> uma vez &mdash; da próxima vez que criar uma aula, esse fluxo vai estar muito mais rápido porque já é familiar.</li>
+          <li>A <strong>prova viva de que a skill <code>criar-nova-aula-delta</code> funciona no seu setup</strong> &mdash; workspace configurado, autenticação OK, deploy automatizado funcionando.</li>
         </ul>
       </div>
 
       <div class="insight-box">
         <div class="insight-label">Insight</div>
-        <p>Você acabou de publicar sua <strong>primeira aula da Delta Academy</strong>. A partir daqui, toda vez que tiver um rascunho de aula pronto, basta repetir esse fluxo de 16 passos &mdash; e em <strong>menos de 30 minutos</strong> você tem uma aula nova no ar. <strong>A skill faz o trabalho pesado; você foca no conteúdo pedagógico.</strong></p>
+        <p>Você acabou de publicar sua <strong>primeira aula da Delta Academy</strong>. A partir daqui, toda vez que tiver um roteiro <strong>.md</strong> de aula pronto, basta repetir esse fluxo de 8 passos &mdash; e em <strong>menos de 20 minutos</strong> você tem uma aula nova no ar. <strong>A skill faz o trabalho pesado; você foca no conteúdo pedagógico.</strong></p>
       </div>
 
       <div class="nav-buttons">
