@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03. Claude Project + Primeiro Output Executivo &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo img{max-width:148px;height:auto;display:block;margin-bottom:14px}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:820px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text em{color:var(--text2);font-style:italic}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.78rem;color:var(--accent-text);line-height:1.6}
+  .tip-box p+p{margin-top:6px}
+  .tip-box strong{color:var(--accent2);font-weight:700}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.78rem;color:var(--warn-text);line-height:1.6}
+  .warning-box p+p{margin-top:6px}
+  .warning-box strong{font-weight:800}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center;border:1px solid var(--accent2)}
+  .insight-box .insight-label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.9rem;font-weight:600;color:var(--insight-fg);line-height:1.65}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .insight-box p em{font-style:italic;opacity:0.9}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.78rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+
+  /* Banner do entregável */
+  .entregavel-banner{background:linear-gradient(135deg,#0A1211 0%,#1F3331 60%,#0A1211 100%);border:2px solid var(--gold);border-radius:14px;padding:22px 24px;margin:18px 0;box-shadow:var(--shadow-sm)}
+  .entregavel-banner .eb-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:6px;display:block}
+  .entregavel-banner .eb-title{font-size:1rem;font-weight:800;color:#F2ECE0;margin-bottom:14px;letter-spacing:-0.01em}
+  .entregavel-banner .eb-preview{background:#F2ECE0;border-radius:8px;padding:18px 18px 14px;color:#1F3331}
+  .entregavel-banner .eb-preview .eb-pv-title{font-size:0.78rem;font-weight:800;color:#1F3331;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(31,51,49,0.15)}
+  .entregavel-banner .eb-cards{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:10px}
+  .entregavel-banner .eb-card{background:#FBF7EC;border:1px solid #E1D8C2;border-left:4px solid #C9A961;border-radius:6px;padding:9px 12px}
+  .entregavel-banner .eb-card .eb-c-name{font-size:0.74rem;font-weight:800;color:#1F3331;margin-bottom:3px}
+  .entregavel-banner .eb-card .eb-c-meta{font-size:0.62rem;color:#4A4538;line-height:1.5}
+  .entregavel-banner .eb-card .eb-c-meta strong{color:#1F3331;font-weight:700}
+  .entregavel-banner .eb-card.highlight{background:#F5E4B8;border:1px solid #D1AA53;border-left:4px solid #B8933E}
+  .entregavel-banner .eb-card.highlight .eb-c-name{color:#5A4414}
+  .entregavel-banner .eb-card.highlight .eb-c-meta{color:#5A4414}
+  .entregavel-banner .eb-card.highlight .eb-c-meta strong{color:#5A4414;font-weight:800}
+  .entregavel-banner .eb-synthesis{background:#F5E4B8;border-radius:6px;padding:9px 12px;font-size:0.7rem;color:#5A4414;font-weight:600;line-height:1.5;text-align:center;border:1px solid #D1AA53}
+
+  /* Comparativo lado a lado */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+  .compare-card{border-radius:10px;padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .compare-card.bad{background:var(--warn-bg);border-color:var(--warn-border);border-left:3px solid var(--warn-accent)}
+  .compare-card.good{background:var(--green-light);border-color:var(--green-border);border-left:3px solid var(--green)}
+  .compare-card .cc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.bad .cc-label{color:var(--warn-label)}
+  .compare-card.good .cc-label{color:var(--green-text)}
+  .compare-card .cc-title{font-size:0.78rem;font-weight:700;line-height:1.35;margin-bottom:8px;font-style:italic}
+  .compare-card.bad .cc-title{color:var(--warn-text)}
+  .compare-card.good .cc-title{color:var(--green-text)}
+  .compare-card .cc-desc{font-size:0.74rem;line-height:1.55}
+  .compare-card.bad .cc-desc{color:var(--warn-text)}
+  .compare-card.good .cc-desc{color:var(--green-text)}
+  .compare-card .cc-desc strong{font-weight:700}
+  .compare-card .cc-desc code{font-family:'JetBrains Mono','Courier New',monospace;font-size:0.86em;padding:1px 4px;border-radius:3px;background:rgba(31,51,49,0.08)}
+
+  /* Copy-block (prompt copiável) */
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:var(--panel);border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:18px 22px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.76rem;color:var(--text);line-height:1.7;white-space:pre-wrap;word-break:break-word;box-shadow:var(--shadow-xs);margin:0}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#385652}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:5px 13px;border-radius:5px;font-size:0.64rem;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .copy-btn:disabled{opacity:0.5;cursor:not-allowed}
+
+  /* Cards meta da Atividade Prática */
+  .ap-meta-grid{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:14px 0 16px}
+  .ap-duracao-card{background:linear-gradient(135deg,#0A1211 0%,#1F3331 100%);border-radius:10px;padding:16px 18px;text-align:center;border:1px solid var(--gold);box-shadow:var(--shadow-sm)}
+  .ap-duracao-card .ad-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:6px}
+  .ap-duracao-card .ad-value{font-size:1.7rem;font-weight:800;color:#F2ECE0;letter-spacing:-0.03em;line-height:1}
+  .ap-duracao-card .ad-sub{font-size:0.62rem;color:rgba(242,236,224,0.65);margin-top:4px;font-weight:600}
+  .ap-tool-card{background:#1F1B36;border:1px solid #6B5B95;border-left:4px solid #6B5B95;border-radius:10px;padding:14px 18px;box-shadow:var(--shadow-xs)}
+  [data-palette="cream"] .ap-tool-card{background:#EEEDFE;color:#1F1B36}
+  .ap-tool-card .at-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#B8A8E0;margin-bottom:4px}
+  [data-palette="cream"] .ap-tool-card .at-label{color:#3C3489}
+  .ap-tool-card .at-name{font-size:0.92rem;font-weight:800;color:#EEEDFE;margin-bottom:6px;letter-spacing:-0.01em}
+  [data-palette="cream"] .ap-tool-card .at-name{color:#3C3489}
+  .ap-tool-card .at-just{font-size:0.72rem;color:rgba(238,237,254,0.78);font-style:italic;line-height:1.55}
+  [data-palette="cream"] .ap-tool-card .at-just{color:#3C3489;opacity:0.82}
+  .ap-tool-card .at-extra{font-size:0.66rem;color:rgba(238,237,254,0.68);margin-top:8px;padding-top:8px;border-top:1px dashed rgba(184,168,224,0.3);line-height:1.55}
+  [data-palette="cream"] .ap-tool-card .at-extra{color:#3C3489;opacity:0.7;border-top-color:rgba(60,52,137,0.25)}
+  .ap-tool-card .at-extra strong{font-weight:700;color:#D1AA53}
+
+  /* Step-card */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  [data-palette="dusk"] .step-card-num{background:var(--bg);color:var(--gold)}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.65;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  .step-card-desc a{color:var(--accent2);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+  .step-card-desc a:hover{opacity:0.75}
+
+  /* Print */
+  .step-shot{margin:12px 0 4px;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--ficha-td1-bg);box-shadow:var(--shadow-xs)}
+  .step-shot img{display:block;width:100%;height:auto}
+  .step-shot .ss-caption{font-size:0.66rem;color:var(--text3);padding:6px 12px;border-top:1px solid var(--border);background:var(--ficha-th-bg);font-style:italic}
+
+  /* Print placeholder (sem captura) */
+  .shot-placeholder{margin:12px 0 4px;border:1px dashed var(--warn-border);border-radius:8px;padding:18px 18px;background:var(--warn-bg);text-align:center}
+  .shot-placeholder .sp-icon{font-size:1.2rem;margin-bottom:6px}
+  .shot-placeholder .sp-title{font-size:0.72rem;font-weight:800;color:var(--warn-label);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:4px}
+  .shot-placeholder .sp-desc{font-size:0.7rem;color:var(--warn-text);line-height:1.5}
+
+  /* Validação visual */
+  .validacao-box{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:12px 14px;margin:10px 0 0}
+  .validacao-box .vb-label{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:4px}
+  .validacao-box p{font-size:0.78rem;color:var(--green-text);line-height:1.55}
+  .validacao-box strong{font-weight:800}
+  .validacao-box em{font-style:italic;opacity:0.85}
+
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:7px 0 7px 24px;position:relative;font-size:0.8rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:7px;color:var(--accent);font-weight:800;font-size:0.92rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  /* Desafio list */
+  .desafio-list{list-style:none;counter-reset:dlist;margin:10px 0}
+  .desafio-list li{padding:10px 14px 10px 44px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;font-size:0.78rem;color:var(--text2);line-height:1.55;position:relative;counter-increment:dlist;box-shadow:var(--shadow-xs)}
+  .desafio-list li::before{content:counter(dlist);position:absolute;left:12px;top:14px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--accent2);font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+  [data-palette="dusk"] .desafio-list li::before{color:var(--bg)}
+  .desafio-list li strong{color:var(--accent2);font-weight:700}
+  .desafio-list li ul{list-style:none;margin-top:6px;padding-left:0}
+  .desafio-list li ul li{padding:3px 0;margin-bottom:0;background:none;border:none;border-radius:0;box-shadow:none;font-size:0.74rem;counter-increment:none;position:static}
+  .desafio-list li ul li::before{display:none;content:''}
+  .desafio-list li ul li{padding-left:14px}
+  .desafio-list li ul li::marker{display:none}
+  .desafio-list li ul li{position:relative}
+  .desafio-list li ul li::before{content:'\2022';position:absolute;left:0;top:0;width:auto;height:auto;background:none;color:var(--accent);font-size:0.9rem;font-weight:800;display:inline}
+
+  /* Gerador interativo de prompt */
+  .prompt-gen{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:16px 0;box-shadow:var(--shadow-sm)}
+  .prompt-gen .pg-head{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .prompt-gen .pg-title{font-size:0.92rem;font-weight:800;color:var(--text);letter-spacing:-0.01em;margin-bottom:4px}
+  .prompt-gen .pg-sub{font-size:0.72rem;color:var(--text2);line-height:1.5}
+  .prompt-gen .pg-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:14px}
+  .prompt-gen .pg-field.full{grid-column:1 / -1}
+  .prompt-gen .pg-field label{display:block;font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent2);margin-bottom:4px}
+  .prompt-gen .pg-field .pg-hint{font-size:0.62rem;color:var(--text3);font-weight:500;margin-bottom:5px;text-transform:none;letter-spacing:0;font-style:italic}
+  .prompt-gen .pg-field input,
+  .prompt-gen .pg-field textarea{width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:6px;padding:8px 10px;font-family:'Montserrat',sans-serif;font-size:0.78rem;color:var(--text);outline:none;transition:all 0.15s;resize:vertical}
+  .prompt-gen .pg-field input:focus,
+  .prompt-gen .pg-field textarea:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(209,170,83,0.15)}
+  .prompt-gen .pg-field textarea{min-height:60px}
+  .prompt-gen .pg-preview-wrap{position:relative}
+  .prompt-gen .pg-preview-label{display:inline-block;font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--text3);margin-bottom:6px}
+  .prompt-gen .pg-preview{background:var(--panel);border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:16px 20px 14px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.76rem;color:var(--text);line-height:1.7;white-space:pre-wrap;word-break:break-word;box-shadow:var(--shadow-xs);min-height:200px}
+  [data-palette="dusk"] .prompt-gen .pg-preview{background:#0F1918;color:#F4F1E3;border-color:#385652;border-left-color:var(--accent2)}
+  .prompt-gen .pg-var{font-weight:700;padding:0 3px;border-radius:3px;transition:all 0.15s}
+  .prompt-gen .pg-var.empty{color:#A32D2D;background:rgba(163,45,45,0.1);text-decoration:underline;text-decoration-style:dashed;text-decoration-thickness:1px}
+  [data-palette="dusk"] .prompt-gen .pg-var.empty{color:#E89999;background:rgba(232,153,153,0.12)}
+  .prompt-gen .pg-var.filled{color:#33491F;background:rgba(168,198,140,0.22)}
+  [data-palette="dusk"] .prompt-gen .pg-var.filled{color:#D4E5BF;background:rgba(168,198,140,0.18)}
+  [data-palette="cream"] .prompt-gen .pg-var.filled{color:#33491F;background:rgba(79,107,62,0.18)}
+  .prompt-gen .pg-actions{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .prompt-gen .pg-status{font-size:0.7rem;color:var(--text3);font-weight:600}
+  .prompt-gen .pg-status.ready{color:var(--green-text);font-weight:700}
+  [data-palette="dusk"] .prompt-gen .pg-status.ready{color:var(--green-text)}
+  .prompt-gen .pg-copy{background:var(--accent2);border:1px solid var(--accent2);color:var(--bg);padding:8px 16px;border-radius:6px;font-size:0.7rem;font-weight:700;cursor:pointer;font-family:'Montserrat',sans-serif;letter-spacing:0.04em;transition:all 0.15s}
+  .prompt-gen .pg-copy:hover:not(:disabled){opacity:0.88}
+  .prompt-gen .pg-copy:disabled{opacity:0.45;cursor:not-allowed}
+  .prompt-gen .pg-copy.copied{background:var(--green);border-color:var(--green);color:var(--bg)}
+  .prompt-gen .pg-feedback{font-size:0.7rem;color:var(--green-text);font-weight:700;margin-top:8px;display:none}
+  [data-palette="dusk"] .prompt-gen .pg-feedback{color:var(--green-text)}
+  .prompt-gen .pg-feedback.show{display:block}
+
+  @media (max-width:768px){
+    .sidebar{display:none}
+    .main{padding:20px 16px 40px;max-width:100%}
+    .compare-grid{grid-template-columns:1fr}
+    .ap-meta-grid{grid-template-columns:1fr}
+    .prompt-gen .pg-fields{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Claude Project + Output</h2>
+      <p>AP03 &middot; Segundo Cérebro</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Claude com contexto<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Prompts da Camila<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Ritual semanal<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Conexão com o programa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Segundo Cérebro com Obsidian + Claude &rsaquo; <a href="index.html">Índice</a> &rsaquo; 03. Claude Project + Output</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP03 &mdash; Claude Project + Primeiro Output Executivo</div>
+
+      <p class="lead-text">Terceira e última atividade prática do módulo. Você vai criar um <strong>Claude Project</strong> dedicado ao seu segundo cérebro, configurar um System Prompt customizado, carregar os 3 arquivos <code>.md</code> do vault Obsidian como contexto, e gerar o <strong>primeiro output executivo</strong> a partir da análise da sua rede de notas. O output volta ao vault, fechando o loop.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática + Desafio</td></tr>
+          <tr><td>Duração da atividade</td><td>20 minutos</td></tr>
+          <tr><td>Ferramentas</td><td>Claude (modelo Sonnet 4.6, plano gratuito) + Obsidian</td></tr>
+          <tr><td>Pré-requisito</td><td>Ter completado a AP01 e a AP02 &mdash; vault com 3 notas conectadas por links bidirecionais</td></tr>
+          <tr><td>Entregável</td><td>Claude Project configurado + 1 output executivo salvo de volta no vault</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O fechamento do seu segundo cérebro &mdash; com o Claude como copiloto</div>
+
+      <p class="lead-text">Antes de começar, veja o que você vai conquistar ao final desta atividade prática &mdash; o fechamento do seu segundo cérebro com o Claude como copiloto.</p>
+
+      <p class="lead-text"><strong>Entregável final da AP03:</strong> Um <strong>Claude Project</strong> chamado <em>"Segundo Cérebro &mdash; [Seu nome]"</em> configurado com System Prompt customizado, com os 3 arquivos <code>.md</code> do seu vault Obsidian carregados como contexto &mdash; e o <strong>primeiro output executivo</strong> gerado pelo Claude a partir da análise da sua rede de notas.</p>
+
+      <div class="entregavel-banner">
+        <span class="eb-label">Entregável visual</span>
+        <div class="eb-title">Claude Project + primeiro output executivo</div>
+        <div class="eb-preview">
+          <div class="eb-pv-title">&#129302; O sistema completo do segundo cérebro</div>
+          <div class="eb-cards">
+            <div class="eb-card">
+              <div class="eb-c-name">&#129302; Claude Project</div>
+              <div class="eb-c-meta"><strong>Nome:</strong> "Segundo Cérebro &mdash; [Seu nome]" &middot; <strong>Tipo:</strong> ambiente persistente do Claude</div>
+            </div>
+            <div class="eb-card">
+              <div class="eb-c-name">&#128203; System Prompt</div>
+              <div class="eb-c-meta"><strong>O que define:</strong> papel do Claude, seu contexto de founder, diretrizes de análise &middot; <strong>Tamanho típico:</strong> 15 a 25 linhas</div>
+            </div>
+            <div class="eb-card">
+              <div class="eb-c-name">&#128206; 3 arquivos <code>.md</code> carregados</div>
+              <div class="eb-c-meta"><strong>Origem:</strong> vault Obsidian (notas da AP02) &middot; <strong>Função:</strong> rede de conhecimento que o Claude lê em toda conversa</div>
+            </div>
+            <div class="eb-card highlight">
+              <div class="eb-c-name">&#9889; Primeiro output executivo</div>
+              <div class="eb-c-meta"><strong>O que contém:</strong> padrões + contradições + perguntas em aberto + plano acionável &middot; <strong>Onde fica salvo:</strong> de volta no vault Obsidian (pasta Resources)</div>
+            </div>
+          </div>
+          <div class="eb-synthesis">O segundo cérebro está completo. Vault organizado + rede conectada + Claude como copiloto. Sua memória externa virou produção real &mdash; pronta para o ritual semanal.</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Onde esta AP fecha a aula</div>
+        <p>Na <strong>AP01</strong> você criou o esqueleto (vault PARA). Na <strong>AP02</strong> deu vida com links bidirecionais. Agora na <strong>AP03</strong> o Claude entra para <strong>processar tudo</strong> &mdash; e te devolve o primeiro output executivo gerado a partir do <em>seu</em> conhecimento. Ao final, o output volta para o vault como nova nota, fechando o loop. <strong>Você sai daqui com o sistema rodando.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">O que você sai sabendo fazer ao final da AP03</div>
+
+      <p class="lead-text">Criar um <strong>Claude Project</strong> dedicado ao seu segundo cérebro, configurá-lo com System Prompt customizado, carregar os 3 arquivos <code>.md</code> do vault Obsidian como arquivos de contexto, e gerar o <strong>primeiro output executivo</strong> &mdash; entendendo na prática a diferença entre o Claude genérico no chat e o Claude com contexto carregado.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Conceito &mdash; Claude com contexto carregado</div>
+      <div class="sec-desc">A diferença entre o chat comum e o Project com seus arquivos</div>
+
+      <p class="lead-text">Quando você usa o Claude no <strong>chat comum</strong>, toda conversa começa do zero. Você precisa explicar quem é, o que faz, qual a empresa, quais as prioridades &mdash; a cada nova análise. O Claude é brilhante, mas é como um consultor novo: precisa de briefing inteiro toda vez.</p>
+
+      <p class="lead-text">Um <strong>Claude Project</strong> resolve isso de forma permanente. Você configura o contexto uma única vez &mdash; <strong>instruções (System Prompt)</strong> + <strong>arquivos de contexto</strong> &mdash; e o Claude carrega tudo automaticamente em cada nova conversa dentro do Project. No nosso caso, os arquivos são as suas notas do vault Obsidian, então o Claude conhece a sua rede de pensamento.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Analogia simples</div>
+        <p><strong>Chat comum do Claude</strong> = contratar um <strong>consultor novo a cada conversa</strong>. Excelente, mas você briefa do zero toda vez.</p>
+        <p><strong>Claude Project</strong> = ter um <strong>analista fixo</strong> que já conhece seu contexto. Você pergunta, ele responde com profundidade, sem precisar explicar nada.</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="cc-label">Claude no chat comum</div>
+          <div class="cc-title">"Analise as decisões estratégicas do meu negócio&hellip;"</div>
+          <div class="cc-desc">Claude responde com framework genérico &mdash; não sabe sua empresa, seu segmento, suas notas, suas decisões anteriores. Você gasta 30% da conversa só dando contexto. <strong>Resultado: análise rasa.</strong></div>
+        </div>
+        <div class="compare-card good">
+          <div class="cc-label">Claude no Project com seu vault</div>
+          <div class="cc-title">"Analise os arquivos do meu vault e me devolva os padrões"</div>
+          <div class="cc-desc">Claude já tem os 3 arquivos <code>.md</code> do seu segundo cérebro carregados. Reconhece os links <code>[[bidirecionais]]</code>, entende sua linha de pensamento, e te devolve análise no <strong>seu vocabulário</strong>. <strong>Resultado: insight personalizado e acionável.</strong></div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que você vai ver</div>
+      <div class="sec-desc">O fluxo completo do Claude Project da Camila, do zero ao output</div>
+
+      <div class="warning-box">
+        <div class="warning-label">&#9888; Aviso</div>
+        <p>A demonstração a seguir é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa fazer junto &mdash; você terá sua própria atividade prática logo depois desta seção.</p>
+      </div>
+
+      <p class="lead-text">O professor demonstra o fluxo completo do <strong>Claude Project da Camila Vasconcellos (CEO fictícia da Lumina)</strong> &mdash; usando exatamente as 3 notas da AP02 (Decisão Série A, Feedback sobre creatina vegetal, Adição de magnésio). A demo cobre:</p>
+
+      <div class="overview-card">
+        <h3>O que a demo cobre</h3>
+        <ul>
+          <li>Como criar o Claude Project e preencher os 4 campos (nome, descrição, instruções, arquivos)</li>
+          <li>Como o System Prompt da Camila posiciona o Claude como <strong>copiloto do segundo cérebro</strong> dela</li>
+          <li>Como o Claude lê a rede de notas conectadas e identifica padrões, contradições e perguntas em aberto</li>
+          <li>Como o primeiro output executivo nasce &mdash; um briefing de 1 página que a Camila pode usar HOJE para a reunião de board sobre a captação Série A</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> System Prompt + prompt de análise da Camila</div>
+      <div class="sec-desc">Os 2 prompts da demo &mdash; referência para o seu próprio uso</div>
+
+      <p class="lead-text">Veja o System Prompt que a Camila configurou no Project (campo <em>"Instruções"</em>) e o prompt que ela usou para gerar o primeiro output.</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">System Prompt do Project da Camila</span>
+        <div class="copy-block" id="sys-camila"><button class="copy-btn" onclick="copyText(this, document.getElementById('sys-camila-text').textContent)">Copiar</button><span id="sys-camila-text">PAPEL
+Você é o copiloto do segundo cérebro de Camila Vasconcellos,
+CEO da Lumina &mdash; marca wellness premium de balas funcionais.
+
+CONTEXTO DO NEGÓCIO
+- Operação: e-commerce próprio + 2 lojas físicas (SP e RJ)
+- 3 produtos: pré-treino, creatina (incluindo creatina vegetal),
+  whey protein
+- Estágio: pós-PMF dos 2 primeiros produtos, validando PMF
+  do 3º (creatina vegetal)
+- Em processo de captação Série A &mdash; fechar em 90 dias
+
+ARQUIVOS DO VAULT
+Os 3 arquivos .md em anexo são notas reais do vault Obsidian
+da Camila. Eles representam uma rede conectada via [[links
+bidirecionais]] &mdash; decisões, insights de cliente e ideias
+de produto que se referenciam mutuamente.
+
+DIRETRIZES DE ANÁLISE
+- Trate os [[links]] como referências cruzadas &mdash; siga-os
+  ao analisar
+- Use o vocabulário da Camila (palavras das notas), não
+  jargão genérico
+- Identifique padrões, contradições e perguntas em aberto
+- Seja direto e objetivo &mdash; máximo 1 página por output
+
+OUTPUTS POSSÍVEIS
+Quando Camila pedir, você pode gerar:
+- Análise executiva da rede (padrões + tensões + perguntas)
+- Plano de ação dos próximos 30 dias
+- Briefing de 1 página para o time ou board
+- Insight original para post de autoridade no LinkedIn</span></div>
+      </div>
+
+      <div class="copy-wrap" style="margin-top:22px">
+        <span class="copy-label">Prompt da Camila para gerar o primeiro output</span>
+        <div class="copy-block" id="analise-camila"><button class="copy-btn" onclick="copyText(this, document.getElementById('analise-camila-text').textContent)">Copiar</button><span id="analise-camila-text">Analise os 3 arquivos .md do meu vault que estão anexados
+a este Project.
+
+Para cada arquivo, identifique:
+1. O tópico central da nota
+2. Os links bidirecionais [[assim]] que a conectam com outras notas
+3. Como esse conteúdo se relaciona com os demais
+
+Em seguida, com base na rede formada pelas 3 notas, me entregue:
+
+PADRÕES QUE SE REPETEM
+1 a 2 padrões que aparecem em mais de uma nota.
+
+CONTRADIÇÕES OU TENSÕES
+Decisões ou ideias que estão em tensão entre si &mdash; onde
+uma escolha afeta outra.
+
+PERGUNTAS EM ABERTO
+Pelo menos 2 perguntas que minhas próprias notas levantam
+mas não respondem.
+
+PRIMEIRO OUTPUT EXECUTIVO
+Com base em tudo, gere um output acionável que eu possa
+usar HOJE. Pode ser: plano de ação, briefing para o time
+ou insight para post.
+
+Você decide qual formato faz mais sentido dadas as notas.
+Seja direto. Máximo 1 página.</span></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Por que o prompt tem essa estrutura</div>
+        <p>O prompt pede ao Claude 3 coisas em ordem: <strong>ler a rede</strong> (entender os links), <strong>sintetizar</strong> (padrões + contradições + perguntas) e <strong>produzir</strong> (output executivo). Essa ordem é importante porque força o Claude a entender antes de gerar &mdash; análise sólida antes da produção. Sem isso, o output sai genérico.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">4 detalhes que distinguem o Project do chat comum</div>
+
+      <ul class="observation-list">
+        <li><strong>Arquivos abertos autonomamente.</strong> O Claude no Project <strong>abre os arquivos <code>.md</code> autonomamente</strong> &mdash; você não precisa colar conteúdo no chat. Os arquivos ficam disponíveis em todas as conversas do Project.</li>
+        <li><strong>Sintaxe de links reconhecida.</strong> O Claude <strong>reconhece a sintaxe dos links</strong> <code>[[bidirecionais]]</code> mesmo sem você explicar &mdash; ele entende que <code>[[Feedback de cliente: sabor da creatina vegetal]]</code> se refere ao arquivo correspondente.</li>
+        <li><strong>Vocabulário próprio.</strong> O output usa o <strong>vocabulário da Camila</strong> &mdash; <em>"creatina vegetal"</em>, <em>"Série A"</em>, <em>"magnésio"</em> &mdash; não framework genérico de consultoria. Isso só acontece porque o contexto está no Project.</li>
+        <li><strong>Tudo em uma mensagem.</strong> O output cabe em <strong>uma única mensagem</strong> do Claude &mdash; confirmando que um prompt bem estruturado entrega análise + síntese + produção em uma só chamada, importante para quem usa o plano gratuito.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Sua atividade prática</div>
+      <div class="sec-desc">Project configurado + primeiro output gerado &mdash; em uma única mensagem</div>
+
+      <div class="ap-meta-grid">
+        <div class="ap-duracao-card">
+          <div class="ad-label">Duração total</div>
+          <div class="ad-value">20 min</div>
+          <div class="ad-sub">8 passos lineares</div>
+        </div>
+        <div class="ap-tool-card">
+          <div class="at-label">Modelo recomendado</div>
+          <div class="at-name">Claude Sonnet 4.6</div>
+          <div class="at-just">Sonnet 4.6 é o modelo padrão do plano gratuito do Claude &mdash; não é necessário ter conta paga para esta aula. Análise de rede de 3 notas + geração de output executivo cabe perfeitamente nas capacidades dele.</div>
+          <div class="at-extra"><strong>&#128142; Plano pago:</strong> Opus 4.7 entrega análises ainda mais profundas se você já tiver Pro/Max.</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai criar agora o <strong>Claude Project "Segundo Cérebro &mdash; [Seu nome]"</strong> e gerar o primeiro output executivo a partir das 3 notas que criou na AP02. Vai usar <strong>uma única mensagem</strong> no Claude (cabe no plano gratuito).</p>
+
+      <p class="lead-text">A AP tem <strong>uma única fase</strong>: configurar o Project + gerar o primeiro output. São 8 passos lineares &mdash; você desce, executa, valida e termina com o output salvo de volta no vault Obsidian.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Por que salvar o output de volta no vault</div>
+        <p>O segundo cérebro só funciona se for um <strong>loop</strong>: o que você captura vira insumo &rarr; o Claude processa &rarr; o output volta como nova nota &rarr; e essa nota é insumo da próxima conversa. Salvar o output no vault (pasta Resources) é o que faz o sistema acumular inteligência ao longo do tempo. <strong>Sem esse passo, você gera output, fecha o Claude, e perde tudo na próxima conversa.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
+      <div class="sec-desc">8 passos &mdash; criar Project, configurar instruções, subir arquivos, gerar output</div>
+
+      <!-- PASSO 01 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Acesse a área de Projects no Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra <a href="https://claude.ai" target="_blank">claude.ai</a> no navegador e faça login se necessário. No menu lateral esquerdo, clique em <strong>Projetos</strong>. Confirme que o modelo selecionado é <strong>Claude Sonnet 4.6</strong>.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/489cf560-2525-4648-8446-f5ebe0ecb7dc/sps-redacted-e889aad4c47447be975f7c7e03cad904_a38b46215c034388b6f397b1a183dc36_text_export.jpeg" alt="Menu lateral do Claude com a opção Projetos destacada">
+            <div class="ss-caption">Menu lateral do Claude &mdash; opção "Projetos" destacada</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 02 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Crie um novo Project</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na área de Projetos, clique em <strong>+ Novo projeto</strong>. No campo <strong>"No que você está trabalhando?"</strong>, digite exatamente: <strong>Segundo Cérebro &mdash; [Seu nome]</strong> (substitua <code>[Seu nome]</code> pelo seu primeiro nome real). No campo <strong>"O que você quer realizar?"</strong>, cole a descrição abaixo. Em seguida, clique em <strong>Criar projeto</strong> no modal de confirmação.</p>
+
+          <div class="copy-wrap">
+            <span class="copy-label">Descrição do Project</span>
+            <div class="copy-block" id="desc-project"><button class="copy-btn" onclick="copyText(this, document.getElementById('desc-project-text').textContent)">Copiar</button><span id="desc-project-text">Project pessoal de Segundo Cérebro &mdash; copiloto do meu vault Obsidian. Serve para processar a rede de notas que capturei (decisões, insights de cliente, ideias), identificar padrões e gerar outputs executivos acionáveis a partir do meu conhecimento acumulado.</span></div>
+          </div>
+
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/86c64baf-02cd-4d5e-aee3-096652697b0c/sps-redacted-e7090a7c1bb642daab3c6a54e1abebab_e6002fcb33a746d2b030d11b53ec155c_text_export.jpeg" alt="Botão Novo projeto destacado na área de Projetos">
+            <div class="ss-caption">Botão "Novo projeto" destacado na área de Projetos</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/dafb52aa-320c-4c30-9640-edbdda18e4c6/sps-redacted-98a1e6e15801458a8bf4494d811cb691_b9a5d61862a24f64b70c1fe2fb36b2bf_text_export.jpeg" alt="Modal de criação com nome e descrição preenchidos, botão Criar projeto destacado">
+            <div class="ss-caption">Modal de criação com nome e descrição preenchidos &mdash; botão "Criar projeto" destacado</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 03 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Configure o System Prompt (Instruções)</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Project recém-criado, localize a seção <strong>Instruções</strong> e clique no ícone <strong>+</strong> ao lado dela. Use o <strong>gerador interativo abaixo</strong> para criar o seu System Prompt personalizado: preencha os 4 campos com os seus dados reais e o prompt é gerado ao vivo. Quando os 4 campos estiverem preenchidos, o botão <strong>Copiar prompt</strong> é liberado &mdash; clique, cole no editor de Instruções e clique em <strong>Salvar instruções</strong>.</p>
+
+          <div class="prompt-gen">
+            <div class="pg-head">
+              <div class="pg-title">System Prompt personalizado</div>
+              <div class="pg-sub">Preencha os 4 campos &mdash; o System Prompt aparece pronto abaixo, com seus dados destacados em verde.</div>
+            </div>
+            <div class="pg-fields">
+              <div class="pg-field">
+                <label for="pg-seu-nome">Seu nome</label>
+                <div class="pg-hint">Seu primeiro nome &middot; ex: Rafael</div>
+                <input type="text" id="pg-seu-nome" placeholder="Ex: Rafael" oninput="renderPersonalPrompt()">
+              </div>
+              <div class="pg-field">
+                <label for="pg-seu-cargo">Seu cargo</label>
+                <div class="pg-hint">Cargo atual &middot; ex: CEO e Director of Education</div>
+                <input type="text" id="pg-seu-cargo" placeholder="Ex: CEO e Director of Education" oninput="renderPersonalPrompt()">
+              </div>
+              <div class="pg-field full">
+                <label for="pg-sua-empresa">Sua empresa</label>
+                <div class="pg-hint">Nome da empresa e setor &middot; ex: Delta Academy (formação corporativa em IA)</div>
+                <input type="text" id="pg-sua-empresa" placeholder="Ex: Delta Academy (formação corporativa em IA)" oninput="renderPersonalPrompt()">
+              </div>
+              <div class="pg-field full">
+                <label for="pg-contexto-atual">Contexto atual da empresa</label>
+                <div class="pg-hint">1-2 frases sobre estágio, prioridades e desafios atuais</div>
+                <textarea id="pg-contexto-atual" placeholder="Ex: Em fase de escalar o programa Delta Skills 2026 com ~487 alunos de 27 empresas, validando o produto e construindo o time" oninput="renderPersonalPrompt()"></textarea>
+              </div>
+            </div>
+            <div class="pg-preview-wrap">
+              <div class="pg-preview-label">Pré-visualização do System Prompt</div>
+              <div class="pg-preview" id="pg-preview"></div>
+            </div>
+            <div class="pg-actions">
+              <div class="pg-status" id="pg-status">Preencha os 4 campos para liberar a cópia</div>
+              <button class="pg-copy" id="pg-copy" disabled onclick="copyPersonalPrompt()">Copiar prompt</button>
+            </div>
+            <div class="pg-feedback" id="pg-feedback">&#10003; Copiado! Cole no editor de Instruções do Project e clique em Salvar instruções.</div>
+          </div>
+
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/b7a6542a-9916-4abf-beb2-9efd8e2a7b0e/sps-redacted-f4567879fd054390a894140c24650e2d_730404d899ef44d194bb54ce251c4801_text_export.jpeg" alt="Ícone + ao lado de Instruções destacado">
+            <div class="ss-caption">Ícone "+" ao lado de "Instruções" destacado &mdash; clique nele para abrir o editor</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/b299b5a2-71d8-486c-a347-463b5a49fb34/sps-redacted-f267c5efc5934086b0b456ef89f17df1_8ac58c11a93849e6b795c70fb76b8a0d_text_export.jpeg" alt="Editor de instruções com System Prompt sendo colado (parte superior)">
+            <div class="ss-caption">Editor de instruções com System Prompt sendo colado &mdash; parte superior</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/aa277048-97d6-4d49-afb7-c346302e8b5f/sps-redacted-ee21467978e444fa92018a430b3ddabd_a40f1916c3a041f68f8409b5039f1708_text_export.jpeg" alt="Editor de instruções com System Prompt colado (parte intermediária)">
+            <div class="ss-caption">Editor de instruções &mdash; parte intermediária do System Prompt</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/b8bb0a6f-ce12-4445-8997-e229c18a16cf/sps-redacted-644ef432cd7c49fcbf13169fc566b5da_3aea58675048427dbaec5a29068a091c_text_export.jpeg" alt="Editor de instruções com System Prompt completo colado">
+            <div class="ss-caption">Editor de instruções &mdash; System Prompt completo colado</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/42f9d4b1-bb62-48f7-a63b-e97bb865edca/sps-redacted-f67c1fac2c074b2d93b2ad586a63edce_74c5f5f185a04e23809a9c1811ecf15c_text_export.jpeg" alt="Botão Salvar instruções destacado ao final do editor">
+            <div class="ss-caption">Botão "Salvar instruções" destacado ao final do editor</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 04 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Localize os 3 arquivos <code>.md</code> no seu computador</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte ao Obsidian. Clique com o botão direito em uma das 3 notas que você criou na AP02 (ex: <em>Decisão estratégica recente</em>) e selecione <strong>Show in system explorer</strong> (Mac) ou <strong>Show in Explorer</strong> (Windows). O sistema operacional abre a pasta onde os arquivos <code>.md</code> estão fisicamente salvos. Localize os 3 arquivos da AP02:</p>
+          <ul class="check-list" style="margin-top:4px">
+            <li><code>Decisão estratégica recente.md</code></li>
+            <li><code>Insight de cliente.md</code></li>
+            <li><code>Ideia para o produto.md</code></li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">&#9888; Importante</div>
+            <p>O Obsidian salva cada nota como um arquivo <code>.md</code> separado no sistema de arquivos. <strong>Não precisa exportar nada</strong> &mdash; os arquivos já estão lá, prontos para upload.</p>
+          </div>
+          <div class="shot-placeholder">
+            <div class="sp-icon">&#128247;</div>
+            <div class="sp-title">Print pendente &mdash; captura manual</div>
+            <div class="sp-desc">Este passo acontece fora do navegador (Obsidian + Finder/Explorer no desktop), então não foi capturado pelo Scribehow. Captura manual sugerida: <code>ap03-passo-04-finder.png</code> &mdash; pasta do sistema operacional mostrando os 3 arquivos <code>.md</code>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 05 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Faça upload dos 3 arquivos <code>.md</code> no Project</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte ao Claude Project. Localize a seção <strong>Arquivos</strong> e clique no ícone <strong>+</strong> ao lado dela. No menu de opções, selecione <strong>Carregar do aparelho</strong>. Na janela do sistema operacional, selecione os <strong>3 arquivos <code>.md</code></strong> localizados no Passo 04 e clique em <strong>Abrir</strong>.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/76f98c30-3f68-4202-b27c-1ee620e7190b/sps-redacted-67143f64364d4d16a7878bf3f390645b_a3fd54ff78ba40e2b36b896f67f8952a_text_export.jpeg" alt="Ícone + ao lado de Arquivos destacado para upload">
+            <div class="ss-caption">Ícone "+" ao lado de "Arquivos" destacado para upload</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/516870fa-04d3-4fa9-967e-4dce8761d6f8/sps-redacted-7a06d56bdb4e49389c5125f3d1583bb1_7a32ae608dc742928e9e0ccaa5a50a28_text_export.jpeg" alt="Opção Carregar do aparelho destacada no menu de upload">
+            <div class="ss-caption">Opção "Carregar do aparelho" destacada no menu de upload</div>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/5dddca2e-6503-41d5-9a89-ca02ba2cc721/sps-redacted-3ff40e7ec566413498948e44786554c3_0b674c1308fd49a28bd3072be41bc733_text_export.jpeg" alt="Janela do sistema operacional com botão Abrir destacado após seleção dos 3 arquivos .md">
+            <div class="ss-caption">Janela do sistema operacional &mdash; botão "Abrir" destacado após seleção dos 3 arquivos <code>.md</code></div>
+          </div>
+          <div class="validacao-box">
+            <div class="vb-label">&#10003; Validação visual &mdash; arquivos carregados</div>
+            <p>Confirme na seção <strong>Arquivos</strong> do Project que os 3 nomes aparecem listados: <em>Decisão estratégica recente.md</em>, <em>Insight de cliente.md</em>, <em>Ideia para o produto.md</em>. Se algum estiver faltando, repita o upload daquele arquivo específico.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 06 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Abra um chat no Project e cole o prompt de análise</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Dentro do Project, abra uma nova conversa. Use o botão <strong>Copiar</strong> abaixo para copiar o prompt de análise. Cole no campo de mensagem (<code>Cmd+V</code> no Mac ou <code>Ctrl+V</code> no Windows) e envie.</p>
+
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt de análise da rede</span>
+            <div class="copy-block" id="analise-aluno"><button class="copy-btn" onclick="copyText(this, document.getElementById('analise-aluno-text').textContent)">Copiar</button><span id="analise-aluno-text">Analise os 3 arquivos .md do meu vault que estão anexados a este Project.
+
+Para cada arquivo, identifique:
+1. O tópico central da nota
+2. Os links bidirecionais [[assim]] que a conectam com outras notas
+3. Como esse conteúdo se relaciona com os demais
+
+Em seguida, com base na rede formada pelas 3 notas, me entregue:
+
+PADRÕES QUE SE REPETEM
+1 a 2 padrões que aparecem em mais de uma nota.
+
+CONTRADIÇÕES OU TENSÕES
+Decisões ou ideias que estão em tensão entre si &mdash; onde uma escolha afeta outra.
+
+PERGUNTAS EM ABERTO
+Pelo menos 2 perguntas que minhas próprias notas levantam mas não respondem.
+
+PRIMEIRO OUTPUT EXECUTIVO
+Com base em tudo, gere um output acionável que eu possa usar HOJE. Pode ser:
+- Um plano de ação de 1 página
+- Um briefing executivo para o time
+- Um insight para post de autoridade no LinkedIn
+
+Você decide qual formato faz mais sentido dadas as notas. Seja direto. Máximo 1 página.</span></div>
+          </div>
+
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/48d27f5b-aafd-4951-8bb1-03815d714d77/sps-redacted-9bad35155a2c4fbe98b2054db60d0a1e_4d576b6596a044fba5c3904468629018_text_export.jpeg" alt="Chat dentro do Project com o prompt de análise colado e botão de envio destacado">
+            <div class="ss-caption">Chat dentro do Project com o prompt de análise colado &mdash; botão de envio destacado</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 07 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Analise o output do Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Aguarde o Claude processar (tipicamente 30 a 60 segundos). Quando o output chegar, leia com atenção. Você deve ver 4 blocos: <strong>Padrões</strong>, <strong>Contradições</strong>, <strong>Perguntas em aberto</strong> e <strong>Primeiro output executivo</strong>.</p>
+          <p class="step-card-desc"><strong>O que validar:</strong></p>
+          <ul class="check-list" style="margin-top:4px">
+            <li>O Claude <strong>usou o vocabulário das suas notas</strong> (não jargão genérico)?</li>
+            <li>Os <strong>links <code>[[bidirecionais]]</code></strong> foram identificados e seguidos?</li>
+            <li>As <strong>perguntas em aberto</strong> te fazem pensar em algo que você não tinha verbalizado?</li>
+            <li>O <strong>output executivo</strong> é acionável &mdash; você pode usar HOJE?</li>
+          </ul>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/db0c8314-fbd8-4a78-9dc7-38259accb4d9/sps-redacted-0d088fef7d624585961f752ed2c3a174_e23be8a5059844dda868225fb00cfcea_text_export.jpeg" alt="Resposta do Claude na tela com os 4 blocos da análise visíveis">
+            <div class="ss-caption">Resposta do Claude na tela &mdash; os 4 blocos da análise visíveis (Padrões, Contradições, Perguntas, Output)</div>
+          </div>
+          <div class="warning-box">
+            <div class="warning-label">&#9888; Se o output ficou genérico</div>
+            <p>Isso geralmente significa que o System Prompt está raso ou que faltam variáveis preenchidas. Volte ao <strong>Passo 03</strong>, refine o System Prompt (especialmente o campo <em>Contexto atual</em>) e rode o prompt do <strong>Passo 06</strong> de novo. <strong>Os arquivos continuam carregados</strong> &mdash; não precisa subir de novo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASSO 08 -->
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Salve o output de volta no vault Obsidian</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte ao Obsidian. Dentro da pasta <strong>Resources</strong>, crie uma nova nota chamada <strong>Primeiro output do segundo cérebro &mdash; [data de hoje]</strong>. Copie o output completo do Claude e cole no corpo da nota. Salve.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/ff354994-9501-4f7d-bed1-bbe0632ada1c/sps-redacted-50aa4afea3a34ff8b381cbee7bed1edd_87e3903d37ca4e6ca71d1bd8aeadb9d5_text_export.jpeg" alt="Obsidian aberto com a nota Primeiro output do segundo cérebro criada em Resources">
+            <div class="ss-caption">Obsidian aberto &mdash; nota "Primeiro output do segundo cérebro" criada na pasta Resources</div>
+          </div>
+          <div class="validacao-box">
+            <div class="vb-label">&#10003; Validação visual &mdash; loop fechado</div>
+            <p>O output do Claude agora vive no seu vault como nova nota. Na próxima conversa com o Claude Project, você pode referenciá-la como <code>[[Primeiro output do segundo cérebro &mdash; [data]]]</code> em outras notas &mdash; fechando o ciclo: <strong>vault &rarr; Claude &rarr; output &rarr; vault</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">6 entregáveis concretos da AP03 &mdash; sistema completo do segundo cérebro</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com:</h3>
+        <ul class="check-list">
+          <li><strong>Claude Project "Segundo Cérebro &mdash; [Seu nome]"</strong> criado e configurado</li>
+          <li><strong>System Prompt customizado</strong> posicionando o Claude como copiloto do seu vault</li>
+          <li><strong>3 arquivos <code>.md</code></strong> do vault Obsidian carregados como contexto permanente</li>
+          <li><strong>Primeiro output executivo</strong> gerado &mdash; padrões + contradições + perguntas em aberto + plano acionável</li>
+          <li><strong>Output salvo de volta no vault</strong> &mdash; o loop está completo: vault alimenta Claude, Claude alimenta vault</li>
+          <li><strong>Sistema do segundo cérebro completo</strong> &mdash; pronto para o ritual semanal de captura e processamento</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">10.</span> Implementando na sua empresa &mdash; ritual semanal</div>
+      <div class="sec-desc">Escale para 10 notas reais + estabeleça o ritual de processamento semanal</div>
+
+      <p class="lead-text">Agora que você tem o sistema funcionando com 3 notas, leve para escala real. Use as <strong>10 notas do Desafio da AP02</strong> e estabeleça um <strong>ritual semanal</strong> de processamento.</p>
+
+      <ol class="desafio-list">
+        <li><strong>Volte ao Claude Project.</strong> Abra o Project <em>"Segundo Cérebro &mdash; [Seu nome]"</em> criado na AP.</li>
+        <li><strong>Atualize os arquivos de contexto.</strong> Remova os 3 arquivos da AP e suba as <strong>10 notas reais</strong> do Desafio da AP02 (que você preencheu com seu conteúdo de founder). Mantenha o System Prompt &mdash; ele continua válido.</li>
+        <li><strong>Refine o System Prompt se necessário.</strong> Agora que o Claude tem mais notas, vale revisitar o campo <em>Contexto atual</em> e enriquecer com 2-3 prioridades estratégicas que você quer que ele tenha em mente sempre.</li>
+        <li><strong>Gere 4 outputs diferentes esta semana.</strong> Use o Project para 4 finalidades distintas:
+          <ul>
+            <li><strong>Segunda:</strong> plano de ação dos próximos 30 dias</li>
+            <li><strong>Quarta:</strong> briefing executivo de uma decisão específica para o time</li>
+            <li><strong>Sexta:</strong> insight original para post de autoridade</li>
+            <li><strong>Domingo:</strong> retrospectiva da semana (o que aconteceu nas notas?)</li>
+          </ul>
+        </li>
+        <li><strong>Estabeleça o ritual semanal.</strong> Bloqueie 30 min no calendário toda sexta-feira para: (a) capturar 5-10 novas notas da semana no Obsidian, (b) atualizar os arquivos no Claude Project, (c) pedir ao Claude uma análise da nova rede. <strong>Em 4 semanas você terá ~40 notas e um Claude que conhece profundamente seu pensamento.</strong></li>
+      </ol>
+
+      <div class="overview-card">
+        <h3>Parâmetros do desafio</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tempo do setup inicial</td><td>30 a 45 minutos</td></tr>
+          <tr><td>Tempo semanal recorrente</td><td>30 minutos por semana</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Critério de qualidade &mdash; semana 4</div>
+        <p>Se em 4 semanas você consegue abrir o Claude Project e fazer uma pergunta sobre uma decisão estratégica e ele responde citando <strong>3 ou mais notas suas com vocabulário próprio</strong>, o sistema funcionou. Se as respostas continuam genéricas, a rede do vault precisa de mais notas ou mais links &mdash; <strong>não é problema do Claude</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Conexão com o programa</div>
+      <div class="sec-desc">O sistema está pronto &mdash; a partir daqui, a variável é a disciplina</div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo (insight final)</div>
+        <p>Você acabou de construir um <strong>segundo cérebro completo</strong> &mdash; vault Obsidian organizado por acionabilidade, rede viva de notas conectadas, e Claude como copiloto que processa essa rede em outputs executivos. <strong>O sistema está pronto.</strong> Daqui em diante, a única variável é a <strong>disciplina do ritual semanal</strong>. Em 6 meses, founders que mantêm o ritual relatam: <em>menos decisões repetidas</em>, <em>mais clareza sobre prioridades</em>, e a sensação rara de que o conhecimento acumulado finalmente <em>trabalha pra eles</em> em vez de ficar perdido em mil lugares. <strong>Comece o seu ritual nesta sexta-feira.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Generic copy
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  // === Gerador interativo de System Prompt personalizado ===
+  function escapeHtml(s){
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function spanVar(value, placeholder){
+    const trimmed = (value || '').trim();
+    if (trimmed.length === 0) {
+      return '<span class="pg-var empty">{' + placeholder + '}</span>';
+    }
+    return '<span class="pg-var filled">' + escapeHtml(trimmed) + '</span>';
+  }
+  function plainVar(value, placeholder){
+    const trimmed = (value || '').trim();
+    return trimmed.length === 0 ? '{' + placeholder + '}' : trimmed;
+  }
+  function buildPromptHTML(nome, cargo, empresa, contexto){
+    return (
+      'PAPEL\n' +
+      'Você é o copiloto do segundo cérebro de ' + spanVar(nome,'seu_nome') + ',\n' +
+      spanVar(cargo,'seu_cargo') + ' da ' + spanVar(empresa,'sua_empresa') + '.\n' +
+      '\n' +
+      'CONTEXTO DO NEGÓCIO\n' +
+      spanVar(contexto,'contexto_atual') + '\n' +
+      '\n' +
+      'ARQUIVOS DO VAULT\n' +
+      'Os arquivos .md em anexo são notas reais do vault Obsidian\n' +
+      'de ' + spanVar(nome,'seu_nome') + '. Eles representam uma rede conectada via\n' +
+      '[[links bidirecionais]] — decisões, insights e ideias\n' +
+      'que se referenciam mutuamente.\n' +
+      '\n' +
+      'DIRETRIZES DE ANÁLISE\n' +
+      '- Trate os [[links]] como referências cruzadas — siga-os\n' +
+      '  ao analisar\n' +
+      '- Use o vocabulário de ' + spanVar(nome,'seu_nome') + ' (palavras das notas),\n' +
+      '  não jargão genérico\n' +
+      '- Identifique padrões, contradições e perguntas em aberto\n' +
+      '- Seja direto e objetivo — máximo 1 página por output\n' +
+      '\n' +
+      'OUTPUTS POSSÍVEIS\n' +
+      'Quando ' + spanVar(nome,'seu_nome') + ' pedir, você pode gerar:\n' +
+      '- Análise executiva da rede (padrões + tensões + perguntas)\n' +
+      '- Plano de ação dos próximos 30 dias\n' +
+      '- Briefing de 1 página para o time ou board\n' +
+      '- Insight original para post de autoridade no LinkedIn'
+    );
+  }
+  function buildPromptPlain(nome, cargo, empresa, contexto){
+    return (
+      'PAPEL\n' +
+      'Você é o copiloto do segundo cérebro de ' + plainVar(nome,'seu_nome') + ',\n' +
+      plainVar(cargo,'seu_cargo') + ' da ' + plainVar(empresa,'sua_empresa') + '.\n' +
+      '\n' +
+      'CONTEXTO DO NEGÓCIO\n' +
+      plainVar(contexto,'contexto_atual') + '\n' +
+      '\n' +
+      'ARQUIVOS DO VAULT\n' +
+      'Os arquivos .md em anexo são notas reais do vault Obsidian\n' +
+      'de ' + plainVar(nome,'seu_nome') + '. Eles representam uma rede conectada via\n' +
+      '[[links bidirecionais]] — decisões, insights e ideias\n' +
+      'que se referenciam mutuamente.\n' +
+      '\n' +
+      'DIRETRIZES DE ANÁLISE\n' +
+      '- Trate os [[links]] como referências cruzadas — siga-os\n' +
+      '  ao analisar\n' +
+      '- Use o vocabulário de ' + plainVar(nome,'seu_nome') + ' (palavras das notas),\n' +
+      '  não jargão genérico\n' +
+      '- Identifique padrões, contradições e perguntas em aberto\n' +
+      '- Seja direto e objetivo — máximo 1 página por output\n' +
+      '\n' +
+      'OUTPUTS POSSÍVEIS\n' +
+      'Quando ' + plainVar(nome,'seu_nome') + ' pedir, você pode gerar:\n' +
+      '- Análise executiva da rede (padrões + tensões + perguntas)\n' +
+      '- Plano de ação dos próximos 30 dias\n' +
+      '- Briefing de 1 página para o time ou board\n' +
+      '- Insight original para post de autoridade no LinkedIn'
+    );
+  }
+  function renderPersonalPrompt(){
+    const nome     = document.getElementById('pg-seu-nome').value;
+    const cargo    = document.getElementById('pg-seu-cargo').value;
+    const empresa  = document.getElementById('pg-sua-empresa').value;
+    const contexto = document.getElementById('pg-contexto-atual').value;
+    document.getElementById('pg-preview').innerHTML = buildPromptHTML(nome, cargo, empresa, contexto);
+
+    const allFilled = [nome, cargo, empresa, contexto].every(v => v.trim().length > 0);
+    const btn = document.getElementById('pg-copy');
+    const status = document.getElementById('pg-status');
+    btn.disabled = !allFilled;
+    if (allFilled) {
+      status.textContent = 'Pronto — clique em Copiar prompt';
+      status.classList.add('ready');
+    } else {
+      const filled = [nome, cargo, empresa, contexto].filter(v => v.trim().length > 0).length;
+      status.textContent = filled + ' de 4 campos preenchidos';
+      status.classList.remove('ready');
+    }
+    document.getElementById('pg-feedback').classList.remove('show');
+  }
+  function copyPersonalPrompt(){
+    const nome     = document.getElementById('pg-seu-nome').value;
+    const cargo    = document.getElementById('pg-seu-cargo').value;
+    const empresa  = document.getElementById('pg-sua-empresa').value;
+    const contexto = document.getElementById('pg-contexto-atual').value;
+    const text = buildPromptPlain(nome, cargo, empresa, contexto);
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('pg-copy');
+      const fb  = document.getElementById('pg-feedback');
+      btn.textContent = 'Copiado ✓';
+      btn.classList.add('copied');
+      fb.classList.add('show');
+      setTimeout(() => {
+        btn.textContent = 'Copiar prompt';
+        btn.classList.remove('copied');
+      }, 2400);
+    });
+  }
+  window.renderPersonalPrompt = renderPersonalPrompt;
+  window.copyPersonalPrompt = copyPersonalPrompt;
+  // primeira renderização
+  document.addEventListener('DOMContentLoaded', renderPersonalPrompt);
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-claude-project-primeiro-output";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 12;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
