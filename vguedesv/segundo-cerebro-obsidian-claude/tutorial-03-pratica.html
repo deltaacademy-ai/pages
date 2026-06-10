@@ -288,11 +288,16 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
   5. Se inferiu além do escrito, diga: "minha leitura, não está escrito".
   6. Se a resposta foi síntese não-trivial, pergunte se quero salvá-la como página.
 
-  LINT (/lint) — reporte, não conserte sem perguntar:
-  páginas órfãs, [[wikilinks]] quebrados, conceitos citados em 3+ páginas sem
-  página própria, contradições não marcadas, frontmatter faltando, tags fora da
-  taxonomy, e grupos de ≥3 folhas do mesmo tema penduradas direto no index (que
-  deveriam ter um hub em projetos/). Ao final, pergunte quais consertar.
+  LINT (/lint):
+  1. PRIMEIRO, RE-CLUSTERIZAÇÃO (faça por padrão, é aditivo/reversível):
+     reavalie o grafo todo — religue folhas soltas no index a hubs que servem;
+     crie hub/entidade para avulsos que compartilham faceta (assunto/lugar/pessoa);
+     adicione facetas faltando (página cita um lugar/pessoa que já é entidade mas
+     não linka); conserte crosslinks, backlinks e tags tema/<slug> ausentes.
+     Aplique e resuma; só pergunte antes p/ destrutivo (apagar/fundir).
+  2. DEPOIS, reporte (sem consertar sem ok): páginas órfãs, [[wikilinks]] quebrados,
+     conceitos citados em 3+ páginas sem página, contradições, títulos com ID/número,
+     frontmatter inválido, tags fora da taxonomy. Pergunte quais consertar.
 
   FRONTMATTER OBRIGATÓRIO em toda página de wiki/:
   ---
