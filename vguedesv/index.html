@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel &middot; vguedesv &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .container{max-width:620px;margin:0 auto}
+  .header-bar{background:var(--accent2);border-radius:14px;padding:26px 28px 22px;margin-bottom:32px}
+  .header-bar .label{font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:6px}
+  .header-bar h1{font-size:1.3rem;font-weight:800;color:var(--bg);letter-spacing:0.02em}
+  .header-bar p{font-size:0.74rem;color:var(--bg);margin-top:4px;font-weight:600}
+  .section-label{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 14px;padding-left:4px}
+  .modulo-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .modulo-head{background:var(--card-tag-bg);color:var(--card-tag-fg);padding:14px 20px;display:flex;align-items:baseline;justify-content:space-between;gap:12px;cursor:pointer;user-select:none}
+  .modulo-head-left{display:flex;align-items:baseline;gap:10px}
+  .modulo-head .modulo-title{font-size:0.95rem;font-weight:700;letter-spacing:-0.01em}
+  .modulo-head .modulo-meta{font-size:0.68rem;font-weight:600;opacity:0.65}
+  .modulo-head .chevron{font-size:0.7rem;opacity:0.7;transition:transform 0.2s}
+  .modulo-head.open .chevron{transform:rotate(180deg)}
+  .modulo-body{display:none;background:var(--white);border-top:1px solid var(--border)}
+  .modulo-body.open{display:block}
+  .aula-row{padding:14px 20px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
+  .aula-row:last-child{border-bottom:none}
+  .aula-top{display:flex;align-items:center;gap:10px}
+  .aula-num{font-size:0.68rem;font-weight:800;color:var(--text3);min-width:22px;flex-shrink:0}
+  .aula-title{font-size:0.82rem;font-weight:700;color:var(--accent2);text-decoration:none;transition:opacity 0.15s;display:inline-flex;align-items:center;gap:5px}
+  .aula-title:hover{opacity:0.7}
+  .aula-title svg{width:11px;height:11px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
+  .footer p{font-size:0.68rem;color:var(--text3);line-height:1.7}
+  .footer a{color:var(--accent);text-decoration:none;font-weight:600}
+  .modulo-head-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  .mod-action-btn{font-family:'Montserrat',system-ui,sans-serif;font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:5px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.1);color:var(--card-tag-fg);cursor:pointer;transition:all 0.15s;white-space:nowrap;height:28px;display:inline-flex;align-items:center;gap:4px}
+  .mod-action-btn:hover{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.35)}
+  .mod-action-btn.done{background:rgba(255,255,255,0.3);border-color:rgba(255,255,255,0.5)}
+  .mod-action-btn svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="container">
+  <div class="header-bar">
+    <div class="label">Delta Academy</div>
+    <h1>Painel — vguedesv</h1>
+    <p>Seus módulos e aulas publicados</p>
+  </div>
+
+  <div class="section-label">MÓDULOS</div>
+
+  <div class="modulo-card">
+    <div class="modulo-head" onclick="toggleModulo(this)">
+      <div class="modulo-head-left">
+        <span class="modulo-title">Segundo Cérebro com Obsidian + Claude Code</span>
+        <span class="modulo-meta">3 aulas &middot; atualizado em 10/06/2026</span>
+      </div>
+      <div class="modulo-head-actions" onclick="event.stopPropagation()">
+        <button class="mod-action-btn" title="Copiar mensagem para alunos"
+          onclick="copyMsg(this, 'Segundo Cérebro com Obsidian + Claude Code', 'https://tutoriais.deltaacademy.ai/vguedesv/segundo-cerebro-obsidian-claude/')">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Copiar Mensagem
+        </button>
+        <button class="mod-action-btn" onclick="copyLink(this, 'https://tutoriais.deltaacademy.ai/vguedesv/segundo-cerebro-obsidian-claude/')">
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copiar link
+        </button>
+      </div>
+      <span class="chevron">&#9660;</span>
+    </div>
+    <div class="modulo-body">
+      <div class="aula-row">
+        <div class="aula-top">
+          <span class="aula-num">01</span>
+          <a class="aula-title" href="https://tutoriais.deltaacademy.ai/vguedesv/segundo-cerebro-obsidian-claude/tutorial-01-introducao-e-o-problema.html" target="_blank">
+            Introdução: o problema e a virada
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="aula-row">
+        <div class="aula-top">
+          <span class="aula-num">02</span>
+          <a class="aula-title" href="https://tutoriais.deltaacademy.ai/vguedesv/segundo-cerebro-obsidian-claude/tutorial-02-conceito.html" target="_blank">
+            Conceito: como funciona
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="aula-row">
+        <div class="aula-top">
+          <span class="aula-num">03</span>
+          <a class="aula-title" href="https://tutoriais.deltaacademy.ai/vguedesv/segundo-cerebro-obsidian-claude/tutorial-03-pratica.html" target="_blank">
+            Prática: construa o seu
+            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p><a href="https://deltaacademy.com.br">deltaacademy.com.br</a> &middot; Delta Academy &middot; 2026</p>
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  function toggleModulo(head) {
+    head.classList.toggle('open');
+    const body = head.nextElementSibling;
+    if (body) body.classList.toggle('open');
+  }
+  function copyMsg(btn, titulo, url) {
+    const plain = 'Conteúdo da aula: ' + titulo + '\n\nClique para acessar:\n' + url;
+    const html =
+      '<p style="font-family:sans-serif;font-size:15px;color:#1A1A1A"><strong>' + titulo + '</strong></p>' +
+      '<p style="font-family:sans-serif;font-size:14px;color:#4A4A4A;margin-top:10px">' +
+      '<a href="' + url + '" style="color:#1F3331;font-weight:600">Clique aqui para acessar: ' + titulo + '</a></p>';
+    try {
+      navigator.clipboard.write([
+        new ClipboardItem({
+          'text/plain': new Blob([plain], { type: 'text/plain' }),
+          'text/html':  new Blob([html],  { type: 'text/html'  })
+        })
+      ]).then(() => feedback(btn, 'Copiado ✓'));
+    } catch {
+      navigator.clipboard.writeText(plain).then(() => feedback(btn, 'Copiado ✓'));
+    }
+  }
+  function copyLink(btn, url) {
+    navigator.clipboard.writeText(url).then(() => feedback(btn, 'Copiado ✓'));
+  }
+  function feedback(btn, msg) {
+    const prev = btn.innerHTML;
+    btn.innerHTML = msg;
+    btn.classList.add('done');
+    setTimeout(() => { btn.innerHTML = prev; btn.classList.remove('done'); }, 2000);
+  }
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+</script>
+</body>
+</html>
