@@ -269,6 +269,9 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
      viagens, finanças, filosofia), crie/atualize um HUB temático em
      wiki/projetos/&lt;tema&gt;.md e ligue as folhas a ele (e o hub às folhas).
      NÃO pendure tudo direto no index — isso vira um grafo achatado.
+     Marque cada página do cluster com a tag tema/&lt;slug&gt; (ex: tema/viagens)
+     — isso permite colorir o cluster no grafo (Graph view → Groups, com a busca
+     tag:#tema/&lt;slug&gt; e uma cor).
   7. Atualize index.md (apontando os HUBS, não cada folha de um cluster) e log.md.
   8. Me resuma o que mudou. Uma ingestão típica toca 5-15 páginas.
 
@@ -326,7 +329,8 @@ frontmatter acima e seções de corpo apropriadas.
 
 CRIE _meta/taxonomy.md com tags iniciais (lowercase, sem espaços): domínios
 (tech, ai, negocios, pessoal, aprendizado), tipos (pessoa, empresa, produto,
-ferramenta, framework, artigo, video, podcast, nota) e status (stub, draft, core, revisar).
+ferramenta, framework, artigo, video, podcast, nota), status (stub, draft, core,
+revisar) e temas de cluster (tag tema/&lt;slug&gt;, ex: tema/viagens — um por hub).
 
 CRIE index.md inicial com seções vazias e log.md com uma entrada de bootstrap.
 
