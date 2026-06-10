@@ -246,6 +246,7 @@ PRINCÍPIOS:
 - wiki/ guarda as páginas que você escreve e mantém: você é dono total.
 - Conecte tudo com [[wikilinks]] do Obsidian. Cross-references densas.
 - Marque sempre o que é fato vs. inferência (provenance).
+- Títulos LEGÍVEIS: o nome de cada página é uma frase curta e humana — sem IDs, números longos ou prefixos técnicos.
 - Não invente: se a fonte não diz, não vai pro wiki.
 - Português. Páginas curtas e densas. Listas melhor que parágrafos.
 
@@ -292,6 +293,14 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
   updated: AAAA-MM-DD
   ---
   provenance: extracted = fato direto; inferred = síntese sua; ambiguous = fontes discordam.
+
+  CONVENÇÃO DE TÍTULOS (para o grafo do Obsidian ficar legível):
+  - O nome de cada página é uma frase curta e humana — ex: "Estoicismo - dicotomia
+    do controle", NUNCA "video-7635764687237401874" ou "fonte-tiktok-123".
+  - Nada de IDs, números longos, URLs ou prefixos técnicos no nome do arquivo.
+  - Em fontes (vídeos/artigos), o título descreve o CONTEÚDO ("Rota barata para a
+    Ásia"), não a origem. IDs, URL e data ficam só no frontmatter.
+  - Nome do arquivo = kebab-case do título legível (ex: estoicismo-dicotomia-do-controle.md).
 
   LOG (log.md) — toda operação vira entrada parseável:
   ## [AAAA-MM-DD] ingest | título da fonte
