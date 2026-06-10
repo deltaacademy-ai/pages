@@ -265,8 +265,11 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
   5. Extraia conceitos e entidades: crie página própria só se aparecer em 2+ fontes
      OU for central a esta. Menção de passagem = só link inline.
      Se a fonte nova contradiz uma página, marque a contradição.
-  6. Conecte tudo com [[wikilinks]].
-  7. Atualize index.md e adicione uma entrada em log.md.
+  6. Conecte tudo com [[wikilinks]]. Se ≥3 páginas compartilham um tema (ex:
+     viagens, finanças, filosofia), crie/atualize um HUB temático em
+     wiki/projetos/&lt;tema&gt;.md e ligue as folhas a ele (e o hub às folhas).
+     NÃO pendure tudo direto no index — isso vira um grafo achatado.
+  7. Atualize index.md (apontando os HUBS, não cada folha de um cluster) e log.md.
   8. Me resuma o que mudou. Uma ingestão típica toca 5-15 páginas.
 
   QUERY (/query &lt;pergunta&gt;) — tiered retrieval, comece barato:
@@ -280,7 +283,8 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
   LINT (/lint) — reporte, não conserte sem perguntar:
   páginas órfãs, [[wikilinks]] quebrados, conceitos citados em 3+ páginas sem
   página própria, contradições não marcadas, frontmatter faltando, tags fora da
-  taxonomy. Ao final, pergunte quais consertar.
+  taxonomy, e grupos de ≥3 folhas do mesmo tema penduradas direto no index (que
+  deveriam ter um hub em projetos/). Ao final, pergunte quais consertar.
 
   FRONTMATTER OBRIGATÓRIO em toda página de wiki/:
   ---
