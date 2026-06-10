@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02. Conceito: como funciona &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code,.overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Conceito: como funciona</h2>
+      <p>Aula 02 &middot; Segundo Cérebro</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Ferramentas</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Obsidian + Claude Code<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Arquitetura</div>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> As três camadas<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> As três operações<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que funciona<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Além do básico</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> Segundo vs Terceiro cérebro<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> As melhorias que adicionamos<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Segundo Cérebro &rsaquo; <a href="index.html">Índice</a> &rsaquo; 02. Conceito</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">Aula 02 &mdash; Conceito: como funciona o Segundo Cérebro</div>
+
+      <p class="lead-text">Agora o modelo mental. Depois desta aula você entende <strong>por que</strong> cada passo da prática (Aula 03) existe: as ferramentas, as três camadas, as três operações e o que separa um experimento de uma ferramenta de verdade.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Conceito (teoria)</td></tr>
+          <tr><td>Duração</td><td>~45 minutos</td></tr>
+          <tr><td>Base</td><td>LLM Wiki (Karpathy) + extensões da comunidade</td></tr>
+          <tr><td>O que você leva</td><td>O modelo mental completo do método</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Ferramentas</span>
+      <div class="sec-title"><span class="snum">01.</span> Obsidian + Claude Code</div>
+      <div class="sec-desc">Quem organiza tudo, e onde você lê</div>
+
+      <div class="overview-card">
+        <h3>Claude Code &mdash; quem organiza tudo</h3>
+        <ul>
+          <li>Agente de IA no terminal que <strong>lê e escreve os arquivos</strong> do seu wiki</li>
+          <li>Lê 10 fontes e edita 15 páginas numa só passada</li>
+          <li>Segue <strong>instruções persistentes</strong> que você define (o arquivo <code>CLAUDE.md</code>)</li>
+          <li><strong>É o motor:</strong> lê as fontes, sintetiza, conecta e mantém tudo. É aqui que o trabalho acontece.</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Obsidian &mdash; o front-end</h3>
+        <ul>
+          <li>App gratuito que abre os arquivos <strong>markdown</strong> (<code>.md</code>) do seu computador, sem lock-in</li>
+          <li>Mostra as notas conectadas: <code>[[assim]]</code> vira um <strong>grafo navegável</strong></li>
+          <li><strong>Graph view</strong>: você visualiza e navega o conhecimento</li>
+          <li><strong>É só a interface</strong> &mdash; a tela onde você lê e explora. Não é o cérebro.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">A divisão de trabalho</div>
+        <p>O conhecimento vive nos arquivos markdown. <strong>Claude Code é o motor</strong> que lê, organiza e mantém o wiki. <strong>Obsidian é só o front-end</strong> &mdash; onde você lê, navega e vê o grafo. Você é o arquiteto: decide o que entra e faz as perguntas certas.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-demo">Arquitetura</span>
+      <div class="sec-title demo"><span class="snum">02.</span> As três camadas</div>
+      <div class="sec-desc">Uma casa de três cômodos</div>
+
+      <p class="lead-text">O sistema tem três camadas. Pensar nelas como cômodos de uma casa ajuda:</p>
+
+      <ul class="observation-list">
+        <li><strong>raw/ &mdash; as fontes brutas.</strong> Artigos, PDFs, transcrições, anotações. Camada <strong>sagrada e imutável</strong>: o LLM lê, mas nunca altera. É sua fonte da verdade. O porão com as caixas originais.</li>
+        <li><strong>wiki/ &mdash; as páginas mantidas pelo LLM.</strong> Resumos, conceitos, entidades. Aqui o LLM é dono total: cria, atualiza, conecta. Você lê; ele escreve. A biblioteca organizada.</li>
+        <li><strong>CLAUDE.md &mdash; o schema.</strong> O documento de regras que diz ao Claude COMO seu wiki funciona. É o que transforma o Claude de chatbot genérico em <strong>mantenedor disciplinado do seu wiki</strong> &mdash; o manual de regras do agente.</li>
+      </ul>
+
+      <div class="tip-box">
+        <div class="tip-label">O detalhe que importa</div>
+        <p>Sem o <code>CLAUDE.md</code> você tem um assistente esperto. Com ele, você tem um mantenedor de wiki que segue suas regras <strong>toda vez</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-demo">Arquitetura</span>
+      <div class="sec-title demo"><span class="snum">03.</span> As três operações</div>
+      <div class="sec-desc">Os verbos do dia a dia</div>
+
+      <ul class="observation-list">
+        <li><strong>INGEST &mdash; ingerir.</strong> Você joga uma fonte nova. O LLM lê tudo, conversa sobre os pontos principais, escreve a página-resumo e sai atualizando todas as páginas afetadas. Uma fonte pode tocar 10-15 páginas. Registra no log.</li>
+        <li><strong>QUERY &mdash; perguntar.</strong> Você pergunta e ele responde a partir do <strong>wiki que ele mesmo construiu</strong>, com citações. Toda afirmação aponta para a página que a sustenta.</li>
+        <li><strong>LINT &mdash; faxina.</strong> De vez em quando ele revisa a saúde do wiki: páginas órfãs, links quebrados, contradições. Ele não conserta sozinho &mdash; mostra e pergunta.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Arquitetura</span>
+      <div class="sec-title demo"><span class="snum">04.</span> Por que funciona</div>
+      <div class="sec-desc">O argumento que convence</div>
+
+      <p class="lead-text">A parte chata de manter uma base de conhecimento nunca foi ler nem pensar. É o <strong>bookkeeping</strong> &mdash; atualizar referência cruzada, manter resumo em dia, anotar quando uma fonte nova contradiz uma velha, manter consistência entre dezenas de páginas.</p>
+
+      <p class="lead-text">É por isso que as pessoas <strong>abandonam</strong> wikis pessoais: o custo de manutenção cresce mais rápido que o valor. O LLM muda a equação &mdash; não se entedia, não esquece de atualizar uma referência, e toca 15 arquivos numa passada. O custo de manutenção cai para perto de zero.</p>
+
+      <div class="insight-box">
+        <div class="insight-label">Memex, 1945</div>
+        <p>Vannevar Bush imaginou uma base de conhecimento pessoal com trilhas associativas. A parte que ele nunca resolveu foi: <strong>quem faz a manutenção?</strong> A resposta levou 80 anos &mdash; é o LLM.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-pratica">Além do básico</span>
+      <div class="sec-title pratica"><span class="snum">05.</span> Segundo vs Terceiro cérebro</div>
+      <div class="sec-desc">Individual hoje, organizacional depois</div>
+
+      <table class="ficha-table">
+        <thead><tr><th>&nbsp;</th><th>Segundo cérebro</th><th>Terceiro cérebro</th></tr></thead>
+        <tbody>
+          <tr><td>Dono</td><td>Você (individual)</td><td>A empresa / o time</td></tr>
+          <tr><td>Quem alimenta</td><td>Você</td><td>Várias pessoas</td></tr>
+          <tr><td>Conteúdo</td><td>Seus estudos e interesses</td><td>Memória organizacional</td></tr>
+          <tr><td>Sincronização</td><td>Git pessoal</td><td>Git compartilhado</td></tr>
+        </tbody>
+      </table>
+
+      <p class="lead-text">Hoje construímos o <strong>segundo cérebro</strong> &mdash; o individual. O terceiro cérebro é a evolução: mesmo conceito, mas da empresa, com vários contribuidores, decisões registradas e níveis de acesso. É como nasceu o volundOS. Mas isso é outra aula.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-pratica">Além do básico</span>
+      <div class="sec-title pratica"><span class="snum">06.</span> As melhorias que adicionamos</div>
+      <div class="sec-desc">O que vai além do gist original do Karpathy</div>
+
+      <p class="lead-text">O texto do Karpathy é uma página de ideias &mdash; de propósito. Esses detalhes abaixo são o que <strong>nós</strong> e a comunidade implementamos. É o que separa o experimento da ferramenta de uso diário:</p>
+
+      <table class="ficha-table">
+        <thead><tr><th>Melhoria</th><th>O que é</th><th>Por que importa</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Quality gate</strong></td><td>Antes de ingerir, o agente avalia se vale a pena (ruído? redundante?) e pergunta.</td><td>Filtrar lixo na porta vence qualquer melhoria de busca. Wiki não é lixeira.</td></tr>
+          <tr><td><strong>Provenance</strong></td><td>Marca cada afirmação como <code>extracted</code>, <code>inferred</code> ou <code>ambiguous</code>.</td><td>Você sabe o que é fato vs. inferência. Impede o LLM de "inventar" sem você notar.</td></tr>
+          <tr><td><strong>Tiered retrieval</strong></td><td>Na busca, começa barato: índice &rarr; cabeçalho &rarr; corpo.</td><td>Rápido e barato. Não relê o wiki inteiro a cada pergunta.</td></tr>
+          <tr><td><strong>Frontmatter + taxonomy</strong></td><td>Cabeçalho YAML padrão em cada página + lista fixa de tags permitidas.</td><td>Habilita filtros e busca; evita o caos de 200 tags sinônimas.</td></tr>
+          <tr><td><strong>Log parseável</strong></td><td>Toda operação vira uma linha datada (<code>## [data] op | título</code>).</td><td>Linha do tempo do wiki, navegável com um comando.</td></tr>
+          <tr><td><strong>Crystallization</strong></td><td>Respostas boas de uma pergunta são salvas como página nova.</td><td>Suas explorações também acumulam, não só as fontes.</td></tr>
+          <tr><td><strong>Slash commands</strong></td><td>Atalhos <code>/ingest</code>, <code>/query</code>, <code>/lint</code> que disparam os protocolos.</td><td>Sem decorar prompts longos — é só um comando.</td></tr>
+          <tr><td><strong>Sync Git automático</strong></td><td>Plugin Obsidian Git faz commit/push sozinho a cada 10 min.</td><td>Backup + acesso de qualquer máquina + histórico de versões.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="insight-box">
+        <div class="insight-label">Próxima aula</div>
+        <p>Na Aula 03 você cola <strong>um único prompt</strong> e o Claude monta tudo isso pra você &mdash; e ingere a primeira fonte.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  const PKEY = "delta-tut-sc-02-conceito";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 7;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      ni.classList.toggle("completed", completed.has(ni.dataset.section));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
