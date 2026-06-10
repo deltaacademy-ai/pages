@@ -265,13 +265,18 @@ CRIE O ARQUIVO CLAUDE.md (na raiz) com as regras das três operações:
   5. Extraia conceitos e entidades: crie página própria só se aparecer em 2+ fontes
      OU for central a esta. Menção de passagem = só link inline.
      Se a fonte nova contradiz uma página, marque a contradição.
-  6. Conecte tudo com [[wikilinks]]. Se ≥3 páginas compartilham um tema (ex:
-     viagens, finanças, filosofia), crie/atualize um HUB temático em
-     wiki/projetos/&lt;tema&gt;.md e ligue as folhas a ele (e o hub às folhas).
-     NÃO pendure tudo direto no index — isso vira um grafo achatado.
-     Marque cada página do cluster com a tag tema/&lt;slug&gt; (ex: tema/viagens)
-     — isso permite colorir o cluster no grafo (Graph view → Groups, com a busca
-     tag:#tema/&lt;slug&gt; e uma cor).
+  6. ANTES de ligar ao index, posicione a página em HUB(s) intermediários:
+     a. DESCUBRA o que já existe (ls wiki/projetos/, ls wiki/entidades/) e
+        REUTILIZE um hub/lugar já criado — nunca duplique um cluster.
+     b. FACETAS (vários pais): assunto (hub em projetos/), lugar (entidade, ex:
+        entidades/recife), pessoa/empresa (entidade). Ex: café em Recife →
+        [[projetos/gastronomia]] + [[entidades/recife]].
+     c. HIERARQUIA: hubs aninham (Restaurantes→Gastronomia; Recife→Nordeste).
+     d. Crie um intermediário novo se a categoria for natural/reutilizável (uma
+        cidade, um assunto) — mesmo com 1 folha. Só deixe direto no index o que
+        realmente não tem categoria. NÃO deixe o index virar estrela achatada.
+     e. Backlink (## Faz parte de) + tag tema/&lt;slug&gt; em cada página do cluster
+        (habilita cor no grafo: Graph view → Groups, busca tag:#tema/&lt;slug&gt;).
   7. Atualize index.md (apontando os HUBS, não cada folha de um cluster) e log.md.
   8. Me resuma o que mudou. Uma ingestão típica toca 5-15 páginas.
 
