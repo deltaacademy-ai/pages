@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>02. Rede de Notas Conectadas &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo img{max-width:148px;height:auto;display:block;margin-bottom:14px}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:820px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text em{color:var(--text2);font-style:italic}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.78rem;color:var(--accent-text);line-height:1.6}
+  .tip-box p+p{margin-top:6px}
+  .tip-box strong{color:var(--accent2);font-weight:700}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.78rem;color:var(--warn-text);line-height:1.6}
+  .warning-box strong{font-weight:800}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center;border:1px solid var(--accent2)}
+  .insight-box .insight-label{font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.9rem;font-weight:600;color:var(--insight-fg);line-height:1.6}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.78rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+
+  /* Banner do entregável */
+  .entregavel-banner{background:linear-gradient(135deg,#0A1211 0%,#1F3331 60%,#0A1211 100%);border:2px solid var(--gold);border-radius:14px;padding:22px 24px;margin:18px 0;box-shadow:var(--shadow-sm)}
+  .entregavel-banner .eb-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:6px;display:block}
+  .entregavel-banner .eb-title{font-size:1rem;font-weight:800;color:#F2ECE0;margin-bottom:14px;letter-spacing:-0.01em}
+  .entregavel-banner .eb-preview{background:#F2ECE0;border-radius:8px;padding:18px 18px 14px;color:#1F3331}
+  .entregavel-banner .eb-preview .eb-pv-title{font-size:0.78rem;font-weight:800;color:#1F3331;letter-spacing:-0.01em;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid rgba(31,51,49,0.15)}
+  .entregavel-banner .nota-cards{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:12px}
+  .entregavel-banner .nota-card{background:#FBF7EC;border:1px solid #E1D8C2;border-left:4px solid #C9A961;border-radius:6px;padding:9px 12px;display:flex;flex-direction:column;gap:3px}
+  .entregavel-banner .nota-card .nc-name{font-size:0.74rem;font-weight:800;color:#1F3331}
+  .entregavel-banner .nota-card .nc-where{font-size:0.62rem;color:#4A4538;line-height:1.45}
+  .entregavel-banner .nota-card .nc-where strong{color:#1F3331;font-weight:700}
+  .entregavel-banner .nota-card .nc-link{font-size:0.6rem;color:#8A6E2C;font-style:italic;line-height:1.4;font-family:'JetBrains Mono','Courier New',monospace}
+  .entregavel-banner .graph-card{background:#F5E4B8;border:1px solid #D1AA53;border-radius:6px;padding:10px 12px;margin-bottom:10px}
+  .entregavel-banner .graph-card .gc-name{font-size:0.74rem;font-weight:800;color:#5A4414;margin-bottom:3px}
+  .entregavel-banner .graph-card .gc-what{font-size:0.64rem;color:#5A4414;line-height:1.5}
+  .entregavel-banner .graph-card .gc-what strong{font-weight:800}
+  .entregavel-banner .eb-synthesis{background:#F5E4B8;border-radius:6px;padding:9px 12px;font-size:0.7rem;color:#5A4414;font-weight:600;line-height:1.5;text-align:center;border:1px solid #D1AA53}
+
+  /* Comparativo lado a lado */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+  .compare-card{border-radius:10px;padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow-xs)}
+  .compare-card.bad{background:var(--warn-bg);border-color:var(--warn-border);border-left:3px solid var(--warn-accent)}
+  .compare-card.good{background:var(--green-light);border-color:var(--green-border);border-left:3px solid var(--green)}
+  .compare-card .cc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.bad .cc-label{color:var(--warn-label)}
+  .compare-card.good .cc-label{color:var(--green-text)}
+  .compare-card .cc-title{font-size:0.78rem;font-weight:700;line-height:1.35;margin-bottom:8px;font-style:italic}
+  .compare-card.bad .cc-title{color:var(--warn-text)}
+  .compare-card.good .cc-title{color:var(--green-text)}
+  .compare-card .cc-desc{font-size:0.74rem;line-height:1.55}
+  .compare-card.bad .cc-desc{color:var(--warn-text)}
+  .compare-card.good .cc-desc{color:var(--green-text)}
+
+  /* Bloco PARA (árvore + conteúdo de notas) com botão de copiar */
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .para-tree{position:relative;background:var(--panel);border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:18px 22px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.76rem;color:var(--text);line-height:1.7;margin:0;white-space:pre-wrap;box-shadow:var(--shadow-xs)}
+  [data-palette="dusk"] .para-tree{background:#0F1918;color:#F4F1E3;border-color:#385652}
+  .para-tree .link-tag{color:var(--gold);font-weight:700}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+
+  /* Cards meta da Atividade Prática */
+  .ap-meta-grid{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:14px 0 16px}
+  .ap-duracao-card{background:linear-gradient(135deg,#0A1211 0%,#1F3331 100%);border-radius:10px;padding:16px 18px;text-align:center;border:1px solid var(--gold);box-shadow:var(--shadow-sm)}
+  .ap-duracao-card .ad-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:6px}
+  .ap-duracao-card .ad-value{font-size:1.7rem;font-weight:800;color:#F2ECE0;letter-spacing:-0.03em;line-height:1}
+  .ap-duracao-card .ad-sub{font-size:0.62rem;color:rgba(242,236,224,0.65);margin-top:4px;font-weight:600}
+  .ap-tool-card{background:#1F1B36;border:1px solid #6B5B95;border-left:4px solid #6B5B95;border-radius:10px;padding:14px 18px;box-shadow:var(--shadow-xs)}
+  [data-palette="cream"] .ap-tool-card{background:#EEEDFE;color:#1F1B36}
+  .ap-tool-card .at-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:#B8A8E0;margin-bottom:4px}
+  [data-palette="cream"] .ap-tool-card .at-label{color:#3C3489}
+  .ap-tool-card .at-name{font-size:0.92rem;font-weight:800;color:#EEEDFE;margin-bottom:6px;letter-spacing:-0.01em}
+  [data-palette="cream"] .ap-tool-card .at-name{color:#3C3489}
+  .ap-tool-card .at-just{font-size:0.72rem;color:rgba(238,237,254,0.78);font-style:italic;line-height:1.55}
+  [data-palette="cream"] .ap-tool-card .at-just{color:#3C3489;opacity:0.8}
+
+  /* Step-card pattern */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  [data-palette="dusk"] .step-card-num{background:var(--bg);color:var(--gold)}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.65;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  .step-card-desc a{color:var(--accent2);font-weight:700;text-decoration:underline;text-underline-offset:2px}
+  .step-card-desc a:hover{opacity:0.75}
+
+  /* Print/screenshot dentro de step-card */
+  .step-shot{margin:12px 0 4px;border:1px solid var(--border2);border-radius:8px;overflow:hidden;background:var(--ficha-td1-bg);box-shadow:var(--shadow-xs)}
+  .step-shot img{display:block;width:100%;height:auto}
+  .step-shot .ss-caption{font-size:0.66rem;color:var(--text3);padding:6px 12px;border-top:1px solid var(--border);background:var(--ficha-th-bg);font-style:italic}
+
+  /* Validação visual */
+  .validacao-box{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:12px 14px;margin:10px 0 0}
+  .validacao-box .vb-label{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:4px}
+  .validacao-box p{font-size:0.78rem;color:var(--green-text);line-height:1.55}
+  .validacao-box strong{font-weight:800}
+
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:7px 0 7px 24px;position:relative;font-size:0.8rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:7px;color:var(--accent);font-weight:800;font-size:0.92rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  /* Lista numerada do desafio */
+  .desafio-list{list-style:none;counter-reset:dlist;margin:10px 0}
+  .desafio-list li{padding:10px 14px 10px 44px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;font-size:0.78rem;color:var(--text2);line-height:1.55;position:relative;counter-increment:dlist;box-shadow:var(--shadow-xs)}
+  .desafio-list li::before{content:counter(dlist);position:absolute;left:12px;top:14px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--accent2);font-size:0.7rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+  [data-palette="dusk"] .desafio-list li::before{color:var(--bg)}
+  .desafio-list li strong{color:var(--accent2);font-weight:700}
+
+  @media (max-width:768px){
+    .sidebar{display:none}
+    .main{padding:20px 16px 40px;max-width:100%}
+    .compare-grid{grid-template-columns:1fr}
+    .ap-meta-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Rede de Notas Conectadas</h2>
+      <p>AP02 &middot; Segundo Cérebro</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Objetivo de aprendizagem<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Hierarquia vs Rede<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> As 3 notas da Camila<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Conexão com o programa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Segundo Cérebro com Obsidian + Claude &rsaquo; <a href="index.html">Índice</a> &rsaquo; 02. Rede de Notas Conectadas</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP02 &mdash; Rede de Notas Conectadas</div>
+
+      <p class="lead-text">Segunda atividade prática do módulo <strong>Segundo Cérebro com Obsidian + Claude</strong>. Você vai criar 3 notas em pastas diferentes do Vault PARA e conectá-las com <strong>links bidirecionais</strong> <code>[[assim]]</code>, transformando o esqueleto da AP01 em uma <strong>rede viva</strong> &mdash; e visualizar o resultado pela primeira vez no <strong>Graph View</strong> do Obsidian.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática + Desafio</td></tr>
+          <tr><td>Duração da atividade</td><td>20 minutos</td></tr>
+          <tr><td>Ferramenta</td><td>Obsidian Desktop (gratuito, local) &mdash; sem Claude nesta AP</td></tr>
+          <tr><td>Pré-requisito</td><td>Ter completado a AP01 com o Vault <em>"Segundo Cérebro"</em> e a estrutura PARA configurada</td></tr>
+          <tr><td>Entregável</td><td>3 notas + 3 links bidirecionais + Graph View aberto em triângulo</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O primeiro nó da sua rede de conhecimento, visível no Graph View</div>
+
+      <p class="lead-text">Antes de começar, veja o que você vai conquistar ao final desta atividade prática &mdash; o primeiro nó da sua rede de conhecimento, visível no <strong>Graph View</strong> do Obsidian.</p>
+
+      <p class="lead-text"><strong>Entregável final da AP02:</strong> 3 notas criadas dentro do seu Vault PARA, conectadas entre si por <strong>3 links bidirecionais</strong> formando um triângulo &mdash; e a visualização dessa rede no <strong>Graph View</strong> do Obsidian.</p>
+
+      <div class="entregavel-banner">
+        <span class="eb-label">Entregável visual</span>
+        <div class="eb-title">3 notas conectadas + Graph View</div>
+        <div class="eb-preview">
+          <div class="eb-pv-title">&#128221; As 3 notas do triângulo</div>
+          <div class="nota-cards">
+            <div class="nota-card">
+              <div class="nc-name">&#128221; Nota 1 &mdash; Decisão estratégica recente</div>
+              <div class="nc-where"><strong>Onde fica:</strong> pasta <code>Projects/</code></div>
+              <div class="nc-link">Link de saída: [[Insight de cliente]]</div>
+            </div>
+            <div class="nota-card">
+              <div class="nc-name">&#128221; Nota 2 &mdash; Insight de cliente</div>
+              <div class="nc-where"><strong>Onde fica:</strong> pasta <code>Areas/</code></div>
+              <div class="nc-link">Link de saída: [[Ideia para o produto]]</div>
+            </div>
+            <div class="nota-card">
+              <div class="nc-name">&#128221; Nota 3 &mdash; Ideia para o produto</div>
+              <div class="nc-where"><strong>Onde fica:</strong> pasta <code>Areas/</code></div>
+              <div class="nc-link">Link de saída: [[Decisão estratégica recente]]</div>
+            </div>
+          </div>
+          <div class="graph-card">
+            <div class="gc-name">&#128376; Graph View</div>
+            <div class="gc-what"><strong>O que mostra:</strong> 3 nós conectados em triângulo. <strong>O que significa:</strong> nascimento da sua rede de conhecimento &mdash; uma ideia leva à outra.</div>
+          </div>
+          <div class="eb-synthesis">O Vault deixou de ser arquivo &mdash; agora é rede. Cada nota é um nó conectado, e o Claude (AP03) vai navegar por essa rede para gerar seus primeiros outputs executivos.</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Como esta AP se conecta com a aula</div>
+        <p>A <strong>AP01</strong> te deu o esqueleto vazio (4 pastas PARA). A <strong>AP02</strong> transforma esse esqueleto em <strong>rede viva</strong> &mdash; porque conhecimento não é arquivo organizado, é teia de associações. Na <strong>AP03</strong> o Claude vai entrar e processar essa rede para te devolver padrões, contradições e outputs executivos. <strong>Quanto mais conectada a sua rede, mais útil fica o Claude.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Objetivo de aprendizagem</div>
+      <div class="sec-desc">O que você sai sabendo fazer ao final da AP02</div>
+
+      <p class="lead-text">Criar 3 notas em pastas diferentes do Vault PARA e conectá-las com <strong>links bidirecionais</strong> <code>[[assim]]</code> &mdash; entendendo na prática a diferença entre <strong>pastas</strong> (hierarquia) e <strong>links</strong> (rede), e visualizando o resultado no <strong>Graph View</strong> do Obsidian.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Conceito &mdash; Hierarquia vs Rede</div>
+      <div class="sec-desc">Por que pastas resolvem localização e links resolvem associação</div>
+
+      <p class="lead-text">Quando você organiza conhecimento em <strong>pastas</strong>, está usando <strong>hierarquia</strong>: cada nota mora em um único lugar. Hierarquia é boa para <strong>localizar</strong> &mdash; você sabe onde colocou e onde achar.</p>
+
+      <p class="lead-text">Mas conhecimento real é <strong>associativo</strong> &mdash; uma decisão estratégica depende de um insight de cliente que ecoou em uma ideia de produto. Esses três fatos vivem em pastas diferentes, mas pertencem à mesma <strong>linha de pensamento</strong>.</p>
+
+      <p class="lead-text">A solução é adicionar uma segunda camada: <strong>links bidirecionais</strong>. Cada nota pode referenciar quantas outras quiser usando a sintaxe <code>[[nome da nota]]</code>. Quando você cria um link de A para B, o Obsidian <strong>automaticamente</strong> mostra na nota B que A está referenciando ela &mdash; sem você precisar editar B. Esse é o <strong>bidirecional</strong>.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Analogia simples</div>
+        <p><strong>Pastas</strong> são como o <strong>endereço da rua</strong> de cada pessoa &mdash; onde mora. <strong>Links</strong> são como as <strong>relações entre essas pessoas</strong> &mdash; quem conhece quem. Para entender uma cidade, você precisa dos dois: dos endereços e da rede de relações. O segundo cérebro funciona igual.</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="cc-label">Pastas isoladas (hierarquia)</div>
+          <div class="cc-title">"Pasta Projects &middot; Pasta Areas &middot; Pasta Resources&hellip;"</div>
+          <div class="cc-desc">Cada nota mora em uma única pasta. Você procura <strong>por onde guardou</strong>, não por onde a ideia conecta. Conhecimento vira arquivo morto &mdash; entra e nunca mais sai.</div>
+        </div>
+        <div class="compare-card good">
+          <div class="cc-label">Notas conectadas (rede)</div>
+          <div class="cc-title">"Cada nota referencia outras com <code>[[links]]</code> bidirecionais"</div>
+          <div class="cc-desc">Você navega por <strong>associação</strong> &mdash; uma ideia leva à próxima naturalmente. O Graph View revela a topologia: hubs, clusters, ilhas. Conhecimento vira rede viva.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">04.</span> O que você vai ver</div>
+      <div class="sec-desc">Como o professor monta a primeira rede de 3 notas no vault da Camila</div>
+
+      <div class="warning-box">
+        <div class="warning-label">&#9888; Aviso</div>
+        <p>A demonstração a seguir é <strong>apenas para ilustração</strong> durante a aula expositiva. Você não precisa fazer junto &mdash; você terá sua própria atividade prática logo depois desta seção.</p>
+      </div>
+
+      <p class="lead-text">O professor demonstra a criação da <strong>primeira rede de 3 notas conectadas</strong> no vault de <strong>Camila Vasconcellos (CEO fictícia da Lumina)</strong> &mdash; o mesmo vault montado na demonstração da AP01. As 3 notas refletem uma linha de raciocínio realista de um C-level: uma <strong>decisão estratégica</strong> (captação Série A) depende de um <strong>insight de cliente</strong> (sabor da creatina vegetal) que se conecta com uma <strong>ideia de produto</strong> (adicionar magnésio ao stack). Três pastas diferentes, uma mesma linha de pensamento.</p>
+
+      <p class="lead-text">Ao final da demo, o Graph View do Obsidian mostra um <strong>triângulo</strong> com os 3 nós conectados &mdash; o nascimento visual da rede.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> As 3 notas da Camila e como elas se conectam</div>
+      <div class="sec-desc">A árvore PARA com os 3 nós + conteúdo de cada nota</div>
+
+      <p class="lead-text">Veja como Camila distribui as 3 notas no vault PARA e como elas se referenciam mutuamente via links bidirecionais:</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Estrutura da rede da Camila</span>
+        <div class="para-tree" id="camila-tree"><button class="copy-btn" onclick="copyText(this, document.getElementById('camila-tree-text').textContent)">Copiar</button><span id="camila-tree-text">&#128193; Projects/
+   &#9492;&#9472;&#9472; Captação Série A &mdash; fechar em 90 dias/
+       &#9492;&#9472;&#9472; &#128221; Decisão Série A vs Bootstrap
+            Conteúdo: "Antes de decidir captação, preciso
+            validar PMF do novo produto. Ver
+            [[Feedback de cliente: sabor da creatina vegetal]]."
+
+&#128193; Areas/
+   &#9492;&#9472;&#9472; Clientes/
+       &#9492;&#9472;&#9472; &#128221; Feedback de cliente: sabor da creatina vegetal
+            Conteúdo: "Cliente também pediu mais energia.
+            Possível resposta:
+            [[Adicionar magnésio ao stack pré-treino]]."
+
+&#128193; Areas/
+   &#9492;&#9472;&#9472; Produto/
+       &#9492;&#9472;&#9472; &#128221; Adicionar magnésio ao stack pré-treino
+            Conteúdo: "Decisão de produto se conecta com
+            [[Decisão Série A vs Bootstrap]] &mdash; magnésio
+            vira diferencial competitivo defensável."</span></div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Por que o triângulo (e não uma linha)</div>
+        <p>Note que Camila fechou o ciclo: A &rarr; B &rarr; C &rarr; <strong>A</strong>. Isso é editorial &mdash; ela poderia ter parado em A &rarr; B &rarr; C linear. Mas ao conectar C de volta para A, ela explicita que a ideia de produto reforça a decisão de captação. <strong>O Graph View do Obsidian mostra isso visualmente como triângulo</strong> &mdash; uma topologia muito mais rica que uma linha reta. Em um vault maduro, alguns nós viram hubs com 10+ conexões.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">4 detalhes que mudam a forma como você usa links no dia a dia</div>
+
+      <ul class="observation-list">
+        <li><strong>Bidirecional automático.</strong> Cada <code>[[link]]</code> é <strong>automaticamente bidirecional</strong> &mdash; ao escrever <code>[[Insight de cliente]]</code> na nota A, o Obsidian mostra no painel lateral da nota <em>Insight de cliente</em> que A está referenciando ela. Você nunca precisa editar a outra ponta.</li>
+        <li><strong>Links transcendem pastas.</strong> Os links <strong>transcendem as pastas</strong> &mdash; uma nota em <code>Projects/</code> linka livremente uma nota em <code>Areas/</code>. Hierarquia e rede coexistem.</li>
+        <li><strong>Autocomplete acelera o trabalho.</strong> O <strong>autocomplete dos links</strong> acelera o trabalho: ao digitar <code>[[</code> o Obsidian sugere notas existentes. Se a nota não existe ainda, ele cria automaticamente quando você clica no link.</li>
+        <li><strong>Linkar é editorial.</strong> A escolha do que linkar é <strong>editorial</strong> &mdash; não linke tudo. Linke apenas relações <strong>significativas</strong>. Vault com links demais polui o Graph View; vault com links de menos é só arquivo.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">07.</span> Sua atividade prática</div>
+      <div class="sec-desc">3 notas + 3 links + Graph View no seu próprio vault</div>
+
+      <div class="ap-meta-grid">
+        <div class="ap-duracao-card">
+          <div class="ad-label">Duração total</div>
+          <div class="ad-value">20 min</div>
+          <div class="ad-sub">8 passos lineares</div>
+        </div>
+        <div class="ap-tool-card">
+          <div class="at-label">Ferramenta recomendada</div>
+          <div class="at-name">Obsidian Desktop (gratuito)</div>
+          <div class="at-just">Esta AP02 não usa Claude &mdash; você vai trabalhar no Obsidian aberto no seu computador. O Claude entra a partir da AP03 (Claude Project). Reabra o Vault Segundo Cérebro criado na AP01.</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai criar agora <strong>3 notas com títulos pré-definidos</strong> dentro do vault e conectá-las com 3 links bidirecionais formando um triângulo. <strong>Não se preocupe com o conteúdo real das notas agora</strong> &mdash; o foco da AP é entender o <strong>mecanismo dos links</strong>. O conteúdo real, com seus próprios dados de founder, entra no Desafio ao final.</p>
+
+      <p class="lead-text">A AP tem <strong>uma única fase</strong>: criar notas + criar links + visualizar no Graph View. São 8 passos lineares.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Por que aprender o mecanismo antes do conteúdo</div>
+        <p>Tentar aprender links bidirecionais já com conteúdo real do seu dia a dia mistura duas dificuldades: dominar a ferramenta + decidir o que linkar. Separar fica mais fácil. Aqui você foca no <strong>gesto</strong>: como criar link, ver o backlink, abrir o Graph View. No Desafio você foca na <strong>decisão editorial</strong>: o que linkar com o quê na sua realidade.</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">&#128221; Sobre a interface do Obsidian em português</div>
+        <p>Os prints abaixo mostram o Obsidian em <strong>português</strong>. Se a sua instalação estiver em inglês, os termos equivalentes são: <em>New note</em> (Nova nota), <em>Graph View</em> (Visualização em gráfico), <em>Backlinks</em> (Backlinks &mdash; termo mantido em inglês). O comportamento é idêntico.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Passo a passo</div>
+      <div class="sec-desc">8 passos &mdash; reabrir vault, 3 notas, 3 links, Graph View</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abra o Vault Segundo Cérebro</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o Obsidian no seu computador. Se o vault da AP01 ainda estiver aberto, ótimo &mdash; continue dele. Senão, use o menu <strong>File &rarr; Open Vault</strong> e selecione a pasta onde você criou o vault na AP01. Confirme na sidebar lateral esquerda que as <strong>4 pastas PARA</strong> (Archive, Areas, Projects, Resources) estão visíveis.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/79406242-228a-449d-a193-2a7e522ff32f/sps-redacted-c0d3e06817154abeafce2bbfe4871125_8edb299b6fa245edae6fe3da1de9a3c0_text_export.jpeg" alt="Obsidian aberto com vault Segundo Cérebro e 4 pastas PARA visíveis">
+            <div class="ss-caption">Vault Segundo Cérebro aberto &mdash; 4 pastas PARA visíveis na sidebar (a nota "Minha primeira iniciativa" da AP01 continua dentro de Projects)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Crie a nota "Decisão estratégica recente" em Projects</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique com o botão direito na pasta <strong>Projects</strong> e selecione <strong>Nova nota</strong> (<em>New note</em>). Nomeie a nota exatamente como <strong>Decisão estratégica recente</strong>. Abra a nota e digite uma frase de placeholder no corpo: <em>"Aqui vai a descrição da decisão (preencher no Desafio)."</em></p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/b2c07ca1-e1d7-461c-8d19-f3a1aa68824f/sps-redacted-aad49ba15f0f46b7b580f8861f1caefe_e97a4494c72f494785a851ae932be8f5_text_export.jpeg" alt="Nota Decisão estratégica recente criada dentro de Projects">
+            <div class="ss-caption">Nota "Decisão estratégica recente" criada dentro de Projects e visível na sidebar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Crie a nota "Insight de cliente" em Areas</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Repita o processo dentro da pasta <strong>Areas</strong>. Crie uma nova nota chamada <strong>Insight de cliente</strong> e digite o placeholder: <em>"Aqui vai o insight do cliente (preencher no Desafio)."</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Crie a nota "Ideia para o produto" em Areas</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Repita mais uma vez dentro da pasta <strong>Areas</strong>. Crie a terceira nota chamada <strong>Ideia para o produto</strong> com o placeholder: <em>"Aqui vai a ideia de produto (preencher no Desafio)."</em> Você agora tem <strong>3 notas vazias em pastas diferentes</strong> &mdash; prontas para serem conectadas.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Adicione o primeiro link: Decisão &rarr; Insight de cliente</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra a nota <strong>Decisão estratégica recente</strong>. Posicione o cursor no final do placeholder e adicione uma nova linha: <em>"Esta decisão depende de "</em>. Em seguida, <strong>digite dois colchetes abertos</strong>: <code>[[</code>. O Obsidian abre o autocomplete listando todas as notas existentes no vault. Comece a digitar <em>"Insight"</em> e selecione <strong>Insight de cliente</strong> com a seta para baixo + Enter. O Obsidian fecha o link automaticamente com <code>]]</code>.</p>
+          <div class="warning-box">
+            <div class="warning-label">&#9888; Importante</div>
+            <p>O link só funciona com <strong>dois colchetes</strong> (<code>[[...]]</code>), não um. Se digitar só um, vira texto comum sem conexão.</p>
+          </div>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/821bd524-8906-4e58-9666-25760593d4fa/sps-redacted-614cc118e8334c48bebbd48d5426ddc6_e1bc923dec164a9a9bff1c4d75444f9d_text_export.jpeg" alt="Nota Decisão estratégica recente com o link Insight de cliente criado">
+            <div class="ss-caption">Nota "Decisão estratégica recente" aberta com o link <code>[[Insight de cliente]]</code> já criado no corpo (resultado final do autocomplete)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Adicione o segundo link: Insight de cliente &rarr; Ideia para o produto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra a nota <strong>Insight de cliente</strong>. Adicione no corpo: <em>"Este insight sugere "</em> <code>[[</code> <em>"Ideia para o produto"</em> <code>]]</code>. Confirme com Enter.</p>
+          <p class="step-card-desc"><strong>Validação visual:</strong> abra o <strong>painel de Backlinks</strong> (clique no ícone de seta voltando, na barra lateral direita &mdash; ou use o atalho <code>Cmd/Ctrl+Shift+B</code>). Você deve ver <em>"Decisão estratégica recente"</em> listada como backlink desta nota &mdash; porque a Decisão linkou para Insight, então Insight automaticamente sabe que Decisão referencia ela.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/ec7bf62d-a645-41ff-9755-f57009e9420a/sps-redacted-e7e85a98a9e04d578b556b4c856aadff_41dd9cf52baf454e8412534b581dc192_text_export.jpeg" alt="Nota Insight de cliente com link Ideia para o produto">
+            <div class="ss-caption">Nota "Insight de cliente" aberta com o link <code>[[Ideia para o produto]]</code> adicionado no corpo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Adicione o terceiro link: Ideia para o produto &rarr; Decisão estratégica recente (fechando o triângulo)</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra a nota <strong>Ideia para o produto</strong>. Adicione no corpo: <em>"Esta ideia reforça "</em> <code>[[Decisão estratégica recente]]</code>. Pronto &mdash; você fechou o triângulo: <strong>Decisão &rarr; Insight &rarr; Ideia &rarr; Decisão</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Abra o Graph View e veja a rede formada</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na barra lateral esquerda do Obsidian, localize o ícone de <strong>Graph View</strong> &mdash; em PT-BR aparece como <strong>Visualização em gráfico</strong> (geralmente parece com 3 círculos conectados por linhas) &mdash; ou use o atalho <code>Cmd/Ctrl+G</code>. A Visualização em gráfico abre em uma nova aba e exibe os <strong>3 nós</strong> que você acabou de criar, <strong>conectados em triângulo</strong>. Mova o mouse sobre cada nó &mdash; o Obsidian mostra o título da nota. Arraste os nós para reorganizar.</p>
+          <div class="step-shot">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-10/d4cbd807-19e4-41db-a463-804557da902c/sps-redacted-523f9c5bf627471f92b1aae513bd9f91_7799c4d77e7e44e0863959d12e5aabd4_text_export.jpeg" alt="Visualização em gráfico do Obsidian com 3 nós conectados em triângulo">
+            <div class="ss-caption">Visualização em gráfico (Graph View) do Obsidian &mdash; 3 nós conectados em triângulo</div>
+          </div>
+          <div class="validacao-box">
+            <div class="vb-label">&#10003; Validação visual</div>
+            <p>O Graph View deve mostrar <strong>3 nós</strong> (Decisão, Insight, Ideia) e <strong>3 linhas</strong> conectando-os formando um triângulo fechado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">5 entregáveis concretos da AP02</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com:</h3>
+        <ul class="check-list">
+          <li><strong>3 notas criadas</strong> em pastas diferentes do Vault PARA (Projects, Areas, Areas)</li>
+          <li><strong>3 links bidirecionais</strong> conectando as notas em um triângulo fechado</li>
+          <li><strong>Painel de Backlinks</strong> explorado &mdash; você entendeu que cada link é automaticamente bidirecional</li>
+          <li><strong>Graph View</strong> aberto pela primeira vez &mdash; você viu o nascimento visual da sua rede de conhecimento</li>
+          <li><strong>Domínio do mecanismo de links</strong> &mdash; pronto para aplicar à sua realidade real no Desafio</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">10.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Traga a realidade do seu cotidiano de founder para dentro do vault</div>
+
+      <p class="lead-text">Agora que você domina o mecanismo, traga a <strong>realidade do seu cotidiano de founder</strong> para dentro do vault. Substitua os placeholders pelas suas decisões, insights e ideias reais &mdash; e expanda a rede.</p>
+
+      <ol class="desafio-list">
+        <li><strong>Substitua os títulos genéricos pelos reais.</strong> Renomeie <em>"Decisão estratégica recente"</em> para o título da sua decisão estratégica mais recente. Renomeie <em>"Insight de cliente"</em> para o insight mais valioso que ouviu de cliente nas últimas 4 semanas. Renomeie <em>"Ideia para o produto"</em> para a ideia mais recente que teve para o produto ou serviço. <strong>Não se preocupe com perfeição</strong> &mdash; você pode renomear depois.</li>
+        <li><strong>Preencha o conteúdo de cada nota.</strong> 3 a 5 linhas em cada uma, suficiente para você entender o contexto daqui a 3 meses. Sem firulas &mdash; texto cru, direto.</li>
+        <li><strong>Adicione 7 notas reais a mais</strong> (chegando a 10 no total). Use os mesmos critérios: decisões, insights de cliente, ideias de produto, conversas relevantes com investidores, aprendizados de mercado, dúvidas em aberto. Distribua entre as pastas PARA conforme a acionabilidade.</li>
+        <li><strong>Conecte com links bidirecionais.</strong> Releia cada nova nota e pergunte: <em>"isso se relaciona com alguma nota que já existe?"</em> Se sim, adicione <code>[[link]]</code>. <strong>Meta:</strong> pelo menos <strong>15 links</strong> no total entre as 10 notas.</li>
+        <li><strong>Reabra o Graph View.</strong> Veja como a rede evoluiu de triângulo para um grafo mais denso. Note quais notas viraram hubs (muitas conexões) &mdash; provavelmente são suas áreas de maior atenção mental.</li>
+      </ol>
+
+      <div class="overview-card">
+        <h3>Parâmetros do desafio</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tempo estimado</td><td>30 a 45 minutos (a maior parte é refletir sobre o conteúdo real e identificar conexões que existem mas você nunca tinha verbalizado)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">&#128161; Critério de qualidade</div>
+        <p>Se você conseguir abrir o Graph View e identificar <strong>pelo menos um hub</strong> (nó com 3+ conexões) e <strong>pelo menos uma conexão entre áreas diferentes</strong> (ex: Projects &harr; Resources), a rede está saudável. Se está toda em ilhas isoladas, faltam links.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Conexão com o programa</div>
+      <div class="sec-desc">O Claude entra na AP03 &mdash; mantenha o vault aberto</div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo (insight final)</div>
+        <p>Na <strong>AP03</strong> o Claude entra como copiloto do seu segundo cérebro. Você vai criar um <strong>Claude Project</strong> apontando para o conteúdo deste vault &mdash; e pedir ao Claude para <strong>ler a rede que você construiu</strong> e te devolver: padrões que se repetem, contradições entre decisões, perguntas em aberto que você esqueceu, e o <strong>primeiro output executivo</strong> gerado a partir do <em>seu</em> conhecimento acumulado. <strong>Mantenha o Obsidian aberto</strong> &mdash; você vai precisar do vault na próxima AP.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-rede-notas-conectadas";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 12;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
