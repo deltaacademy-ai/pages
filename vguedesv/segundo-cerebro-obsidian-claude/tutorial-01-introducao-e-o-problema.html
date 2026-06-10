@@ -112,11 +112,10 @@
     </div>
     <div class="nav-group"><div class="nav-group-title">Demonstração</div>
       <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> volundOS ao vivo<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Resultados reais<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="nav-group"><div class="nav-group-title">Conceito</div>
-      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que o RAG é limitado<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> A virada de chave<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">03</span> Por que o RAG é limitado<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">04</span> A virada de chave<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="sidebar-progress">
       <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
@@ -204,35 +203,6 @@
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
-        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
-      </div>
-    </div>
-
-    <!-- 03 -->
-    <div class="section" id="sec-step3">
-      <span class="section-badge badge-demo">Demonstração</span>
-      <div class="sec-title demo"><span class="snum">03.</span> Resultados reais</div>
-      <div class="sec-desc">Números, não promessas</div>
-
-      <p class="lead-text">O que muda na prática quando o conhecimento acumula em vez de se perder:</p>
-
-      <div class="overview-card">
-        <h3>Resultados do volundOS</h3>
-        <table class="ficha-table"><tbody>
-          <tr><td>Fontes ingeridas</td><td>[preencher na demo]</td></tr>
-          <tr><td>Tempo economizado / semana</td><td>[preencher na demo]</td></tr>
-          <tr><td>Decisões destravadas pela conexão</td><td>[preencher na demo]</td></tr>
-          <tr><td>Métrica de negócio</td><td>[preencher na demo]</td></tr>
-        </tbody></table>
-      </div>
-
-      <div class="insight-box">
-        <div class="insight-label">A ponte</div>
-        <p>O volundOS é a versão robusta. Mas o conceito por trás é simples &mdash; e você vai construir sua versão <strong>hoje, do zero, sem ser programador</strong>.</p>
-      </div>
-
-      <div class="nav-buttons">
-        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
         <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
       </div>
     </div>
@@ -240,7 +210,7 @@
     <!-- 04 -->
     <div class="section" id="sec-step4">
       <span class="section-badge badge-pratica">Conceito</span>
-      <div class="sec-title pratica"><span class="snum">04.</span> Por que o RAG é limitado</div>
+      <div class="sec-title pratica"><span class="snum">03.</span> Por que o RAG é limitado</div>
       <div class="sec-desc">O método padrão e onde ele falha</div>
 
       <p class="lead-text">O jeito padrão de fazer IA conversar com documentos chama-se <strong>RAG</strong> (Retrieval-Augmented Generation) &mdash; é o que está por trás do ChatGPT com upload, do NotebookLM e da maioria dos chatbots "com seus dados". Ele pica os documentos em pedaços e, a cada pergunta, <strong>busca</strong> os trechos parecidos. O problema: ele redescobre tudo do zero toda vez, e a busca falha mais do que se imagina.</p>
@@ -259,7 +229,7 @@
       </div>
 
       <div class="nav-buttons">
-        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
         <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
       </div>
     </div>
@@ -267,7 +237,7 @@
     <!-- 05 -->
     <div class="section" id="sec-step5">
       <span class="section-badge badge-pratica">Conceito</span>
-      <div class="sec-title pratica"><span class="snum">05.</span> A virada de chave</div>
+      <div class="sec-title pratica"><span class="snum">04.</span> A virada de chave</div>
       <div class="sec-desc">Compilar em vez de buscar</div>
 
       <p class="lead-text">Em 2026, <strong>Andrej Karpathy</strong> (ex-diretor de IA da Tesla, fundador da OpenAI) publicou um padrão que ficou famoso: o <strong>LLM Wiki</strong>. A ideia resolve exatamente o problema do RAG.</p>
@@ -323,7 +293,7 @@
   // Section navigation + progress
   const PKEY = "delta-tut-sc-01-introducao";
   const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
-  const TOTAL = 6;
+  const TOTAL = 5;
 
   function renderProgress() {
     document.querySelectorAll(".nav-item").forEach(ni => {
