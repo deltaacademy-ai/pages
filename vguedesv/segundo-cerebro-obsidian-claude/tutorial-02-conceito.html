@@ -285,16 +285,16 @@
       <p class="lead-text">O texto do Karpathy é uma página de ideias &mdash; de propósito. Esses detalhes abaixo são o que <strong>nós</strong> e a comunidade implementamos. É o que separa o experimento da ferramenta de uso diário:</p>
 
       <table class="ficha-table">
-        <thead><tr><th>Melhoria</th><th>Por que importa</th></tr></thead>
+        <thead><tr><th>Melhoria</th><th>O que é</th><th>Por que importa</th></tr></thead>
         <tbody>
-          <tr><td><strong>Quality gate</strong></td><td>Filtrar lixo na porta vence qualquer melhoria de busca. Wiki não é lixeira.</td></tr>
-          <tr><td><strong>Provenance</strong></td><td>Cada página marca fato vs. inferência vs. ambíguo. Impede o LLM de "inventar" sem você notar.</td></tr>
-          <tr><td><strong>Tiered retrieval</strong></td><td>Busca barata: índice &rarr; cabeçalho &rarr; corpo. Não relê o wiki inteiro.</td></tr>
-          <tr><td><strong>Frontmatter + taxonomy</strong></td><td>Cabeçalho padronizado e tags controladas. Habilita filtros e evita caos.</td></tr>
-          <tr><td><strong>Log parseável</strong></td><td>Linha do tempo do wiki, navegável com um comando.</td></tr>
-          <tr><td><strong>Crystallization</strong></td><td>Respostas boas viram página. Suas explorações também acumulam.</td></tr>
-          <tr><td><strong>Slash commands</strong></td><td><code>/ingest</code>, <code>/query</code>, <code>/lint</code> prontos &mdash; sem decorar prompts.</td></tr>
-          <tr><td><strong>Sync Git automático</strong></td><td>Backup + acesso de qualquer máquina + histórico.</td></tr>
+          <tr><td><strong>Quality gate</strong></td><td>Antes de ingerir, o agente avalia se vale a pena (ruído? redundante?) e pergunta.</td><td>Filtrar lixo na porta vence qualquer melhoria de busca. Wiki não é lixeira.</td></tr>
+          <tr><td><strong>Provenance</strong></td><td>Marca cada afirmação como <code>extracted</code>, <code>inferred</code> ou <code>ambiguous</code>.</td><td>Você sabe o que é fato vs. inferência. Impede o LLM de "inventar" sem você notar.</td></tr>
+          <tr><td><strong>Tiered retrieval</strong></td><td>Na busca, começa barato: índice &rarr; cabeçalho &rarr; corpo.</td><td>Rápido e barato. Não relê o wiki inteiro a cada pergunta.</td></tr>
+          <tr><td><strong>Frontmatter + taxonomy</strong></td><td>Cabeçalho YAML padrão em cada página + lista fixa de tags permitidas.</td><td>Habilita filtros e busca; evita o caos de 200 tags sinônimas.</td></tr>
+          <tr><td><strong>Log parseável</strong></td><td>Toda operação vira uma linha datada (<code>## [data] op | título</code>).</td><td>Linha do tempo do wiki, navegável com um comando.</td></tr>
+          <tr><td><strong>Crystallization</strong></td><td>Respostas boas de uma pergunta são salvas como página nova.</td><td>Suas explorações também acumulam, não só as fontes.</td></tr>
+          <tr><td><strong>Slash commands</strong></td><td>Atalhos <code>/ingest</code>, <code>/query</code>, <code>/lint</code> que disparam os protocolos.</td><td>Sem decorar prompts longos — é só um comando.</td></tr>
+          <tr><td><strong>Sync Git automático</strong></td><td>Plugin Obsidian Git faz commit/push sozinho a cada 10 min.</td><td>Backup + acesso de qualquer máquina + histórico de versões.</td></tr>
         </tbody>
       </table>
 
