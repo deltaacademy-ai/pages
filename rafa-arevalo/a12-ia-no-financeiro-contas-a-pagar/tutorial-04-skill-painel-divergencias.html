@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP04. Skill de Painel de Divergências &middot; IA no Financeiro &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .warning-box ul{list-style:none;margin-top:6px}
+  .warning-box ul li{font-size:0.76rem;color:var(--warn-text);line-height:1.55;padding:3px 0 3px 14px;position:relative}
+  .warning-box ul li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--warn-accent)}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .compare-desc ul{list-style:none;margin-top:8px}
+  .compare-desc ul li{padding:3px 0 3px 14px;position:relative;font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc ul li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.6}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  .observation-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84em;background:var(--ficha-td1-bg);padding:1px 4px;border-radius:3px;color:var(--accent2)}
+
+  /* Step-card */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Downloads-card */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+  .check-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+
+  /* Deliverable banner */
+  .deliverable-banner{background:linear-gradient(135deg,var(--accent2) 0%,#0E1A19 100%);border:1px solid var(--gold);border-radius:14px;padding:20px 22px;margin:16px 0 18px;box-shadow:var(--shadow-sm)}
+  [data-palette="cream"] .deliverable-banner{background:linear-gradient(135deg,var(--accent2) 0%,#0F1F1D 100%)}
+  .db-tag{display:inline-block;font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);background:rgba(209,170,83,0.12);border:1px solid rgba(209,170,83,0.3);padding:3px 10px;border-radius:4px;margin-bottom:10px}
+  .db-title{font-size:1rem;font-weight:800;color:#F4F1E3;letter-spacing:-0.01em;margin-bottom:14px;line-height:1.3}
+  [data-palette="cream"] .db-title{color:#F2ECE0}
+  .db-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:640px){.db-2col{grid-template-columns:1fr}}
+  .db-col-left{display:flex;flex-direction:column;gap:8px}
+  .db-feature{background:rgba(255,255,255,0.04);border:1px solid rgba(209,170,83,0.2);border-left:3px solid var(--gold);border-radius:6px;padding:10px 12px;font-size:0.74rem;color:#F4F1E3;line-height:1.4;display:flex;align-items:center;gap:8px}
+  [data-palette="cream"] .db-feature{color:#F2ECE0}
+  .db-feature .df-ico{font-size:0.92rem;flex-shrink:0}
+  .db-feature .df-text{font-weight:600}
+  .db-feature .df-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(209,170,83,0.15);padding:1px 5px;border-radius:3px;color:var(--gold)}
+
+  /* Mini-wireframe Lumina (lado direito do banner) */
+  .lumina-mini{background:#FBF9F5;border-radius:8px;padding:12px;border:1px solid rgba(209,170,83,0.3);font-family:'Inter','Montserrat',system-ui,sans-serif;color:#3D5A3B}
+  .lumina-mini .lm-logo{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+  .lumina-mini .lm-logo .lm-dot{width:12px;height:12px;border-radius:50%;border:1.5px solid #5C7A5A;background:transparent}
+  .lumina-mini .lm-logo .lm-name{font-family:Georgia,'Times New Roman',serif;font-size:0.78rem;font-weight:500;color:#5C7A5A;font-style:italic}
+  .lumina-mini .lm-title{font-family:Georgia,'Times New Roman',serif;font-size:0.72rem;font-weight:600;color:#3D5A3B;margin-bottom:6px}
+  .lumina-mini .lm-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px}
+  .lumina-mini .lm-stat{background:#F5F0E8;border-radius:3px;padding:4px 6px;text-align:center}
+  .lumina-mini .lm-stat .lm-num{font-size:0.78rem;font-weight:700;color:#5C7A5A;line-height:1.1}
+  .lumina-mini .lm-stat .lm-lbl{font-size:0.5rem;color:#8A857D;text-transform:uppercase;letter-spacing:0.04em;font-weight:600}
+  .lumina-mini .lm-tbl{background:#FFFFFF;border-radius:3px;padding:5px 6px;margin-bottom:6px;border:1px solid #E8E4DC}
+  .lumina-mini .lm-tbl-row{display:flex;align-items:center;gap:4px;font-size:0.55rem;padding:2px 0;color:#3D5A3B}
+  .lumina-mini .lm-tbl-row + .lm-tbl-row{border-top:1px solid #F5F0E8}
+  .lumina-mini .lm-badge{display:inline-block;background:#D4DDC9;color:#3D5A3B;font-size:0.5rem;font-weight:700;padding:1px 5px;border-radius:2px;letter-spacing:0.02em}
+  .lumina-mini .lm-flag{background:#FAEFE9;border-left:2px solid #C97A5A;border-radius:3px;padding:4px 6px;font-size:0.54rem;color:#8C4D34;line-height:1.3}
+  .lumina-mini .lm-flag-tag{font-weight:700;text-transform:uppercase;font-size:0.48rem;letter-spacing:0.06em;display:block;margin-bottom:1px}
+
+  /* Element-card grid */
+  .element-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+  @media (max-width:640px){.element-grid-3{grid-template-columns:1fr}}
+  .element-card{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow-xs);display:flex;flex-direction:column;gap:8px}
+  .element-card .el-num{width:26px;height:26px;border-radius:50%;background:var(--accent2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0}
+  .element-card .el-title{font-size:0.76rem;font-weight:700;color:var(--accent2);margin-bottom:2px}
+  .element-card .el-desc{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .element-card .el-desc strong{color:var(--accent2);font-weight:700}
+  .element-card .el-q{font-size:0.66rem;color:var(--text3);font-style:italic;margin-top:4px;padding-top:6px;border-top:1px dashed var(--border)}
+  .element-card .el-q strong{color:var(--accent);font-style:normal;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;font-size:0.58rem}
+
+  /* AP meta grid */
+  .ap-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+  @media (max-width:640px){.ap-meta-grid{grid-template-columns:1fr}}
+  .duration-card{background:linear-gradient(135deg,var(--accent2) 0%,#0E1A19 100%);border:1px solid var(--gold);border-radius:10px;padding:18px;box-shadow:var(--shadow-sm)}
+  .duration-card .d-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;display:block}
+  .duration-card .d-time{display:block;font-size:1.8rem;font-weight:800;color:#F4F1E3;line-height:1;letter-spacing:-0.02em;margin-bottom:6px}
+  .duration-card .d-sub{font-size:0.7rem;color:rgba(244,241,227,0.75);font-weight:500}
+  [data-palette="cream"] .duration-card .d-time{color:#F2ECE0}
+  [data-palette="cream"] .duration-card .d-sub{color:rgba(242,236,224,0.75)}
+  .model-card{background:#EEEDFE;border:1px solid #6B5B95;border-left:4px solid #6B5B95;border-radius:10px;padding:16px;box-shadow:var(--shadow-xs);color:#1F1B3A}
+  [data-palette="dusk"] .model-card{background:#1F1B3A;border-color:#9B8FCC;color:#E0DBF5}
+  .model-card .m-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#6B5B95;margin-bottom:6px;display:block}
+  [data-palette="dusk"] .model-card .m-label{color:#9B8FCC}
+  .model-card .m-name{display:block;font-size:0.95rem;font-weight:800;color:#3C3489;margin-bottom:6px}
+  [data-palette="dusk"] .model-card .m-name{color:#C4BBF0}
+  .model-card .m-desc{font-size:0.7rem;line-height:1.55}
+  .model-card .m-desc em{font-style:italic;opacity:0.85}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Skill de Painel de Divergências</h2>
+      <p>AP04 &middot; IA no Financeiro</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os elementos da Skill<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Por que artefato HTML<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Hierarquia da informação<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Anatomia do SKILL.md<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Sua atividade prática<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step12" onclick="showSection('sec-step12')"><span class="ni-num">12</span> Conexão com o programa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; IA no Financeiro &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP04. Skill de Painel de Divergências</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP04 &mdash; Skill de Painel de Divergências</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> a Skill <code>painel-divergencias-lumina</code> instalada no Project, e um <strong>artefato HTML autocontido</strong> renderizado na conversa &mdash; peça visual única com a identidade Lumina, pronta para a controller abrir no navegador ou anexar em apresentação.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática + Desafio</td></tr>
+          <tr><td>Duração</td><td>8 minutos (atividade prática)</td></tr>
+          <tr><td>Ferramenta</td><td>Claude Sonnet 4.6 (padrão do plano gratuito)</td></tr>
+          <tr><td>Consumo de mensagens</td><td>1 mensagem (a mais barata da aula)</td></tr>
+          <tr><td>Pré-requisito</td><td>AP03 concluída (Skill <code>conciliador-lumina</code> instalada, tabela de conciliação gerada)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O entregável da AP04 fecha o pipeline da aula A12</div>
+
+      <p class="lead-text">Antes de começar, veja o que você vai conquistar ao final desta atividade prática &mdash; e como ela <strong>fecha o pipeline</strong> da aula A12.</p>
+
+      <p class="lead-text"><strong>Entregável final da AP04:</strong> A Skill <code>painel-divergencias-lumina</code> instalada no Project, e um <strong>artefato HTML autocontido</strong> renderizado na conversa &mdash; peça visual única com identidade Lumina (branco quente, verde-musgo, coral terroso, Fraunces + Inter), pronta para a controller abrir no navegador ou anexar em apresentação.</p>
+
+      <div class="deliverable-banner">
+        <span class="db-tag">Entregável da AP04</span>
+        <div class="db-title">Skill painel-divergencias-lumina + Artefato HTML</div>
+        <div class="db-2col">
+          <div class="db-col-left">
+            <div class="db-feature">
+              <span class="df-ico">&#128206;</span>
+              <span class="df-text"><code>painel-divergencias-lumina.zip</code> instalada no Project</span>
+            </div>
+            <div class="db-feature">
+              <span class="df-ico">&#128229;</span>
+              <span class="df-text">Input: tabela markdown da AP03</span>
+            </div>
+            <div class="db-feature">
+              <span class="df-ico">&#128444;</span>
+              <span class="df-text">Output: artefato HTML inline na conversa</span>
+            </div>
+          </div>
+          <div class="db-col-right">
+            <div class="lumina-mini">
+              <div class="lm-logo">
+                <span class="lm-dot"></span>
+                <span class="lm-name">lumina</span>
+              </div>
+              <div class="lm-title">Painel de Divergências</div>
+              <div class="lm-grid">
+                <div class="lm-stat"><div class="lm-num">2</div><div class="lm-lbl">NFs</div></div>
+                <div class="lm-stat"><div class="lm-num">2</div><div class="lm-lbl">Conciliadas</div></div>
+                <div class="lm-stat"><div class="lm-num">0</div><div class="lm-lbl">Exceções</div></div>
+                <div class="lm-stat"><div class="lm-num">1</div><div class="lm-lbl">Flag</div></div>
+              </div>
+              <div class="lm-tbl">
+                <div class="lm-tbl-row">001234 &middot; Gellini <span style="margin-left:auto"><span class="lm-badge">&#9989;</span></span></div>
+                <div class="lm-tbl-row">005678 &middot; Embalp. <span style="margin-left:auto"><span class="lm-badge">&#9989;</span></span></div>
+              </div>
+              <div class="lm-flag">
+                <span class="lm-flag-tag">Flag pendente</span>
+                Embalpouch &middot; R$ 47 a investigar
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Como esta AP fecha o pipeline</div>
+        <p>AP01 montou o ambiente (Project + contexto). AP02 ensinou a IA a ler NF (extração JSON). AP03 ensinou a IA a julgar (conciliação + flags). <strong>AP04 entrega o produto final que a controller usa.</strong> Cada AP é uma camada &mdash; esta é a camada de apresentação.</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Para alunos do plano gratuito</div>
+        <p>Esta AP usa <strong>1 mensagem do Claude</strong>. Como você continua na conversa da AP03 (que já tem a tabela de conciliação no contexto), só precisa pedir o painel &mdash; o Claude consulta a tabela e gera o HTML em uma única resposta. <strong>Esta é a AP mais barata em tokens de toda a aula.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Os elementos da Skill</div>
+      <div class="sec-desc">O superpoder novo: gerar artefato HTML inline</div>
+
+      <p class="lead-text">A <code>painel-divergencias-lumina</code> segue o mesmo padrão das Skills anteriores, mas com um <strong>superpoder novo: gerar artefato HTML inline</strong> que renderiza diretamente na conversa do Claude e pode ser baixado.</p>
+
+      <div class="element-grid-3">
+        <div class="element-card">
+          <div class="el-num">1</div>
+          <div class="el-title">Input: tabela markdown</div>
+          <div class="el-desc">A Skill consome a tabela markdown que a <code>conciliador-lumina</code> gerou na AP03. <strong>Não precisa colar nada</strong> &mdash; busca no histórico da conversa.</div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">2</div>
+          <div class="el-title">Identidade visual fiel</div>
+          <div class="el-desc">A Skill consulta o <code>identidade-visual-lumina.md</code> (carregado no Project desde a AP01) para aplicar paleta, tipografia e princípios <strong>sem desviar para &ldquo;criatividade aleatória&rdquo;</strong>.</div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">3</div>
+          <div class="el-title">Output: HTML autocontido</div>
+          <div class="el-desc">Tudo embutido (CSS inline, Google Fonts), 1 página, 3 seções, responsivo. Aluno <strong>baixa com 1 clique</strong> e abre no navegador como qualquer outro HTML.</div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Por que artefato HTML é o formato final certo</div>
+      <div class="sec-desc">3 caminhos comuns &mdash; e por que só um escala</div>
+
+      <p class="lead-text">Tem 3 caminhos comuns para &ldquo;apresentar conciliação à controller&rdquo;, e <strong>nem todos são equivalentes</strong>:</p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Evite &mdash; caminhos frágeis</div>
+          <div class="compare-desc">
+            <ul>
+              <li><strong>Print de tela:</strong> controller não consegue clicar, filtrar, copiar valor &mdash; <strong>mata interatividade</strong>.</li>
+              <li><strong>PDF gerado por Python:</strong> depende de bibliotecas pesadas, layout difícil de ajustar, sem hover, sem responsividade.</li>
+              <li><strong>Slide do PowerPoint:</strong> trabalho manual de copiar/colar números &mdash; <strong>propenso a erro</strong> de transposição.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Use &mdash; artefato HTML</div>
+          <div class="compare-desc">Arquivo único, leve (~15KB), abre em qualquer navegador, mantém formatação visual, pode ser anexado em e-mail, hospedado em Drive, ou impresso direto. <strong>Funciona offline depois de carregar as fontes.</strong><br><br>Bônus: como é HTML, pode ser facilmente versionado, comparado entre semanas, ou virar template para outras automações.</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que artefato e não arquivo <code>.html</code> via code execution</div>
+        <p>Artefato inline aparece <strong>direto na conversa</strong>, com renderização ao vivo. O aluno vê o painel imediatamente &mdash; não precisa baixar, abrir e voltar pro Claude se quiser ajustar. <strong>Iteração visual em segundos</strong>, custo zero em mensagens adicionais.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">04.</span> Hierarquia da informação no painel executivo</div>
+      <div class="sec-desc">3 seções na ordem em que a controller precisa ler</div>
+
+      <p class="lead-text">Quando a controller abre o painel pela manhã, ela tem <strong>30 segundos</strong> antes de decidir entre o quê. A Skill organiza a informação na <strong>ordem em que ela precisa ser lida</strong>:</p>
+
+      <div class="element-grid-3">
+        <div class="element-card">
+          <div class="el-num">1</div>
+          <div class="el-title">Resumo Executivo (Hero)</div>
+          <div class="el-desc">Os <strong>4 totais</strong> que a controller precisa em 1 segundo: quantas NFs, quantas conciliadas, quantas em exceção, quantas flags pendentes. Sem rolagem, sem cliques.</div>
+          <div class="el-q"><strong>Pergunta que responde:</strong> &ldquo;preciso me preocupar com algo agora?&rdquo;</div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">2</div>
+          <div class="el-title">Lista de NFs</div>
+          <div class="el-desc">Tabela visual com badges coloridos. A controller dá <strong>scan vertical</strong> pela coluna Status. Verde tudo? Segue o dia. Coral ou vermelho? Olha aquela linha.</div>
+          <div class="el-q"><strong>Pergunta que responde:</strong> &ldquo;se preciso me preocupar, com qual?&rdquo;</div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">3</div>
+          <div class="el-title">Flags Pendentes (condicional)</div>
+          <div class="el-desc"><strong>Só aparece se houver flag de auditoria.</strong> Mostra o que investigar com o fornecedor sem bloquear pagamento.</div>
+          <div class="el-q"><strong>Pergunta que responde:</strong> &ldquo;o que coloco na minha lista de follow-up?&rdquo;</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Princípio do design executivo: pirâmide invertida</div>
+        <p><strong>Conclusão primeiro, detalhes depois.</strong> Se a controller só ler a Seção 1, já sabe a saúde do dia. Se ler a Seção 2, sabe os casos individuais. Se ler a Seção 3, sabe o backlog de investigação. <strong>Cada seção a mais é opcional, não obrigatória.</strong> Isso é o oposto do relatório financeiro tradicional, que enterra a conclusão no fim. Inverteu, ganhou tempo.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que você vai ver</div>
+      <div class="sec-desc">2 momentos &mdash; instalar a 3ª Skill e gerar o painel a partir da tabela da AP03</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>A demonstração a seguir é <strong>apenas para você acompanhar</strong> durante a aula expositiva. Você não precisa configurar nada agora &mdash; você terá sua própria atividade prática logo depois desta seção.</p>
+      </div>
+
+      <p class="lead-text">O professor demonstra o fluxo em dois momentos:</p>
+
+      <div class="overview-card">
+        <h3>Momento 1 &mdash; Instala a Skill no Project</h3>
+        <p>O professor abre o Project &ldquo;Contas a Pagar &mdash; Lumina&rdquo;, vai na seção de Skills, faz upload do <code>painel-divergencias-lumina.zip</code>. Agora o Project tem <strong>3 Skills ativas</strong> (<code>nf-extractor-lumina</code> + <code>conciliador-lumina</code> + <code>painel-divergencias-lumina</code>) &mdash; <strong>o pipeline completo está montado</strong>.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Momento 2 &mdash; Gera o painel a partir da tabela da AP03</h3>
+        <p>O professor continua na conversa da AP03 (onde a tabela de conciliação das 2 NFs ainda está no contexto) e digita: <em>&ldquo;Agora gera o painel HTML usando a Skill painel-divergencias-lumina.&rdquo;</em></p>
+        <p style="margin-top:8px">O Claude detecta a Skill, consulta o <code>identidade-visual-lumina.md</code> carregado nos arquivos do Project, e produz um <strong>artefato HTML inline</strong> que renderiza ao vivo na conversa. O professor mostra o painel renderizado: <strong>hero com 4 cards de totais</strong>, tabela com badges coloridos, e card coral pequeno com a flag de auditoria da Embalpouch.</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que o painel parece &ldquo;pronto&rdquo; sem o aluno explicar</div>
+        <p>Toda informação visual (paleta, tipografia, princípios) <strong>está no <code>identidade-visual-lumina.md</code></strong> carregado na AP01. A Skill só <strong>consulta e aplica</strong>. Quando o aluno adaptar isso para a empresa real (no Desafio), basta <strong>substituir o arquivo de identidade visual</strong> &mdash; a Skill funciona automaticamente com a nova paleta sem precisar ser editada.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> Anatomia da Skill &mdash; o SKILL.md em 5 passos</div>
+      <div class="sec-desc">Como a Skill estrutura a leitura, o design e o output</div>
+
+      <p class="lead-text">A <code>painel-divergencias-lumina</code> tem <strong>5 passos numerados</strong>:</p>
+
+      <div class="overview-card">
+        <h3>Estrutura do SKILL.md &mdash; 5 passos</h3>
+        <ul>
+          <li><strong>1. Receber a tabela de conciliação</strong> &mdash; busca a tabela markdown gerada pela <code>conciliador-lumina</code> no histórico recente da conversa.</li>
+          <li><strong>2. Consultar identidade visual</strong> &mdash; lê o <code>identidade-visual-lumina.md</code> para extrair paleta, fontes e princípios.</li>
+          <li><strong>3. Estruturar o painel em 3 seções</strong> &mdash; Hero (resumo) + Lista de NFs (tabela visual) + Flags pendentes (condicional).</li>
+          <li><strong>4. Gerar como artefato HTML inline</strong> &mdash; autocontido (CSS inline, Google Fonts), responsivo, sem dependências externas.</li>
+          <li><strong>5. Entregar com 2-3 linhas de contexto</strong> &mdash; mensagem curta confirmando que o painel está pronto e como baixá-lo.</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que a Skill consulta a identidade visual em vez de ter as cores hardcoded</div>
+        <p>Imagine que daqui a 6 meses a Lumina faz rebranding e troca verde-musgo por azul-petróleo. Se as cores estivessem <strong>hardcoded</strong> na Skill, você precisaria reeditar o SKILL.md. Como a Skill apenas <strong>consulta</strong> o <code>identidade-visual-lumina.md</code>, o aluno só substitui o arquivo de identidade e tudo se atualiza automaticamente. <strong>Skills consultam fontes da verdade &mdash; não duplicam dados.</strong> Esse é o princípio de manutenibilidade real do pipeline.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">4 sinais que diferenciam painel executivo profissional de HTML genérico</div>
+
+      <ul class="observation-list">
+        <li><strong>1.</strong> O artefato HTML <strong>renderiza inline na conversa</strong> do Claude &mdash; você vê o painel ao vivo, pode rolar dentro dele, copiar valores, sem sair do chat.</li>
+        <li><strong>2.</strong> A paleta visual aplicada é <strong>fiel à identidade Lumina</strong> (branco quente, verde-musgo, coral) &mdash; não é &ldquo;tons de cinza neutros padrão Claude&rdquo;. Identidade visual realmente carregada.</li>
+        <li><strong>3.</strong> A <strong>Seção 3 (Flags Pendentes) aparece SÓ porque há flag</strong> &mdash; se as 2 NFs estivessem 100% limpas, essa seção seria omitida. <strong>Conditional rendering inteligente.</strong></li>
+        <li><strong>4.</strong> O artefato é <strong>baixável com 1 clique</strong> pelo menu do artefato (canto superior direito da renderização) como arquivo <code>.html</code> que abre em qualquer navegador.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade prática</div>
+      <div class="sec-desc">8 minutos &middot; 1 mensagem &middot; instale a 3ª Skill e gere o painel HTML</div>
+
+      <p class="lead-text">Você vai instalar a Skill <code>painel-divergencias-lumina</code> no Project criado na AP01 e <strong>gerar o painel HTML</strong> a partir da tabela de conciliação que você produziu na AP03.</p>
+
+      <div class="ap-meta-grid">
+        <div class="duration-card">
+          <span class="d-label">Duração estimada</span>
+          <span class="d-time">8 min</span>
+          <span class="d-sub">2 passos &middot; 1 mensagem</span>
+        </div>
+        <div class="model-card">
+          <span class="m-label">Modelo recomendado</span>
+          <span class="m-name">Claude Sonnet 4.6</span>
+          <span class="m-desc">Modelo padrão do plano gratuito com geração de artefato HTML integrada &mdash; produz o painel completo em uma única resposta, com identidade visual fiel.<br><br><em>Melhor prática (plano pago): para painéis mais elaborados (com gráficos via Recharts, animações sutis, ou integrações dinâmicas), o Claude Opus 4.7 entrega resultados mais sofisticados na primeira tentativa.</em></span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Continue na conversa da AP03</div>
+        <p>Esta AP <strong>assume que você está na mesma conversa da AP03</strong>, onde a tabela markdown de conciliação ainda está visível no histórico. Se você fechou, abra a conversa de novo no Project. Se perdeu o histórico, refaça o Passo 5 da AP03 para regenerar a tabela.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
+      <div class="sec-desc">6 passos &mdash; baixar, instalar, voltar à conversa da AP03, gerar painel, baixar HTML</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe a Skill <code>painel-divergencias-lumina.zip</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no botão de download abaixo e salve no seu computador. <em>(30 seg)</em></p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP04</div>
+            <a class="dl-btn" href="painel-divergencias-lumina.zip" download>
+              <span class="dl-icon">&#128230;</span>
+              <span class="dl-meta">
+                <span class="dl-name">painel-divergencias-lumina.zip</span>
+                <span class="dl-desc">Skill que gera artefato HTML autocontido com identidade Lumina a partir da tabela de conciliação</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra o Project &ldquo;Contas a Pagar &mdash; Lumina&rdquo;</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Claude, vá em <strong>Projetos</strong> no menu lateral e clique no Project criado na AP01. <em>(15 seg)</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Instale a Skill no Project</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na seção <strong>Skills</strong> do Project, clique em <strong>+ Adicionar Skill</strong> &rarr; <strong>Carregar Skill personalizada</strong>. Selecione <code>painel-divergencias-lumina.zip</code>. <em>(30 seg &middot; zero mensagens)</em></p>
+          <p class="step-card-desc"><strong>Validação visual:</strong> o Project agora mostra <strong>3 Skills ativas</strong> &mdash; <code>nf-extractor-lumina</code>, <code>conciliador-lumina</code> e <code>painel-divergencias-lumina</code>. <strong>Pipeline completo montado.</strong></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Volte para a conversa da AP03</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Dentro do Project, abra a conversa onde você gerou a tabela de conciliação na AP03. Você deve ver, no histórico, a <strong>tabela markdown com as 2 NFs</strong> (Gellini conciliada e Embalpouch conciliada com flag). <em>(15 seg)</em></p>
+          <div class="warning-box">
+            <div class="warning-label">Conversa não encontrada?</div>
+            <p>Se você não consegue achar a conversa da AP03, abra uma nova conversa no Project e <strong>refaça o Passo 5 da AP03</strong> antes de continuar. <strong>Sem a tabela de conciliação no contexto, a Skill de painel não consegue trabalhar.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Gere o painel HTML</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> do bloco abaixo e envie a mensagem. <em>(3 min &middot; gasta 1 mensagem)</em></p>
+          <div class="copy-wrap">
+            <span class="copy-label">Instrução para gerar o painel</span>
+            <div class="copy-block" id="bloco-painel">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-painel-text').textContent)">Copiar</button>
+<span id="bloco-painel-text">Agora gera o painel HTML executivo usando a Skill painel-divergencias-lumina, a partir da tabela de conciliação que você produziu na mensagem anterior. Aplica a identidade visual da Lumina (consulta o arquivo identidade-visual-lumina.md nos arquivos do Project) — paleta branco quente, verde-musgo, coral terroso, tipografia Fraunces + Inter, princípios de muito espaço negativo e linhas finas. Estrutura em 3 seções: hero com 4 cards de totais, lista de NFs com badges coloridos, e card coral com a flag de auditoria pendente da Embalpouch. Entrega como artefato HTML inline.</span></div>
+          </div>
+          <p class="step-card-desc"><strong>Resultado esperado:</strong> o Claude segue os 5 passos da Skill, consulta o <code>identidade-visual-lumina.md</code>, e renderiza um <strong>artefato HTML inline</strong> na conversa contendo:</p>
+          <ul class="check-list">
+            <li><strong>Hero</strong> com logo Lumina, título &ldquo;Painel de Divergências&rdquo;, subtítulo com data, e grid de 4 cards de totais (2 NFs &middot; 2 conciliadas &middot; 0 exceções &middot; 1 flag pendente)</li>
+            <li><strong>Lista de NFs</strong> com tabela mostrando NF 001234 (badge verde <code>&#9989; Conciliado</code>) e NF 005678 (badge verde <code>&#9989; Conciliado</code> + flag em itálico coral)</li>
+            <li><strong>Card coral pequeno</strong> com a flag pendente da Embalpouch (descrição do erro de R$ 47 + sugestão de pedir NF corrigida)</li>
+          </ul>
+          <div class="warning-box">
+            <div class="warning-label">Validação obrigatória</div>
+            <p>Inspecione o painel renderizado e confirme:</p>
+            <ul>
+              <li><strong>Paleta correta:</strong> fundos brancos quentes, verdes musgo, coral terroso &mdash; <strong>NÃO</strong> cinza neutro padrão.</li>
+              <li><strong>Tipografia correta:</strong> títulos em <strong>Fraunces</strong> (serifada), corpo em <strong>Inter</strong> (sans-serif).</li>
+              <li><strong>Seção 3 visível:</strong> porque há 1 flag pendente. Se essa seção estiver ausente, a Skill ignorou a flag &mdash; refaça a AP03 garantindo que a tabela tem a coluna Flag auditoria preenchida.</li>
+            </ul>
+            <p style="margin-top:8px">Se o painel parecer &ldquo;genérico Claude&rdquo; em vez de Lumina, peça na próxima mensagem: <em>&ldquo;Refaz o painel aplicando estritamente a paleta e tipografia do identidade-visual-lumina.md.&rdquo;</em> &mdash; mas isso gasta mensagem extra. <strong>Melhor capturar de primeira.</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Baixe o painel como arquivo <code>.html</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No menu do artefato (canto superior direito da renderização), clique em <strong>Download</strong> ou <strong>Copiar</strong>. Salve como <code>painel-conciliacao-lumina.html</code> no seu computador. Abra o arquivo em qualquer navegador &mdash; você verá o painel idêntico ao que apareceu na conversa, <strong>funcionando offline depois de carregar as fontes</strong>. <em>(30 seg &middot; zero mensagens)</em></p>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">10.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Checklist do entregável + pipeline completo da A12</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Skill <code>painel-divergencias-lumina</code> <strong>instalada no Project</strong> (3ª e última Skill do pipeline).</li>
+          <li><strong>Artefato HTML inline</strong> renderizado na conversa, com a identidade visual Lumina fiel.</li>
+          <li>Arquivo <code>painel-conciliacao-lumina.html</code> <strong>baixado no seu computador</strong>, autocontido, pronto para anexar em e-mail ou abrir em qualquer navegador.</li>
+          <li><strong>Pipeline completo de Contas a Pagar com IA</strong> funcionando do PDF da NF até o painel executivo final &mdash; todas as 4 camadas integradas.</li>
+          <li>Compreensão clara da <strong>arquitetura de pipeline em Skills modulares</strong> que você pode replicar para qualquer outro processo financeiro (contas a receber, conciliação bancária, fechamento mensal).</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo</div>
+        <p>Você acabou de construir um <strong>pipeline de 4 camadas</strong> que substitui dezenas de horas de trabalho manual mensal. <strong>No Desafio desta AP, você vai adaptar esse pipeline para a sua empresa real</strong> &mdash; Project real, Skills customizadas, painel com a identidade da sua marca. Em 4 semanas (uma por AP), você sai com automação real funcionando, <strong>não só teoria</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Feche o pipeline completo &mdash; e apresente para a controller</div>
+
+      <p class="lead-text">Adapte a Skill <code>painel-divergencias-lumina</code> e <strong>feche o pipeline completo na sua empresa</strong>:</p>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe e descompacte a Skill</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Baixe a Skill <code>painel-divergencias-lumina.zip</code> e descompacte. Você vai editar o <code>SKILL.md</code> interno e o arquivo de identidade.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Adapte a estrutura do painel se sua empresa tem necessidades específicas</span></div>
+        <div class="step-card-body">
+          <ul class="check-list">
+            <li>Sua controller precisa ver <strong>categorias de despesa agrupadas</strong>? Adicione uma 4ª seção &ldquo;Por Categoria&rdquo;.</li>
+            <li>Sua diretoria pede <strong>comparativo com mês anterior</strong>? Adicione mini-card de variação no Hero.</li>
+            <li>Sua auditoria exige <strong>rastreabilidade individual</strong>? Adicione coluna &ldquo;Hash de auditoria&rdquo; na tabela.</li>
+          </ul>
+          <div class="tip-box">
+            <div class="tip-label">Regra de ouro</div>
+            <p>Mais seção = mais ruído. <strong>Adicione SÓ o que será USADO.</strong> Se ninguém vai olhar, não adicione.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Substitua o <code>identidade-visual-[sua-empresa].md</code></span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Project real (do Desafio da AP01), substitua pela identidade real da sua marca &mdash; paleta, tipografia, princípios. <strong>A Skill consulta esse arquivo, então não precisa mexer no SKILL.md.</strong></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Recompacte e instale no Project real</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Recompacte em <code>.zip</code> com o nome <code>painel-divergencias-[sua-empresa].zip</code> e instale no Project real.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Gere o painel real rodando a sequência completa</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Rode a sequência que você adaptou nas APs anteriores: <strong>extração de NFs reais &rarr; conciliação real &rarr; painel real</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Apresente para a controller / diretor financeiro</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o HTML no navegador e mostre o painel da semana real. Pergunte:</p>
+          <ul class="check-list">
+            <li>&ldquo;Esta informação é suficiente para você decidir <strong>o que pagar hoje</strong>?&rdquo;</li>
+            <li>&ldquo;O que está <strong>faltando ou sobrando</strong>?&rdquo;</li>
+            <li>&ldquo;Em quanto tempo você levaria pra <strong>produzir isso manualmente</strong>?&rdquo;</li>
+          </ul>
+          <p class="step-card-desc"><strong>Anote as respostas.</strong> Elas vão guiar a próxima iteração do pipeline.</p>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>Resultado esperado</h3>
+        <p>Painel HTML real da sua empresa <strong>apresentado para a liderança financeira</strong>, com feedback coletado para próxima iteração &mdash; e a <strong>prova social interna</strong> de que o pipeline IA funciona no seu contexto.</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Tempo estimado para o desafio</div>
+        <p><strong>60 a 90 minutos</strong> (40 min adaptação + 20-50 min apresentação e coleta de feedback).</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step12')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="sec-step12">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">12.</span> Conexão com o programa</div>
+      <div class="sec-desc">Fechamento da aula A12 &mdash; o método é mais valioso que o pipeline</div>
+
+      <div class="insight-box">
+        <div class="insight-label">Por que você acabou de construir mais que um painel</div>
+        <p>Em 4 atividades práticas, você passou de <em>&ldquo;não sei como começar a automatizar contas a pagar com IA&rdquo;</em> para <strong>pipeline funcionando do PDF ao painel executivo</strong>, com Skills modulares, conciliação automatizada e identidade visual da marca. <strong>A arquitetura que você aprendeu (Project + Skills modulares consultando fontes da verdade) é reutilizável</strong> para qualquer outro processo financeiro: contas a receber, conciliação bancária, fechamento mensal, análise de DRE, gestão de fluxo de caixa. <strong>A AP12 te entrega um pipeline; a aula inteira te entrega um método.</strong> Use-o em todos os processos do departamento ao longo do trimestre.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step11')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-a12-contas-a-pagar-ap04";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 13;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
