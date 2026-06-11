@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AP01. Project Contas a Pagar Lumina &middot; A12 &mdash; IA no Financeiro &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  @media (max-width:640px){.compare-grid{grid-template-columns:1fr}}
+  .compare-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .compare-card.neg{border-left:3px solid #C97A5A}
+  .compare-card.pos{border-left:3px solid var(--green)}
+  .compare-card.lumina-green{border-left:3px solid var(--green)}
+  .compare-card.lumina-coral{border-left:3px solid #C97A5A}
+  .compare-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.neg .compare-label{color:#C97A5A}
+  .compare-card.pos .compare-label{color:var(--green)}
+  .compare-card.lumina-green .compare-label{color:var(--green)}
+  .compare-card.lumina-coral .compare-label{color:#C97A5A}
+  .compare-title{font-size:0.8rem;font-weight:700;color:var(--text);margin-bottom:8px;font-style:italic}
+  .compare-desc{font-size:0.72rem;color:var(--text2);line-height:1.55}
+  .compare-desc strong{color:var(--accent2);font-weight:700}
+  .compare-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84em;background:var(--ficha-td1-bg);padding:1px 4px;border-radius:3px;color:var(--accent2)}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+
+  /* Downloads-card (embutido em step-card) */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+
+  /* Check-list (entregáveis ao final da atividade) */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+
+  /* Deliverable banner (item 01) — banner do entregável */
+  .deliverable-banner{background:linear-gradient(135deg,var(--accent2) 0%,#0E1A19 100%);border:1px solid var(--gold);border-radius:14px;padding:20px 22px;margin:16px 0 18px;box-shadow:var(--shadow-sm)}
+  [data-palette="cream"] .deliverable-banner{background:linear-gradient(135deg,var(--accent2) 0%,#0F1F1D 100%)}
+  .db-tag{display:inline-block;font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);background:rgba(209,170,83,0.12);border:1px solid rgba(209,170,83,0.3);padding:3px 10px;border-radius:4px;margin-bottom:10px}
+  .db-title{font-size:1rem;font-weight:800;color:var(--bg);letter-spacing:-0.01em;margin-bottom:14px;line-height:1.3}
+  [data-palette="dusk"] .db-title{color:#F4F1E3}
+  [data-palette="cream"] .db-title{color:#F2ECE0}
+  .db-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+  @media (max-width:640px){.db-grid{grid-template-columns:1fr}}
+  .db-item{background:rgba(255,255,255,0.04);border:1px solid rgba(209,170,83,0.2);border-left:3px solid var(--gold);border-radius:6px;padding:10px 12px}
+  .db-item-num{display:inline-block;font-size:0.64rem;font-weight:800;color:var(--gold);margin-bottom:4px;letter-spacing:0.04em}
+  .db-item-label{display:block;font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:rgba(244,241,227,0.7);margin-bottom:3px}
+  [data-palette="cream"] .db-item-label{color:rgba(242,236,224,0.7)}
+  .db-item-value{display:block;font-size:0.74rem;font-weight:600;color:#F4F1E3;line-height:1.4}
+  [data-palette="cream"] .db-item-value{color:#F2ECE0}
+  .db-item-full{grid-column:1 / -1;background:rgba(255,255,255,0.04);border:1px solid rgba(209,170,83,0.2);border-left:3px solid var(--gold);border-radius:6px;padding:12px 14px;margin-top:4px}
+  .db-files{list-style:none;margin-top:8px;display:flex;flex-direction:column;gap:5px}
+  .db-files li{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.7rem;color:rgba(244,241,227,0.85);padding-left:18px;position:relative}
+  .db-files li::before{content:'\1F4CE';position:absolute;left:0;top:0;font-size:0.74rem}
+  [data-palette="cream"] .db-files li{color:rgba(242,236,224,0.85)}
+
+  /* Element-card (item 02) — grid de 4 elementos do Project */
+  .element-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  @media (max-width:640px){.element-grid{grid-template-columns:1fr}}
+  .element-card{background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow-xs);display:flex;gap:12px;align-items:flex-start}
+  .element-card .el-num{width:26px;height:26px;border-radius:50%;background:var(--accent2);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;flex-shrink:0}
+  .element-card .el-content{flex:1;min-width:0}
+  .element-card .el-title{font-size:0.76rem;font-weight:700;color:var(--accent2);margin-bottom:4px}
+  .element-card .el-desc{font-size:0.7rem;color:var(--text2);line-height:1.5}
+  .element-card .el-desc strong{color:var(--accent2);font-weight:700}
+
+  /* AP meta grid (duração + modelo, POS-04) */
+  .ap-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+  @media (max-width:640px){.ap-meta-grid{grid-template-columns:1fr}}
+  .duration-card{background:linear-gradient(135deg,var(--accent2) 0%,#0E1A19 100%);border:1px solid var(--gold);border-radius:10px;padding:18px;box-shadow:var(--shadow-sm)}
+  .duration-card .d-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;display:block}
+  .duration-card .d-time{display:block;font-size:1.8rem;font-weight:800;color:#F4F1E3;line-height:1;letter-spacing:-0.02em;margin-bottom:6px}
+  .duration-card .d-sub{font-size:0.7rem;color:rgba(244,241,227,0.75);font-weight:500}
+  [data-palette="cream"] .duration-card .d-time{color:#F2ECE0}
+  [data-palette="cream"] .duration-card .d-sub{color:rgba(242,236,224,0.75)}
+  .model-card{background:#EEEDFE;border:1px solid #6B5B95;border-left:4px solid #6B5B95;border-radius:10px;padding:16px;box-shadow:var(--shadow-xs);color:#1F1B3A}
+  [data-palette="dusk"] .model-card{background:#1F1B3A;border-color:#9B8FCC;color:#E0DBF5}
+  .model-card .m-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#6B5B95;margin-bottom:6px;display:block}
+  [data-palette="dusk"] .model-card .m-label{color:#9B8FCC}
+  .model-card .m-name{display:block;font-size:0.95rem;font-weight:800;color:#3C3489;margin-bottom:6px}
+  [data-palette="dusk"] .model-card .m-name{color:#C4BBF0}
+  .model-card .m-desc{font-size:0.7rem;line-height:1.55}
+  .model-card .m-desc em{font-style:italic;opacity:0.85}
+
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}}
+</style>
+</head>
+<body>
+
+<div id="main-content">
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="https://tutoriais.deltaacademy.ai/logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Project Contas a Pagar Lumina</h2>
+      <p>AP01 &middot; A12 &mdash; IA no Financeiro</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 4 elementos do Project<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Os 4 arquivos de contexto<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> LLM lê, código calcula<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Anatomia do System Prompt<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Sua atividade prática<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step12" onclick="showSection('sec-step12')"><span class="ni-num">12</span> Conexão com o programa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; A12 &mdash; IA no Financeiro &rsaquo; <a href="index.html">Índice</a> &rsaquo; AP01. Project Contas a Pagar Lumina</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP01 &mdash; Project Contas a Pagar Lumina</div>
+
+      <p class="lead-text"><strong>Entregável final:</strong> um <strong>Claude Project</strong> chamado <em>&ldquo;Contas a Pagar &mdash; Lumina&rdquo;</em> configurado com nome, descrição, instruções e quatro arquivos de contexto carregados &mdash; pronto para receber as Skills das próximas atividades práticas (extração de NF, conciliação e painel de divergências).</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdução + Demonstração + Atividade Prática + Desafio</td></tr>
+          <tr><td>Duração</td><td>8 minutos (atividade prática)</td></tr>
+          <tr><td>Ferramenta</td><td>Claude (claude.ai)</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6 (plano gratuito atende)</td></tr>
+          <tr><td>Consumo de mensagens</td><td>Zero &mdash; puro setup via interface</td></tr>
+          <tr><td>Pré-requisito</td><td>Conta no Claude (gratuita ou paga)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O entregável da AP01 e como ele se conecta ao destino final da A12</div>
+
+      <p class="lead-text">Antes de começar, veja o que você vai conquistar ao final desta atividade prática &mdash; e como ela se conecta ao destino final da aula A12.</p>
+
+      <p class="lead-text"><strong>Entregável final da AP01:</strong> Um Claude Project chamado <em>&ldquo;Contas a Pagar &mdash; Lumina&rdquo;</em> configurado com nome, descrição, instruções e quatro arquivos de contexto carregados &mdash; pronto para receber as Skills das próximas atividades práticas.</p>
+
+      <div class="deliverable-banner">
+        <span class="db-tag">Entregável da AP01</span>
+        <div class="db-title">Claude Project &mdash; Contas a Pagar Lumina</div>
+        <div class="db-grid">
+          <div class="db-item">
+            <span class="db-item-num">1</span>
+            <span class="db-item-label">Nome do Project</span>
+            <span class="db-item-value">Contas a Pagar &mdash; Lumina</span>
+          </div>
+          <div class="db-item">
+            <span class="db-item-num">2</span>
+            <span class="db-item-label">Descrição</span>
+            <span class="db-item-value">Automação de extração de NF, conciliação e detecção de divergências da Lumina</span>
+          </div>
+          <div class="db-item">
+            <span class="db-item-num">3</span>
+            <span class="db-item-label">Instruções</span>
+            <span class="db-item-value">&#10003; System Prompt customizado</span>
+          </div>
+          <div class="db-item">
+            <span class="db-item-num">4</span>
+            <span class="db-item-label">Arquivos de contexto</span>
+            <span class="db-item-value">4 arquivos carregados</span>
+          </div>
+          <div class="db-item-full">
+            <span class="db-item-label">Arquivos de contexto carregados</span>
+            <ul class="db-files">
+              <li>plano-fornecedores-lumina.md</li>
+              <li>politica-conciliacao-lumina.md</li>
+              <li>identidade-visual-lumina.md</li>
+              <li>historico-pedidos-lumina.xlsx</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Como esta AP se conecta com o destino final da A12</div>
+        <p>No fim da aula você vai sair com o <strong>Painel de Divergências Lumina</strong> rodando &mdash; peça visual única gerada pelo Claude que sintetiza todas as NFs do mês, % conciliado, divergências priorizadas e alertas de pagamentos duplicados num único arquivo HTML pronto para apresentar à controller. A AP01 é a fundação dessa automação: o Project que você configura agora é o ambiente onde todas as Skills das próximas APs vão operar.</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Para alunos do plano gratuito</div>
+        <p>Esta AP01 foi desenhada para <strong>consumir zero mensagens do Claude</strong>. Todos os materiais (textos para os 3 campos + 4 arquivos de contexto) já estão prontos nesta página &mdash; você só precisa copiar e fazer upload. Isso preserva seu limite de mensagens para as próximas atividades práticas, que sim usam o Claude ativamente.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Os 4 elementos do Project</div>
+      <div class="sec-desc">Os campos que você preenche para criar o Project Contas a Pagar Lumina</div>
+
+      <p class="lead-text">Para criar o Project Contas a Pagar Lumina, você preenche <strong>4 elementos</strong>:</p>
+
+      <div class="element-grid">
+        <div class="element-card">
+          <div class="el-num">1</div>
+          <div class="el-content">
+            <div class="el-title">Nome do Project</div>
+            <div class="el-desc">Como o ambiente vai aparecer na sua lista de Projects (ex: <em>&ldquo;Contas a Pagar &mdash; Lumina&rdquo;</em>).</div>
+          </div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">2</div>
+          <div class="el-content">
+            <div class="el-title">Descrição do Project</div>
+            <div class="el-desc">Texto curto explicando o objetivo do Project &mdash; automação de contas a pagar da Lumina.</div>
+          </div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">3</div>
+          <div class="el-content">
+            <div class="el-title">Instruções (System Prompt)</div>
+            <div class="el-desc">Texto que define como o assistente deve se comportar &mdash; papel de analista de contas a pagar, regras de extração, tolerâncias de conciliação, formato de outputs.</div>
+          </div>
+        </div>
+        <div class="element-card">
+          <div class="el-num">4</div>
+          <div class="el-content">
+            <div class="el-title">Arquivos de contexto</div>
+            <div class="el-desc">Os quatro documentos que o Project consulta em toda conversa: plano de fornecedores, política de conciliação, identidade visual e histórico de pedidos.</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="lead-text">Nesta página, <strong>os 3 primeiros elementos já estão prontos</strong> em blocos copiáveis (você verá no Passo a Passo), e <strong>os 4 arquivos de contexto estão disponíveis para download direto</strong> logo abaixo.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Os 4 arquivos de contexto explicados</div>
+      <div class="sec-desc">Plano de Fornecedores vs Política de Conciliação &mdash; e os 2 arquivos complementares</div>
+
+      <p class="lead-text">Os 3 primeiros elementos do Project são textos simples &mdash; fáceis de entender. <strong>O quarto elemento (arquivos de contexto) merece explicação maior</strong>, porque dois arquivos parecem similares mas têm papéis bem diferentes:</p>
+
+      <div class="compare-grid">
+        <div class="compare-card lumina-green">
+          <div class="compare-label">Plano de Fornecedores</div>
+          <div class="compare-title"><code>plano-fornecedores-lumina.md</code></div>
+          <div class="compare-desc">É a <strong>lista estruturada de todos os fornecedores</strong> que a Lumina paga, organizada por categoria (matéria-prima, embalagem, frete/logística, marketing, administrativo). Pense como o <strong>catálogo de fornecedores</strong> da empresa &mdash; mostra <strong>quem são os fornecedores e em que categoria cada um se encaixa</strong>.</div>
+        </div>
+        <div class="compare-card lumina-coral">
+          <div class="compare-label">Política de Conciliação</div>
+          <div class="compare-title"><code>politica-conciliacao-lumina.md</code></div>
+          <div class="compare-desc">É o <strong>manual de regras</strong> que diz <strong>como decidir se uma NF bate com o pedido</strong> quando há diferenças de valor, prazo ou quantidade. Pense como o <strong>livro de regras do auditor</strong> &mdash; mostra <strong>as decisões difíceis e como resolvê-las</strong>.</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que separar em dois arquivos</div>
+        <p>A Skill da AP03 (conciliação) consulta os dois ao mesmo tempo: o <strong>plano de fornecedores</strong> identifica de quem é a NF e em que categoria classificar, e a <strong>política de conciliação</strong> decide se o valor da NF bate com o pedido dentro da tolerância aceita pela Lumina. Sem o segundo, o Claude inventa critérios próprios &mdash; comprometendo a consistência do fechamento mensal.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Identidade Visual &mdash; <code>identidade-visual-lumina.md</code></h3>
+        <p>Define a estética minimalismo wellness premium da Lumina: paleta de cores (branco quente, verde-musgo, coral terroso), tipografia (Fraunces e Inter), princípios de design. <strong>Será usada principalmente na AP04</strong> quando a Skill gerar o painel HTML de divergências.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Histórico de Pedidos &mdash; <code>historico-pedidos-lumina.xlsx</code></h3>
+        <p>Planilha leve com 1 aba contendo ~30 pedidos do mês vigente que a Lumina fez aos seus fornecedores recorrentes. Cada linha tem: número do pedido, fornecedor, CNPJ, categoria, data de emissão, valor esperado, prazo de pagamento, status.</p>
+        <p style="margin-top:8px">Esse arquivo é a <strong>fonte de verdade</strong> que a Skill da AP03 vai consultar para cruzar com as NFs recebidas e detectar divergências.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">04.</span> Conceito &mdash; LLM lê, código calcula</div>
+      <div class="sec-desc">A regra que separa quem automatiza bem de quem não automatiza</div>
+
+      <p class="lead-text">Quando você pede para um LLM <em>&ldquo;calcular o valor total da NF e comparar com o pedido&rdquo;</em>, ele faz isso por aproximação de tokens &mdash; não por aritmética real. Em valores baixos costuma acertar, mas em centavos críticos ele pode errar a terceira casa decimal, arredondar silenciosamente, ou inventar um total plausível mas errado.</p>
+
+      <p class="lead-text">A regra que separa quem automatiza bem de quem não automatiza: <strong>LLM extrai e estrutura, código calcula e compara.</strong></p>
+
+      <div class="compare-grid">
+        <div class="compare-card neg">
+          <div class="compare-label">Pedir pro LLM calcular</div>
+          <div class="compare-title">&ldquo;Some os itens dessa NF e me diga se bate com o pedido.&rdquo;</div>
+          <div class="compare-desc">O LLM responde uma soma plausível, mas pode errar centavos. Em conciliação financeira, <strong>centavo errado = divergência falsa ou pagamento duplicado</strong>.</div>
+        </div>
+        <div class="compare-card pos">
+          <div class="compare-label">Dividir o trabalho</div>
+          <div class="compare-title">&ldquo;Extraia os itens da NF em JSON estruturado. Depois rode code execution para somar e comparar.&rdquo;</div>
+          <div class="compare-desc">O LLM faz o que ele faz bem (leitura e estruturação). O código faz o que ele faz bem (aritmética exata). Resultado: <strong>zero erro de cálculo</strong>.</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Analogia do escriturário e do contador</div>
+        <p>É a diferença entre um <strong>escriturário</strong> que lê documentos manuscritos e organiza fichas, e um <strong>contador</strong> que faz as contas baterem no centavo. Um lê. O outro calcula. <strong>Misturar os dois papéis</strong> é o erro clássico de quem começa a automatizar com IA. No Project Contas a Pagar Lumina, <strong>o Claude é o escriturário</strong> (lê NFs, extrai campos, estrutura em JSON) e <strong>o code execution é o contador</strong> (soma, compara, valida tolerâncias).</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que você vai ver</div>
+      <div class="sec-desc">Fluxo completo de configuração do Project Contas a Pagar Lumina</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstração</div>
+        <p>A demonstração a seguir é <strong>apenas para você acompanhar</strong> durante a aula expositiva. Você não precisa configurar nada agora &mdash; você terá sua própria atividade prática logo depois desta seção, com os materiais já prontos.</p>
+      </div>
+
+      <p class="lead-text">O professor demonstra o fluxo completo de configuração do Project Contas a Pagar Lumina:</p>
+
+      <div class="overview-card">
+        <h3>Etapa 1 &mdash; Apresenta os 4 elementos</h3>
+        <p>O professor mostra os 3 textos pré-prontos (Nome, Descrição, Instruções) e os 4 arquivos de contexto disponíveis para download nesta página da AP01. Explica que <strong>nenhum desses materiais precisa ser gerado pelo aluno</strong> &mdash; todos foram preparados pela Delta para economizar mensagens do plano gratuito do Claude.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Etapa 2 &mdash; Cria o Project no Claude</h3>
+        <p>O professor abre a área de Projects no Claude, clica em <strong>+ Novo projeto</strong> e preenche os campos copiando e colando os 3 textos diretamente desta página da AP01.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Etapa 3 &mdash; Faz upload dos arquivos de contexto</h3>
+        <p>Na seção Arquivos do Project recém-criado, o professor faz upload dos 4 arquivos baixados desta página (3 <code>.md</code> + 1 <code>.xlsx</code>). Em segundos o Project aparece configurado, pronto para receber as Skills das próximas APs.</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que o material já vem pronto</div>
+        <p>A geração desses 4 arquivos do zero no Claude consumiria entre 4 e 6 mensagens &mdash; quase metade do limite diário do plano gratuito. Como a aula tem mais 3 atividades práticas pela frente (AP02, AP03 e AP04), preservar essas mensagens é essencial. Você terá uma experiência muito melhor focando seus créditos nas Skills, não na geração de contexto.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> Anatomia de um System Prompt de Project</div>
+      <div class="sec-desc">Estrutura em 5 blocos numerados que será carregada nas Instruções do Project</div>
+
+      <p class="lead-text">O elemento mais rico dos 4 é a <strong>Instrução do Project</strong> (o System Prompt). É ele que define o &ldquo;comportamento&rdquo; do assistente em todas as conversas dentro do Project. Veja a estrutura usada no System Prompt da Lumina que você vai copiar daqui a pouco:</p>
+
+      <div class="overview-card">
+        <h3>Estrutura do System Prompt &mdash; 5 blocos</h3>
+        <ul>
+          <li><strong>1. Identidade</strong> &mdash; papel do assistente (analista de contas a pagar sênior da Lumina) + tom (direto, preciso, wellness premium).</li>
+          <li><strong>2. Contexto da empresa</strong> &mdash; wellness em crescimento, 3 produtos de bala de goma funcional, canal online + 2 lojas físicas em SP e RJ, ~200 NFs/mês.</li>
+          <li><strong>3. Diretrizes de extração de NF</strong> &mdash; sempre JSON estruturado, nunca calcular sem code execution, sempre validar CNPJ contra o plano.</li>
+          <li><strong>4. Diretrizes de conciliação</strong> &mdash; tolerância de 1%, escalada acima de R$ 5.000, detecção de duplicidade por CNPJ + número da NF + valor.</li>
+          <li><strong>5. Formato de output</strong> &mdash; JSON para extração, tabela para conciliação, HTML para painel.</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que esse formato</div>
+        <p>System Prompts em blocos numerados (1. Identidade, 2. Contexto, etc.) são consistentemente seguidos pelo Claude em conversas longas. Bullet points dispersos ou parágrafos corridos têm aderência menor &mdash; a estrutura numerada serve de <strong>&ldquo;âncora&rdquo;</strong> que o modelo consulta a cada nova mensagem.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">3 sinais que diferenciam um Project com contexto carregado de um chat genérico</div>
+
+      <ul class="observation-list">
+        <li><strong>1.</strong> Os 3 textos (Nome, Descrição, Instruções) são <strong>copiados direto da página da AP01</strong> &mdash; sem precisar gerar nada no Claude.</li>
+        <li><strong>2.</strong> Os 4 arquivos de contexto vêm <strong>prontos para download</strong> na página da AP01 &mdash; economizando até 6 mensagens que seriam necessárias para gerá-los do zero no Claude.</li>
+        <li><strong>3.</strong> Após a configuração, o Project responde <strong>com contexto Lumina carregado em toda conversa</strong> &mdash; basta perguntar <em>&ldquo;qual a categoria do fornecedor CNPJ 78.901.234/0001-56?&rdquo;</em> para ver o Claude consultar o plano de fornecedores automaticamente.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade prática</div>
+      <div class="sec-desc">8 minutos &middot; setup puro via interface &middot; zero mensagens consumidas</div>
+
+      <p class="lead-text">Você vai criar agora o <strong>Project Contas a Pagar Lumina</strong> &mdash; o ambiente que vai abrigar todas as Skills das próximas atividades práticas.</p>
+
+      <div class="ap-meta-grid">
+        <div class="duration-card">
+          <span class="d-label">Duração estimada</span>
+          <span class="d-time">8 min</span>
+          <span class="d-sub">0 mensagens &middot; só configuração</span>
+        </div>
+        <div class="model-card">
+          <span class="m-label">Modelo recomendado</span>
+          <span class="m-name">Claude Sonnet 4.6</span>
+          <span class="m-desc">Nesta AP01 você não envia nenhuma mensagem ao Claude &mdash; apenas configura o Project via interface. Qualquer modelo serve. Mas configure o Project pensando no Sonnet 4.6, que é o padrão do plano gratuito usado nas APs seguintes.<br><br><em>Melhor prática (plano pago): se você tem acesso ao plano pago, o Project pode usar o Claude Opus 4.7 nas APs seguintes &mdash; entrega resultados mais sofisticados em extração e conciliação.</em></span>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Zero mensagens</div>
+        <p>Esta AP é 100% de configuração via interface &mdash; você não envia nenhuma mensagem ao Claude. Os 3 textos para os campos do Project estão prontos para copiar nesta página, e os 4 arquivos de contexto estão prontos para download. Você só executa: <strong>copiar, colar, fazer upload</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
+      <div class="sec-desc">7 passos &mdash; baixar arquivos, criar Project, colar 3 textos e fazer upload</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe os 4 arquivos de contexto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique nos 4 botões de download abaixo e salve todos no seu computador. Você precisará deles no Passo 7. <em>(1 min)</em></p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Material da AP01</div>
+            <a class="dl-btn" href="plano-fornecedores-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">plano-fornecedores-lumina.md</span>
+                <span class="dl-desc">Lista estruturada dos fornecedores da Lumina por categoria</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="politica-conciliacao-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">politica-conciliacao-lumina.md</span>
+                <span class="dl-desc">Manual de regras de conciliação de NFs</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="identidade-visual-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">identidade-visual-lumina.md</span>
+                <span class="dl-desc">Paleta, tipografia e princípios visuais da marca</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="historico-pedidos-lumina.xlsx" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">historico-pedidos-lumina.xlsx</span>
+                <span class="dl-desc">Planilha com 30 pedidos do mês vigente</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Acesse a área de Projects no Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra <code>claude.ai</code> no navegador, faça login se necessário, e no menu lateral clique em <strong>Projetos</strong> (ou <strong>Projects</strong> dependendo do idioma da interface). <em>(15 seg)</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Crie um novo Project</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na área de Projects, clique no botão <strong>+ Novo projeto</strong> (ou <strong>+ New project</strong>) para abrir o formulário de criação. <em>(15 seg)</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Cole o Nome do Project no Campo 1</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> do bloco abaixo e cole no campo <strong>&ldquo;No que você está trabalhando?&rdquo;</strong> do formulário. <em>(30 seg)</em></p>
+          <div class="copy-wrap">
+            <span class="copy-label">Texto para o Campo 1 &mdash; Nome do Project</span>
+            <div class="copy-block" id="bloco-nome">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-nome-text').textContent)">Copiar</button>
+<span id="bloco-nome-text">Contas a Pagar — Lumina</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Cole a Descrição do Project no Campo 2</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use o botão <strong>Copiar</strong> do bloco abaixo e cole no campo <strong>&ldquo;O que você quer realizar?&rdquo;</strong> do formulário. Em seguida, clique em <strong>Criar projeto</strong> para finalizar a configuração inicial. <em>(30 seg)</em></p>
+          <div class="copy-wrap">
+            <span class="copy-label">Texto para o Campo 2 &mdash; Descrição do Project</span>
+            <div class="copy-block" id="bloco-desc">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-desc-text').textContent)">Copiar</button>
+<span id="bloco-desc-text">Project de automação de contas a pagar da Lumina (empresa de wellness premium). Abriga as Skills de extração de notas fiscais, conciliação contra pedidos e extrato bancário, detecção de divergências e geração do painel mensal executivo de contas a pagar.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Cole as Instruções do Project no Campo 3</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Project recém-criado, localize a seção <strong>Instruções</strong> e clique em <strong>Editar Instruções</strong>. Use o botão <strong>Copiar</strong> do bloco abaixo e cole no editor. Em seguida, clique em <strong>Salvar instruções</strong>. <em>(1 min)</em></p>
+          <div class="copy-wrap">
+            <span class="copy-label">Texto para o Campo 3 &mdash; Instruções do Project (System Prompt completo)</span>
+            <div class="copy-block" id="bloco-sp">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('bloco-sp-text').textContent)">Copiar</button>
+<span id="bloco-sp-text"># 1. IDENTIDADE
+
+Você é o assistente de Contas a Pagar da Lumina, atuando como analista financeiro sênior do departamento. Seu tom é direto, preciso e alinhado à energia wellness premium da marca: profissional sem rigidez, técnico sem jargão desnecessário.
+
+# 2. CONTEXTO DA EMPRESA
+
+A Lumina é uma empresa em crescimento no segmento de wellness premium. Vende balas de goma funcionais para pessoas que praticam exercícios físicos. Portfólio: 3 produtos (bala pré-treino, bala com creatina, bala com whey protein). Canais de venda: e-commerce próprio (canal principal) + 2 lojas físicas próprias (uma em São Paulo, uma no Rio de Janeiro). Volume de notas fiscais a pagar: aproximadamente 200 NFs/mês. Fornecedores divididos em 5 categorias: Matéria-Prima, Embalagem, Frete e Logística, Marketing, Administrativo.
+
+# 3. DIRETRIZES DE EXTRAÇÃO DE NF
+
+- Sempre extraia os campos da NF em JSON estruturado, com tipos explícitos (string para CNPJ e número da NF, number para valores monetários, date no formato ISO para datas).
+- NUNCA calcule o valor total a partir dos itens individuais sem usar code execution. LLM não soma centavo confiavelmente.
+- Sempre valide o CNPJ extraído contra o arquivo plano-fornecedores-lumina.md antes de prosseguir. Se o CNPJ não estiver cadastrado, marque a NF como "Fornecedor não cadastrado".
+- Para NFs em PDF ou imagem, use a capacidade de visão do Claude. Para NFs em XML, extraia diretamente dos campos estruturados.
+
+# 4. DIRETRIZES DE CONCILIAÇÃO
+
+- Tolerância de valor: até 1% de diferença entre NF e pedido = conciliado automaticamente. Acima disso, marque como exceção.
+- Tolerância de prazo: até 5 dias úteis após a data prevista no pedido = OK. Acima disso, marque como exceção de prazo.
+- Escalada urgente: divergência acima de R$ 5.000 em valor absoluto vai para a controller, prioridade alta.
+- Detecção de duplicidade: combinação idêntica de CNPJ + número da NF + valor (tolerância R$ 0,01) em janela de 30 dias = bloqueio automático.
+- Toda comparação numérica é feita via code execution, nunca por estimativa textual.
+
+# 5. FORMATO DE OUTPUT
+
+- Extração de NF: JSON estruturado (puro, sem markdown ao redor), pronto para consumo programático.
+- Relatório de conciliação: tabela markdown com colunas Nº NF, Fornecedor, Valor NF, Valor Pedido, Status, Categoria.
+- Painel de divergências: HTML autocontido com paleta da Lumina (consultar identidade-visual-lumina.md), pronto para apresentação à liderança.
+- Mensagens conversacionais: prosa direta, sem florear, com bullets quando há mais de 3 itens.
+
+# 6. FERRAMENTAS E SKILLS DESTE PROJECT
+
+Este Project usará as seguintes capacidades nas APs seguintes:
+- Visão do Claude (leitura de NFs em PDF e imagem)
+- Code execution (cálculos, somas, validações numéricas)
+- Skills customizadas (extração, conciliação, painel)
+- Tarefas agendadas via Cowork (conciliação semanal automática)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Faça upload dos 4 arquivos de contexto no Campo 4</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na seção <strong>Arquivos</strong> do Project, clique no ícone <strong>+</strong> e selecione <strong>Carregar do aparelho</strong>. Faça upload dos 4 arquivos que você baixou no Passo 1 (3 <code>.md</code> + 1 <code>.xlsx</code>) &mdash; todos de uma vez ou um a um. <em>(1 min)</em></p>
+          <p class="step-card-desc"><strong>Validação visual:</strong> confirme que os 4 arquivos aparecem listados na seção Arquivos do Project.</p>
+          <div class="warning-box">
+            <div class="warning-label">Validação final</div>
+            <p>Antes de seguir para a AP02, abra uma nova conversa dentro do Project e digite: <em>&ldquo;Liste as 5 categorias de fornecedores cadastradas no plano da Lumina.&rdquo;</em> Se o Claude responder corretamente (Matéria-Prima, Embalagem, Frete e Logística, Marketing, Administrativo), o Project está funcionando. Se responder algo genérico ou pedir o plano, revise o upload dos arquivos no Passo 7.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">10.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Checklist do entregável + ponte para a AP02</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Um <strong>Claude Project chamado &ldquo;Contas a Pagar &mdash; Lumina&rdquo;</strong> completamente configurado.</li>
+          <li><strong>Nome e Descrição</strong> customizados refletindo o caso da Lumina.</li>
+          <li><strong>Instruções (System Prompt)</strong> com 6 blocos posicionando o assistente como analista de contas a pagar sênior da Lumina.</li>
+          <li><strong>4 arquivos de contexto</strong> carregados &mdash; plano de fornecedores por categoria, política de conciliação, identidade visual minimalismo wellness e histórico de 30 pedidos do mês.</li>
+          <li><strong>Validação funcional</strong> realizada (Claude listou as 5 categorias corretamente).</li>
+          <li>Um <strong>ambiente pronto para receber as Skills</strong> das próximas atividades práticas (extração de NF, conciliação e painel de divergências).</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo</div>
+        <p>Na próxima atividade prática (<strong>AP02</strong>) você vai criar a <strong>primeira Skill dentro do contexto deste Project: a Skill de Extração de NF</strong>. Ela vai pegar uma nota fiscal em PDF ou imagem e devolver um JSON estruturado com todos os campos (fornecedor, CNPJ, valor total, itens, datas), pronto para a Skill de conciliação da AP03 consumir. <strong>Mantenha o Project aberto</strong> &mdash; ele é o palco de toda a aula a partir daqui.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Replique o Project Contas a Pagar para a sua realidade</div>
+
+      <p class="lead-text">Agora que você dominou o conceito do Project Contas a Pagar com o caso da Lumina, replique exatamente o mesmo processo para a <strong>realidade da sua empresa</strong>:</p>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Adapte os 3 textos pré-prontos</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Adapte os 3 textos pré-prontos desta AP01 (Nome, Descrição, Instruções) trocando todas as menções à Lumina pelo perfil da sua empresa real:</p>
+          <ul class="check-list">
+            <li><strong>Setor</strong> &mdash; wellness &rarr; setor da sua empresa</li>
+            <li><strong>Estrutura</strong> &mdash; 3 produtos + 2 lojas físicas &rarr; estrutura real da sua empresa</li>
+            <li><strong>Volume de NFs/mês</strong> &mdash; ~200 NFs &rarr; volume real do seu departamento de contas a pagar</li>
+            <li><strong>Categorias de fornecedores</strong> &mdash; matéria-prima/embalagem/frete/marketing/admin &rarr; categorias reais da sua empresa</li>
+            <li><strong>Tolerância de conciliação</strong> &mdash; 1% &rarr; tolerância real definida pela sua controller</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Adapte os 4 arquivos de contexto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Baixe os arquivos da Lumina como base e substitua o conteúdo pelos dados reais da sua empresa:</p>
+          <ul class="check-list">
+            <li><code>plano-fornecedores-[sua-empresa].md</code> &mdash; preencha com os fornecedores reais cadastrados, organizados nas categorias da sua empresa</li>
+            <li><code>politica-conciliacao-[sua-empresa].md</code> &mdash; substitua as regras pelas políticas reais (tolerâncias, escalas, prazos de pagamento)</li>
+            <li><code>identidade-visual-[sua-empresa].md</code> &mdash; substitua paleta, tipografia e princípios pela identidade real da sua marca</li>
+            <li><code>historico-pedidos-[sua-empresa].xlsx</code> &mdash; substitua a planilha pelos pedidos reais do último mês (exportar do ERP)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Crie um novo Project no Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Claude, crie um Project chamado <em>&ldquo;Contas a Pagar &mdash; [Nome da sua empresa]&rdquo;</em> e configure os 4 campos com o conteúdo adaptado.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Faça upload dos 4 arquivos customizados</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Carregue os 4 arquivos adaptados na seção <strong>Arquivos</strong> do Project recém-criado.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Valide com 1 fornecedor real</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o Project e peça ao Claude para identificar a categoria de 1 fornecedor real consultando o plano que você acabou de carregar.</p>
+        </div>
+      </div>
+
+      <div class="overview-card">
+        <h3>Resultado esperado</h3>
+        <p>Você terá um Project Contas a Pagar <strong>real da sua empresa</strong>, pronto para receber as Skills das próximas APs aplicadas ao seu contexto.</p>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Tempo estimado para o desafio</div>
+        <p><strong>45 a 60 minutos</strong> &mdash; a maior parte é adaptar o plano de fornecedores e exportar o histórico de pedidos real do seu ERP.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step12')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="section" id="sec-step12">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">12.</span> Conexão com o programa</div>
+      <div class="sec-desc">Por que esse desafio é o passo 1 de uma jornada de 4 semanas</div>
+
+      <div class="insight-box">
+        <div class="insight-label">Por que esse desafio é o passo 1 de uma jornada de 4 semanas</div>
+        <p>Cada AP desta aula tem um desafio na sua empresa. Em conjunto, esses 4 desafios formam um <strong>plano de implementação de 4 semanas</strong> do pipeline de contas a pagar com IA na empresa real. Ao final da quarta semana, você terá: Project real da empresa, Skills de extração de NF, conciliação e painel de divergências rodando com dados reais, e tarefa agendada Cowork de conciliação semanal automática. <strong>Comece pela AP01 esta semana.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step11')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /main-content -->
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-a12-contas-a-pagar-ap01";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 13;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
