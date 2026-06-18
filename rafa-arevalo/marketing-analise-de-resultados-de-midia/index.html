@@ -3,38 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketing &mdash; Análise de Resultados de Mídia &middot; Delta Academy</title>
+<title>Marketing &mdash; An&aacute;lise de Resultados de M&iacute;dia &middot; Delta Academy</title>
 <link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-
-  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
-  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
-  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#1F3331;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#0F1918;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
 
   .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
   .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
   .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
-  .container{max-width:620px;margin:0 auto}
-  .header-bar{background:var(--accent2);border-radius:14px;padding:26px 28px 22px;margin-bottom:32px}
-  .header-bar h2{font-size:0.72rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;font-weight:600;margin-bottom:6px}
-  .header-bar h1{font-size:1.3rem;font-weight:800;color:var(--bg);letter-spacing:0.02em}
-  .header-bar p{font-size:0.74rem;color:var(--bg);margin-top:6px;font-weight:600;opacity:0.85}
-  .section-label{font-size:1.15rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 14px;padding-left:4px}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:40px 24px;-webkit-font-smoothing:antialiased;transition:background 200ms ease,color 200ms ease}
+  .container{max-width:680px;margin:0 auto}
+
+  .header-bar{background:var(--accent2);border-radius:14px;padding:34px 28px 28px;margin-bottom:36px;text-align:center}
+  .header-bar .hb-title{font-size:1.55rem;font-weight:800;color:var(--bg);text-transform:uppercase;letter-spacing:0.05em;line-height:1.18}
+  .header-bar .hb-brand{font-size:0.7rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.22em;margin-top:12px}
+
+  .section-label{font-size:1.1rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent);margin:0 0 18px;padding-left:4px}
+
+  .card{display:block;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:14px;box-shadow:var(--shadow-xs);text-decoration:none;color:inherit;transition:all 0.2s}
+  .card:hover{transform:translateY(-1px);box-shadow:var(--shadow-sm);border-color:var(--accent-border)}
+  .card-head{background:var(--accent2);padding:13px 22px;display:flex;align-items:center;gap:14px}
+  .card-num{color:var(--gold);font-size:0.66rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;flex-shrink:0;font-family:'Montserrat',sans-serif}
+  .card-title{color:var(--bg);font-size:0.92rem;font-weight:700;letter-spacing:-0.01em;line-height:1.3}
+  .card-body{background:#FFFFFF;color:#1A1A1A;padding:18px 22px}
+  [data-palette="dusk"] .card-body{background:#1A2927;color:#C7CEC1}
+  [data-palette="cream"] .card-body{background:#FBF7EC;color:#4A4538}
+  .card-desc{font-size:0.78rem;line-height:1.6}
+  .card-desc strong{color:#1F3331;font-weight:700}
+  [data-palette="dusk"] .card-desc strong{color:var(--gold)}
+  .card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 6px;border-radius:3px;color:#1F3331}
+  [data-palette="dusk"] .card-desc code{color:var(--gold)}
 
   .footer{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid var(--border)}
   .footer p{font-size:0.68rem;color:var(--text3);line-height:1.7}
   .footer a{color:var(--accent);text-decoration:none;font-weight:600}
-
 </style>
 </head>
 <body>
-
-<div id="main-content">
 
 <button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
   <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -42,78 +52,75 @@
 
 <div class="container">
   <div class="header-bar">
-    <h2>Delta Academy &middot; Delta Skills 2026</h2>
-    <h1>Marketing &mdash; Análise de Resultados de Mídia</h1>
-    <p>Operação semanal de mídia paga &middot; Caso Lumina</p>
+    <h1 class="hb-title">Marketing &mdash; An&aacute;lise de Resultados de M&iacute;dia</h1>
+    <div class="hb-brand">Delta Academy</div>
   </div>
 
-  <div class="section-label">Aulas</div>
+  <div class="section-label">Atividades pr&aacute;ticas</div>
 
-  <a class="card" href="tutorial-01-setup-project-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">01</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP01 &mdash; Setup do Project &middot; Lumina</span>
+  <a class="card" href="tutorial-01-setup-project-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP01</span>
+      <span class="card-title">Setup do Project &middot; Lumina</span>
     </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">Configure o Claude Project &ldquo;Resultados de Mídia &mdash; Lumina&rdquo; com nome, descrição, System Prompt e 2 arquivos de contexto. Setup via interface, sem consumir mensagens do plano gratuito.</div>
+    <div class="card-body">
+      <div class="card-desc">Configure o Claude Project <strong>&ldquo;Resultados de M&iacute;dia &mdash; Lumina&rdquo;</strong> com nome, descri&ccedil;&atilde;o, System Prompt e 2 arquivos de contexto. Setup via interface, sem consumir mensagens do plano gratuito.</div>
     </div>
   </a>
 
-  <a class="card" href="tutorial-02-consolidacao-midia-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">02</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP02 &mdash; Consolidação dos resultados de mídia</span>
+  <a class="card" href="tutorial-02-consolidacao-midia-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP02</span>
+      <span class="card-title">Consolida&ccedil;&atilde;o dos resultados de m&iacute;dia</span>
     </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">Adicione a Skill <code>consolidar-midia-lumina</code> na sua conta e gere a consolidação executiva da semana 12&ndash;18 mai 2026 com 1 prompt de invocação. 4 partes: tabela por plataforma + por campanha + tráfego GA4 + comentário.</div>
-    </div>
-  </a>
-
-  <a class="card" href="tutorial-03-extracao-receita-crm-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">03</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP03 &mdash; Extração da receita real do CRM</span>
-    </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">Adicione a Skill <code>extrair-receita-crm-lumina</code> na conta e apure a receita real da semana via CRM com atribuição first-click. 4 partes: receita por canal + matriz canal &times; loja + canais pagos isolados + observação. Prepara o aha da AP04.</div>
+    <div class="card-body">
+      <div class="card-desc">Adicione a Skill <code>consolidar-midia-lumina</code> na sua conta e gere a consolida&ccedil;&atilde;o executiva da semana 12&ndash;18 mai 2026 com 1 prompt de invoca&ccedil;&atilde;o. 4 partes: tabela por plataforma + por campanha + tr&aacute;fego GA4 + coment&aacute;rio.</div>
     </div>
   </a>
 
-  <a class="card" href="tutorial-04-roas-real-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">04</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP04 &mdash; Cálculo do ROAS real e comentário executivo</span>
+  <a class="card" href="tutorial-03-extracao-receita-crm-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP03</span>
+      <span class="card-title">Extra&ccedil;&atilde;o da receita real do CRM</span>
     </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">O momento <strong>aha</strong> da aula. Skill <code>calcular-roas-real-lumina</code> cruza gasto pixel (AP02) com receita CRM (AP03) e gera reconciliation report: tabela cruzada, semáforo vs metas, comentário executivo em bullets e 3 bullets para Slack.</div>
-    </div>
-  </a>
-
-  <a class="card" href="tutorial-05-painel-html-semanal-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">05</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP05 &mdash; Painel HTML Semanal</span>
-    </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">A história da semana vira peça visual. Prompt embutido de ~80 linhas pede ao Claude um artefato HTML autocontido com hero metrics, gráfico pixel × real e recomendação em coral &mdash; identidade visual da Lumina aplicada automaticamente.</div>
+    <div class="card-body">
+      <div class="card-desc">Adicione a Skill <code>extrair-receita-crm-lumina</code> na conta e apure a receita real da semana via CRM com atribui&ccedil;&atilde;o first-click. 4 partes: receita por canal + matriz canal &times; loja + canais pagos isolados + observa&ccedil;&atilde;o. Prepara o aha da AP04.</div>
     </div>
   </a>
 
-  <a class="card" href="tutorial-06-cowork-automacao-semanal-lumina.html" style="display:block;text-decoration:none;margin-bottom:14px;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs);border:1px solid var(--border)">
-    <div style="background:var(--card-tag-bg);padding:12px 18px;display:flex;align-items:baseline;gap:10px">
-      <span style="font-size:1.1rem;font-weight:800;opacity:0.3;color:var(--card-tag-fg)">06</span>
-      <span style="font-size:0.95rem;font-weight:700;color:var(--card-tag-fg)">AP06 &mdash; Cowork: automação semanal</span>
+  <a class="card" href="tutorial-04-roas-real-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP04</span>
+      <span class="card-title">C&aacute;lculo do ROAS real e coment&aacute;rio executivo</span>
     </div>
-    <div style="background:#FFFFFF;padding:14px 18px">
-      <div style="font-size:0.76rem;color:#4A4A4A;line-height:1.5">Fecha a aula A13. Tarefa Agendada do Cowork (plano pago) ou playbook manual (plano gratuito) &mdash; pipeline rodando toda segunda 8h. Inclui Desafio de 5h para replicar tudo na sua empresa real.</div>
+    <div class="card-body">
+      <div class="card-desc">O momento <strong>aha</strong> da aula. Skill <code>calcular-roas-real-lumina</code> cruza gasto pixel (AP02) com receita CRM (AP03) e gera reconciliation report: tabela cruzada, sem&aacute;foro vs metas, coment&aacute;rio executivo em bullets e 3 bullets para Slack.</div>
+    </div>
+  </a>
+
+  <a class="card" href="tutorial-05-painel-html-semanal-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP05</span>
+      <span class="card-title">Painel HTML Semanal</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">A hist&oacute;ria da semana vira pe&ccedil;a visual. Prompt embutido de ~80 linhas pede ao Claude um artefato HTML autocontido com hero metrics, gr&aacute;fico pixel &times; real e recomenda&ccedil;&atilde;o em coral &mdash; identidade visual da Lumina aplicada automaticamente.</div>
+    </div>
+  </a>
+
+  <a class="card" href="tutorial-06-cowork-automacao-semanal-lumina.html">
+    <div class="card-head">
+      <span class="card-num">AP06</span>
+      <span class="card-title">Cowork: automa&ccedil;&atilde;o semanal</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">Fecha a aula A13. Tarefa Agendada do Cowork (plano pago) ou playbook manual (plano gratuito) &mdash; pipeline rodando toda segunda 8h. Inclui Desafio de 5h para replicar tudo na sua empresa real.</div>
     </div>
   </a>
 
   <div class="footer">
     <p><a href="https://deltaacademy.com.br">deltaacademy.com.br</a> &middot; Delta Academy &middot; 2026</p>
   </div>
-</div>
-
 </div>
 
 <script>
