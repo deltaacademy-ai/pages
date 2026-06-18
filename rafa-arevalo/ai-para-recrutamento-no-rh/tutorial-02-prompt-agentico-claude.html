@@ -162,9 +162,14 @@
   .site-link .sl-name{font-size:0.82rem;font-weight:700;color:var(--accent2);margin-bottom:1px}
   .site-link .sl-url{font-size:0.66rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
   .site-link .sl-arrow{font-size:0.9rem;color:var(--accent);font-weight:800;flex-shrink:0}
-  /* Print-placeholder */
+  /* Print-placeholder (quando ainda não tem imagem) */
   .print-placeholder{background:var(--ficha-td1-bg);border:1px dashed var(--border2);border-radius:8px;padding:18px 16px;margin:10px 0;text-align:center;font-size:0.7rem;color:var(--text3);font-style:italic}
   .print-placeholder strong{display:block;color:var(--accent2);font-style:normal;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px}
+  /* Scribehow print embutido */
+  .scribe-print{margin:12px 0;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs)}
+  .scribe-print img{width:100%;height:auto;display:block;background:#FFF}
+  .scribe-print .sp-caption{padding:8px 12px;font-size:0.66rem;color:var(--text3);background:var(--ficha-td1-bg);border-top:1px solid var(--border);font-style:italic;line-height:1.5}
+  .scribe-print .sp-caption strong{display:inline;color:var(--accent2);font-style:normal;font-weight:700;letter-spacing:0.04em;margin-right:6px}
   /* Gerador interativo de prompt */
   .prompt-gen{background:var(--white);border:1px solid var(--gold);border-radius:10px;padding:18px;margin:14px 0;box-shadow:var(--shadow-sm)}
   .prompt-gen .pg-head{font-size:0.74rem;font-weight:800;color:var(--accent2);margin-bottom:4px;letter-spacing:-0.01em}
@@ -566,10 +571,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
           <p class="step-card-desc">No primeiro campo, digite o nome da empresa onde voc&ecirc; est&aacute; abrindo a vaga (geralmente a sua empresa ou a empresa do cliente para quem voc&ecirc; est&aacute; conduzindo o hiring). <span class="time">(15 seg)</span></p>
           <p class="step-card-desc"><strong>Detalhamento:</strong> esse nome vai aparecer no prompt agentico para que o Manus AI customize todos os 7 artefatos &agrave; realidade dessa empresa espec&iacute;fica.</p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-02.png</strong>
-            Clique no campo &quot;Nome da empresa em que a vaga est&aacute; aberta&quot; do gerador
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/136da853-964d-46df-8de2-6fb334ea225b/sps-redacted-cc69d0c3f836434dbfbf370176e3367c_ee6ac2878eeb4aa782a57e9db8dfdd84_text_export.jpeg" alt="Clique no campo Nome da empresa em que a vaga est&aacute; aberta" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-02</strong>Clique no campo &quot;Nome da empresa em que a vaga est&aacute; aberta&quot; do gerador.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -579,10 +584,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
           <p class="step-card-desc">No campo grande (textarea), cole o conte&uacute;do que voc&ecirc; copiou no fim da AP01 (use <code>Cmd+V</code> no Mac ou <code>Ctrl+V</code> no Windows). <span class="time">(15 seg)</span></p>
           <p class="step-card-desc"><strong>Detalhamento:</strong> conforme voc&ecirc; cola, o meta-prompt na pr&eacute;-visualiza&ccedil;&atilde;o se atualiza ao vivo, com o resultado embarcado no final. Se o conte&uacute;do for muito longo, a pr&eacute;-visualiza&ccedil;&atilde;o mostra um resumo com a contagem de caracteres &mdash; mas o prompt copiado leva o texto completo.</p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-03.png</strong>
-            Cmd+V para colar resultado do Perplexity na textarea
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/ebe05b25-ef71-4662-8260-4a17c701e55d/sps-redacted-bae10d747cf842e79c81ae799cdd9f6a_4640cf167b734d9cab9662067c508a69_text_export.jpeg" alt="Cmd+V para colar resultado do Perplexity na textarea" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-03</strong>Cmd+V para colar o resultado do Perplexity na textarea.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -591,10 +596,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
         <div class="step-card-body">
           <p class="step-card-desc">Clique no bot&atilde;o <strong>Copiar prompt</strong> do gerador. Aparece a mensagem &quot;Copiado! Cole agora no Claude (modelo Sonnet 4.6).&quot; <span class="time">(10 seg)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-04.png</strong>
-            Bot&atilde;o &quot;Copiar meta-prompt&quot; do gerador com feedback de sucesso
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/caec2be3-a152-4553-93c9-8e00337379e4/sps-redacted-43002def30d244718a27422f97c8fdfa_5095a9ca52f64396a04f040e2d584e01_text_export.jpeg" alt="Bot&atilde;o Copiar meta-prompt do gerador com feedback de sucesso" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-04</strong>Bot&atilde;o &quot;Copiar meta-prompt&quot; do gerador com feedback de sucesso.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -614,10 +619,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
             <span class="sl-arrow">&rarr;</span>
           </a>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-05.png</strong>
-            Aba do Claude.ai aberta no navegador
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/1062b53d-6e38-4be0-a8e1-864b7f32c448/sps-redacted-ee172f3e917e4b388531e32da557e1f4_a7ace43413094a2fb49500beda62b04d_text_export.jpeg" alt="Aba do Claude.ai aberta no navegador" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-05</strong>Aba do Claude.ai aberta no navegador.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -626,10 +631,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
         <div class="step-card-body">
           <p class="step-card-desc">No topo da tela do Claude, verifique se o modelo selecionado &eacute; <strong>Claude Sonnet 4.6</strong>. Se voc&ecirc; tem plano pago e quer prompts ainda mais sofisticados, troque para <strong>Claude Opus 4.7</strong>. <span class="time">(10 seg)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-06.png</strong>
-            Seletor de modelo do Claude (confirmar Sonnet 4.6)
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/1eb355c5-ec76-46b9-b519-243393fa6b97/sps-redacted-c9bd72ce4e574c8c8db9c3a58409e693_8f5ce11be13b4905a38f8650cfc51308_text_export.jpeg" alt="Seletor de modelo do Claude" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-06</strong>Seletor de modelo do Claude &mdash; confirmar Sonnet 4.6.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -638,10 +643,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
         <div class="step-card-body">
           <p class="step-card-desc">Cole o meta-prompt copiado do gerador (<code>Cmd+V</code> ou <code>Ctrl+V</code>) no campo de mensagem do Claude e clique no bot&atilde;o de envio (ou pressione Enter). <span class="time">(10 seg)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-07.png</strong>
-            Campo de mensagem do Claude com o meta-prompt colado
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/5efe0ea0-97b9-4911-a768-f9eef4b2d812/sps-redacted-5f5d2976098b4a488626a57b7cf44e4d_6c4ad74810a04b3f8620b0dbaf2b1fec_text_export.jpeg" alt="Campo de mensagem do Claude com o meta-prompt colado" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-07</strong>Campo de mensagem do Claude com o meta-prompt colado.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -650,10 +655,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
         <div class="step-card-body">
           <p class="step-card-desc">O Claude vai estruturar o prompt agentico em Markdown dentro de um bloco de c&oacute;digo copi&aacute;vel. Acompanhe a gera&ccedil;&atilde;o em tempo real &mdash; voc&ecirc; vai ver os 3 blocos (header + 7 instru&ccedil;&otilde;es + diretrizes) sendo constru&iacute;dos. <span class="time">(45 seg a 1 min)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-08.png</strong>
-            Bloco de c&oacute;digo com o prompt agentico completo gerado pelo Claude
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/c8999144-63c5-426d-8dbe-dfb8c85f5556/sps-redacted-3dcded560c07421d8cc60162e5f13d1c_7af6a6338af34907bfad2ab28fd04a2a_text_export.jpeg" alt="Bloco de c&oacute;digo com o prompt agentico completo gerado pelo Claude" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-08</strong>Bloco de c&oacute;digo com o prompt agentico completo gerado pelo Claude.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -665,10 +670,10 @@ RESULTADO DA PESQUISA PERPLEXITY (CONTEXTO)
           <p class="step-card-desc">Localize o bot&atilde;o <strong>Copiar</strong> no canto superior direito do bloco de c&oacute;digo que o Claude gerou e clique. O conte&uacute;do completo do prompt agentico fica no seu clipboard, pronto para ser colado no Manus AI na AP03. <span class="time">(15 seg)</span></p>
           <p class="step-card-desc"><strong>N&atilde;o feche a aba do Claude</strong> &mdash; voc&ecirc; pode precisar consultar de novo.</p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap02-passo-09.png</strong>
-            Clique no bot&atilde;o &quot;Copy&quot; no canto superior direito do bloco de c&oacute;digo
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/f62f10c9-5087-41d2-90a7-872fda4e7a6e/sps-redacted-94edcaa11f87475c9b5f14aeb9779517_8b70dd6f73704b19a6e6584deeb528db_text_export.jpeg" alt="Clique no bot&atilde;o Copy no canto superior direito do bloco de c&oacute;digo" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap02-passo-09</strong>Clique no bot&atilde;o &quot;Copy&quot; no canto superior direito do bloco de c&oacute;digo.</figcaption>
+          </figure>
         </div>
       </div>
 

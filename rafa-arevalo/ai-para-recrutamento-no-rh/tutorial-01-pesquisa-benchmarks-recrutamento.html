@@ -167,9 +167,14 @@
   .site-link .sl-name{font-size:0.82rem;font-weight:700;color:var(--accent2);margin-bottom:1px}
   .site-link .sl-url{font-size:0.66rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
   .site-link .sl-arrow{font-size:0.9rem;color:var(--accent);font-weight:800;flex-shrink:0}
-  /* Print-placeholder */
+  /* Print-placeholder (quando ainda não tem imagem) */
   .print-placeholder{background:var(--ficha-td1-bg);border:1px dashed var(--border2);border-radius:8px;padding:18px 16px;margin:10px 0;text-align:center;font-size:0.7rem;color:var(--text3);font-style:italic}
   .print-placeholder strong{display:block;color:var(--accent2);font-style:normal;font-size:0.7rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px}
+  /* Scribehow print embutido */
+  .scribe-print{margin:12px 0;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs)}
+  .scribe-print img{width:100%;height:auto;display:block;background:#FFF}
+  .scribe-print .sp-caption{padding:8px 12px;font-size:0.66rem;color:var(--text3);background:var(--ficha-td1-bg);border-top:1px solid var(--border);font-style:italic;line-height:1.5}
+  .scribe-print .sp-caption strong{display:inline;color:var(--accent2);font-style:normal;font-weight:700;letter-spacing:0.04em;margin-right:6px}
   /* Gerador interativo de prompt */
   .prompt-gen{background:var(--white);border:1px solid var(--gold);border-radius:10px;padding:18px;margin:14px 0;box-shadow:var(--shadow-sm)}
   .prompt-gen .pg-head{font-size:0.74rem;font-weight:800;color:var(--accent2);margin-bottom:4px;letter-spacing:-0.01em}
@@ -558,14 +563,14 @@ Toda a resposta deve ser em TEXTO CORRIDO e listas em bullets quando necess&aacu
         <div class="step-card-body">
           <p class="step-card-desc">Digite a <strong>vaga</strong> que voc&ecirc; quer pesquisar e o <strong>setor</strong> da sua empresa. Conforme voc&ecirc; digita, o prompt acima se atualiza ao vivo, com suas vari&aacute;veis destacadas em verde. <span class="time">(30 seg)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-02a.png</strong>
-            Campo VAGA sendo preenchido no gerador interativo
-          </div>
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-02b.png</strong>
-            Campo SETOR sendo preenchido no gerador interativo
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/c138368e-1f76-4b78-9016-74ac359093be/sps-redacted-319f57ed0d9b40a28d465d40dd90aa3d_9c8b5a1cb4ef49c3942b76f0a1945559_text_export.jpeg" alt="Campo VAGA sendo preenchido no gerador interativo" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-02a</strong>Campo VAGA sendo preenchido no gerador interativo.</figcaption>
+          </figure>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/4377d9b8-27f0-40b7-a5a1-a95e188ff1f9/sps-redacted-a684cf481bc34418aaab36d41125e8f4_6255e129c6704ceb96a403ed508d2eaf_text_export.jpeg" alt="Campo SETOR sendo preenchido no gerador interativo" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-02b</strong>Campo SETOR sendo preenchido no gerador interativo.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -597,10 +602,10 @@ Toda a resposta deve ser em TEXTO CORRIDO e listas em bullets quando necess&aacu
             <span class="sl-arrow">&rarr;</span>
           </a>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-04.png</strong>
-            Tela inicial do Perplexity com campo de pergunta em destaque
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/97c05136-4805-4aca-ba01-a53ec06071ad/sps-redacted-a18b565c5538493bac854eaf3fa7211d_d4ce3789a0394ebcbb09319f1e4115dd_text_export.jpeg" alt="Tela inicial do Perplexity com campo de pergunta em destaque" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-04</strong>Tela inicial do Perplexity com campo de pergunta em destaque.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -617,14 +622,14 @@ Toda a resposta deve ser em TEXTO CORRIDO e listas em bullets quando necess&aacu
             <p>O modo <strong>Pesquisa Profunda</strong> entrega uma resposta significativamente mais rica que o modo Pesquisa b&aacute;sico &mdash; com mais fontes citadas e cobertura mais ampla das 7 dimens&otilde;es. Se voc&ecirc; tem o Perplexity Pro, use-o nesta AP.</p>
           </div>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-05a.png</strong>
-            Abertura do seletor de modo no campo do Perplexity
-          </div>
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-05b.png</strong>
-            Sele&ccedil;&atilde;o da op&ccedil;&atilde;o de modo Pesquisa / Pesquisa Profunda
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/e9911e20-035a-42a8-a703-ef3eedb88624/sps-redacted-a2c38a2a25474a7e9f0dba9fd3761a11_ab728548de49412bb4779355beb38ff1_text_export.jpeg" alt="Abertura do seletor de modo no campo do Perplexity" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-05a</strong>Abertura do seletor de modo no campo do Perplexity.</figcaption>
+          </figure>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/0f4197eb-96dc-42e5-ae3d-e38589d7688b/sps-redacted-73f286cf82804c87a897b3f20c120128_57cd507536c441cda5c39c10384f7a23_text_export.jpeg" alt="Sele&ccedil;&atilde;o da op&ccedil;&atilde;o de modo Pesquisa ou Pesquisa Profunda" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-05b</strong>Sele&ccedil;&atilde;o da op&ccedil;&atilde;o de modo Pesquisa / Pesquisa Profunda.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -633,10 +638,10 @@ Toda a resposta deve ser em TEXTO CORRIDO e listas em bullets quando necess&aacu
         <div class="step-card-body">
           <p class="step-card-desc">Cole o prompt copiado do gerador (<code>Cmd+V</code> no Mac ou <code>Ctrl+V</code> no Windows) no campo de pergunta e clique no bot&atilde;o de envio. <span class="time">(10 seg)</span></p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-06.png</strong>
-            Bot&atilde;o Submit do Perplexity ap&oacute;s o prompt colado
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/9d0a04f5-2893-425e-8db4-ca9d5fc570d5/sps-redacted-1176105175ad4e5b95350363197eca97_862cd57feacf4595b74cbc0eae61b5e2_text_export.jpeg" alt="Bot&atilde;o Submit do Perplexity ap&oacute;s o prompt colado" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-06</strong>Bot&atilde;o Submit do Perplexity ap&oacute;s o prompt colado.</figcaption>
+          </figure>
         </div>
       </div>
 
@@ -671,10 +676,10 @@ Toda a resposta deve ser em TEXTO CORRIDO e listas em bullets quando necess&aacu
           <p class="step-card-desc">Quando a resposta estiver pronta, localize o bot&atilde;o <strong>Copiar</strong> no canto superior da resposta do Perplexity e clique. O conte&uacute;do completo das 7 se&ccedil;&otilde;es fica no seu clipboard, pronto para ser colado direto no gerador da AP02. <span class="time">(15 seg)</span></p>
           <p class="step-card-desc"><strong>N&atilde;o feche a aba do Perplexity ainda</strong> &mdash; voc&ecirc; pode precisar consultar de novo durante a AP02.</p>
 
-          <div class="print-placeholder">
-            <strong>Print &mdash; ap01-passo-09.png</strong>
-            Bot&atilde;o Copiar no canto superior da resposta do Perplexity
-          </div>
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/5891aa6e-c390-4b91-b82f-5ce8a2bf86c4/sps-redacted-78b54396a501499e8e42d003814fb04d_8940857695714105b3cba895c33578d7_text_export.jpeg" alt="Bot&atilde;o Copiar no canto superior da resposta do Perplexity" loading="lazy">
+            <figcaption class="sp-caption"><strong>ap01-passo-09</strong>Bot&atilde;o Copiar no canto superior da resposta do Perplexity.</figcaption>
+          </figure>
         </div>
       </div>
 
