@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>01. Configurar o Project Conteúdo Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  /* Banner do entregável (item 01) */
+  .banner-entregavel{background:var(--insight-bg);border-radius:12px;padding:18px 22px;margin:16px 0;border:1px solid var(--accent-border)}
+  .banner-entregavel .be-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px}
+  .banner-entregavel .be-title{font-size:0.98rem;font-weight:700;color:var(--insight-fg);line-height:1.35;margin-bottom:10px}
+  .banner-entregavel .be-list{list-style:none;margin:0}
+  .banner-entregavel .be-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--insight-fg);line-height:1.55;opacity:0.92}
+  .banner-entregavel .be-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--gold);font-weight:800;font-size:0.86rem}
+  .banner-entregavel .be-list li strong{color:var(--gold);font-weight:700}
+  .banner-entregavel .be-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(209,170,83,0.12);padding:1px 5px;border-radius:3px;color:var(--gold)}
+  .banner-entregavel .be-sub{list-style:none;margin-top:6px;margin-left:22px;padding-left:14px;border-left:2px solid rgba(209,170,83,0.25)}
+  .banner-entregavel .be-sub li{padding:3px 0 3px 14px;position:relative;font-size:0.74rem;color:var(--insight-fg);opacity:0.82}
+  .banner-entregavel .be-sub li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--gold);opacity:0.6}
+  .banner-entregavel .be-sub li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.88em;background:rgba(209,170,83,0.12);padding:1px 5px;border-radius:3px;color:var(--gold)}
+  /* Cards de duração + modelo (Atividade Prática) */
+  .ap-meta-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0 20px}
+  .ap-meta-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow-xs)}
+  .ap-meta-card .ap-meta-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);margin-bottom:6px}
+  .ap-meta-card .ap-meta-value{font-size:0.84rem;font-weight:700;color:var(--accent2);line-height:1.3}
+  .ap-meta-card .ap-meta-sub{font-size:0.66rem;color:var(--text2);margin-top:2px;font-weight:500}
+  /* Step-card pattern (Passo a Passo da Atividade Prática) */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  /* Fase divider dentro de Passo a Passo */
+  .fase-divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px}
+  .fase-divider .fd-tag{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);padding:4px 10px;border-radius:4px;background:var(--accent2);flex-shrink:0}
+  .fase-divider .fd-line{flex:1;height:1px;background:var(--border2)}
+  /* Downloads-card */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+  .check-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.ap-meta-cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Configurar o Project Conteúdo Lumina</h2>
+      <p>AP01 &middot; Conteúdos para Redes Sociais</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 4 elementos do Project<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Os 4 arquivos de contexto<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que Project e não chat<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Artefatos da demonstração<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Sua atividade prática<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Conteúdos para Redes Sociais &rsaquo; <a href="index.html">Índice</a> &rsaquo; 01. Configurar o Project Conteúdo Lumina</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP01 &mdash; Configurar o Project Conteúdo Lumina</div>
+
+      <p class="lead-text">Esta é a <strong>AP01</strong> da aula MKT-01 (Máquina de Conteúdo: briefing &rarr; post publicado). Você vai criar o <strong>Claude Project "Conteúdo &mdash; Lumina"</strong> &mdash; o ambiente onde todas as Skills das próximas atividades vão operar com o contexto da marca já carregado.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Configuração (Introdução + Demonstração + Atividade Prática + Desafio)</td></tr>
+          <tr><td>Duração</td><td>8 a 10 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Nenhum &mdash; toda a AP é interface</td></tr>
+          <tr><td>Mensagens ao Claude</td><td>0 (zero) &mdash; otimizado para o plano gratuito</td></tr>
+          <tr><td>Ferramentas</td><td>Claude (interface de Projects) &middot; downloads desta página</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Como esta aula se encaixa no módulo</div>
+        <p>Esta é a <strong>fundação</strong> da máquina de conteúdo. Sem o Project configurado, as próximas APs (planejamento, copy, imagem, painel) não têm contexto da marca para operar. Comece por aqui.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O entregável final desta AP</div>
+
+      <p class="lead-text">Ao terminar esta AP você vai ter um <strong>Claude Project chamado "Conteúdo &mdash; Lumina"</strong> configurado com nome, descrição, instruções (System Prompt) e 4 arquivos de contexto carregados &mdash; pronto para receber as Skills das próximas atividades práticas.</p>
+
+      <div class="banner-entregavel">
+        <div class="be-label">Entregável da AP01</div>
+        <div class="be-title">Claude Project "Conteúdo &mdash; Lumina" completo</div>
+        <ul class="be-list">
+          <li><strong>1. Nome do Project:</strong> <code>Conteúdo — Lumina</code></li>
+          <li><strong>2. Descrição:</strong> Assistente da Bruna Ferreira para conteúdo de Instagram</li>
+          <li><strong>3. Instruções:</strong> System Prompt customizado com identidade, tom e regras da marca</li>
+          <li><strong>4. Arquivos de contexto:</strong> 4 arquivos <code>.md</code> carregados
+            <ul class="be-sub">
+              <li><code>estrategia-marca-lumina.md</code></li>
+              <li><code>brandbook-produtos-lumina.md</code></li>
+              <li><code>formatos-conteudo-instagram-lumina.md</code></li>
+              <li><code>linhas-editoriais-lumina.md</code></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <p class="lead-text"><strong>Como esta AP se conecta com o destino final da aula.</strong> No fim da aula você vai sair com o post completo da Semana 1 do Funil de Confiança (imagem + copy) montado e o painel de performance da Lumina rodando. A AP01 é a fundação dessa máquina &mdash; o Project que você configura agora é o ambiente onde todas as Skills das próximas APs vão operar. Sem o Project, não há contexto. Sem contexto, a IA escreve genérico.</p>
+
+      <div class="warning-box">
+        <div class="warning-label">Plano gratuito</div>
+        <p>Esta aula foi otimizada para caber em poucas mensagens ao Claude. A AP01 não consome <strong>nenhuma</strong> mensagem &mdash; é toda configuração via interface. Comece com seu limite cheio.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Os 4 elementos do Project</div>
+      <div class="sec-desc">O que você vai preencher para configurar o Conteúdo Lumina</div>
+
+      <p class="lead-text">Para criar o Project Conteúdo Lumina, você preenche <strong>4 elementos:</strong></p>
+
+      <div class="overview-card">
+        <h3>Estrutura do Project</h3>
+        <ul>
+          <li><strong>1. Nome do Project</strong> &mdash; como o ambiente vai aparecer na sua lista de Projects.</li>
+          <li><strong>2. Descrição do Project</strong> &mdash; texto curto explicando o objetivo.</li>
+          <li><strong>3. Instruções (System Prompt)</strong> &mdash; define como o assistente deve se comportar, com identidade, tom e regras da marca.</li>
+          <li><strong>4. Arquivos de contexto</strong> &mdash; os 4 documentos que o Project consulta em toda conversa.</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que esses 4 elementos</div>
+        <p>Nome e descrição organizam. <strong>Instruções e arquivos definem o comportamento.</strong> A diferença entre um Project genérico e um Project útil está na qualidade das instruções e na curadoria dos arquivos.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Os 4 arquivos de contexto explicados</div>
+      <div class="sec-desc">O que cada arquivo entrega ao Project</div>
+
+      <p class="lead-text">Cada arquivo cobre uma dimensão diferente da marca. Juntos formam um briefing completo &mdash; identidade, visual, forma e tema.</p>
+
+      <div class="overview-card">
+        <h3>Estratégia da Marca &mdash; <code>estrategia-marca-lumina.md</code></h3>
+        <p>A "carteira de identidade" da Lumina. Contém <strong>quem é a marca</strong>, qual o portfólio, qual o posicionamento, a persona Mariana detalhada, o tom de voz acolhedor experto e a lista de palavras proibidas.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Brand Book + Produtos &mdash; <code>brandbook-produtos-lumina.md</code></h3>
+        <p>A <strong>identidade visual completa</strong> (paleta, tipografia, princípios de design) + o catálogo dos 3 produtos (pré-treino, creatina, whey) com ingredientes, dose, momento de uso e tom de comunicação específico de cada um.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Formatos de Conteúdo &mdash; <code>formatos-conteudo-instagram-lumina.md</code></h3>
+        <p>Os <strong>5 formatos de feed</strong> que a Lumina usa no Instagram, com a estrutura interna de cada um (capa, slides, CTA) e as regras de escrita.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Linhas Editoriais &mdash; <code>linhas-editoriais-lumina.md</code></h3>
+        <p>Os <strong>6 territórios temáticos</strong> sobre os quais a Lumina fala (ciência sem palestra, ritual da rotina, mitos e verdades, bastidores, cultura wellness, produto em movimento). Com regra de distribuição mensal.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">04.</span> Por que Project e não chat comum</div>
+      <div class="sec-desc">A diferença que muda tudo</div>
+
+      <p class="lead-text">Quando a Bruna escreve um post da Lumina no <strong>chat comum</strong> do Claude, ela precisa explicar tudo do zero: a marca, a persona, o tom, a paleta, os formatos. Toda vez. A cada novo post.</p>
+
+      <p class="lead-text">Um <strong>Project</strong> resolve isso de forma permanente: você configura o contexto da marca uma vez só, e o Claude carrega tudo automaticamente em toda nova conversa dentro do Project. Toda Skill que você criar dentro do Project &mdash; planejamento, copy, imagem, painel &mdash; vai operar com esse contexto carregado, sem precisar repetir nada.</p>
+
+      <div class="insight-box">
+        <div class="insight-label">Analogia</div>
+        <p>É a diferença entre contratar um social media <strong>freelancer novo a cada post</strong> e ter um social media <strong>fixo</strong> que já conhece a marca, o tom, o calendário e os produtos. Toda vez que a Bruna conversa com o Project, é como conversar com esse social media fixo &mdash; ele já tem todo o contexto na cabeça.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que você vai ver</div>
+      <div class="sec-desc">Fluxo completo de criação do Project em 2 fases</div>
+
+      <p class="lead-text">O professor demonstra o fluxo completo de criação do Project Conteúdo Lumina em <strong>duas fases</strong>. Você não precisa testar agora &mdash; você terá sua própria atividade prática logo depois.</p>
+
+      <div class="overview-card">
+        <h3>Fase 01 &mdash; Download dos arquivos prontos</h3>
+        <p><strong>0 mensagens ao Claude.</strong> O professor mostra como baixar os 4 arquivos de contexto direto desta página HTML, sem precisar gerar nada no chat.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Fase 02 &mdash; Configuração do Project</h3>
+        <p><strong>0 mensagens ao Claude.</strong> O professor cria um Project novo no Claude, copia os textos prontos (Nome + Descrição + Instruções) e faz upload dos 4 arquivos baixados na Fase 01.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> Artefatos da demonstração</div>
+      <div class="sec-desc">O que está disponível para você na seção Atividade Prática</div>
+
+      <p class="lead-text">Nesta AP <strong>não há prompt</strong> &mdash; toda a configuração é feita via interface do Claude. Os artefatos da demonstração são:</p>
+
+      <div class="overview-card">
+        <h3>Recursos prontos</h3>
+        <ul>
+          <li><strong>4 arquivos de contexto Lumina</strong> disponíveis para download nesta página.</li>
+          <li><strong>3 textos prontos</strong> (Nome, Descrição, Instruções) para copiar e colar.</li>
+        </ul>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Onde encontrar</div>
+        <p>Tudo está disponível na seção <strong>Atividade Prática</strong> desta aula, dentro do passo a passo.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">3 sinais que diferenciam um Project bem configurado</div>
+
+      <ul class="observation-list">
+        <li><strong>Arquivos vêm prontos para download.</strong> O aluno não gera nada do zero no chat &mdash; isso protege o orçamento de mensagens do plano gratuito.</li>
+        <li><strong>Instruções codificam o tom Lumina como contexto permanente.</strong> Não é só "seja um social media" &mdash; é "seja a Bruna seguindo as 5 regras do tom acolhedor experto, com as palavras proibidas listadas e os 6 territórios editoriais carregados".</li>
+        <li><strong>Os 4 arquivos cobrem dimensões diferentes:</strong> identidade (estratégia), visual (brand book), forma (formatos) e tema (linhas editoriais). Juntos eles formam um briefing completo da marca.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade prática</div>
+      <div class="sec-desc">Agora é a sua vez &mdash; configurar o Project Conteúdo Lumina</div>
+
+      <div class="ap-meta-cards">
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Duração</div>
+          <div class="ap-meta-value">8 minutos</div>
+          <div class="ap-meta-sub">2 fases</div>
+        </div>
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Modelo</div>
+          <div class="ap-meta-value">Nenhum</div>
+          <div class="ap-meta-sub">Toda a AP é interface</div>
+        </div>
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Mensagens</div>
+          <div class="ap-meta-value">0</div>
+          <div class="ap-meta-sub">Zero consumo do limite</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai criar agora o <strong>Project Conteúdo Lumina</strong> &mdash; o ambiente que vai abrigar todas as Skills das próximas APs.</p>
+
+      <div class="overview-card">
+        <h3>Por que duas fases</h3>
+        <p>Em vez de gerar arquivos do zero no chat (consumindo várias mensagens), os arquivos já vêm prontos para baixar. Isso <strong>elimina retrabalho</strong> e mantém seu limite de mensagens do plano gratuito intacto para as APs seguintes.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
+      <div class="sec-desc">8 passos em 2 fases &middot; ~8 minutos no total</div>
+
+      <div class="fase-divider">
+        <span class="fd-tag">Fase 01 &middot; Download</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe os 4 arquivos de contexto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use os botões abaixo para baixar os <strong>4 arquivos <code>.md</code></strong> que serão carregados como contexto do Project. Eles cobrem identidade, visual, forma e tema da marca Lumina.</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Arquivos de contexto da AP01</div>
+            <a class="dl-btn" href="estrategia-marca-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">estrategia-marca-lumina.md</span>
+                <span class="dl-desc">Identidade da marca, persona Mariana, tom e palavras proibidas</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="brandbook-produtos-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">brandbook-produtos-lumina.md</span>
+                <span class="dl-desc">Paleta, tipografia + catálogo dos 3 produtos com tom específico</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="formatos-conteudo-instagram-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">formatos-conteudo-instagram-lumina.md</span>
+                <span class="dl-desc">5 formatos de feed com estrutura e regras de escrita</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="linhas-editoriais-lumina.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">linhas-editoriais-lumina.md</span>
+                <span class="dl-desc">6 territórios temáticos com distribuição mensal</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Baixe o arquivo com os 3 textos prontos</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Baixe também o arquivo <code>textos-prontos-project.md</code>, que contém os <strong>3 blocos de texto</strong> (Nome, Descrição, Instruções) para copiar e colar nos campos do Project no Claude.</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Textos prontos para os campos do Project</div>
+            <a class="dl-btn" href="textos-prontos-project.md" download>
+              <span class="dl-icon">&#128196;</span>
+              <span class="dl-meta">
+                <span class="dl-name">textos-prontos-project.md</span>
+                <span class="dl-desc">CAMPO 1 (Nome) + CAMPO 2 (Descrição) + CAMPO 3 (System Prompt)</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-divider">
+        <span class="fd-tag">Fase 02 &middot; Configuração no Claude</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Abra Projects no Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Acesse <code>claude.ai</code> e faça login se necessário. No menu lateral, clique em <strong>Projetos</strong> (ou <em>Projects</em>, dependendo do idioma).</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Crie um novo projeto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no botão <strong>+ Novo projeto</strong> para abrir o formulário de criação.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Preencha o nome do projeto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o arquivo <code>textos-prontos-project.md</code> que você baixou no Passo 02. Copie o conteúdo do <strong>CAMPO 1 &mdash; Nome do Project</strong> (<code>Conteúdo — Lumina</code>) e cole no campo <em>"No que você está trabalhando?"</em> do formulário.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Preencha a descrição e crie o projeto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte ao arquivo <code>textos-prontos-project.md</code>, copie o conteúdo do <strong>CAMPO 2 &mdash; Descrição do Project</strong> e cole no campo <em>"O que você quer realizar?"</em> do formulário. Em seguida clique em <strong>Criar projeto</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Cole as Instruções (System Prompt)</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Project recém-criado, localize a seção <strong>Instruções</strong> e clique em <strong>Editar Instruções</strong>. Volte ao arquivo <code>textos-prontos-project.md</code>, copie o conteúdo do <strong>CAMPO 3 &mdash; Instruções do Project</strong> (o System Prompt completo) e cole no editor. Clique em <strong>Salvar instruções</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Faça upload dos 4 arquivos de contexto</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na seção <strong>Arquivos</strong> do Project, clique no ícone <strong>+</strong> e selecione <strong>Carregar do aparelho</strong>. Faça upload dos 4 arquivos <code>.md</code> baixados no Passo 01 &mdash; pode ser todos de uma vez ou um a um.</p>
+          <div class="warning-box">
+            <div class="warning-label">Validação visual</div>
+            <p>Confirme que aparecem na seção Arquivos exatamente os 4 nomes: <code>estrategia-marca-lumina.md</code>, <code>brandbook-produtos-lumina.md</code>, <code>formatos-conteudo-instagram-lumina.md</code>, <code>linhas-editoriais-lumina.md</code>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">10.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Checklist do entregável da AP01</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Um <strong>Claude Project chamado "Conteúdo — Lumina"</strong> completamente configurado.</li>
+          <li><strong>Nome e Descrição</strong> customizados refletindo o caso da Lumina e a persona da Bruna como social media.</li>
+          <li><strong>Instruções (System Prompt)</strong> posicionando o assistente com a identidade, tom acolhedor experto, palavras proibidas e regras editoriais da marca.</li>
+          <li><strong>4 arquivos de contexto carregados</strong> &mdash; estratégia, brand book, formatos e linhas editoriais &mdash; que o Project consulta em toda resposta.</li>
+          <li>Um <strong>ambiente de marketing pronto</strong> para receber as Skills das próximas APs (planejamento, copy, imagem e painel).</li>
+          <li><strong>Zero mensagens consumidas</strong> do seu limite do plano gratuito.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Próximo passo &middot; AP02</div>
+        <p>Na próxima atividade prática você vai criar a <strong>primeira Skill dentro deste Project</strong>: a Skill de planejamento mensal de conteúdo, que vai gerar o calendário do mês para o Instagram da Lumina aplicando a estratégia do Funil de Confiança.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Replique o processo para a realidade do seu negócio</div>
+
+      <p class="lead-text">Agora que você dominou o conceito do Project de Marketing com o caso da Lumina, replique o processo para a <strong>realidade da sua empresa real</strong>.</p>
+
+      <div class="overview-card">
+        <h3>O que fazer</h3>
+        <ul>
+          <li><strong>1. Adapte os 4 arquivos de contexto.</strong> Use os arquivos da Lumina como template: troque a marca, a persona Mariana pela persona real do seu negócio, adapte tom de voz, palavras proibidas e territórios editoriais. Mantenha a estrutura dos formatos ou ajuste para o canal principal da sua empresa.</li>
+          <li><strong>2. Crie um Project</strong> chamado <code>Conteúdo — [Nome da sua empresa]</code> e configure os 4 campos com base nos arquivos adaptados.</li>
+          <li><strong>3. Faça upload dos 4 arquivos customizados</strong> na seção Arquivos do Project.</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha do desafio</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tempo estimado</td><td>60 a 90 minutos (a maior parte é adaptar os 4 arquivos com fidelidade à sua marca real)</td></tr>
+          <tr><td>Resultado esperado</td><td>Project de marketing da sua empresa real, pronto para receber as Skills das próximas APs aplicadas ao seu contexto</td></tr>
+          <tr><td>Quando fazer</td><td>Esta semana &mdash; é o passo 1 de uma jornada de 5 semanas</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Conexão com o programa</div>
+        <p>Esta AP é o <strong>passo 1</strong> de uma jornada de 5 semanas. Cada AP da aula tem um desafio na sua empresa. Em conjunto, esses 5 desafios formam um plano de implementação de 5 semanas da máquina de conteúdo na empresa real. Ao final da quinta semana você terá: <strong>Project de marketing real</strong>, Skills de planejamento, copy, imagem e painel rodando com dados reais, e <strong>ciclo mensal de conteúdo automatizado</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-project-conteudo-lumina";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 12;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
