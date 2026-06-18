@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>02. Skill de Planejamento Mensal Lumina &middot; Delta Academy</title>
+<title>04. Skill de Montagem do Post Lumina &middot; Delta Academy</title>
 <link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -87,7 +87,7 @@
   .observation-list{list-style:none;margin:12px 0}
   .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
   .observation-list li strong{color:var(--blue-text);font-weight:700}
-  /* Banner do entregável (item 01) */
+  /* Banner do entregável */
   .banner-entregavel{background:var(--insight-bg);border-radius:12px;padding:18px 22px;margin:16px 0;border:1px solid var(--accent-border)}
   .banner-entregavel .be-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px}
   .banner-entregavel .be-title{font-size:0.98rem;font-weight:700;color:var(--insight-fg);line-height:1.35;margin-bottom:10px}
@@ -96,7 +96,10 @@
   .banner-entregavel .be-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--gold);font-weight:800;font-size:0.86rem}
   .banner-entregavel .be-list li strong{color:var(--gold);font-weight:700}
   .banner-entregavel .be-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(209,170,83,0.12);padding:1px 5px;border-radius:3px;color:var(--gold)}
-  /* Cards de duração + modelo (Atividade Prática) */
+  .banner-entregavel .be-sub{list-style:none;margin-top:6px;margin-left:22px;padding-left:14px;border-left:2px solid rgba(209,170,83,0.25)}
+  .banner-entregavel .be-sub li{padding:3px 0 3px 14px;position:relative;font-size:0.74rem;color:var(--insight-fg);opacity:0.82}
+  .banner-entregavel .be-sub li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--gold);opacity:0.6}
+  /* Cards de duração + modelo */
   .ap-meta-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0 20px}
   .ap-meta-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow-xs)}
   .ap-meta-card .ap-meta-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);margin-bottom:6px}
@@ -117,12 +120,12 @@
   .fase-divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px}
   .fase-divider .fd-tag{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);padding:4px 10px;border-radius:4px;background:var(--accent2);flex-shrink:0}
   .fase-divider .fd-line{flex:1;height:1px;background:var(--border2)}
-  /* Copy block dentro de step-card */
+  /* Copy block */
   .copy-wrap{margin:14px 0 4px}
   .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.66rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
   .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:18px 22px 18px 22px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.78rem;color:#0E1A19;line-height:1.68;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
   [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
-  .copy-block.long{max-height:320px;overflow-y:auto;font-size:0.74rem;line-height:1.62}
+  .copy-block.long{max-height:360px;overflow-y:auto;font-size:0.72rem;line-height:1.6}
   .copy-block.long::-webkit-scrollbar{width:6px}
   .copy-block.long::-webkit-scrollbar-track{background:transparent}
   .copy-block.long::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
@@ -145,14 +148,7 @@
   .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
   .check-list li strong{color:var(--accent2);font-weight:700}
   .check-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
-  /* Funil de Confiança table */
-  .funil-table{width:100%;border-collapse:collapse;font-size:0.76rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:14px 0}
-  .funil-table th{background:var(--accent2);color:var(--bg);font-weight:800;text-align:left;padding:9px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em}
-  .funil-table td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
-  .funil-table tr:last-child td{border-bottom:none}
-  .funil-table td:first-child{font-weight:800;color:var(--accent2);width:8%;text-align:center;background:var(--ficha-td1-bg)}
-  .funil-table td:nth-child(2){font-weight:700;color:var(--text);width:28%;background:var(--ficha-td1-bg)}
-  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.ap-meta-cards{grid-template-columns:1fr}.funil-table{font-size:0.7rem}.funil-table th,.funil-table td{padding:6px 8px}}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.ap-meta-cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -167,17 +163,17 @@
     <div class="sidebar-header">
       <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
       <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
-      <h2>Skill de Planejamento Mensal Lumina</h2>
-      <p>AP02 &middot; Conteúdos para Redes Sociais</p>
+      <h2>Skill de Montagem do Post Lumina</h2>
+      <p>AP04 &middot; Conteúdos para Redes Sociais</p>
     </div>
     <div class="nav-group"><div class="nav-group-title">Início</div>
       <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
       <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 4 elementos do plano<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> O Funil de Confiança<span class="ni-check">&#10003;</span></a>
-      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que Skill e não prompt avulso<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 3 elementos do post visual<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> Como a Skill aplica a identidade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que HTML faz sentido<span class="ni-check">&#10003;</span></a>
     </div>
     <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
       <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
@@ -202,11 +198,11 @@
 
     <!-- 00 -->
     <div class="section active" id="sec-home">
-      <div class="breadcrumb">Delta Academy &rsaquo; Conteúdos para Redes Sociais &rsaquo; <a href="index.html">Índice</a> &rsaquo; 02. Skill de Planejamento Mensal Lumina</div>
+      <div class="breadcrumb">Delta Academy &rsaquo; Conteúdos para Redes Sociais &rsaquo; <a href="index.html">Índice</a> &rsaquo; 04. Skill de Montagem do Post Lumina</div>
       <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
-      <div class="sec-desc">AP02 &mdash; Skill de Planejamento Mensal (Funil de Confiança)</div>
+      <div class="sec-desc">AP04 &mdash; Skill de Montagem do Post Final</div>
 
-      <p class="lead-text">Esta é a <strong>AP02</strong> da aula MKT-01 (Máquina de Conteúdo: briefing &rarr; post publicado). Você vai instalar a Skill <code>planejar-mes-lumina</code> no Claude e invocá-la no Project criado na AP01 para gerar o <strong>calendário editorial completo de 6 semanas</strong> da Lumina, com 18 peças prontas para produção.</p>
+      <p class="lead-text">Esta é a <strong>AP04</strong> da aula MKT-01. Você vai instalar a Skill <code>montar-post-lumina</code> no Claude e usá-la para transformar a copy gerada na AP03 em um <strong>artefato HTML do carrossel completo</strong> &mdash; 6 slides quadrados no formato Instagram com identidade visual Lumina aplicada.</p>
 
       <div class="overview-card">
         <h3>Ficha técnica</h3>
@@ -214,14 +210,14 @@
           <tr><td>Tipo</td><td>Skill (Introdução + Demonstração + Atividade Prática + Desafio)</td></tr>
           <tr><td>Duração</td><td>12 minutos</td></tr>
           <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
-          <tr><td>Mensagens ao Claude</td><td>1 (uma) &mdash; toda a Skill roda em um único prompt</td></tr>
-          <tr><td>Pré-requisito</td><td>Project "Conteúdo — Lumina" criado na AP01</td></tr>
+          <tr><td>Mensagens ao Claude</td><td>1 (uma) &mdash; o artefato HTML sai em um único prompt</td></tr>
+          <tr><td>Pré-requisitos</td><td>AP01 (Project) + AP02 + AP03 (Skills instaladas)</td></tr>
         </tbody></table>
       </div>
 
       <div class="tip-box">
         <div class="tip-label">Como esta aula se encaixa no módulo</div>
-        <p>Esta AP gera o <strong>plano editorial completo do ciclo</strong>. A AP03 vai pegar a peça da Semana 1 deste plano e escrever a copy completa. A AP04 vai gerar a imagem e montar o post final. <strong>O plano que você gera aqui é a base de toda a aula a partir deste ponto.</strong></p>
+        <p>Esta AP <strong>fecha o ciclo de produção visual</strong> da Lumina. Você sai com o post pronto para publicar (ou para mostrar ao designer para refinamento de produção real). Na AP05 (última da aula) vamos medir como esse tipo de post performaria no Instagram.</p>
       </div>
 
       <div class="nav-buttons">
@@ -236,20 +232,31 @@
       <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
       <div class="sec-desc">O entregável final desta AP</div>
 
-      <p class="lead-text">Ao terminar esta AP você vai ter uma <strong>tabela completa com 18 peças de Instagram</strong> planejadas para um ciclo de 6 semanas da Lumina, aplicando rigorosamente a estratégia do Funil de Confiança e integrando 3 tendências reais do mês fornecidas pela Bruna.</p>
+      <p class="lead-text">Ao terminar esta AP você vai ter o <strong>carrossel completo da Lumina renderizado visualmente em HTML</strong> &mdash; 6 slides quadrados no formato Instagram (1080×1080) + bloco simulando a legenda do post &mdash; com identidade visual rigorosamente Lumina aplicada (paleta wellness premium, Fraunces + Inter, espaço negativo, hierarquia serena).</p>
 
       <div class="banner-entregavel">
-        <div class="be-label">Entregável da AP02</div>
-        <div class="be-title">Plano editorial de 6 semanas &middot; 18 peças prontas</div>
+        <div class="be-label">Entregável da AP04</div>
+        <div class="be-title">Carrossel completo renderizado em HTML</div>
         <ul class="be-list">
-          <li><strong>Plano de 6 semanas</strong> seguindo o Funil de Confiança (notam &rarr; lembram &rarr; seguem &rarr; confiam &rarr; precisam &rarr; compram)</li>
-          <li><strong>3 peças por semana</strong> (Segunda, Quarta, Sexta) &mdash; total de <strong>18 peças</strong></li>
-          <li><strong>Cada peça com:</strong> estágio do funil, linha editorial, formato, headline pronta no tom Lumina e briefing curto</li>
-          <li><strong>Bloco final de observações estratégicas</strong> explicando como as tendências foram distribuídas e quais produtos aparecem em quais semanas</li>
+          <li><strong>Carrossel completo de 6 slides</strong> no formato quadrado do Instagram
+            <ul class="be-sub">
+              <li>Slide 01 &mdash; Capa com headline e logo Lumina</li>
+              <li>Slides 02 a 04 &mdash; 3 mitos com formatação visual consistente</li>
+              <li>Slide 05 &mdash; Slide de tradução para a rotina</li>
+              <li>Slide 06 &mdash; CTA final com logo destacado</li>
+            </ul>
+          </li>
+          <li><strong>Bloco extra</strong> simulando como a legenda aparece embaixo do post no Instagram</li>
+          <li><strong>Artefato HTML</strong> visualizável no navegador, baixável e usável como mockup do post</li>
         </ul>
       </div>
 
-      <p class="lead-text"><strong>Como esta AP se conecta com o destino final da aula.</strong> Esta AP gera o calendário editorial completo do ciclo. A AP03 vai pegar a peça da Semana 1 deste plano e escrever a copy completa. A AP04 vai gerar a imagem e montar o post final. A AP05 vai medir a performance. <strong>O plano que você gera aqui é a base de toda a aula a partir deste ponto.</strong></p>
+      <p class="lead-text"><strong>Como esta AP se conecta com o destino final da aula.</strong> Esta AP fecha o ciclo de produção visual da Lumina. Você sai com o post pronto para publicar (ou para mostrar ao designer para refinamento de produção real). Na AP05 (última da aula) vamos medir como esse tipo de post performaria no Instagram.</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que HTML e não imagem gerada por IA</div>
+        <p>A peça âncora da aula é o Carrossel Educativo "4 mitos" &mdash; <strong>formato 100% tipográfico</strong>, sem necessidade de foto realista de produto. Para esse formato, HTML estilizado dentro do Claude entrega resultado superior: paleta perfeita, tipografia correta, controle total da hierarquia. Para outros formatos da Lumina (Carrossel-ritual com foto de produto), a Bruna usaria ferramentas externas como Nano Banana &mdash; fora do escopo desta aula.</p>
+      </div>
 
       <div class="nav-buttons">
         <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
@@ -260,24 +267,24 @@
     <!-- 02 -->
     <div class="section" id="sec-step2">
       <span class="section-badge badge-intro">Introdução</span>
-      <div class="sec-title"><span class="snum">02.</span> Os 4 elementos do plano editorial</div>
-      <div class="sec-desc">O que compõe cada peça gerada pela Skill</div>
+      <div class="sec-title"><span class="snum">02.</span> Os 3 elementos do post visual Lumina</div>
+      <div class="sec-desc">O que compõe a identidade visual da marca</div>
 
-      <p class="lead-text">Para entender o que a Skill vai gerar, você precisa conhecer os <strong>4 elementos</strong> que compõem cada peça:</p>
+      <p class="lead-text">Para entender o que a Skill vai gerar, você precisa conhecer os <strong>3 elementos</strong> que compõem qualquer post visual Lumina:</p>
 
       <div class="overview-card">
-        <h3>Anatomia de cada peça</h3>
-        <ul>
-          <li><strong>1. Estágio do Funil de Confiança</strong> &mdash; qual é o papel narrativo daquela semana (parar scroll, gerar familiaridade, construir autoridade, etc.)</li>
-          <li><strong>2. Linha editorial</strong> &mdash; qual dos 6 territórios temáticos Lumina (Ciência, Ritual, Mitos, Bastidores, Cultura, Produto)</li>
-          <li><strong>3. Formato de Instagram</strong> &mdash; qual dos 5 formatos Lumina (Educativo, Insights, Ritual, Ciência leve, Framework)</li>
-          <li><strong>4. Headline + Briefing</strong> &mdash; a frase de abertura pronta no tom acolhedor experto + 2 frases descrevendo o conteúdo</li>
-        </ul>
+        <h3>1. Paleta wellness premium aplicada</h3>
+        <p>Apenas as <strong>6 cores oficiais</strong>: branco quente, verde-musgo, coral terroso, cinza-taupe, verde-claro pálido, areia. Nada saturado, nada neon.</p>
       </div>
 
-      <div class="tip-box">
-        <div class="tip-label">A combinação é automática</div>
-        <p>A Skill combina automaticamente esses 4 elementos seguindo a <strong>regra de cada estágio do funil</strong>. Você não precisa pensar em qual linha editorial casa com qual formato em qual semana &mdash; a Skill faz isso por você.</p>
+      <div class="overview-card">
+        <h3>2. Tipografia obrigatória Fraunces + Inter</h3>
+        <p><strong>Fraunces nos títulos</strong> para personalidade premium, <strong>Inter no corpo</strong> para legibilidade clean.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>3. Hierarquia por espaço, não por ornamento</h3>
+        <p>Sem caixas, sem balões, sem sombras pesadas. A hierarquia visual vem do <strong>tamanho da fonte e do espaço</strong> entre elementos.</p>
       </div>
 
       <div class="nav-buttons">
@@ -289,26 +296,19 @@
     <!-- 03 -->
     <div class="section" id="sec-step3">
       <span class="section-badge badge-intro">Introdução</span>
-      <div class="sec-title"><span class="snum">03.</span> O Funil de Confiança explicado (6 estágios)</div>
-      <div class="sec-desc">A espinha narrativa do ciclo</div>
+      <div class="sec-title"><span class="snum">03.</span> Como a Skill aplica a identidade visual</div>
+      <div class="sec-desc">4 regras automáticas que a Skill aplica</div>
 
-      <table class="funil-table">
-        <thead>
-          <tr><th>Sem.</th><th>Estágio</th><th>Papel narrativo</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>1</td><td>NOTAM VOCÊ</td><td>Hook forte que para o scroll. ICP pensa <em>"quem é essa marca?"</em></td></tr>
-          <tr><td>2</td><td>LEMBRAM DE VOCÊ</td><td>Consistência. ICP reconhece o rosto, o tom, o estilo</td></tr>
-          <tr><td>3</td><td>SEGUEM VOCÊ</td><td>Conteúdo de valor. ICP segue para não perder</td></tr>
-          <tr><td>4</td><td>CONFIAM EM VOCÊ</td><td>Cases, bastidores. ICP pensa <em>"essa marca sabe do que tá falando"</em></td></tr>
-          <tr><td>5</td><td>PRECISAM DE VOCÊ</td><td>Nomeia a dor. ICP se vê no problema</td></tr>
-          <tr><td>6</td><td>COMPRAM DE VOCÊ</td><td>CTA aparece com formalidade. Funil fecha</td></tr>
-        </tbody>
-      </table>
+      <p class="lead-text">A Skill <code>montar-post-lumina</code> recebe a copy gerada na AP03 e segue <strong>4 regras automáticas</strong>:</p>
 
-      <div class="insight-box">
-        <div class="insight-label">Frequência, não cronologia</div>
-        <p>O funil <strong>não depende do seguidor ver os posts em ordem cronológica</strong>. É <strong>frequência de exposição</strong> &mdash; quanto mais a Mariana vê a Lumina dentro desses 6 estágios narrativos, mais a marca constrói confiança real.</p>
+      <div class="overview-card">
+        <h3>Regras de renderização visual</h3>
+        <ul>
+          <li><strong>1. Identifica os 6 slides do carrossel</strong> e renderiza cada um como <code>&lt;div&gt;</code> quadrada com <code>aspect-ratio: 1/1</code>.</li>
+          <li><strong>2. Aplica a paleta Lumina via variáveis CSS</strong> &mdash; todas as cores oficiais ficam disponíveis como tokens reutilizáveis no documento.</li>
+          <li><strong>3. Importa as fontes do Google Fonts</strong> automaticamente &mdash; Fraunces 400-700 + Inter 400-600.</li>
+          <li><strong>4. Adiciona o bloco extra de legenda</strong> simulando como apareceria no Instagram, com avatar, handle e hashtags em coral.</li>
+        </ul>
       </div>
 
       <div class="nav-buttons">
@@ -320,16 +320,16 @@
     <!-- 04 -->
     <div class="section" id="sec-step4">
       <span class="section-badge badge-intro">Introdução</span>
-      <div class="sec-title"><span class="snum">04.</span> Por que pauta editorial precisa de Skill (e não de prompt avulso)</div>
-      <div class="sec-desc">A diferença entre plano coerente e improviso</div>
+      <div class="sec-title"><span class="snum">04.</span> Por que HTML faz sentido para o post visual</div>
+      <div class="sec-desc">A diferença entre imaginar e desenhar</div>
 
-      <p class="lead-text">Quando a Bruna planeja o mês manualmente, ela abre uma planilha em branco, pensa em 4-5 ideias soltas, perde 2-3 horas pesquisando referência, e termina com um calendário <strong>inconsistente</strong> &mdash; algumas semanas com peças fortes, outras com peças que parecem improviso.</p>
+      <p class="lead-text">Quando a Bruna pede ao Claude para "gerar uma imagem do post" em chat genérico, três coisas dão errado: ou o Claude <strong>não tem capacidade nativa</strong> de gerar imagem realista de produto, ou ele tenta descrever a imagem em texto, ou ele precisa redirecionar para outra ferramenta &mdash; e o fluxo se quebra.</p>
 
-      <p class="lead-text">Uma <strong>Skill</strong> instalada no Claude resolve isso de forma sistemática: ela carrega automaticamente as 6 linhas editoriais, os 5 formatos, o tom Lumina e a estratégia do funil. Toda vez que a Bruna invoca a Skill no Project, recebe um <strong>plano coerente e completo em segundos</strong> &mdash; com distribuição balanceada de linhas editoriais, alternância de formatos e integração da pauta quente do mês.</p>
+      <p class="lead-text">Uma <strong>Skill que gera HTML</strong> resolve isso de forma brilhante: o Claude é excelente em produzir código HTML/CSS bem estruturado. Para um carrossel educativo (que é 100% tipografia + paleta + hierarquia), o HTML entrega resultado perfeito &mdash; paleta exata, tipografia correta, espaçamento controlado. O artefato fica <strong>visualizável direto no Claude</strong>, pode ser baixado e aberto no navegador, ou usado como mockup de alta fidelidade.</p>
 
       <div class="insight-box">
         <div class="insight-label">Analogia</div>
-        <p>Um prompt avulso é como pedir uma comida específica para um chef que <strong>nunca trabalhou na sua cozinha</strong>. Uma Skill é o <strong>cardápio do restaurante</strong> &mdash; o chef já sabe quais ingredientes tem, qual é o tom da casa, qual é o ritmo do menu. Você pede um prato, ele entrega. Você pede o menu da semana, ele monta.</p>
+        <p>É a diferença entre pedir para alguém <strong>"imaginar"</strong> um quadro e pedir para alguém <strong>"desenhar"</strong> o quadro. Para certos formatos (educativo tipográfico), HTML é a tela ideal &mdash; você sai com o quadro pronto, não com a imaginação dele.</p>
       </div>
 
       <div class="nav-buttons">
@@ -342,18 +342,18 @@
     <div class="section" id="sec-step5">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">05.</span> O que você vai ver</div>
-      <div class="sec-desc">Fluxo da invocação da Skill no Project</div>
+      <div class="sec-desc">Fluxo de instalação + invocação da Skill</div>
 
-      <p class="lead-text">O professor demonstra o fluxo completo de invocação da Skill <code>planejar-mes-lumina</code> no Project criado na AP01. Você não precisa testar agora &mdash; você terá sua própria atividade prática logo depois.</p>
+      <p class="lead-text">O professor demonstra o fluxo completo de invocação da Skill <code>montar-post-lumina</code> no Project criado na AP01, com instalação prévia da nova Skill no Claude. Você não precisa testar agora &mdash; você terá sua própria atividade prática logo depois.</p>
 
       <div class="overview-card">
         <h3>Fase 01 &mdash; Instalação da Skill no Claude</h3>
-        <p>O professor mostra como baixar o arquivo <code>planejar-mes-lumina.zip</code> direto desta página, ir na seção <strong>Habilidades</strong> do Claude, fazer upload da Skill e ativá-la.</p>
+        <p>O professor mostra como baixar o arquivo <code>montar-post-lumina.zip</code> direto desta página, ir na seção <strong>Habilidades</strong> do Claude e instalar a Skill.</p>
       </div>
 
       <div class="overview-card">
         <h3>Fase 02 &mdash; Invocação da Skill com 1 prompt</h3>
-        <p><strong>1 mensagem ao Claude.</strong> O professor abre o Project Conteúdo Lumina, cola o prompt da AP02 (com inputs prontos: mês de referência + 3 tendências), envia, e recebe <strong>a tabela completa de 18 peças + bloco de observações estratégicas</strong>.</p>
+        <p><strong>1 mensagem ao Claude.</strong> O professor abre o Project Conteúdo Lumina, cola o prompt da AP04 (com a copy completa do carrossel gerada na AP03), envia, e recebe <strong>o artefato HTML renderizado dentro do Claude</strong>.</p>
       </div>
 
       <div class="nav-buttons">
@@ -366,29 +366,13 @@
     <div class="section" id="sec-step6">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">06.</span> Artefato da demonstração</div>
-      <div class="sec-desc">O mesmo prompt que você vai usar</div>
+      <div class="sec-desc">A copy da AP03 vira o input desta Skill</div>
 
-      <p class="lead-text">Este é o prompt que o professor usa na demonstração &mdash; <strong>exatamente o mesmo prompt</strong> que você vai usar na sua atividade prática, disponível para copiar no <strong>Passo 04</strong> da seção seguinte.</p>
+      <p class="lead-text">O prompt que o professor usa na demonstração contém a <strong>copy completa do carrossel</strong> &mdash; exatamente a mesma copy gerada na AP03. Disponível para copiar no <strong>Passo 05</strong> da próxima seção.</p>
 
       <div class="tip-box">
-        <div class="tip-label">Por que isso importa</div>
-        <p>A Skill faz o trabalho pesado. Seu único job é fornecer os inputs corretos (mês de referência + 3 tendências reais do mês) e deixar a Skill montar o plano em cima do contexto do Project.</p>
-      </div>
-
-      <div class="overview-card">
-        <h3>Output esperado (referência)</h3>
-        <p>Para comparar com o que você vai receber, baixe abaixo o exemplo do plano editorial gerado pela Skill no caso da Lumina (ciclo de inverno, julho-agosto/2026). Use como <strong>parâmetro de qualidade</strong>, não como gabarito &mdash; o seu output pode (e deve) variar.</p>
-        <div class="downloads-card" style="margin-top:10px">
-          <div class="dc-head">&#128229; Referência opcional</div>
-          <a class="dl-btn" href="exemplo-output-esperado-ap02.md" download>
-            <span class="dl-icon">&#128196;</span>
-            <span class="dl-meta">
-              <span class="dl-name">exemplo-output-esperado-ap02.md</span>
-              <span class="dl-desc">Plano editorial de 18 peças gerado pela Skill no caso Lumina</span>
-            </span>
-            <span class="dl-arrow">&darr;</span>
-          </a>
-        </div>
+        <div class="tip-label">O ciclo se fecha</div>
+        <p>Esta é a primeira AP que <strong>encadeia outputs anteriores</strong>: a AP02 gerou o plano, a AP03 transformou uma linha em copy, e a AP04 transforma essa copy em post visual. Cada AP entrega input para a próxima.</p>
       </div>
 
       <div class="nav-buttons">
@@ -401,13 +385,13 @@
     <div class="section" id="sec-step7">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstração</div>
-      <div class="sec-desc">4 sinais que diferenciam plano feito por Skill de plano feito no chat genérico</div>
+      <div class="sec-desc">4 sinais que diferenciam post Lumina de mockup genérico</div>
 
       <ul class="observation-list">
-        <li><strong>A tabela vem inteira numa única resposta.</strong> 18 peças com todos os campos preenchidos, sem precisar fazer follow-up.</li>
-        <li><strong>Cada headline já vem pronta no tom acolhedor experto.</strong> Sem palavras proibidas, sem promessa milagrosa, sem clichê de academia. A Bruna pode pegar e usar com pequenos ajustes.</li>
-        <li><strong>As 3 tendências fornecidas atravessam o ciclo de forma estratégica.</strong> Uma tendência aparece em mais de uma semana (planta na Semana 1, colhe na Semana 5). Outra ganha peça específica na fase certa do funil.</li>
-        <li><strong>A distribuição de linhas editoriais é equilibrada.</strong> Aproximadamente 25% Ciência, 25% Ritual, 15% Mitos, 15% Bastidores, 10% Cultura, 10% Produto. Sem dominância de nenhum território.</li>
+        <li><strong>A paleta Lumina aparece de forma sutil.</strong> Branco quente como fundo principal, areia em slides alternados, verde-musgo só em pequenos detalhes (logo, divisor, palavras destacadas). Nada de cor saturada ou ornamento agressivo.</li>
+        <li><strong>A tipografia Fraunces nos títulos cria personalidade premium.</strong> As headlines não parecem fonte padrão de site &mdash; têm caráter editorial, lembram revista de wellness sofisticada.</li>
+        <li><strong>O espaço negativo é generoso.</strong> Cada slide respira. Os textos não colam nas bordas, não há blocos sobrepostos, não há saturação visual. Wellness premium não grita.</li>
+        <li><strong>A hierarquia vem do tamanho e do espaço, não de caixas.</strong> Os mitos têm título grande em Fraunces, divisor fino em verde-musgo, corpo em Inter &mdash; tudo separado por espaço, sem precisar de balões ou containers chamativos.</li>
       </ul>
 
       <div class="nav-buttons">
@@ -420,12 +404,12 @@
     <div class="section" id="sec-step8">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade prática</div>
-      <div class="sec-desc">Agora é a sua vez &mdash; gerar o plano editorial completo</div>
+      <div class="sec-desc">Agora é a sua vez &mdash; gerar o post visual completo</div>
 
       <div class="ap-meta-cards">
         <div class="ap-meta-card">
           <div class="ap-meta-label">Duração</div>
-          <div class="ap-meta-value">8 minutos</div>
+          <div class="ap-meta-value">9 minutos</div>
           <div class="ap-meta-sub">2 fases</div>
         </div>
         <div class="ap-meta-card">
@@ -440,11 +424,11 @@
         </div>
       </div>
 
-      <p class="lead-text">Você vai instalar agora a Skill <code>planejar-mes-lumina</code> no Claude e invocá-la no Project que você criou na AP01. <strong>Esta AP consome apenas 1 mensagem do seu limite do plano gratuito.</strong></p>
+      <p class="lead-text">Você vai instalar agora a Skill <code>montar-post-lumina</code> no Claude e invocá-la no Project que você criou na AP01. <strong>Esta AP consome apenas 1 mensagem do seu limite do plano gratuito.</strong></p>
 
       <div class="overview-card">
         <h3>Por que uma só mensagem</h3>
-        <p>A Skill <strong>carrega automaticamente todo o contexto da Lumina</strong> (estratégia, brand book, formatos, linhas editoriais) e os inputs do prompt (mês + 3 tendências) são suficientes para gerar o plano completo de uma vez. Não há ida e volta com o Claude.</p>
+        <p>A Skill <strong>carrega automaticamente o contexto visual da Lumina</strong> (paleta, tipografia, regras de identidade) e a copy fornecida no prompt já contém todos os textos necessários. O Claude entrega o artefato HTML completo de uma vez.</p>
       </div>
 
       <div class="nav-buttons">
@@ -457,7 +441,7 @@
     <div class="section" id="sec-step9">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
-      <div class="sec-desc">6 passos em 2 fases &middot; ~8 minutos no total</div>
+      <div class="sec-desc">7 passos em 2 fases &middot; ~9 minutos no total</div>
 
       <div class="fase-divider">
         <span class="fd-tag">Fase 01 &middot; Instalar a Skill no Claude</span>
@@ -467,14 +451,14 @@
       <div class="step-card">
         <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe o arquivo .zip da Skill</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Baixe o arquivo <code>planejar-mes-lumina.zip</code> abaixo. Este <code>.zip</code> contém a Skill empacotada no formato oficial do Claude.</p>
+          <p class="step-card-desc">Baixe o arquivo <code>montar-post-lumina.zip</code> abaixo. Este <code>.zip</code> contém a Skill empacotada no formato oficial do Claude.</p>
           <div class="downloads-card">
-            <div class="dc-head">&#128230; Skill da AP02 (formato oficial Claude)</div>
-            <a class="dl-btn" href="planejar-mes-lumina.zip" download>
+            <div class="dc-head">&#128230; Skill da AP04 (formato oficial Claude)</div>
+            <a class="dl-btn" href="montar-post-lumina.zip" download>
               <span class="dl-icon">&#128230;</span>
               <span class="dl-meta">
-                <span class="dl-name">planejar-mes-lumina.zip</span>
-                <span class="dl-desc">Skill que gera o plano editorial de 6 semanas do Funil de Confiança</span>
+                <span class="dl-name">montar-post-lumina.zip</span>
+                <span class="dl-desc">Skill que gera o artefato HTML do carrossel completo com identidade Lumina</span>
               </span>
               <span class="dl-arrow">&darr;</span>
             </a>
@@ -485,17 +469,17 @@
       <div class="step-card">
         <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra Habilidades no Claude</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">No Claude, clique no seu <strong>avatar no canto inferior esquerdo</strong> e selecione <strong>Habilidades</strong> (ou <em>Skills</em>, dependendo do idioma).</p>
+          <p class="step-card-desc">No Claude, clique no seu <strong>avatar no canto inferior esquerdo</strong> e selecione <strong>Habilidades</strong>.</p>
         </div>
       </div>
 
       <div class="step-card">
         <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Carregue a Skill</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Na tela de Habilidades, clique no botão <strong>Carregar habilidade</strong> (ou <em>Upload skill</em>). Em seguida arraste o arquivo <code>planejar-mes-lumina.zip</code> baixado no Passo 01, ou clique para selecionar.</p>
+          <p class="step-card-desc">Na tela de Habilidades, clique no botão <strong>Carregar habilidade</strong> e arraste o arquivo <code>montar-post-lumina.zip</code> baixado no Passo 01.</p>
           <div class="warning-box">
             <div class="warning-label">Validação visual</div>
-            <p>Confirme que a Skill <code>planejar-mes-lumina</code> agora aparece na sua lista de Habilidades.</p>
+            <p>Confirme que a Skill <code>montar-post-lumina</code> agora aparece na sua lista de Habilidades, ao lado das <code>planejar-mes-lumina</code> e <code>escrever-copy-lumina</code> instaladas nas APs anteriores.</p>
           </div>
         </div>
       </div>
@@ -508,47 +492,80 @@
       <div class="step-card">
         <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Abra o Project e selecione Sonnet 4.6</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Abra o Project <strong>"Conteúdo — Lumina"</strong> que você criou na AP01. Confirme que o modelo selecionado é <strong>Claude Sonnet 4.6</strong> no seletor superior. Esse modelo é o equilíbrio ideal entre <strong>qualidade do plano</strong> e <strong>custo de mensagem</strong> no plano gratuito.</p>
+          <p class="step-card-desc">Abra o Project <strong>"Conteúdo — Lumina"</strong>. Confirme que o modelo selecionado é <strong>Claude Sonnet 4.6</strong>.</p>
         </div>
       </div>
 
       <div class="step-card">
         <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Cole o prompt e envie</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Use o botão <strong>"Copiar"</strong> abaixo, cole no campo de mensagem do Project e envie. O prompt já vem com os inputs preenchidos (mês de referência + 3 tendências do ciclo de inverno da Lumina).</p>
+          <p class="step-card-desc">Use o botão <strong>"Copiar"</strong> abaixo, cole no campo de mensagem do Project e envie. O prompt já vem com a copy completa do carrossel gerada na AP03.</p>
           <div class="copy-wrap">
-            <span class="copy-label">Prompt da AP02 &mdash; invocação da Skill</span>
+            <span class="copy-label">Prompt da AP04 &mdash; invocação da Skill</span>
             <div class="copy-block long" id="block-prompt">
 <button class="copy-btn" onclick="copyText(this, document.getElementById('block-prompt-text').textContent)">Copiar</button>
-<span id="block-prompt-text">Use a skill planejar-mes-lumina para gerar o plano editorial do próximo ciclo de 6 semanas do Instagram da Lumina.
+<span id="block-prompt-text">Use a skill montar-post-lumina para gerar o artefato HTML do carrossel completo com a copy abaixo.
 
-Inputs:
+COPY DO CARROSSEL:
 
-MÊS DE REFERÊNCIA DO CICLO:
-Julho a meados de agosto de 2026 (ciclo de inverno).
+SLIDE 01 — CAPA
+Headline: 4 mitos sobre suplementação que ainda travam quem treina sério
+Promessa: O que a literatura científica realmente diz — e o que continua circulando como verdade nos vestiários.
 
-PAUTA QUENTE DO MÊS (3 tendências relevantes):
+SLIDE 02 — MITO 01: "Creatina incha"
+O que parece inchaço é retenção de água dentro do músculo, não na pele. O corpo armazena fosfocreatina nas células musculares e isso traz mais energia disponível para treinar.
+Na prática: você não fica inchada. Você fica com músculo mais hidratado e mais responsivo. A creatina é o suplemento mais estudado da literatura esportiva.
 
-1. Início do inverno no Brasil — pessoas começam a treinar menos por causa do frio, suplementação ganha relevância como apoio à constância.
+SLIDE 03 — MITO 02: "Whey faz mal para o rim"
+Estudos com pessoas saudáveis tomando whey em dose recomendada não mostram dano renal. A confusão veio de pesquisas antigas com pessoas que já tinham doença renal pré-existente.
+Na prática: se você é saudável, whey na dose certa só completa a sua ingestão de proteína diária. Quem precisa de cuidado é quem tem condição renal prévia.
 
-2. Polêmica recente nas redes sociais sobre "creatina inchar" — muitas mulheres da nossa persona estão evitando o ingrediente por desinformação.
+SLIDE 04 — MITO 03: "Pré-treino vicia"
+O que existe é dependência leve de cafeína — a mesma do café que você toma toda manhã. Não é vício no sentido clínico do termo.
+Na prática: você pode pausar quando quiser. O importante é a dose calibrada e o uso consciente, não a abstinência total.
 
-3. Maratona do Rio de Janeiro acontece no segundo final de semana de agosto — público da loja física do RJ está em preparação intensa, sendo uma janela natural para conteúdo de pré-treino e recuperação.
+SLIDE 05 — TRADUÇÃO PARA A ROTINA
+Título: O que muda quando você sabe disso
+A Mariana que entende creatina não evita mais por medo de inchar. A que entende whey não pula a proteína da tarde achando que vai fazer mal. A que entende pré-treino usa quando o treino pede, sem culpa.
+Suplementação séria começa quando o mito sai do caminho.
 
-Gere a tabela completa do ciclo (18 peças: 3 por semana × 6 semanas) seguindo todas as regras da skill. Inclua o bloco final de observações estratégicas.</span></div>
+SLIDE 06 — CTA
+Principal: Salve para consultar antes da próxima compra de suplemento.
+Secundário: Compartilhe com a amiga que ainda evita creatina por medo de inchar.
+
+LEGENDA DO POST
+A maioria das pessoas que treina sério não desiste por falta de disciplina. Desiste por informação ruim.
+Esses 4 mitos circulam há anos nos vestiários e travam decisões que mudariam o treino — começar a tomar creatina, manter o whey constante, usar pré-treino sem culpa.
+A literatura científica é clara. Mas a gente raramente escuta a literatura — escuta o vizinho da academia.
+Salva esse carrossel pra próxima vez que alguém te disser uma dessas.
+
+HASHTAGS
+#suplementacaofuncional #creatinaparamulheres #wellnesspremium
+
+Gere o artefato HTML completo seguindo todas as regras da skill: paleta Lumina rigorosa, Fraunces + Inter, 6 slides quadrados, bloco de legenda ao final.</span></div>
           </div>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Aguarde o plano e valide</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Aguarde o artefato HTML e valide</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Em <strong>30-60 segundos</strong> o Claude vai devolver a tabela completa de 18 peças + bloco de observações estratégicas. Aguarde a resposta completa antes de avançar.</p>
+          <p class="step-card-desc">Em <strong>60-90 segundos</strong> o Claude vai devolver o artefato HTML completo. Ele aparece <strong>na lateral direita do Claude</strong> como um painel renderizado &mdash; você pode visualizar diretamente lá ou clicar no ícone de <em>"abrir em nova aba"</em> para ver em tamanho real.</p>
           <div class="warning-box">
-            <div class="warning-label">Validação visual &mdash; 3 coisas para checar no output</div>
-            <p>A tabela tem exatamente <strong>18 linhas</strong> (6 semanas × 3 peças). Cada peça tem todos os <strong>7 campos preenchidos</strong> (Semana, Dia, Estágio, Linha Editorial, Formato, Headline, Briefing). Aparece um <strong>bloco final de observações estratégicas</strong> com 4-5 bullets.</p>
+            <div class="warning-label">Validação visual &mdash; 3 coisas para checar no artefato</div>
+            <p>O carrossel tem exatamente <strong>6 slides quadrados</strong> visíveis em scroll vertical, na ordem: capa, mito 01, mito 02, mito 03, tradução, CTA. A <strong>paleta Lumina</strong> está aplicada (branco quente e areia alternados nos fundos, verde-musgo nos detalhes do logo, coral nas tags "MITO 01"). Aparece um <strong>bloco extra ao final</strong> simulando a legenda do Instagram, com avatar @lumina, texto e hashtags em coral.</p>
           </div>
-          <p class="step-card-desc" style="margin-top:12px"><em>Quer comparar com um exemplo? O arquivo <code>exemplo-output-esperado-ap02.md</code> está disponível para download na seção 06 (Artefato da demonstração).</em></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">(Opcional) Baixe o HTML para usar como mockup</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Para baixar o HTML e abrir no navegador local, clique no <strong>botão de download do artefato</strong> no painel lateral do Claude. O arquivo <code>.html</code> será salvo no seu computador e pode ser aberto em qualquer navegador.</p>
+          <div class="tip-box">
+            <div class="tip-label">Para que serve esse download</div>
+            <p>O HTML baixado funciona como <strong>mockup de alta fidelidade</strong> para mostrar ao designer/cliente, base para reprodução em Canva ou Figma, ou simplesmente arquivo de referência do post para o seu portfólio.</p>
+          </div>
         </div>
       </div>
 
@@ -562,23 +579,24 @@ Gere a tabela completa do ciclo (18 peças: 3 por semana × 6 semanas) seguindo 
     <div class="section" id="sec-step10">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">10.</span> O que você tem ao final desta atividade</div>
-      <div class="sec-desc">Checklist do entregável da AP02</div>
+      <div class="sec-desc">Checklist do entregável da AP04</div>
 
       <div class="overview-card">
         <h3>Você sai desta atividade com</h3>
         <ul class="check-list">
-          <li><strong>Skill <code>planejar-mes-lumina</code> instalada</strong> no seu Claude &mdash; disponível para usar a qualquer momento, em qualquer Project.</li>
-          <li><strong>Plano editorial completo</strong> de 6 semanas com 18 peças prontas para produção.</li>
-          <li><strong>Cada peça com headline já escrita</strong> no tom acolhedor experto Lumina.</li>
-          <li><strong>Estratégia distribuída ao longo do funil</strong> &mdash; uma tendência atravessa múltiplas semanas, produtos rotacionados, formatos alternados.</li>
-          <li><strong>Briefing curto por peça</strong> suficiente para a próxima Skill (AP03) escrever a copy.</li>
+          <li><strong>Skill <code>montar-post-lumina</code> instalada</strong> no seu Claude &mdash; disponível para usar a qualquer momento.</li>
+          <li><strong>Carrossel completo de 6 slides</strong> no formato Instagram (1080×1080) renderizado em HTML.</li>
+          <li><strong>Identidade visual Lumina rigorosa</strong> &mdash; paleta wellness premium, Fraunces + Inter, espaço negativo, sem ornamento pesado.</li>
+          <li><strong>Bloco de legenda simulando Instagram</strong> ao final, com hashtags em coral.</li>
+          <li><strong>Mockup de alta fidelidade</strong> que pode ser baixado, visualizado em navegador, ou usado como referência para produção visual no Canva, Figma, Photoshop.</li>
+          <li><strong>Ciclo briefing &rarr; post completo:</strong> você saiu da AP02 com plano editorial, passou pela AP03 com copy, e termina aqui com o post visual finalizado.</li>
           <li><strong>Apenas 1 mensagem consumida</strong> do seu limite do plano gratuito.</li>
         </ul>
       </div>
 
       <div class="insight-box">
-        <div class="insight-label">Próximo passo &middot; AP03</div>
-        <p>Na próxima atividade prática você vai instalar uma nova Skill (<code>escrever-copy-lumina</code>) e usá-la para escrever a <strong>copy completa da peça da Sexta da Semana 1</strong> deste plano que você acabou de gerar.</p>
+        <div class="insight-label">Próximo passo &middot; AP05</div>
+        <p>Na <strong>última atividade prática da aula</strong> você vai construir o <strong>painel de análise de performance</strong> do Instagram da Lumina &mdash; um dashboard HTML que processa dados de posts publicados e mostra crescimento de seguidores, alcance, engajamento, conteúdo top performer e cliques no link da bio.</p>
       </div>
 
       <div class="nav-buttons">
@@ -591,32 +609,32 @@ Gere a tabela completa do ciclo (18 peças: 3 por semana × 6 semanas) seguindo 
     <div class="section" id="sec-step11">
       <span class="section-badge badge-desafio">Desafio</span>
       <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
-      <div class="sec-desc">Adapte a Skill para a realidade do seu negócio</div>
+      <div class="sec-desc">Adapte a Skill para a identidade visual da sua marca</div>
 
-      <p class="lead-text">Agora que você dominou o conceito da Skill de planejamento aplicado ao Funil de Confiança com o caso da Lumina, adapte para a <strong>realidade da sua empresa</strong>.</p>
+      <p class="lead-text">Agora que você dominou o conceito da Skill de montagem visual aplicada à identidade da Lumina, adapte para a <strong>realidade da sua empresa</strong>.</p>
 
       <div class="overview-card">
         <h3>O que fazer</h3>
         <ul>
-          <li><strong>1. Adapte a Skill <code>planejar-mes-lumina</code> para sua empresa.</strong> Faça download da Skill, descompacte o <code>.zip</code>, ajuste o <code>SKILL.md</code> (renomeie como <code>planejar-mes-[sua-empresa]</code>, atualize a description, ajuste as linhas editoriais, formatos, produtos). A estrutura do Funil de Confiança permanece &mdash; ela é universal e não depende do nicho. Reempacote em <code>.zip</code> e instale no Claude.</li>
-          <li><strong>2. Mapeie as tendências reais do seu mês corrente</strong> (3 tendências). Podem ser sazonalidade do seu setor, polêmicas recentes, eventos relevantes do mês, lançamentos de produto ou movimento da concorrência.</li>
-          <li><strong>3. Invoque a Skill no Project da sua empresa</strong> com essas tendências reais como input.</li>
-          <li><strong>4. Revise o plano gerado</strong> com olhar editorial &mdash; ajuste o que não fizer sentido, mantenha o que estiver alinhado. Use como ponto de partida, não como verdade absoluta.</li>
+          <li><strong>1. Adapte a Skill <code>montar-post-lumina</code> para sua empresa.</strong> Faça download do <code>.zip</code>, descompacte, edite o <code>SKILL.md</code> (renomeie como <code>montar-post-[sua-empresa]</code>, ajuste as variáveis CSS com a <strong>paleta real da sua marca</strong> + <strong>tipografia oficial</strong>, substituindo Fraunces + Inter). A estrutura técnica do HTML permanece &mdash; só os tokens visuais mudam. Reempacote em <code>.zip</code> e instale no Claude.</li>
+          <li><strong>2. Use a copy gerada na AP03</strong> (versão da sua empresa) como input para a Skill. Tem que ser carrossel &mdash; para outros formatos (insight rápido, framework visual), a Skill precisa ser ajustada com estruturas específicas.</li>
+          <li><strong>3. Invoque a Skill no Project da sua empresa</strong> com a copy do seu primeiro post real como input.</li>
+          <li><strong>4. Refine o HTML</strong> se necessário. Ajustes finos podem ser pedidos diretamente ao Claude em mensagens curtas (<em>"aumenta o título do slide 02"</em>, <em>"muda o fundo do slide 05 para verde-claro"</em>). Cada ajuste consome 1 mensagem &mdash; use com parcimônia no plano gratuito.</li>
         </ul>
       </div>
 
       <div class="overview-card">
         <h3>Ficha do desafio</h3>
         <table class="ficha-table"><tbody>
-          <tr><td>Tempo estimado</td><td>30 a 45 minutos (15 min adaptando a Skill, 15 min mapeando tendências, 15 min revisando o plano)</td></tr>
-          <tr><td>Resultado esperado</td><td>Plano editorial real do próximo ciclo de 6 semanas da sua empresa, ancorado em estratégia e em tendências reais</td></tr>
-          <tr><td>Quando fazer</td><td>Esta semana &mdash; é o passo 2 da jornada de 5 semanas</td></tr>
+          <tr><td>Tempo estimado</td><td>30 a 45 minutos (15 min adaptando e reempacotando a Skill com sua paleta, 10 min gerando o HTML, 15 min refinando ajustes finos)</td></tr>
+          <tr><td>Resultado esperado</td><td>Primeiro post visual completo da sua empresa, renderizado em HTML, pronto para baixar, visualizar e usar como base para produção visual em ferramentas profissionais</td></tr>
+          <tr><td>Quando fazer</td><td>Esta semana &mdash; é o passo 4 da jornada de 5 semanas</td></tr>
         </tbody></table>
       </div>
 
       <div class="insight-box">
         <div class="insight-label">Conexão com o programa</div>
-        <p>Esta AP é o <strong>passo 2</strong> da jornada de 5 semanas. Na próxima semana você roda a AP03 (copy da peça da Semana 1) usando como input o <strong>plano que você gerou aqui</strong>.</p>
+        <p>Esta AP é o <strong>passo 4</strong> da jornada de 5 semanas. Na próxima e <strong>última semana</strong> você roda a AP05 (painel de análise) para medir como esse tipo de post performaria nos primeiros 30 dias do Instagram da sua empresa.</p>
       </div>
 
       <div class="nav-buttons">
@@ -649,7 +667,7 @@ Gere a tabela completa do ciclo (18 peças: 3 por semana × 6 semanas) seguindo 
   })();
 
   // Section navigation + progress
-  const PKEY = "delta-tut-skill-planejar-mes-lumina";
+  const PKEY = "delta-tut-skill-montar-post-lumina";
   const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
   const TOTAL = 12;
 
