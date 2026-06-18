@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumina · Painel de Performance · Junho 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --lumina-cream: #FBF9F5;
+  --lumina-green: #5C7A5A;
+  --lumina-coral: #C97A5A;
+  --lumina-taupe: #8A857D;
+  --lumina-pale-green: #D4DDC9;
+  --lumina-sand: #E8DFC9;
+  --lumina-text: #2A2A26;
+  --lumina-card-bg: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--lumina-cream);
+  font-family: 'Inter', sans-serif;
+  color: var(--lumina-text);
+  padding: 40px 20px 60px;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 30px 0 50px;
+  border-bottom: 1px solid var(--lumina-pale-green);
+  margin-bottom: 50px;
+}
+
+.logo-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.logo-circle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--lumina-green);
+  border-radius: 50%;
+}
+
+.logo-text {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--lumina-green);
+}
+
+.header h1 {
+  font-family: 'Fraunces', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--lumina-text);
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+
+.header .period {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--lumina-taupe);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* SEÇÕES */
+.section {
+  margin-bottom: 50px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--lumina-pale-green);
+}
+
+.section-number {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  color: var(--lumina-coral);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--lumina-text);
+}
+
+/* CARDS GRID */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.cards-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.card {
+  background: var(--lumina-card-bg);
+  border-radius: 12px;
+  padding: 26px 24px;
+  border: 1px solid var(--lumina-pale-green);
+}
+
+.card.sand {
+  background: var(--lumina-sand);
+  border-color: var(--lumina-sand);
+}
+
+.card-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--lumina-taupe);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.big-number {
+  font-family: 'Fraunces', serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: var(--lumina-green);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.big-number.coral { color: var(--lumina-coral); }
+
+.card-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: var(--lumina-taupe);
+  font-weight: 500;
+}
+
+.card-sub strong {
+  color: var(--lumina-text);
+  font-weight: 600;
+}
+
+/* SEGUIDORES */
+.followers-detail {
+  display: flex;
+  gap: 22px;
+  margin-top: 14px;
+  font-size: 13px;
+  font-family: 'Inter';
+  color: var(--lumina-text);
+}
+
+.followers-detail .item span {
+  color: var(--lumina-taupe);
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.followers-detail .item strong {
+  color: var(--lumina-text);
+  font-weight: 600;
+}
+
+.growth-badge {
+  display: inline-block;
+  background: var(--lumina-pale-green);
+  color: var(--lumina-green);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 8px;
+  font-family: 'Inter';
+}
+
+/* TOP POSTS */
+.top-posts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.top-post {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--lumina-card-bg);
+  border: 1px solid var(--lumina-pale-green);
+  border-radius: 10px;
+}
+
+.top-post-rank {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--lumina-coral);
+  line-height: 1;
+}
+
+.top-post-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.top-post-title {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--lumina-text);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.top-post-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.badge-editorial {
+  background: var(--lumina-sand);
+  color: var(--lumina-text);
+}
+
+.badge-funil {
+  background: var(--lumina-pale-green);
+  color: var(--lumina-green);
+}
+
+.top-post-metric {
+  text-align: right;
+  font-family: 'Inter';
+}
+
+.top-post-metric-value {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--lumina-green);
+  line-height: 1;
+}
+
+.top-post-metric-label {
+  font-size: 10px;
+  color: var(--lumina-taupe);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ANÁLISE INLINE */
+.analysis {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--lumina-text);
+  line-height: 1.65;
+  margin-top: 16px;
+  padding: 18px 22px;
+  background: var(--lumina-sand);
+  border-radius: 10px;
+  border-left: 3px solid var(--lumina-coral);
+}
+
+.analysis strong {
+  color: var(--lumina-green);
+  font-weight: 600;
+}
+
+/* OBSERVAÇÕES FINAIS */
+.observations {
+  background: var(--lumina-pale-green);
+  border-radius: 16px;
+  padding: 36px 38px;
+  margin-top: 60px;
+}
+
+.observations h2 {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--lumina-text);
+  margin-bottom: 22px;
+}
+
+.observations ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.observations li {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--lumina-text);
+  line-height: 1.6;
+  padding-left: 22px;
+  position: relative;
+}
+
+.observations li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 12px;
+  height: 1px;
+  background: var(--lumina-green);
+}
+
+.observations li strong {
+  color: var(--lumina-green);
+  font-weight: 600;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid var(--lumina-pale-green);
+  font-family: 'Inter';
+  font-size: 12px;
+  color: var(--lumina-taupe);
+  letter-spacing: 0.08em;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid-2 { grid-template-columns: 1fr; }
+  .top-post { grid-template-columns: 1fr; gap: 12px; text-align: left; }
+  .top-post-metric { text-align: left; }
+  .header h1 { font-size: 28px; }
+  .big-number { font-size: 38px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-block">
+      <div class="logo-circle"></div>
+      <div class="logo-text">lumina</div>
+    </div>
+    <h1>Performance do Instagram</h1>
+    <div class="period">01 a 30 de Junho · 2026</div>
+  </div>
+
+  <!-- SEÇÃO 1 — SEGUIDORES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <h2 class="section-title">Crescimento de seguidores</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card sand">
+        <div class="card-label">Saldo do período</div>
+        <div class="big-number">+762</div>
+        <div class="card-sub">novos seguidores líquidos</div>
+        <div class="growth-badge">+6,1% no período</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Ganhos</div>
+        <div class="big-number">892</div>
+        <div class="card-sub">Total no período</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Perdidos</div>
+        <div class="big-number coral">130</div>
+        <div class="card-sub">Total no período</div>
+      </div>
+    </div>
+    <div class="followers-detail">
+      <div class="item"><span>Início:</span><strong>12.480</strong></div>
+      <div class="item"><span>Fim:</span><strong>13.242</strong></div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2 — ALCANCE -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <h2 class="section-title">Alcance e visualizações</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card sand">
+        <div class="card-label">Alcance total</div>
+        <div class="big-number">141.810</div>
+        <div class="card-sub">contas únicas alcançadas</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Impressões totais</div>
+        <div class="big-number">174.170</div>
+        <div class="card-sub">visualizações totais</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Alcance médio por post</div>
+        <div class="big-number">11.818</div>
+        <div class="card-sub">média de 12 posts</div>
+      </div>
+    </div>
+    <div class="analysis">
+      <strong>Post de maior alcance:</strong> "4 mitos sobre suplementação que ainda travam quem treina sério" — 18.450 contas alcançadas. Hook forte de quebra de mito + tema sensível (creatina não incha) explicaram o alcance acima da média.
+    </div>
+  </section>
+
+  <!-- SEÇÃO 3 — INTERAÇÕES -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <h2 class="section-title">Interações totais</h2>
+    </div>
+    <div class="cards-grid">
+      <div class="card sand">
+        <div class="card-label">Curtidas</div>
+        <div class="big-number">10.835</div>
+        <div class="card-sub">no período</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Comentários</div>
+        <div class="big-number">1.133</div>
+        <div class="card-sub">no período</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Salvamentos</div>
+        <div class="big-number">8.911</div>
+        <div class="card-sub">no período</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Compartilhamentos</div>
+        <div class="big-number">2.901</div>
+        <div class="card-sub">no período</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 4 — TAXA DE ENGAJAMENTO -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <h2 class="section-title">Taxa de engajamento</h2>
+    </div>
+    <div class="cards-grid-2">
+      <div class="card sand">
+        <div class="card-label">Taxa média do período</div>
+        <div class="big-number">16,8%</div>
+        <div class="card-sub">acima do benchmark wellness (3-5%)</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Tendência</div>
+        <div class="big-number">↗ Subindo</div>
+        <div class="card-sub">Maior engajamento nas últimas duas semanas</div>
+      </div>
+    </div>
+    <div class="analysis">
+      Taxa muito acima do benchmark do setor — sinal de audiência altamente engajada e qualificada. <strong>O Instagram da Lumina não tem problema de tração — tem audiência forte para um ICP nichado.</strong> O foco do próximo ciclo deve ser conversão, não vaidade de alcance.
+    </div>
+  </section>
+
+  <!-- SEÇÃO 5 — TOP POSTS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <h2 class="section-title">Conteúdo que mais performou</h2>
+    </div>
+    <div class="top-posts">
+      <div class="top-post">
+        <div class="top-post-rank">1º</div>
+        <div class="top-post-info">
+          <div class="top-post-title">Mapa de suplementação por objetivo: força, recuperação, energia, foco</div>
+          <div class="top-post-meta">
+            <span class="badge badge-editorial">Ciência sem palestra</span>
+            <span class="badge badge-funil">Seguem você</span>
+          </div>
+        </div>
+        <div class="top-post-metric">
+          <div class="top-post-metric-value">3.953</div>
+          <div class="top-post-metric-label">interações</div>
+        </div>
+      </div>
+      <div class="top-post">
+        <div class="top-post-rank">2º</div>
+        <div class="top-post-info">
+          <div class="top-post-title">3 sinais de que seu suplemento atual não está funcionando</div>
+          <div class="top-post-meta">
+            <span class="badge badge-editorial">Mitos e verdades</span>
+            <span class="badge badge-funil">Precisam de você</span>
+          </div>
+        </div>
+        <div class="top-post-metric">
+          <div class="top-post-metric-value">2.769</div>
+          <div class="top-post-metric-label">interações</div>
+        </div>
+      </div>
+      <div class="top-post">
+        <div class="top-post-rank">3º</div>
+        <div class="top-post-info">
+          <div class="top-post-title">4 mitos sobre suplementação que ainda travam quem treina sério</div>
+          <div class="top-post-meta">
+            <span class="badge badge-editorial">Mitos e verdades</span>
+            <span class="badge badge-funil">Notam você</span>
+          </div>
+        </div>
+        <div class="top-post-metric">
+          <div class="top-post-metric-value">2.611</div>
+          <div class="top-post-metric-label">interações</div>
+        </div>
+      </div>
+    </div>
+    <div class="analysis">
+      <strong>Padrão observado:</strong> os 3 posts top têm um elemento em comum — entregam clareza prática à Mariana (framework, diagnóstico, quebra de mito). A audiência da Lumina responde melhor a conteúdo que organiza a cabeça do que a conteúdo aspiracional puro.
+    </div>
+  </section>
+
+  <!-- SEÇÃO 6 — CLIQUES BIO -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">06</span>
+      <h2 class="section-title">Cliques no link da bio</h2>
+    </div>
+    <div class="cards-grid-2">
+      <div class="card sand">
+        <div class="card-label">Total de cliques</div>
+        <div class="big-number">939</div>
+        <div class="card-sub">visitas ao site vindas do Instagram</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Top 3 posts em cliques</div>
+        <div class="card-sub" style="margin-top:6px; line-height:1.7">
+          <strong style="color:var(--lumina-text)">187</strong> — Kit completo de inverno<br>
+          <strong style="color:var(--lumina-text)">124</strong> — Mapa de suplementação por objetivo<br>
+          <strong style="color:var(--lumina-text)">98</strong> — 3 sinais de que seu suplemento não funciona
+        </div>
+      </div>
+    </div>
+    <div class="analysis">
+      <strong>Peças que mais geram clique são as que mencionam produto ou criam senso de busca por solução.</strong> O carrossel da Semana 6 (Kit completo de inverno) gerou 2x mais cliques que a média — o estágio "compram de você" do funil está funcionando.
+    </div>
+  </section>
+
+  <!-- SEÇÃO 7 — LEADS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-number">07</span>
+      <h2 class="section-title">Leads captados</h2>
+    </div>
+    <div class="cards-grid-2">
+      <div class="card sand">
+        <div class="card-label">Total de leads</div>
+        <div class="big-number">141</div>
+        <div class="card-sub">capturados via links traqueáveis</div>
+        <div class="growth-badge">15,0% de conversão de cliques</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Top 3 posts em leads</div>
+        <div class="card-sub" style="margin-top:6px; line-height:1.7">
+          <strong style="color:var(--lumina-text)">28</strong> — Kit completo de inverno<br>
+          <strong style="color:var(--lumina-text)">18</strong> — Mapa de suplementação por objetivo<br>
+          <strong style="color:var(--lumina-text)">14</strong> — 3 sinais de que seu suplemento não funciona
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OBSERVAÇÕES ESTRATÉGICAS -->
+  <div class="observations">
+    <h2>Observações estratégicas para o próximo ciclo</h2>
+    <ul>
+      <li><strong>Linha editorial vencedora — Ciência sem palestra.</strong> O framework "mapa de suplementação por objetivo" foi o post de maior engajamento do mês. Aumentar a frequência dessa linha de 25% para 30% no próximo ciclo.</li>
+      <li><strong>Estágio do funil com maior tração — SEGUEM VOCÊ (Semana 3).</strong> Conteúdo de valor com framework e diagnóstico foi o que mais gerou interação. Reforçar a profundidade dessa semana.</li>
+      <li><strong>Padrão dos posts top — clareza prática para a Mariana.</strong> Framework, diagnóstico e quebra de mito performam acima da média. Aspiracional puro (carrossel-ritual) tem alcance menor, mas é importante para construção de marca.</li>
+      <li><strong>Conversão de clique em lead está saudável (15%).</strong> O problema não é o link — é o volume de cliques. Próximo ciclo: investir em CTAs mais explícitos em posts de "PRECISAM DE VOCÊ".</li>
+      <li><strong>O carrossel de fechamento (Semana 6) provou que o funil funciona.</strong> Maior gerador de cliques na bio E de leads. Reforçar essa estratégia de fechamento no próximo ciclo.</li>
+      <li><strong>Hipótese a testar:</strong> Mitos e Verdades pode estar saturando — 3 posts dessa linha no ciclo, ótimo desempenho dos primeiros, queda no terceiro. Diminuir para 2 posts no próximo ciclo.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Painel gerado pela Skill gerar-painel-conteudo-lumina · Lumina Wellness · Junho 2026
+  </div>
+
+</div>
+
+</body>
+</html>

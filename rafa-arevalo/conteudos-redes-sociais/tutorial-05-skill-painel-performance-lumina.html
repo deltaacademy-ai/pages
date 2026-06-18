@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05. Skill de Painel de Performance Lumina &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo{margin-bottom:14px}
+  .sidebar-logo img{max-width:148px;height:auto;display:block}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-group-title.intro,.nav-group-title.demo,.nav-group-title.pratica,.nav-group-title.desafio{color:var(--sidebar-fg);opacity:1}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:780px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  .lead-text code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  /* Banner do entregável */
+  .banner-entregavel{background:var(--insight-bg);border-radius:12px;padding:18px 22px;margin:16px 0;border:1px solid var(--accent-border)}
+  .banner-entregavel .be-label{font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px}
+  .banner-entregavel .be-title{font-size:0.98rem;font-weight:700;color:var(--insight-fg);line-height:1.35;margin-bottom:10px}
+  .banner-entregavel .be-list{list-style:none;margin:0}
+  .banner-entregavel .be-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--insight-fg);line-height:1.55;opacity:0.92}
+  .banner-entregavel .be-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--gold);font-weight:800;font-size:0.86rem}
+  .banner-entregavel .be-list li strong{color:var(--gold);font-weight:700}
+  .banner-entregavel .be-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:rgba(209,170,83,0.12);padding:1px 5px;border-radius:3px;color:var(--gold)}
+  .banner-entregavel .be-sub{list-style:none;margin-top:6px;margin-left:22px;padding-left:14px;border-left:2px solid rgba(209,170,83,0.25)}
+  .banner-entregavel .be-sub li{padding:3px 0 3px 14px;position:relative;font-size:0.74rem;color:var(--insight-fg);opacity:0.82}
+  .banner-entregavel .be-sub li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--gold);opacity:0.6}
+  /* Cards de duração + modelo */
+  .ap-meta-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:16px 0 20px}
+  .ap-meta-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow-xs)}
+  .ap-meta-card .ap-meta-label{font-size:0.56rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--text3);margin-bottom:6px}
+  .ap-meta-card .ap-meta-value{font-size:0.84rem;font-weight:700;color:var(--accent2);line-height:1.3}
+  .ap-meta-card .ap-meta-sub{font-size:0.66rem;color:var(--text2);margin-top:2px;font-weight:500}
+  /* Step-card pattern */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  /* Fase divider */
+  .fase-divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px}
+  .fase-divider .fd-tag{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);padding:4px 10px;border-radius:4px;background:var(--accent2);flex-shrink:0}
+  .fase-divider .fd-line{flex:1;height:1px;background:var(--border2)}
+  /* Copy block */
+  .copy-wrap{margin:14px 0 4px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.66rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:18px 22px 18px 22px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.78rem;color:#0E1A19;line-height:1.68;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-block.long{max-height:340px;overflow-y:auto;font-size:0.74rem;line-height:1.62}
+  .copy-block.long::-webkit-scrollbar{width:6px}
+  .copy-block.long::-webkit-scrollbar-track{background:transparent}
+  .copy-block.long::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;z-index:1}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  /* Downloads-card */
+  .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
+  .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
+  .downloads-card .dl-btn{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 12px;margin-bottom:8px;text-decoration:none;color:var(--text);transition:all 0.15s}
+  .downloads-card .dl-btn:hover{border-color:var(--accent);background:var(--accent-lighter);transform:translateX(2px)}
+  .downloads-card .dl-btn:last-child{margin-bottom:0}
+  .downloads-card .dl-btn .dl-icon{font-size:1.1rem;flex-shrink:0;width:32px;height:32px;border-radius:6px;background:var(--green-light);color:var(--green-text);display:flex;align-items:center;justify-content:center}
+  .downloads-card .dl-btn .dl-meta{flex:1;min-width:0}
+  .downloads-card .dl-btn .dl-name{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.72rem;font-weight:600;color:var(--accent2);margin-bottom:2px;word-break:break-all}
+  .downloads-card .dl-btn .dl-desc{font-size:0.68rem;color:var(--text2);line-height:1.4}
+  .downloads-card .dl-btn .dl-arrow{font-size:0.86rem;color:var(--accent);flex-shrink:0;font-weight:800}
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+  .check-list li code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .check-list li ul{list-style:none;margin-top:4px;margin-left:6px;padding-left:14px;border-left:1px solid var(--border2)}
+  .check-list li ul li{padding:3px 0 3px 12px;font-size:0.72rem;color:var(--text2)}
+  .check-list li ul li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:1px;background:var(--accent);opacity:0.6}
+  /* Indicadores numerados */
+  .indicador-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+  .indicador-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow-xs);display:flex;align-items:flex-start;gap:10px}
+  .indicador-num{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.92rem;font-weight:800;color:var(--accent2);background:var(--accent-lighter);padding:3px 8px;border-radius:4px;flex-shrink:0;line-height:1.2}
+  .indicador-content{flex:1;min-width:0}
+  .indicador-title{font-size:0.78rem;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3}
+  .indicador-desc{font-size:0.7rem;color:var(--text2);line-height:1.45}
+  @media (max-width:768px){.sidebar{display:none}.main{padding:20px 16px 40px;max-width:100%}.ap-meta-cards{grid-template-columns:1fr}.indicador-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; Índice do Módulo</a>
+      <h2>Skill de Painel de Performance Lumina</h2>
+      <p>AP05 &middot; Conteúdos para Redes Sociais</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Início</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Visão Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title intro">Introdução</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde você vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 7 indicadores obrigatórios<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> De número à decisão<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Por que Skill e não planilha<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title demo">Demonstração</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que você vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Artefato da demonstração<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title pratica">Atividade Prática</div>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Sua atividade prática<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> O que você tem ao final<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title desafio">Desafio</div>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; Conteúdos para Redes Sociais &rsaquo; <a href="index.html">Índice</a> &rsaquo; 05. Skill de Painel de Performance Lumina</div>
+      <div class="sec-title"><span class="snum">00.</span> Visão Geral</div>
+      <div class="sec-desc">AP05 &mdash; Skill de Painel de Performance do Instagram</div>
+
+      <p class="lead-text">Esta é a <strong>AP05</strong> &mdash; a <strong>última atividade prática da aula MKT-01</strong>. Você vai instalar a Skill <code>gerar-painel-conteudo-lumina</code> no Claude, anexar um CSV com os dados de performance de junho/2026 e gerar o <strong>painel HTML completo de análise</strong> &mdash; fechando o ciclo da máquina de conteúdo da Lumina.</p>
+
+      <div class="overview-card">
+        <h3>Ficha técnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Skill (Introdução + Demonstração + Atividade Prática + Desafio)</td></tr>
+          <tr><td>Duração</td><td>12 minutos</td></tr>
+          <tr><td>Modelo recomendado</td><td>Claude Sonnet 4.6</td></tr>
+          <tr><td>Mensagens ao Claude</td><td>1 (uma) &mdash; o painel HTML sai em um único prompt</td></tr>
+          <tr><td>Pré-requisitos</td><td>AP01 (Project) + AP02 + AP03 + AP04 (Skills instaladas)</td></tr>
+          <tr><td>Total da aula</td><td>4 mensagens consumidas no ciclo completo (AP01=0 + AP02=1 + AP03=1 + AP04=1 + AP05=1)</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">A AP que fecha o loop</div>
+        <p>Você passou pela AP02 (plano), AP03 (copy), AP04 (post visual) &mdash; e agora <strong>fecha o ciclo medindo como o conteúdo performou</strong>. Os insights do painel alimentam o próximo ciclo de planejamento, formando uma máquina que se retroalimenta.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao índice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde você vai chegar</div>
+      <div class="sec-desc">O entregável final desta AP</div>
+
+      <p class="lead-text">Ao terminar esta AP você vai ter um <strong>painel HTML autocontido de análise de performance</strong> do Instagram da Lumina referente ao mês de junho &mdash; com os 7 indicadores obrigatórios + bloco de observações estratégicas para o próximo ciclo.</p>
+
+      <div class="banner-entregavel">
+        <div class="be-label">Entregável da AP05</div>
+        <div class="be-title">Painel HTML de 7 seções + bloco estratégico final</div>
+        <ul class="be-list">
+          <li><strong>Painel HTML de 7 seções</strong> + bloco final estratégico
+            <ul class="be-sub">
+              <li>01 &mdash; Crescimento de seguidores (ganhos, perdidos, saldo líquido)</li>
+              <li>02 &mdash; Alcance e visualizações (totais e médias)</li>
+              <li>03 &mdash; Interações totais (curtidas, comentários, salvamentos, compartilhamentos)</li>
+              <li>04 &mdash; Taxa de engajamento (média do período + tendência)</li>
+              <li>05 &mdash; Conteúdo que mais performou (top 3 posts)</li>
+              <li>06 &mdash; Cliques no link da bio (total + top 3)</li>
+              <li>07 &mdash; Leads captados (total + conversão de clique em lead)</li>
+            </ul>
+          </li>
+          <li><strong>Bloco final</strong> com 5-6 observações estratégicas para o próximo ciclo</li>
+          <li><strong>Identidade visual Lumina aplicada</strong> &mdash; paleta wellness premium, Fraunces + Inter, hierarquia serena</li>
+        </ul>
+      </div>
+
+      <p class="lead-text"><strong>Como esta AP fecha a aula.</strong> Esta é a última atividade prática do ciclo completo de conteúdo. Você passou pela AP02 (plano), AP03 (copy), AP04 (post visual) &mdash; e agora fecha o loop medindo como o conteúdo performou. Os insights do painel <strong>alimentam o próximo ciclo de planejamento</strong>, formando uma máquina de conteúdo que se retroalimenta.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">02.</span> Os 7 indicadores obrigatórios do painel Lumina</div>
+      <div class="sec-desc">O que sempre tem que estar no painel, nessa ordem</div>
+
+      <p class="lead-text">O painel da Lumina sempre tem <strong>7 seções obrigatórias</strong>, na ordem que reflete a <strong>jornada da audiência</strong> (descoberta &rarr; consumo &rarr; conversão):</p>
+
+      <div class="indicador-grid">
+        <div class="indicador-card">
+          <div class="indicador-num">01</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Crescimento de seguidores</div>
+            <div class="indicador-desc">Quantos ganhou e quantos perdeu no período</div>
+          </div>
+        </div>
+        <div class="indicador-card">
+          <div class="indicador-num">02</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Alcance e visualizações</div>
+            <div class="indicador-desc">Totais e médias por post</div>
+          </div>
+        </div>
+        <div class="indicador-card">
+          <div class="indicador-num">03</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Interações</div>
+            <div class="indicador-desc">Curtidas, comentários, salvamentos, compartilhamentos</div>
+          </div>
+        </div>
+        <div class="indicador-card">
+          <div class="indicador-num">04</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Taxa de engajamento</div>
+            <div class="indicador-desc">Fórmula padrão + comparação com benchmark</div>
+          </div>
+        </div>
+        <div class="indicador-card">
+          <div class="indicador-num">05</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Conteúdo top performer</div>
+            <div class="indicador-desc">Top 3 posts por engajamento absoluto</div>
+          </div>
+        </div>
+        <div class="indicador-card">
+          <div class="indicador-num">06</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Cliques no link da bio</div>
+            <div class="indicador-desc">Quantas pessoas saíram para o site</div>
+          </div>
+        </div>
+        <div class="indicador-card" style="grid-column:1/-1">
+          <div class="indicador-num">07</div>
+          <div class="indicador-content">
+            <div class="indicador-title">Leads captados</div>
+            <div class="indicador-desc">Quantos cliques viraram lead via link traqueável &mdash; o fim do funil de Instagram</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Hierarquia visual</div>
+        <p>Cada seção tem cards com <strong>big numbers em Fraunces</strong>, <strong>badges das linhas editoriais em coral</strong> e análise curta em texto editorial. A hierarquia deixa óbvio o que é métrica e o que é interpretação.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">03.</span> Como o painel transforma número em decisão editorial</div>
+      <div class="sec-desc">Painel bom não para nos números</div>
+
+      <p class="lead-text">Um painel bom não para nos números &mdash; ele entrega <strong>leitura estratégica</strong>. Cada uma das 7 seções do painel Lumina inclui um bloco de análise curta interpretando o que os números significam.</p>
+
+      <div class="overview-card">
+        <h3>O que cada análise responde</h3>
+        <ul>
+          <li><strong>Qual linha editorial performou melhor</strong> &mdash; para aumentar frequência no próximo ciclo</li>
+          <li><strong>Qual estágio do funil teve maior tração</strong> &mdash; para reforçar a profundidade da semana certa</li>
+          <li><strong>Padrão dos posts top performer</strong> &mdash; para replicar as alavancas em outras peças</li>
+          <li><strong>Onde está o gargalo de conversão</strong> &mdash; para corrigir no próximo ciclo</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Bloco final = mais importante</div>
+        <p>O <strong>bloco final consolida tudo em 5-6 bullets estratégicos</strong> diretamente acionáveis pela Bruna. É onde os números viram decisão. A Bruna sai daqui sabendo <strong>o que aumentar, o que diminuir e o que testar</strong> no próximo ciclo.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-intro">Introdução</span>
+      <div class="sec-title"><span class="snum">04.</span> Por que dashboard precisa de Skill (e não de planilha bruta)</div>
+      <div class="sec-desc">A diferença entre dado e decisão</div>
+
+      <p class="lead-text">A Bruna abre o Instagram Insights, exporta os dados, joga no Excel. Faz uma tabela. Olha para os números. Tenta tirar conclusão. <strong>E para aí.</strong> Em 90% dos casos, os dados ficam em planilha que nunca vira decisão.</p>
+
+      <p class="lead-text">Uma <strong>Skill que gera painel HTML</strong> resolve isso de duas formas:</p>
+
+      <div class="overview-card">
+        <h3>1. Transforma dados em narrativa visual</h3>
+        <p>O painel não é tabela &mdash; é <strong>peça editorial</strong> que respeita a identidade da marca, com hierarquia clara entre número grande, contexto e análise. Pronto para apresentar à liderança ou para a Bruna usar como referência semanal.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>2. Liga número a decisão editorial</h3>
+        <p>Cada seção termina com um <strong>bloco de análise</strong> que conecta o dado ao plano do próximo ciclo. O painel <strong>não fecha o mês &mdash; abre o próximo</strong>.</p>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Analogia</div>
+        <p>Sem Skill, a Bruna tem um carro com <strong>painel funcional mas confuso</strong> &mdash; números aparecem, mas ela precisa decidir sozinha o que importa. Com a Skill, ela tem um <strong>painel de cockpit profissional</strong> &mdash; só os indicadores essenciais aparecem, no nível de hierarquia certo, com leitura estratégica embutida.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que você vai ver</div>
+      <div class="sec-desc">3 fases: baixar arquivos, instalar Skill e invocar com CSV</div>
+
+      <p class="lead-text">O professor demonstra o fluxo completo de invocação da Skill <code>gerar-painel-conteudo-lumina</code> no Project criado na AP01, com instalação prévia da nova Skill no Claude e upload do CSV de dados. Você não precisa testar agora &mdash; você terá sua própria atividade prática logo depois.</p>
+
+      <div class="overview-card">
+        <h3>Fase 01 &mdash; Preparação dos arquivos</h3>
+        <p>O professor mostra como baixar <strong>2 arquivos</strong> da página: o <code>.zip</code> da Skill e o <code>.csv</code> com dados fictícios de performance da Lumina em junho/2026.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Fase 02 &mdash; Instalação da Skill</h3>
+        <p>O professor instala a Skill <code>gerar-painel-conteudo-lumina</code> no Claude via menu <strong>Habilidades</strong>.</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Fase 03 &mdash; Invocação da Skill com 1 prompt</h3>
+        <p><strong>1 mensagem ao Claude.</strong> O professor abre o Project Conteúdo Lumina, <strong>anexa o CSV</strong> de performance ao chat, cola o prompt da AP05, envia, e recebe <strong>o painel HTML completo renderizado dentro do Claude</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">06.</span> Artefato da demonstração</div>
+      <div class="sec-desc">O mesmo prompt + CSV que você vai usar</div>
+
+      <p class="lead-text">O prompt que o professor usa na demonstração é <strong>o mesmo</strong> que você vai usar na sua atividade prática &mdash; disponível para copiar no <strong>Passo 06</strong> da próxima seção.</p>
+
+      <div class="overview-card">
+        <h3>Output esperado (referência)</h3>
+        <p>Para comparar com o que você vai receber, baixe abaixo o painel HTML completo gerado pela Skill no caso da Lumina (junho/2026). Use como <strong>parâmetro de qualidade</strong>, não como gabarito &mdash; o seu output pode variar nos textos das análises.</p>
+        <div class="downloads-card" style="margin-top:10px">
+          <div class="dc-head">&#128229; Referência opcional</div>
+          <a class="dl-btn" href="exemplo-output-esperado-ap05.html" download>
+            <span class="dl-icon">&#128202;</span>
+            <span class="dl-meta">
+              <span class="dl-name">exemplo-output-esperado-ap05.html</span>
+              <span class="dl-desc">Painel completo de junho/2026 gerado pela Skill (abre no navegador)</span>
+            </span>
+            <span class="dl-arrow">&darr;</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Esta AP encadeia os dados, não os outputs</div>
+        <p>Diferente das APs anteriores onde o output de uma virava input da próxima, aqui o input é <strong>dado real de performance</strong> (CSV) e o output é a <strong>leitura estratégica</strong> desses dados &mdash; o que fecha o loop da máquina.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-demo">Demonstração</span>
+      <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstração</div>
+      <div class="sec-desc">5 sinais que diferenciam painel Lumina de relatório genérico</div>
+
+      <ul class="observation-list">
+        <li><strong>As 7 seções aparecem na ordem correta.</strong> Começando com seguidores e terminando com leads. A ordem reflete a jornada da audiência (descoberta &rarr; consumo &rarr; conversão).</li>
+        <li><strong>Cada seção tem big numbers em Fraunces seguidos de análise editorial em Inter.</strong> A hierarquia visual deixa óbvio o que é métrica e o que é interpretação.</li>
+        <li><strong>Os badges das linhas editoriais aparecem nos top posts.</strong> Coral terroso para "Mitos e Verdades", "Ciência sem palestra", etc. Isso conecta o resultado individual do post à estratégia editorial da Lumina.</li>
+        <li><strong>Não há gráficos complexos.</strong> Sem Chart.js, sem dashboards saturados &mdash; só big numbers, cards e listas. Wellness premium é sereno.</li>
+        <li><strong>O bloco final é a parte mais importante.</strong> É onde os números viram decisão. A Bruna sai daqui sabendo o que aumentar, o que diminuir e o que testar no próximo ciclo.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade prática</div>
+      <div class="sec-desc">Agora é a sua vez &mdash; gerar o painel completo</div>
+
+      <div class="ap-meta-cards">
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Duração</div>
+          <div class="ap-meta-value">9 minutos</div>
+          <div class="ap-meta-sub">3 fases</div>
+        </div>
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Modelo</div>
+          <div class="ap-meta-value">Sonnet 4.6</div>
+          <div class="ap-meta-sub">Equilíbrio qualidade × custo</div>
+        </div>
+        <div class="ap-meta-card">
+          <div class="ap-meta-label">Mensagens</div>
+          <div class="ap-meta-value">1</div>
+          <div class="ap-meta-sub">Apenas 1 do seu limite</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Você vai instalar agora a Skill <code>gerar-painel-conteudo-lumina</code> no Claude, anexar o CSV de performance da Lumina, e invocar a Skill para gerar o painel completo. <strong>Esta AP consome apenas 1 mensagem do seu limite do plano gratuito.</strong></p>
+
+      <div class="overview-card">
+        <h3>Por que uma só mensagem</h3>
+        <p>A Skill <strong>carrega automaticamente o contexto visual da Lumina</strong> + as regras do painel. O <strong>CSV de performance vem anexado ao chat</strong> (não consome mensagem extra). O Claude entrega o artefato HTML completo de uma vez.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
+      <div class="sec-desc">8 passos em 3 fases &middot; ~9 minutos no total</div>
+
+      <div class="fase-divider">
+        <span class="fd-tag">Fase 01 &middot; Baixar os arquivos</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Baixe os 2 arquivos da AP05</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Use os botões abaixo para baixar os <strong>2 arquivos</strong> necessários: o <code>.zip</code> da Skill e o <code>.csv</code> com os dados de performance.</p>
+          <div class="downloads-card">
+            <div class="dc-head">&#128229; Arquivos da AP05</div>
+            <a class="dl-btn" href="gerar-painel-conteudo-lumina.zip" download>
+              <span class="dl-icon">&#128230;</span>
+              <span class="dl-meta">
+                <span class="dl-name">gerar-painel-conteudo-lumina.zip</span>
+                <span class="dl-desc">Skill que gera o painel HTML de 7 seções com identidade Lumina</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+            <a class="dl-btn" href="performance-instagram-lumina.csv" download>
+              <span class="dl-icon">&#128202;</span>
+              <span class="dl-meta">
+                <span class="dl-name">performance-instagram-lumina.csv</span>
+                <span class="dl-desc">Dados fictícios de junho/2026 &mdash; 12 posts + resumo da conta</span>
+              </span>
+              <span class="dl-arrow">&darr;</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-divider">
+        <span class="fd-tag">Fase 02 &middot; Instalar a Skill no Claude</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra Habilidades no Claude</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No Claude, clique no seu <strong>avatar no canto inferior esquerdo</strong> e selecione <strong>Habilidades</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Carregue a Skill</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na tela de Habilidades, clique no botão <strong>Carregar habilidade</strong> e arraste o arquivo <code>gerar-painel-conteudo-lumina.zip</code> baixado no Passo 01.</p>
+          <div class="warning-box">
+            <div class="warning-label">Validação visual</div>
+            <p>Confirme que a Skill <code>gerar-painel-conteudo-lumina</code> agora aparece na sua lista de Habilidades, ao lado das outras 3 Skills instaladas nas APs anteriores (<code>planejar-mes-lumina</code>, <code>escrever-copy-lumina</code>, <code>montar-post-lumina</code>).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fase-divider">
+        <span class="fd-tag">Fase 03 &middot; Invocar a Skill no Project</span>
+        <span class="fd-line"></span>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Abra o Project e selecione Sonnet 4.6</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Abra o Project <strong>"Conteúdo — Lumina"</strong>. Confirme que o modelo selecionado é <strong>Claude Sonnet 4.6</strong>.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Anexe o CSV de performance ao chat</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">No campo de mensagem do Project, clique no <strong>ícone de anexar arquivo</strong> (clipe de papel) e selecione o arquivo <code>performance-instagram-lumina.csv</code> que você baixou no Passo 01. O arquivo será anexado à mensagem antes do envio.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Cole o prompt e envie</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Sem enviar ainda, use o botão <strong>"Copiar"</strong> abaixo, cole no campo de mensagem do Project (logo após o anexo) e envie a mensagem.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Prompt da AP05 &mdash; invocação da Skill com CSV anexado</span>
+            <div class="copy-block long" id="block-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('block-prompt-text').textContent)">Copiar</button>
+<span id="block-prompt-text">Use a skill gerar-painel-conteudo-lumina para gerar o painel de análise de performance do Instagram da Lumina referente ao mês de junho/2026.
+
+Os dados de performance estão no arquivo CSV anexado:
+- Cabeçalho do CSV inclui resumo da conta no período (seguidores ganhos, perdidos, saldo líquido).
+- Tabela de dados inclui performance individual de 12 posts publicados ao longo do mês, com colunas: data, tipo de post, título, linha editorial, estágio do funil, alcance, impressões, curtidas, comentários, salvamentos, compartilhamentos, cliques no link da bio e leads captados.
+
+Gere o artefato HTML completo do painel seguindo todas as regras da skill: 7 seções obrigatórias na ordem padrão, identidade visual Lumina rigorosa, e bloco final de observações estratégicas para o próximo ciclo.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Aguarde o painel HTML e valide</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Em <strong>60-90 segundos</strong> o Claude vai devolver o artefato HTML completo do painel. Ele aparece <strong>na lateral direita do Claude</strong> como um painel renderizado &mdash; você pode visualizar diretamente lá ou clicar no ícone de <em>"abrir em nova aba"</em> para ver em tamanho real.</p>
+          <div class="warning-box">
+            <div class="warning-label">Validação visual &mdash; 3 coisas para checar no artefato</div>
+            <p>O painel tem exatamente <strong>7 seções numeradas</strong> (01 a 07), na ordem: seguidores, alcance, interações, engajamento, top posts, cliques bio, leads. A <strong>paleta Lumina</strong> está aplicada (fundos branco quente e areia, big numbers em verde-musgo, badges em coral, observações em verde-claro pálido). Aparece um <strong>bloco final de observações estratégicas</strong> com 5-6 bullets acionáveis para o próximo ciclo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">(Opcional) Baixe o HTML para apresentar à liderança</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Para baixar o HTML e abrir no navegador local, clique no <strong>botão de download do artefato</strong> no painel lateral do Claude.</p>
+          <div class="tip-box">
+            <div class="tip-label">Para que serve esse download</div>
+            <p>O HTML baixado funciona como <strong>relatório mensal pronto para apresentar à liderança</strong>, base para gerar um PDF, ou simplesmente arquivo de referência do mês fechado.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-pratica">Atividade Prática</span>
+      <div class="sec-title pratica"><span class="snum">10.</span> O que você tem ao final desta atividade</div>
+      <div class="sec-desc">Ciclo completo da máquina de conteúdo Lumina fechado</div>
+
+      <div class="overview-card">
+        <h3>Você sai desta atividade com</h3>
+        <ul class="check-list">
+          <li><strong>Skill <code>gerar-painel-conteudo-lumina</code> instalada</strong> no seu Claude &mdash; disponível para usar a qualquer momento.</li>
+          <li><strong>Painel completo de 7 seções</strong> + bloco estratégico final, no formato HTML autocontido.</li>
+          <li><strong>Identidade visual Lumina rigorosa</strong> &mdash; paleta wellness premium, Fraunces + Inter, hierarquia serena.</li>
+          <li><strong>Análise pronta para apresentar à liderança</strong> ou para usar como input do próximo planejamento editorial.</li>
+          <li><strong>Ciclo completo da máquina de conteúdo Lumina fechado:</strong>
+            <ul>
+              <li>AP01 &mdash; Project configurado</li>
+              <li>AP02 &mdash; Plano editorial gerado</li>
+              <li>AP03 &mdash; Copy escrita</li>
+              <li>AP04 &mdash; Post visual montado</li>
+              <li><strong>AP05 &mdash; Performance medida e analisada</strong></li>
+            </ul>
+          </li>
+          <li><strong>Apenas 1 mensagem consumida</strong> do seu limite do plano gratuito.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Total da aula MKT-01</div>
+        <p>Você consumiu apenas <strong>4 mensagens</strong> no ciclo completo (AP01=0 + AP02=1 + AP03=1 + AP04=1 + AP05=1) &mdash; confortável para qualquer aluno do plano gratuito completar a aula em uma <strong>janela única de 5 horas</strong>.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Próximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Feche o ciclo da sua própria máquina de conteúdo</div>
+
+      <p class="lead-text">Agora que você dominou o conceito da Skill de painel aplicada ao Instagram da Lumina, adapte para a <strong>realidade da sua empresa real</strong>.</p>
+
+      <div class="overview-card">
+        <h3>O que fazer</h3>
+        <ul>
+          <li><strong>1. Adapte a Skill <code>gerar-painel-conteudo-lumina</code> para sua empresa.</strong> Faça download do <code>.zip</code>, descompacte, edite o <code>SKILL.md</code> (renomeie como <code>gerar-painel-conteudo-[sua-empresa]</code>, ajuste a paleta visual, ajuste as 7 seções conforme os indicadores que fazem sentido para o seu canal principal). Se você atua em <strong>LinkedIn</strong> em vez de Instagram, ajuste as métricas (cliques no perfil, cliques no link do post, leads via formulário). Reempacote em <code>.zip</code> e instale no Claude.</li>
+          <li><strong>2. Exporte os dados reais de performance</strong> da sua empresa no canal que você usa (Instagram Insights, LinkedIn Analytics, Meta Business Suite, etc.). Organize em um CSV simples com as colunas que a Skill espera.</li>
+          <li><strong>3. Anexe o CSV ao Project da sua empresa</strong> e invoque a Skill com o prompt adaptado.</li>
+          <li><strong>4. Use o painel gerado para fechar o ciclo</strong> da sua máquina de conteúdo: apresentar à liderança como relatório mensal, usar como insumo do próximo planejamento editorial, identificar gargalo de conversão (alcance, engajamento, clique, lead).</li>
+        </ul>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha do desafio</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tempo estimado</td><td>60 a 90 minutos (20 min adaptando a Skill, 20 min exportando dados, 20 min gerando o painel, 30 min revisando os insights)</td></tr>
+          <tr><td>Resultado esperado</td><td>Primeiro painel real de performance da sua empresa rodando dentro do ciclo completo da máquina de conteúdo &mdash; fechando o loop que começou na AP01</td></tr>
+          <tr><td>Quando fazer</td><td>Esta semana &mdash; é o passo 5 e final da jornada</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">A jornada se completa</div>
+        <p>Esta AP é o <strong>passo 5 e final</strong> da jornada de 5 semanas. <strong>Você completou o ciclo.</strong> A partir daqui, a máquina de conteúdo da sua empresa pode rodar mensalmente: <strong>AP02 (planejar) &rarr; AP03 (escrever) &rarr; AP04 (montar) &rarr; publicar &rarr; AP05 (medir) &rarr; loop.</strong> Cada mês você produz com qualidade, mede, refina e melhora.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao índice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Palette toggle (dusk ↔ cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-skill-painel-performance-lumina";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 12;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      const s = ni.dataset.section;
+      ni.classList.toggle("completed", completed.has(s));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
