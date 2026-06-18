@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-palette="dusk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03. Execu&ccedil;&atilde;o do workflow de hiring no Manus AI &middot; Delta Academy</title>
+<link rel="icon" href="https://tutoriais.deltaacademy.ai/icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  [data-palette="forest"]{--bg:#F5F0EB;--white:#FFFFFF;--panel:#FFFFFF;--accent:#5C6C51;--accent2:#1F3331;--accent-light:#EDE8E2;--accent-lighter:#F0EBE4;--accent-border:#DDD8D2;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#EAF1F7;--blue-border:#C8D8E5;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#ECF2E5;--green-border:#C6D4B3;--green-text:#33491F;--gold:#C8A968;--text:#1A1A1A;--text2:#4A4A4A;--text3:#7A7A7A;--border:#EDE8E2;--border2:#DDD8D2;--ficha-td1-bg:#FAF8F4;--ficha-th-bg:#EDE8E2;--card-tag-bg:#5C6C51;--card-tag-fg:#F5F0EB;--sidebar-bg:#1F3331;--sidebar-fg:#F5F0EB;--sidebar-sub:#C8A968;--sidebar-muted:rgba(245,240,235,0.5);--sidebar-item:rgba(245,240,235,0.7);--sidebar-border:rgba(245,240,235,0.1);--sidebar-hover:rgba(92,108,81,0.2);--sidebar-active-bg:#5C6C51;--sidebar-active-fg:#F5F0EB;--sp-bar-track:rgba(245,240,235,0.1);--sp-bar-fill:#C8A968;--copy-btn-bg:#EDE8E2;--copy-btn-border:#DDD8D2;--copy-btn-fg:#5C6C51;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F5F0EB;--warn-bg:#FEF3E2;--warn-border:#F5C96A;--warn-accent:#D97706;--warn-label:#92610A;--warn-text:#7A520D;--insight-bg:#1F3331;--insight-label:#C8A968;--insight-fg:#F5F0EB;--insight-strong:#C8A968;--bad-bg:#FCEBEB;--bad-border:#E5A6A6;--bad-text:#7A2727;--shadow-xs:0 1px 2px rgba(0,0,0,0.04);--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04)}
+  [data-palette="dusk"]{--bg:#141F1D;--white:#1A2927;--panel:#1A2927;--accent:#A4AE9C;--accent2:#D1AA53;--accent-light:#2A433F;--accent-lighter:#223532;--accent-border:#385652;--accent-text:#E3E6DE;--blue:#8BB3D9;--blue-light:#1E3147;--blue-border:#385D80;--blue-text:#C4DBEF;--green:#A8C68C;--green-light:#1F3322;--green-border:#3F5D35;--green-text:#D4E5BF;--gold:#D1AA53;--text:#ECEAE0;--text2:#C7CEC1;--text3:#8A938F;--border:#2A433F;--border2:#385652;--ficha-td1-bg:#1F3331;--ficha-th-bg:#223532;--card-tag-bg:#D1AA53;--card-tag-fg:#141F1D;--sidebar-bg:#0A1211;--sidebar-fg:#ECEAE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(236,234,224,0.5);--sidebar-item:rgba(236,234,224,0.75);--sidebar-border:rgba(236,234,224,0.08);--sidebar-hover:rgba(209,170,83,0.12);--sidebar-active-bg:#2A433F;--sidebar-active-fg:#D1AA53;--sp-bar-track:rgba(236,234,224,0.1);--sp-bar-fill:#D1AA53;--copy-btn-bg:#1A2927;--copy-btn-border:#2A433F;--copy-btn-fg:#A4AE9C;--copy-btn-hover-bg:#D1AA53;--copy-btn-hover-fg:#141F1D;--warn-bg:#2E2512;--warn-border:#B8933E;--warn-accent:#D1AA53;--warn-label:#E6C784;--warn-text:#E6C784;--insight-bg:#0A1211;--insight-label:#D1AA53;--insight-fg:#ECEAE0;--insight-strong:#D1AA53;--bad-bg:#3A1E1E;--bad-border:#7A2A2A;--bad-text:#E8B5B5;--shadow-xs:0 1px 2px rgba(0,0,0,0.4);--shadow-sm:0 2px 6px rgba(0,0,0,0.5),0 1px 2px rgba(0,0,0,0.3)}
+  [data-palette="cream"]{--bg:#F2ECE0;--white:#FBF7EC;--panel:#FBF7EC;--accent:#8A6E2C;--accent2:#1F3331;--accent-light:#E7DFCE;--accent-lighter:#EFE8D7;--accent-border:#D8CFB7;--accent-text:#1F3331;--blue:#2B5B8E;--blue-light:#E5EBF3;--blue-border:#B8C9DC;--blue-text:#1A3D5F;--green:#4F6B3E;--green-light:#E5EBD8;--green-border:#B8CCA0;--green-text:#33491F;--gold:#B8933E;--text:#1A1A1A;--text2:#4A4538;--text3:#8A7F64;--border:#E1D8C2;--border2:#D1C7AD;--ficha-td1-bg:#F5EED9;--ficha-th-bg:#E7DFCE;--card-tag-bg:#1F3331;--card-tag-fg:#F2ECE0;--sidebar-bg:#1F3331;--sidebar-fg:#F2ECE0;--sidebar-sub:#D1AA53;--sidebar-muted:rgba(242,236,224,0.5);--sidebar-item:rgba(242,236,224,0.72);--sidebar-border:rgba(242,236,224,0.1);--sidebar-hover:rgba(184,147,62,0.18);--sidebar-active-bg:#B8933E;--sidebar-active-fg:#1F3331;--sp-bar-track:rgba(242,236,224,0.12);--sp-bar-fill:#D1AA53;--copy-btn-bg:#FBF7EC;--copy-btn-border:#D1C7AD;--copy-btn-fg:#8A6E2C;--copy-btn-hover-bg:#1F3331;--copy-btn-hover-fg:#F2ECE0;--warn-bg:#F5E4B8;--warn-border:#D1AA53;--warn-accent:#8A6E2C;--warn-label:#5A4414;--warn-text:#5A4414;--insight-bg:#1F3331;--insight-label:#D1AA53;--insight-fg:#F2ECE0;--insight-strong:#D1AA53;--bad-bg:#FCEBEB;--bad-border:#E5A6A6;--bad-text:#7A2727;--shadow-xs:0 1px 2px rgba(31,51,49,0.06);--shadow-sm:0 1px 3px rgba(31,51,49,0.08),0 1px 2px rgba(31,51,49,0.05)}
+  .palette-toggle{position:fixed;top:14px;right:14px;z-index:100;width:34px;height:34px;border-radius:50%;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow-sm);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text3);transition:all 160ms ease;padding:0}
+  .palette-toggle:hover{color:var(--text);border-color:var(--border2)}
+  .palette-toggle svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Montserrat',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background 200ms ease, color 200ms ease}
+  .layout{display:flex;min-height:100vh}
+  .sidebar{width:256px;min-width:256px;background:var(--sidebar-bg);border-right:1px solid var(--sidebar-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--sidebar-muted);border-radius:3px}
+  .sidebar-header{padding:20px 16px 16px;border-bottom:1px solid var(--sidebar-border)}
+  .sidebar-logo img{max-width:148px;height:auto;display:block;margin-bottom:12px}
+  .sidebar-header h2{font-size:0.88rem;font-weight:700;color:var(--sidebar-fg);letter-spacing:-0.02em}
+  .sidebar-header p{font-size:0.65rem;color:var(--sidebar-sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:600;margin-top:2px}
+  .sidebar-header .back-link{font-size:0.68rem;color:var(--sidebar-muted);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px;font-weight:600}
+  .sidebar-header .back-link:hover{color:var(--sidebar-fg)}
+  .nav-group{padding:10px 0 2px}
+  .nav-group-title{padding:2px 16px 2px;font-size:0.82rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--sidebar-fg)}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 16px;cursor:pointer;transition:all 0.15s;text-decoration:none;color:var(--sidebar-item);font-size:0.74rem;font-weight:400;border-left:2px solid transparent}
+  .nav-item:hover{background:var(--sidebar-hover);color:var(--sidebar-fg)}
+  .nav-item.active{background:var(--sidebar-active-bg);color:var(--sidebar-active-fg);border-left-color:var(--sidebar-active-fg);font-weight:600}
+  .nav-item .ni-num{font-size:0.6rem;font-weight:600;color:var(--sidebar-muted);min-width:17px}
+  .nav-item.active .ni-num{color:var(--sidebar-active-fg)}
+  .nav-item .ni-check{margin-left:auto;font-size:0.62rem;color:var(--sidebar-muted);opacity:0;transition:opacity 0.2s}
+  .nav-item.completed .ni-check{opacity:1}
+  .sidebar-progress{padding:14px 16px;border-top:1px solid var(--sidebar-border);margin-top:auto}
+  .sp-label{font-size:0.62rem;color:var(--sidebar-muted);margin-bottom:6px}
+  .sp-bar{height:3px;background:var(--sp-bar-track);border-radius:2px;overflow:hidden}
+  .sp-fill{height:100%;background:var(--sp-bar-fill);border-radius:2px;transition:width 0.4s ease;width:0%}
+  .main{flex:1;padding:20px 36px 40px;max-width:840px}
+  .section{display:none;animation:fadeIn 0.25s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+  .breadcrumb{font-size:0.64rem;color:var(--text3);margin-bottom:10px}
+  .breadcrumb a{color:var(--text3);text-decoration:none;font-weight:600}
+  .breadcrumb a:hover{color:var(--accent)}
+  .section-badge{display:inline-block;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;padding:4px 12px;border-radius:4px;margin-bottom:12px;background:var(--accent2);color:var(--bg)}
+  .badge-intro,.badge-demo,.badge-pratica,.badge-desafio{background:var(--accent2);color:var(--bg)}
+  .sec-title{font-size:1.2rem;font-weight:800;color:var(--text);letter-spacing:-0.03em;line-height:1.2;margin-bottom:4px}
+  .sec-title .snum{color:var(--accent)}
+  .sec-title.demo .snum{color:var(--blue)}
+  .sec-title.pratica .snum{color:var(--green)}
+  .sec-title.desafio .snum{color:var(--gold)}
+  .sec-desc{font-size:0.8rem;color:var(--text2);margin-bottom:18px}
+  .lead-text{font-size:0.82rem;color:var(--text);line-height:1.7;margin-bottom:14px}
+  .lead-text strong{font-weight:700;color:var(--accent2)}
+  /* Inline link em prosa (substitui o card .site-link grande) */
+  .lead-text a,.step-card-desc a,.warning-box p a,.tip-box p a,.meta-card.tool .mc-bp a,.deliverable-banner .db-close a{color:var(--accent2);font-weight:700;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px;transition:color 0.15s}
+  .lead-text a:hover,.step-card-desc a:hover,.warning-box p a:hover,.tip-box p a:hover,.meta-card.tool .mc-bp a:hover,.deliverable-banner .db-close a:hover{color:var(--gold)}
+  [data-palette="dusk"] .meta-card.tool .mc-bp a{color:#E8DEFF}
+  [data-palette="dusk"] .meta-card.tool .mc-bp a:hover{color:#FFFFFF}
+  .overview-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow-xs)}
+  .overview-card h3{font-size:0.84rem;font-weight:700;color:var(--text);margin-bottom:8px}
+  .overview-card p,.overview-card li{font-size:0.76rem;color:var(--text2);line-height:1.6}
+  .overview-card ul{list-style:none;margin-top:8px}
+  .overview-card ul li{padding:4px 0;padding-left:16px;position:relative}
+  .overview-card ul li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .overview-card a{color:var(--accent2);font-weight:700;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1.5px}
+  .overview-card a:hover{color:var(--gold)}
+  .ficha-table{width:100%;border-collapse:collapse;font-size:0.74rem;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:12px 0}
+  .ficha-table th{background:var(--ficha-th-bg);color:var(--text2);font-weight:600;text-align:left;padding:8px 12px;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+  .ficha-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top;font-size:0.74rem}
+  .ficha-table tr:last-child td{border-bottom:none}
+  .ficha-table td:first-child{font-weight:600;color:var(--text);width:35%;background:var(--ficha-td1-bg)}
+  .copy-wrap{margin:14px 0 16px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.72rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:20px 24px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.84rem;color:#0E1A19;line-height:1.72;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
+  .tip-box{background:var(--accent-lighter);border:1px solid var(--accent-border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .tip-box .tip-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:4px}
+  .tip-box p{font-size:0.76rem;color:var(--accent-text);line-height:1.55}
+  .warning-box{background:var(--warn-bg);border:1px solid var(--warn-border);border-left:3px solid var(--warn-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:14px 0}
+  .warning-box .warning-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--warn-label);margin-bottom:4px}
+  .warning-box p{font-size:0.76rem;color:var(--warn-text);line-height:1.55}
+  .insight-box{background:var(--insight-bg);border-radius:10px;padding:18px 22px;margin:16px 0;text-align:center}
+  .insight-box .insight-label{font-size:0.58rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:var(--insight-label);margin-bottom:6px}
+  .insight-box p{font-size:0.88rem;font-weight:600;color:var(--insight-fg);line-height:1.55}
+  .insight-box p strong{color:var(--insight-strong);font-weight:800}
+  .nav-buttons{display:flex;justify-content:space-between;margin-top:28px;padding-top:14px;border-top:1px solid var(--border)}
+  .nav-btn{display:flex;align-items:center;gap:4px;padding:8px 14px;border-radius:6px;font-size:0.72rem;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--panel);color:var(--text2);transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;text-decoration:none}
+  .nav-btn:hover{background:var(--accent-lighter);border-color:var(--accent-border);color:var(--accent2)}
+  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .nav-btn.primary:hover{background:var(--accent2);color:var(--bg)}
+  .observation-list{list-style:none;margin:12px 0}
+  .observation-list li{padding:10px 14px;margin-bottom:8px;background:var(--panel);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;font-size:0.76rem;color:var(--text2);line-height:1.55;box-shadow:var(--shadow-xs)}
+  .observation-list li strong{color:var(--blue-text);font-weight:700}
+  /* Banner do entregável */
+  .deliverable-banner{background:linear-gradient(135deg,var(--insight-bg) 0%,var(--accent-light) 100%);border:1px solid var(--gold);border-radius:12px;padding:22px;margin:16px 0;box-shadow:var(--shadow-sm)}
+  .deliverable-banner .db-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:6px}
+  .deliverable-banner .db-title{font-size:0.98rem;font-weight:800;color:var(--insight-fg);margin-bottom:14px;letter-spacing:-0.01em}
+  .deliverable-banner .db-window{background:var(--white);border-radius:8px;padding:14px 16px;border:1px solid var(--border)}
+  .deliverable-banner .db-window-title{font-size:0.74rem;font-weight:700;color:var(--accent2);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .deliverable-banner .db-row{display:flex;gap:10px;padding:7px 0;align-items:flex-start;font-size:0.72rem;color:var(--text);line-height:1.5;border-left:3px solid var(--gold);padding-left:10px;margin-bottom:4px}
+  .deliverable-banner .db-row .db-num{font-weight:800;color:var(--accent2);flex-shrink:0;min-width:78px}
+  .deliverable-banner .db-close{margin-top:12px;background:var(--accent-lighter);border-radius:6px;padding:10px 12px;font-size:0.72rem;color:var(--accent-text);font-style:italic;font-weight:500;line-height:1.5;border-left:3px solid var(--gold)}
+  /* Comparativo lado a lado */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  .compare-card{border-radius:10px;padding:16px;border-left:4px solid;box-shadow:var(--shadow-xs)}
+  .compare-card.bad{background:var(--bad-bg);border-color:var(--bad-border);border-left-color:#C2545B}
+  .compare-card.good{background:var(--green-light);border-color:var(--green-border);border-left-color:var(--green)}
+  .compare-card .cc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px}
+  .compare-card.bad .cc-label{color:#C2545B}
+  .compare-card.good .cc-label{color:var(--green-text)}
+  .compare-card .cc-quote{font-size:0.82rem;font-weight:700;font-style:italic;margin-bottom:8px;line-height:1.4}
+  .compare-card.bad .cc-quote{color:var(--bad-text)}
+  .compare-card.good .cc-quote{color:var(--green-text)}
+  .compare-card .cc-desc{font-size:0.72rem;line-height:1.55}
+  .compare-card.bad .cc-desc{color:var(--bad-text)}
+  .compare-card.good .cc-desc{color:var(--green-text)}
+  /* Cards de Duração e Modelo */
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+  .meta-card{border-radius:10px;padding:16px;box-shadow:var(--shadow-xs)}
+  .meta-card.duration{background:linear-gradient(135deg,var(--insight-bg) 0%,#2A433F 100%);border:1px solid var(--gold)}
+  .meta-card.duration .mc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:4px}
+  .meta-card.duration .mc-value{font-size:1.5rem;font-weight:800;color:var(--insight-fg);line-height:1;margin-bottom:4px}
+  .meta-card.duration .mc-sub{font-size:0.7rem;color:var(--insight-fg);opacity:0.75;font-weight:600;line-height:1.45}
+  .meta-card.tool{background:#EEEDFE;border:1px solid #6B5B95;border-left:4px solid #6B5B95}
+  [data-palette="dusk"] .meta-card.tool{background:#1F1A2F;border-color:#9B89C4;border-left-color:#9B89C4}
+  .meta-card.tool .mc-label{font-size:0.58rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#6B5B95;margin-bottom:4px}
+  [data-palette="dusk"] .meta-card.tool .mc-label{color:#C4B0FF}
+  .meta-card.tool .mc-value{font-size:1.1rem;font-weight:800;color:#3A2D6B;line-height:1.1;margin-bottom:6px}
+  [data-palette="dusk"] .meta-card.tool .mc-value{color:#E8DEFF}
+  .meta-card.tool .mc-desc{font-size:0.7rem;color:#3A2D6B;font-style:italic;line-height:1.45;margin-bottom:8px}
+  [data-palette="dusk"] .meta-card.tool .mc-desc{color:#C4B0FF}
+  .meta-card.tool .mc-bp{background:#FBFAFF;border-radius:6px;padding:8px 10px;font-size:0.7rem;color:#3A2D6B;line-height:1.5}
+  [data-palette="dusk"] .meta-card.tool .mc-bp{background:#15102A;color:#E8DEFF;border:1px solid #4A3A7F}
+  /* Fase divider */
+  .fase-divider{font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);background:var(--accent-lighter);padding:10px 14px;border-radius:6px;margin:22px 0 14px;border-left:4px solid var(--accent2)}
+  /* Step-card pattern */
+  .step-card{background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .step-card-head{background:var(--accent2);padding:10px 16px;display:flex;align-items:center;gap:12px}
+  .step-card-num{background:var(--gold);color:var(--accent2);font-size:0.72rem;font-weight:800;letter-spacing:0.1em;padding:3px 9px;border-radius:3px;text-transform:uppercase;flex-shrink:0}
+  .step-card-title{color:var(--bg);font-size:0.95rem;font-weight:600;line-height:1.3}
+  .step-card-body{padding:16px 18px}
+  .step-card-desc{font-size:0.84rem;color:var(--text);line-height:1.6;margin:0 0 12px}
+  .step-card-desc:last-child{margin-bottom:0}
+  .step-card-desc strong{color:var(--accent2);font-weight:700}
+  .step-card-desc code{font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.86em;background:var(--ficha-td1-bg);padding:1px 5px;border-radius:3px;color:var(--accent2)}
+  .step-card-desc em{color:var(--text2);font-style:italic}
+  .step-card-desc .time{display:inline-block;margin-left:4px;color:var(--text3);font-size:0.74em;font-weight:500;font-style:italic}
+  /* Check-list */
+  .check-list{list-style:none;margin:10px 0}
+  .check-list li{padding:6px 0 6px 22px;position:relative;font-size:0.78rem;color:var(--text);line-height:1.55}
+  .check-list li::before{content:'\2713';position:absolute;left:0;top:6px;color:var(--accent);font-weight:800;font-size:0.86rem}
+  .check-list li strong{color:var(--accent2);font-weight:700}
+  /* Scribehow print embutido (sem caption) */
+  .scribe-print{margin:12px 0;background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-xs)}
+  .scribe-print img{width:100%;height:auto;display:block;background:#FFF}
+  @media (max-width:768px){
+    .sidebar{display:none}
+    .main{padding:20px 16px 40px;max-width:100%}
+    .compare-grid,.meta-grid{grid-template-columns:1fr}
+    .deliverable-banner .db-row{flex-direction:column;gap:2px}
+    .deliverable-banner .db-row .db-num{min-width:0}
+  }
+</style>
+</head>
+<body>
+
+<button class="palette-toggle" id="palette-toggle" onclick="togglePalette()" title="Modo claro">
+  <svg id="palette-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+</button>
+
+<div class="layout">
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../../logo_delta.png" alt="Delta Academy"></div>
+      <a class="back-link" href="index.html">&#8592; &Iacute;ndice da Aula</a>
+      <h2>Execu&ccedil;&atilde;o do workflow no Manus AI</h2>
+      <p>AP03 &middot; AI para Recrutamento no RH</p>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">In&iacute;cio</div>
+      <a class="nav-item active" data-section="sec-home" onclick="showSection('sec-home')"><span class="ni-num">00</span> Vis&atilde;o Geral<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Introdu&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step1" onclick="showSection('sec-step1')"><span class="ni-num">01</span> Onde voc&ecirc; vai chegar<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step2" onclick="showSection('sec-step2')"><span class="ni-num">02</span> Os 7 artefatos<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step3" onclick="showSection('sec-step3')"><span class="ni-num">03</span> A jornada da AP03<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step4" onclick="showSection('sec-step4')"><span class="ni-num">04</span> Conceito execu&ccedil;&atilde;o agentica<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Demonstra&ccedil;&atilde;o</div>
+      <a class="nav-item" data-section="sec-step5" onclick="showSection('sec-step5')"><span class="ni-num">05</span> O que voc&ecirc; vai ver<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step6" onclick="showSection('sec-step6')"><span class="ni-num">06</span> Prompt agentico da demo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step7" onclick="showSection('sec-step7')"><span class="ni-num">07</span> O que observar<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Atividade Pr&aacute;tica</div>
+      <a class="nav-item" data-section="sec-step8" onclick="showSection('sec-step8')"><span class="ni-num">08</span> Sua atividade<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step9" onclick="showSection('sec-step9')"><span class="ni-num">09</span> Passo a passo<span class="ni-check">&#10003;</span></a>
+      <a class="nav-item" data-section="sec-step10" onclick="showSection('sec-step10')"><span class="ni-num">10</span> Voc&ecirc; sai com<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="nav-group"><div class="nav-group-title">Desafio</div>
+      <a class="nav-item" data-section="sec-step11" onclick="showSection('sec-step11')"><span class="ni-num">11</span> Implementando na sua empresa<span class="ni-check">&#10003;</span></a>
+    </div>
+    <div class="sidebar-progress">
+      <div class="sp-label">Progresso &mdash; <span id="pct">0</span>%</div>
+      <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    </div>
+  </nav>
+
+  <div class="main">
+
+    <!-- 00 -->
+    <div class="section active" id="sec-home">
+      <div class="breadcrumb">Delta Academy &rsaquo; AI para Recrutamento no RH &rsaquo; <a href="index.html">&Iacute;ndice</a> &rsaquo; 03. Execu&ccedil;&atilde;o do workflow no Manus AI</div>
+      <div class="sec-title"><span class="snum">00.</span> Vis&atilde;o Geral</div>
+      <div class="sec-desc">AP03 &mdash; Execu&ccedil;&atilde;o do workflow de hiring no Manus AI</div>
+
+      <p class="lead-text">Terceira e &uacute;ltima atividade pr&aacute;tica do bloco <strong>AI para Recrutamento no RH</strong>. Voc&ecirc; vai entregar o prompt agentico gerado na AP02 ao <strong>Manus AI</strong> e ver o sistema executar o workflow inteiro de hiring em background &mdash; produzindo os <strong>7 artefatos do funil</strong> da ficha de vaga at&eacute; a lista de candidatos no LinkedIn.</p>
+
+      <div class="warning-box">
+        <div class="warning-label">Pr&eacute;-requisito</div>
+        <p>Voc&ecirc; precisa ter conclu&iacute;do a <strong>AP02</strong> e ter o <strong>prompt agentico em Markdown</strong> dispon&iacute;vel (no clipboard ou copi&aacute;vel a qualquer momento).</p>
+      </div>
+
+      <div class="overview-card">
+        <h3>Ficha t&eacute;cnica</h3>
+        <table class="ficha-table"><tbody>
+          <tr><td>Tipo</td><td>Introdu&ccedil;&atilde;o + Demonstra&ccedil;&atilde;o + Atividade Pr&aacute;tica + Desafio</td></tr>
+          <tr><td>Dura&ccedil;&atilde;o da AP</td><td>10 minutos ativos + 15 a 40 minutos de execu&ccedil;&atilde;o em background</td></tr>
+          <tr><td>T&eacute;cnica de AI</td><td>Execu&ccedil;&atilde;o agentica autonoma (navegar, pesquisar, produzir artefatos)</td></tr>
+          <tr><td>Ferramenta</td><td>Manus AI (plano gratuito com cr&eacute;ditos limitados)</td></tr>
+          <tr><td>Entreg&aacute;vel</td><td>7 artefatos do funil de hiring numa &uacute;nica sess&atilde;o do Manus</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="nav-buttons">
+        <a class="nav-btn" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+        <button class="nav-btn primary" onclick="showSection('sec-step1')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 01 -->
+    <div class="section" id="sec-step1">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">01.</span> Onde voc&ecirc; vai chegar</div>
+      <div class="sec-desc">O entreg&aacute;vel final desta AP &mdash; o funil de hiring inteiro pronto</div>
+
+      <p class="lead-text"><strong>Entreg&aacute;vel final da AP03:</strong> os <strong>7 artefatos do funil de hiring completo</strong> &mdash; entregues pelo Manus AI a partir do prompt agentico que voc&ecirc; gerou na AP02. Ao final desta atividade, voc&ecirc; sai com um processo seletivo inteiro pronto para uma vaga espec&iacute;fica em uma empresa espec&iacute;fica: da ficha de vaga ao sourcing de candidatos no LinkedIn.</p>
+
+      <div class="deliverable-banner">
+        <div class="db-label">Entreg&aacute;vel da AP03</div>
+        <div class="db-title">Funil de Hiring Completo &middot; 7 Artefatos</div>
+        <div class="db-window">
+          <div class="db-window-title">Estrutura dos 7 entreg&aacute;veis</div>
+          <div class="db-row"><span class="db-num">Artefato 1</span><span><strong>Ficha de Vaga (JD)</strong> &mdash; t&iacute;tulo, miss&atilde;o, responsabilidades, requisitos t&eacute;cnicos e comportamentais, faixa salarial (base + vari&aacute;vel), jornada de crescimento</span></div>
+          <div class="db-row"><span class="db-num">Artefato 2</span><span><strong>Persona do Candidato Ideal</strong> &mdash; JTBD, dores resolvidas, perfil comportamental, experi&ecirc;ncias, motiva&ccedil;&otilde;es</span></div>
+          <div class="db-row"><span class="db-num">Artefato 3</span><span><strong>Scorecard de Entrevista</strong> &mdash; matriz de avalia&ccedil;&atilde;o por compet&ecirc;ncias, perguntas comportamentais, sistema de pontua&ccedil;&atilde;o</span></div>
+          <div class="db-row"><span class="db-num">Artefato 4</span><span><strong>Case Pr&aacute;tico (Roleplay)</strong> &mdash; simula&ccedil;&atilde;o realista para testar abordagem de obje&ccedil;&otilde;es e fechamento</span></div>
+          <div class="db-row"><span class="db-num">Artefato 5</span><span><strong>Processo Seletivo por Etapas</strong> &mdash; funil completo (triagem &rarr; teste &rarr; entrevista t&eacute;cnica &rarr; entrevista final) com crit&eacute;rios go/no-go</span></div>
+          <div class="db-row"><span class="db-num">Artefato 6</span><span><strong>Mensagem de Hunting</strong> &mdash; copy curta para LinkedIn / e-mail com CTA claro</span></div>
+          <div class="db-row"><span class="db-num">Artefato 7</span><span><strong>Lista de 15 Candidatos Alvo</strong> &mdash; sourcing real no LinkedIn com nome, cargo, empresa, localiza&ccedil;&atilde;o e link do perfil</span></div>
+          <div class="db-close">Uma semana de trabalho do RH entregue em 30 minutos por um agente que executa enquanto voc&ecirc; faz outra coisa.</div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-label">Esta &eacute; a AP que fecha o ciclo da aula</div>
+        <p>A AP01 trouxe os <strong>dados externos</strong> (benchmark do Perplexity). A AP02 montou o <strong>c&eacute;rebro</strong> (prompt agentico via Claude). A AP03 entrega os <strong>artefatos finais</strong> (Manus AI executando). Esta &eacute; a primeira vez na aula em que voc&ecirc; vai ver uma IA <strong>agir</strong> &mdash; navegar, pesquisar e produzir m&uacute;ltiplos entreg&aacute;veis em paralelo.</p>
+      </div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso sobre tempo e cr&eacute;ditos do Manus</div>
+        <p>O Manus AI consome <strong>cr&eacute;ditos por execu&ccedil;&atilde;o</strong>, e o plano gratuito tem cota limitada. Antes de come&ccedil;ar, considere ativar o <a href="https://manus.im/invitation/JLE6BOPCN1I3V?utm_source=invitation&amp;utm_medium=social&amp;utm_campaign=copy_link" target="_blank" rel="noopener">link de convite da Delta Academy</a> para ganhar cr&eacute;ditos extras antes de iniciar a Atividade Pr&aacute;tica. O Manus executa em background entre <strong>15 e 40 minutos</strong> &mdash; voc&ecirc; n&atilde;o precisa ficar olhando a tela, pode fechar a aba e voltar depois para revisar os resultados.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-home')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step2')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div class="section" id="sec-step2">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">02.</span> Os 7 artefatos do funil de hiring</div>
+      <div class="sec-desc">Os 7 entreg&aacute;veis que o Manus produz nesta &uacute;nica sess&atilde;o</div>
+
+      <p class="lead-text">O prompt agentico que voc&ecirc; gerou na AP02 instrui o Manus a produzir <strong>7 artefatos sequenciais</strong> &mdash; cada um respondendo a uma etapa espec&iacute;fica do processo seletivo:</p>
+
+      <ul class="observation-list">
+        <li><strong>1. Ficha de Vaga (JD).</strong> Documento formal que ser&aacute; publicado em portais e usado no recrutamento ativo.</li>
+        <li><strong>2. Persona do Candidato Ideal.</strong> Retrato comportamental do perfil que ter&aacute; alta performance na fun&ccedil;&atilde;o.</li>
+        <li><strong>3. Scorecard de Entrevista.</strong> Matriz de avalia&ccedil;&atilde;o objetiva para uso nas etapas do processo.</li>
+        <li><strong>4. Case Pr&aacute;tico (Roleplay).</strong> Simula&ccedil;&atilde;o para testar habilidades pr&aacute;ticas em entrevista presencial ou remota.</li>
+        <li><strong>5. Processo Seletivo por Etapas.</strong> Funil completo com crit&eacute;rios go / no-go em cada etapa.</li>
+        <li><strong>6. Mensagem de Hunting.</strong> Copy de outreach para abordar candidatos passivos no LinkedIn ou e-mail.</li>
+        <li><strong>7. Lista de 15 Candidatos Alvo.</strong> Sourcing real no LinkedIn com perfis qualificados para abordagem imediata.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step1')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step3')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div class="section" id="sec-step3">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">03.</span> A jornada da AP03</div>
+      <div class="sec-desc">3 movimentos curtos seus + 1 longo do Manus</div>
+
+      <ul class="observation-list">
+        <li><strong>1. Voc&ecirc; acessa o Manus AI.</strong> Abre o site e ativa o link de convite da Delta para receber cr&eacute;ditos extras.</li>
+        <li><strong>2. Voc&ecirc; submete o prompt agentico.</strong> Cola o conte&uacute;do que copiou na AP02 e dispara a execu&ccedil;&atilde;o.</li>
+        <li><strong>3. O Manus executa em background.</strong> Entre 15 e 40 minutos. Voc&ecirc; pode fechar a aba e voltar depois.</li>
+        <li><strong>4. Voc&ecirc; revisa os 7 artefatos.</strong> Quando o Manus termina, voc&ecirc; acessa a sess&atilde;o e revisa cada entrega.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step2')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step4')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div class="section" id="sec-step4">
+      <span class="section-badge badge-intro">Introdu&ccedil;&atilde;o</span>
+      <div class="sec-title"><span class="snum">04.</span> Conceito &mdash; Execu&ccedil;&atilde;o agentica: a IA que age, n&atilde;o s&oacute; conversa</div>
+      <div class="sec-desc">A diferen&ccedil;a entre IA que responde e IA que faz</div>
+
+      <p class="lead-text">A maioria das intera&ccedil;&otilde;es com IA &eacute; <strong>conversacional</strong>: voc&ecirc; pergunta, ela responde. Voc&ecirc; pede uma an&aacute;lise, ela devolve um texto. &Eacute; o modelo do Claude, do ChatGPT, do Gemini quando usados no chat &mdash; a IA produz <strong>resposta</strong>, n&atilde;o <strong>a&ccedil;&atilde;o</strong>.</p>
+
+      <p class="lead-text">A <strong>IA agentica</strong> &eacute; diferente em natureza. Em vez de devolver uma resposta, ela <strong>executa uma sequ&ecirc;ncia de a&ccedil;&otilde;es no mundo</strong>: abre o navegador, pesquisa no LinkedIn, filtra resultados, copia dados, monta documentos, salva tudo numa pasta. Em vez de &quot;o que voc&ecirc; quer saber?&quot;, a pergunta &eacute; &quot;o que voc&ecirc; quer feito?&quot;. O Manus AI &eacute; um agente desse tipo &mdash; ele opera como se fosse um estagi&aacute;rio muito r&aacute;pido que trabalha enquanto voc&ecirc; est&aacute; fazendo outra coisa.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card bad">
+          <div class="cc-label">IA conversacional</div>
+          <div class="cc-quote">&quot;Me explique como fazer o hiring desse vendedor.&quot;</div>
+          <div class="cc-desc">Voc&ecirc; recebe um texto longo com instru&ccedil;&otilde;es. Precisa executar tudo manualmente: pesquisar LinkedIn, copiar perfis, formatar a JD, montar o scorecard. A IA te ajuda a pensar; voc&ecirc; faz o trabalho.</div>
+        </div>
+        <div class="compare-card good">
+          <div class="cc-label">IA agentica</div>
+          <div class="cc-quote">&quot;Fa&ccedil;a o hiring desse vendedor.&quot;</div>
+          <div class="cc-desc">Voc&ecirc; recebe os 7 artefatos prontos no final. A IA pesquisou o LinkedIn, montou a JD, criou o scorecard, produziu o case, redigiu a mensagem de hunting &mdash; sozinha, em background. A IA pensa e executa; voc&ecirc; revisa.</div>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Insight</div>
+        <p>&Eacute; a diferen&ccedil;a entre <strong>receber um manual</strong> e <strong>receber o resultado</strong>. A IA agentica n&atilde;o te faz pensar menos &mdash; ela libera voc&ecirc; para pensar no que &eacute; estrat&eacute;gico (revisar, ajustar, calibrar) em vez de operacional (pesquisar, copiar, formatar).</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step3')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step5')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div class="section" id="sec-step5">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">05.</span> O que voc&ecirc; vai ver</div>
+      <div class="sec-desc">O fluxo da AP03 ilustrado com o caso das APs anteriores</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Aviso de demonstra&ccedil;&atilde;o</div>
+        <p>A demonstra&ccedil;&atilde;o a seguir &eacute; <strong>apenas para ilustra&ccedil;&atilde;o</strong> durante a aula expositiva. Voc&ecirc; n&atilde;o precisa testar agora &mdash; voc&ecirc; ter&aacute; sua pr&oacute;pria atividade pr&aacute;tica logo depois desta se&ccedil;&atilde;o.</p>
+      </div>
+
+      <p class="lead-text">O professor demonstra ao vivo o fluxo da AP03 usando o caso fict&iacute;cio gerado nas APs anteriores:</p>
+
+      <div class="overview-card">
+        <h3>O fluxo da demonstra&ccedil;&atilde;o</h3>
+        <ul>
+          <li><strong>Empresa demonstrada:</strong> Delta Academy (gerada na AP02)</li>
+          <li><strong>Vaga demonstrada:</strong> Vendedor consultivo B2B em Edtech (gerada na AP01)</li>
+          <li><strong>Ferramenta:</strong> Manus AI</li>
+          <li><strong>Input:</strong> Prompt agentico em Markdown copiado da AP02</li>
+          <li><strong>Tempo de execu&ccedil;&atilde;o:</strong> ~25 minutos em background</li>
+          <li><strong>Output esperado:</strong> 7 artefatos do funil de hiring entregues numa &uacute;nica sess&atilde;o do Manus</li>
+        </ul>
+      </div>
+
+      <p class="lead-text">Como a execu&ccedil;&atilde;o do Manus &eacute; longa, o professor mostra <strong>uma execu&ccedil;&atilde;o j&aacute; conclu&iacute;da</strong> com o resultado pronto, e depois demonstra como <strong>iniciar uma nova execu&ccedil;&atilde;o do zero</strong> &mdash; sem esperar 25 minutos ao vivo na aula.</p>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step4')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step6')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 06 -->
+    <div class="section" id="sec-step6">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">06.</span> Prompt agentico da demonstra&ccedil;&atilde;o</div>
+      <div class="sec-desc">Trecho representativo do prompt que o professor cola no Manus</div>
+
+      <p class="lead-text">Este &eacute; um <strong>trecho do prompt agentico</strong> que o Claude gerou na AP02 e que ser&aacute; colado no Manus AI na demonstra&ccedil;&atilde;o (o prompt completo tem cerca de 80 a 120 linhas em Markdown &mdash; abaixo, o cabe&ccedil;alho representativo):</p>
+
+      <div class="copy-wrap">
+        <span class="copy-label">Trecho do prompt agentico &mdash; Delta Academy + Edtech</span>
+        <div class="copy-block" id="demo-prompt">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('demo-prompt-text').textContent)">Copiar</button>
+<span id="demo-prompt-text"># Workflow Agentico de Hiring &middot; Delta Academy
+## Vaga: Vendedor Consultivo B2B &middot; Setor: Edtech
+
+## Papel
+Voc&ecirc; &eacute; um agente especialista em recrutamento e sele&ccedil;&atilde;o. Execute o workflow abaixo de forma autonoma, produzindo 7 artefatos sequenciais. Use ferramentas de pesquisa web e LinkedIn quando necess&aacute;rio para o sourcing.
+
+## Contexto da empresa
+A Delta Academy &eacute; uma empresa do setor de Edtech [contexto detalhado vindo da pesquisa Perplexity]...
+
+## Crit&eacute;rios globais de qualidade
+- Todos os artefatos devem refletir o benchmark de mercado fornecido no contexto.
+- A faixa salarial mencionada deve estar atualizada para BR/LATAM.
+- A lista de candidatos deve conter perfis reais com link verific&aacute;vel.
+
+## Tarefa 1 &mdash; Ficha de Vaga
+Produza a JD completa em Markdown, contendo: t&iacute;tulo, miss&atilde;o, responsabilidades...
+[... 6 tarefas adicionais detalhadas ...]
+
+## Formato de sa&iacute;da
+Entregue cada artefato em uma se&ccedil;&atilde;o separada, com cabe&ccedil;alho pr&oacute;prio. Use Markdown limpo.</span></div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step5')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step7')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 07 -->
+    <div class="section" id="sec-step7">
+      <span class="section-badge badge-demo">Demonstra&ccedil;&atilde;o</span>
+      <div class="sec-title demo"><span class="snum">07.</span> O que observar durante a demonstra&ccedil;&atilde;o</div>
+      <div class="sec-desc">4 sinais que diferenciam uma execu&ccedil;&atilde;o agentica bem-feita de uma resposta conversacional</div>
+
+      <ul class="observation-list">
+        <li><strong>1. O Manus mostra cada passo da execu&ccedil;&atilde;o em tempo real.</strong> Voc&ecirc; v&ecirc; o agente abrindo abas do navegador, pesquisando no LinkedIn, lendo perfis, voltando para montar artefatos. &Eacute; um &quot;show da execu&ccedil;&atilde;o&quot; vis&iacute;vel, n&atilde;o uma caixa preta.</li>
+        <li><strong>2. Os 7 artefatos chegam numerados e separados.</strong> Cada um aparece como uma entrega autonoma, n&atilde;o como um texto &uacute;nico corrido. Voc&ecirc; pode revisar e exportar individualmente.</li>
+        <li><strong>3. A lista de candidatos tem links reais do LinkedIn.</strong> N&atilde;o s&atilde;o nomes inventados; s&atilde;o perfis acess&iacute;veis que voc&ecirc; pode clicar e abordar. Esse &eacute; o sinal mais forte de que o Manus realmente executou (e n&atilde;o s&oacute; simulou).</li>
+        <li><strong>4. A faixa salarial e os red flags refletem o benchmark do Perplexity.</strong> Quando voc&ecirc; revisar, vai reconhecer dados que vieram da pesquisa que voc&ecirc; fez na AP01. O contexto foi propagado de ponta a ponta.</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step6')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step8')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 08 -->
+    <div class="section" id="sec-step8">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">08.</span> Sua atividade pr&aacute;tica</div>
+      <div class="sec-desc">Submeta o prompt agentico ao Manus e revise os 7 artefatos</div>
+
+      <div class="meta-grid">
+        <div class="meta-card duration">
+          <div class="mc-label">Dura&ccedil;&atilde;o estimada</div>
+          <div class="mc-value">10 min ativo</div>
+          <div class="mc-sub">+ 15 a 40 min de execu&ccedil;&atilde;o em background do Manus</div>
+        </div>
+        <div class="meta-card tool">
+          <div class="mc-label">Ferramenta recomendada</div>
+          <div class="mc-value">Manus AI</div>
+          <div class="mc-desc">Agente de IA que executa workflows autonomos &mdash; navega na web, pesquisa, analisa e produz m&uacute;ltiplos artefatos numa &uacute;nica sess&atilde;o.</div>
+          <div class="mc-bp"><strong>Plano gratuito com cr&eacute;ditos limitados.</strong> Considere ativar o <a href="https://manus.im/invitation/JLE6BOPCN1I3V?utm_source=invitation&amp;utm_medium=social&amp;utm_campaign=copy_link" target="_blank" rel="noopener">link de convite da Delta Academy</a> para ganhar cr&eacute;ditos extras antes de come&ccedil;ar &mdash; uma execu&ccedil;&atilde;o completa do workflow de hiring consome boa parte da cota inicial gratuita.</div>
+        </div>
+      </div>
+
+      <p class="lead-text">Voc&ecirc; vai executar agora o <strong>workflow agentico de hiring</strong> no Manus AI usando o prompt que voc&ecirc; gerou na AP02. A AP tem <strong>4 fases</strong>:</p>
+
+      <div class="tip-box">
+        <div class="tip-label">Por que 4 fases</div>
+        <p><strong>Fase 01 (acesso):</strong> abertura do Manus AI e ativa&ccedil;&atilde;o do link de convite. <strong>Fase 02 (submiss&atilde;o):</strong> colagem do prompt agentico e disparo da execu&ccedil;&atilde;o. <strong>Fase 03 (espera):</strong> Manus rodando em background &mdash; voc&ecirc; pode fechar a aba. <strong>Fase 04 (revis&atilde;o):</strong> volta ao Manus para conferir os 7 artefatos. <strong>Essa &eacute; a &uacute;nica AP com tempo de espera</strong> &mdash; aproveite os 15-40 min do Manus para fazer outra coisa.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step7')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step9')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 09 -->
+    <div class="section" id="sec-step9">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
+      <div class="sec-desc">9 passos em 4 fases &mdash; do acesso ao Manus at&eacute; a captura dos artefatos</div>
+
+      <div class="fase-divider">FASE 01 &mdash; Acesso ao Manus AI</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 01</span><span class="step-card-title">Abra o Manus AI em uma nova aba</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Para acessar o Manus, clique em <a href="https://manus.im" target="_blank" rel="noopener">manus.im</a> e crie uma conta gratuita (ou fa&ccedil;a login se j&aacute; tem). O cadastro &eacute; r&aacute;pido &mdash; basta um e-mail v&aacute;lido. <span class="time">(20 seg)</span></p>
+          <p class="step-card-desc"><strong>Dica de cr&eacute;ditos:</strong> antes de come&ccedil;ar a execu&ccedil;&atilde;o, considere ativar o <a href="https://manus.im/invitation/JLE6BOPCN1I3V?utm_source=invitation&amp;utm_medium=social&amp;utm_campaign=copy_link" target="_blank" rel="noopener">link de convite da Delta Academy</a> para ganhar cr&eacute;ditos extras &mdash; uma execu&ccedil;&atilde;o completa consome boa parte da cota gratuita inicial.</p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/c730f203-fe03-4469-aa70-0618f3e493b0/sps-redacted-b498e5ae6df940b08b2a3537bc68d90c_854ff8f6a26344a3af729f09ede25c3c_text_export.jpeg" alt="Tela inicial do Manus AI" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="fase-divider">FASE 02 &mdash; Submiss&atilde;o do prompt agentico</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Inicie uma nova sess&atilde;o no Manus</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Na tela inicial do Manus, clique no bot&atilde;o para iniciar uma nova task (geralmente identificado como <strong>&quot;New Task&quot;</strong> ou <strong>&quot;+ Nova sess&atilde;o&quot;</strong>). <span class="time">(15 seg)</span></p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/1834b6ab-7493-40fc-a9bc-b420e039dcba/sps-redacted-dcad66d41b16477dba9b2a0ffeede9ee_9432a9edd78e4f0b9a0763f928b15460_text_export.jpeg" alt="Bot&atilde;o de nova sess&atilde;o do Manus" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Cole o prompt agentico no campo de input</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Cole o conte&uacute;do que voc&ecirc; copiou no fim da AP02 (use <code>Cmd+V</code> no Mac ou <code>Ctrl+V</code> no Windows) no campo de input principal do Manus. O prompt aparece formatado em Markdown &mdash; sem necessidade de ajustes manuais. <span class="time">(20 seg)</span></p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Inicie a execu&ccedil;&atilde;o do workflow</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Clique no bot&atilde;o de envio (geralmente uma seta &uarr; ou <strong>&quot;Send&quot;</strong> no canto do campo de input). <span class="time">(10 seg)</span></p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> o Manus come&ccedil;a imediatamente a interpretar o prompt, definir o plano de execu&ccedil;&atilde;o e abrir as ferramentas necess&aacute;rias (navegador interno, busca, etc).</p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/545208c9-03ab-4255-abf4-b44032b3b651/sps-redacted-57d11786f08e4d1a8856324ab6466d19_9c7b039231f94264b097c72026a1dfbe_text_export.jpeg" alt="Bot&atilde;o de envio para iniciar a execu&ccedil;&atilde;o" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="fase-divider">FASE 03 &mdash; Execu&ccedil;&atilde;o em background (15 a 40 minutos)</div>
+
+      <div class="warning-box">
+        <div class="warning-label">Importante</div>
+        <p>A partir deste ponto, o Manus trabalha sozinho. Voc&ecirc; <strong>pode fechar a aba</strong> ou continuar com outras tarefas &mdash; a execu&ccedil;&atilde;o continua no servidor do Manus. Quando terminar, voc&ecirc; volta &agrave; sess&atilde;o para ver os resultados.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">(Opcional) Acompanhe a execu&ccedil;&atilde;o em tempo real</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Se quiser observar o Manus trabalhando, deixe a aba aberta. Voc&ecirc; ver&aacute; ele abrindo abas no navegador interno, navegando no LinkedIn, lendo perfis, copiando dados e montando os artefatos em paralelo. <span class="time">(durante a execu&ccedil;&atilde;o)</span></p>
+          <p class="step-card-desc"><strong>Vale a pena assistir</strong> pelo menos uma execu&ccedil;&atilde;o do come&ccedil;o ao fim &mdash; &eacute; um &quot;show&quot; educativo do que &eacute; IA agentica em a&ccedil;&atilde;o.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Aguarde a conclus&atilde;o</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">O Manus avisa quando termina &mdash; por notifica&ccedil;&atilde;o na aba ou por e-mail (se voc&ecirc; ativou notifica&ccedil;&otilde;es). <span class="time">(15 a 40 min &middot; tempo varia conforme a vaga e o setor)</span></p>
+          <p class="step-card-desc"><strong>Detalhamento:</strong> vagas com sourcing mais nichado podem demorar mais; vagas comuns geralmente fecham em ~20 minutos.</p>
+        </div>
+      </div>
+
+      <div class="fase-divider">FASE 04 &mdash; Revis&atilde;o e captura dos 7 artefatos</div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Acesse a sess&atilde;o conclu&iacute;da do Manus</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Volte &agrave; aba do Manus (ou abra de novo) e localize a sess&atilde;o da sua task &mdash; geralmente listada com timestamp. Clique para abrir. <span class="time">(15 seg)</span></p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/61215fac-6136-4dfd-989e-4ebe241c63a0/sps-redacted-73ea571b6b634ce2bcd3f8f61935e1fb_4bb96fc3080248cb970076596f9994a4_text_export.jpeg" alt="Acessar sess&atilde;o conclu&iacute;da do Manus" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Revise os 7 artefatos um por um</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">O Manus apresenta cada artefato em uma se&ccedil;&atilde;o separada na conversa. Role pela sess&atilde;o e leia cada um &mdash; confira se o conte&uacute;do bate com o benchmark do Perplexity e com a realidade da empresa que voc&ecirc; informou. <span class="time">(5 a 8 min)</span></p>
+          <p class="step-card-desc"><strong>Anote pontos que precisam de ajuste manual</strong> no seu RH antes de usar.</p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/aeb0733d-c3c5-4d7b-908d-64eb7ea1fe64/sps-redacted-54980317201741b4ab00c25a82181cb8_af8a90bbca2848dd89746105f00255a2_text_export.jpeg" alt="Visualiza&ccedil;&atilde;o dos 7 artefatos na sess&atilde;o do Manus" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-card-head"><span class="step-card-num">PASSO 09</span><span class="step-card-title">Exporte ou copie os artefatos que voc&ecirc; vai usar</span></div>
+        <div class="step-card-body">
+          <p class="step-card-desc">Para cada artefato que vai usar de verdade, use a fun&ccedil;&atilde;o de copiar do Manus (geralmente &iacute;cone de c&oacute;pia em cada bloco) ou exporte a sess&atilde;o inteira como PDF / Markdown (se dispon&iacute;vel na sua interface). <span class="time">(2 min)</span></p>
+          <p class="step-card-desc"><strong>Guarde em um local de f&aacute;cil acesso</strong> (Google Drive, Notion, Drive da empresa).</p>
+
+          <figure class="scribe-print">
+            <img src="https://colony-recorder.s3.amazonaws.com/files/2026-06-18/6acd8516-5522-481d-ac3d-1d97047c76b9/sps-redacted-87f69f905b964d448a94b37d782a1ef9_81f630b762b647f3b55c7b30177e5e6e_text_export.jpeg" alt="Bot&atilde;o de exportar ou copiar artefato do Manus" loading="lazy">
+          </figure>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step8')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step10')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="section" id="sec-step10">
+      <span class="section-badge badge-pratica">Atividade Pr&aacute;tica</span>
+      <div class="sec-title pratica"><span class="snum">10.</span> O que voc&ecirc; tem ao final desta atividade</div>
+      <div class="sec-desc">Voc&ecirc; sai desta atividade com</div>
+
+      <div class="overview-card">
+        <h3>Voc&ecirc; sai desta atividade com</h3>
+        <ul class="check-list">
+          <li>Os <strong>7 artefatos do funil de hiring</strong> prontos, gerados pelo Manus AI a partir do prompt agentico da AP02.</li>
+          <li><strong>Ficha de vaga, persona, scorecard, case roleplay, processo seletivo, mensagem de hunting e lista de 15 candidatos LinkedIn</strong> &mdash; todos customizados &agrave; sua empresa e calibrados contra o benchmark do Perplexity.</li>
+          <li>Os artefatos <strong>exportados ou copiados</strong> para um local de f&aacute;cil acesso para uso real no seu RH.</li>
+          <li>A <strong>sess&atilde;o do Manus salva</strong> caso voc&ecirc; queira voltar nela depois para iterar ou re-executar com ajustes.</li>
+        </ul>
+      </div>
+
+      <div class="insight-box">
+        <div class="insight-label">Voc&ecirc; acabou de fechar o ciclo</div>
+        <p>Em <strong>3 atividades pr&aacute;ticas</strong> voc&ecirc; saiu da pergunta &quot;como fazer um hiring para essa vaga?&quot; at&eacute; a entrega de <strong>7 artefatos prontos para uso</strong>. <strong>AP01 &rarr; dados. AP02 &rarr; c&eacute;rebro. AP03 &rarr; execu&ccedil;&atilde;o.</strong> Esse &eacute; o padr&atilde;o de qualquer workflow de IA agentica em 2026 &mdash; e agora voc&ecirc; sabe construir.</p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step9')">&#8592; Anterior</button>
+        <button class="nav-btn primary" onclick="showSection('sec-step11')">Pr&oacute;ximo &#8594;</button>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="section" id="sec-step11">
+      <span class="section-badge badge-desafio">Desafio</span>
+      <div class="sec-title desafio"><span class="snum">11.</span> Implementando na sua empresa</div>
+      <div class="sec-desc">Replique o pipeline inteiro para uma contrata&ccedil;&atilde;o real da sua empresa</div>
+
+      <p class="lead-text">Voc&ecirc; acabou de testar o workflow completo com o caso da Delta Academy. Agora &eacute; hora de <strong>replicar o pipeline inteiro para uma contrata&ccedil;&atilde;o real da sua empresa</strong> &mdash; e esse &eacute; o desafio que fecha a aula RH-01 e te entrega o playbook de contrata&ccedil;&atilde;o com IA.</p>
+
+      <div class="overview-card">
+        <h3>O que fazer no seu contexto real</h3>
+        <ul>
+          <li>Use o <strong>prompt agentico real</strong> que voc&ecirc; gerou no desafio da AP02 (para a sua pr&oacute;xima vaga em aberto).</li>
+          <li>Acesse o Manus AI (use o <a href="https://manus.im/invitation/JLE6BOPCN1I3V?utm_source=invitation&amp;utm_medium=social&amp;utm_campaign=copy_link" target="_blank" rel="noopener">link de convite da Delta</a> se ainda n&atilde;o usou &mdash; cr&eacute;ditos extras).</li>
+          <li>Cole o prompt agentico real e inicie a execu&ccedil;&atilde;o.</li>
+          <li>Aguarde o Manus concluir (15 a 40 min &mdash; fa&ccedil;a outra coisa enquanto isso).</li>
+          <li><strong>Revise os 7 artefatos com olhar cr&iacute;tico</strong> &mdash; confira: a JD reflete a sua realidade? O scorecard usa crit&eacute;rios objetivos? Os 15 candidatos do LinkedIn s&atilde;o plaus&iacute;veis e contat&aacute;veis? Edite o que precisar de ajuste manual.</li>
+          <li><strong>Use de verdade no pr&oacute;ximo processo seletivo</strong> &mdash; publique a JD, abra abordagem com a mensagem de hunting, conduza entrevistas com o scorecard. Esse &eacute; o teste final.</li>
+        </ul>
+      </div>
+
+      <p class="lead-text"><strong>Resultado esperado:</strong> voc&ecirc; ter&aacute; um <strong>processo seletivo completo da sua pr&oacute;xima vaga</strong> gerado por IA agentica, validado por voc&ecirc; e pronto para entrar em campo.</p>
+
+      <p class="lead-text"><strong>Tempo estimado para o desafio:</strong> 30 a 50 minutos (10 ativo + 20-40 em background do Manus).</p>
+
+      <div class="insight-box">
+        <div class="insight-label">O padr&atilde;o de 3 camadas para qualquer dom&iacute;nio</div>
+        <p>Voc&ecirc; acabou de dominar o pipeline completo: <strong>pesquisa profunda (AP01) &rarr; meta-prompt agentico (AP02) &rarr; execu&ccedil;&atilde;o agentica (AP03)</strong>. Esse padr&atilde;o de 3 camadas vale para qualquer dom&iacute;nio que voc&ecirc; queira automatizar com IA em 2026 &mdash; vendas, marketing, finan&ccedil;as, customer success. Recrutamento foi o caso piloto da aula RH-01. <strong>O pr&oacute;ximo &eacute; o seu.</strong></p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="nav-btn" onclick="showSection('sec-step10')">&#8592; Anterior</button>
+        <a class="nav-btn primary" href="index.html">&#8617; Voltar ao &iacute;ndice</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Palette toggle (dusk <-> cream)
+  (function(){
+    const KEY="delta-tut-palette";
+    const SUN='<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+    const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+    function apply(p){
+      document.documentElement.setAttribute("data-palette",p);
+      localStorage.setItem(KEY,p);
+      const icon=document.getElementById("palette-icon");
+      if(icon)icon.innerHTML=p==="dusk"?SUN:MOON;
+      const btn=document.getElementById("palette-toggle");
+      if(btn)btn.title=p==="dusk"?"Modo claro":"Modo escuro";
+    }
+    window.togglePalette=function(){
+      apply(document.documentElement.getAttribute("data-palette")==="dusk"?"cream":"dusk");
+    };
+    apply(localStorage.getItem(KEY)||"dusk");
+  })();
+
+  // Section navigation + progress
+  const PKEY = "delta-tut-execucao-manus-ai";
+  const completed = new Set(JSON.parse(localStorage.getItem(PKEY) || "[]"));
+  const TOTAL = 12;
+
+  function renderProgress() {
+    document.querySelectorAll(".nav-item").forEach(ni => {
+      ni.classList.toggle("completed", completed.has(ni.dataset.section));
+    });
+    const pct = Math.round((completed.size / TOTAL) * 100);
+    document.getElementById("pct").textContent = pct;
+    document.getElementById("sp-fill").style.width = pct + "%";
+  }
+
+  function showSection(id) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
+    const sec = document.getElementById(id);
+    if (sec) sec.classList.add("active");
+    const nav = document.querySelector(`.nav-item[data-section="${id}"]`);
+    if (nav) nav.classList.add("active");
+    completed.add(id);
+    localStorage.setItem(PKEY, JSON.stringify([...completed]));
+    renderProgress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function copyText(btn, text) {
+    navigator.clipboard.writeText(text).then(() => {
+      const old = btn.textContent;
+      btn.textContent = "Copiado ✓";
+      setTimeout(() => btn.textContent = old, 1600);
+    });
+  }
+
+  // Restore last section + initial progress
+  (function init(){
+    const last = localStorage.getItem(PKEY + ":last") || "sec-home";
+    completed.add("sec-home");
+    renderProgress();
+    const origShow = showSection;
+    window.showSection = function(id){ origShow(id); localStorage.setItem(PKEY + ":last", id); };
+    if (last !== "sec-home") window.showSection(last);
+  })();
+</script>
+</body>
+</html>
