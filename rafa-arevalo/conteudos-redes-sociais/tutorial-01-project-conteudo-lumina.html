@@ -121,6 +121,18 @@
   .fase-divider{display:flex;align-items:center;gap:12px;margin:18px 0 12px}
   .fase-divider .fd-tag{font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);padding:4px 10px;border-radius:4px;background:var(--accent2);flex-shrink:0}
   .fase-divider .fd-line{flex:1;height:1px;background:var(--border2)}
+  /* Copy block dentro de step-card */
+  .copy-wrap{margin:14px 0 4px}
+  .copy-wrap .copy-label{display:inline-block;font-family:'Montserrat',system-ui,sans-serif;font-size:0.66rem;font-weight:800;text-transform:uppercase;letter-spacing:0.14em;color:var(--accent2);margin-bottom:8px;padding-bottom:4px;border-bottom:2px solid var(--accent2)}
+  .copy-block{position:relative;background:#FFFFFF;border:1px solid var(--border2);border-left:4px solid var(--accent2);border-radius:8px;padding:18px 22px 18px 22px;font-family:'JetBrains Mono','Courier New',ui-monospace,monospace;font-size:0.78rem;color:#0E1A19;line-height:1.68;white-space:pre-wrap;word-break:break-word;font-weight:500;box-shadow:0 1px 3px rgba(31,51,49,0.08),inset 0 0 0 1px rgba(255,255,255,0.6)}
+  [data-palette="dusk"] .copy-block{background:#0F1918;color:#F4F1E3;border-color:#2A433F}
+  .copy-block.compact{font-size:0.92rem;font-weight:600;padding:14px 22px}
+  .copy-block.long{max-height:280px;overflow-y:auto;font-size:0.74rem;line-height:1.62}
+  .copy-block.long::-webkit-scrollbar{width:6px}
+  .copy-block.long::-webkit-scrollbar-track{background:transparent}
+  .copy-block.long::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+  .copy-btn{position:absolute;top:8px;right:8px;background:var(--copy-btn-bg);border:1px solid var(--copy-btn-border);color:var(--copy-btn-fg);padding:4px 12px;border-radius:5px;font-size:0.64rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Montserrat',system-ui,sans-serif;z-index:1}
+  .copy-btn:hover{background:var(--copy-btn-hover-bg);color:var(--copy-btn-hover-fg);border-color:var(--copy-btn-hover-bg)}
   /* Downloads-card */
   .downloads-card{background:var(--green-light);border:1px solid var(--green-border);border-left:4px solid var(--green);border-radius:8px;padding:14px 16px;margin:14px 0 4px}
   .downloads-card .dc-head{font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--green-text);margin-bottom:12px}
@@ -201,7 +213,7 @@
           <tr><td>Duração</td><td>8 a 10 minutos</td></tr>
           <tr><td>Modelo recomendado</td><td>Nenhum &mdash; toda a AP é interface</td></tr>
           <tr><td>Mensagens ao Claude</td><td>0 (zero) &mdash; otimizado para o plano gratuito</td></tr>
-          <tr><td>Ferramentas</td><td>Claude (interface de Projects) &middot; downloads desta página</td></tr>
+          <tr><td>Ferramentas</td><td>Claude (interface de Projects) &middot; downloads e blocos copiáveis desta página</td></tr>
         </tbody></table>
       </div>
 
@@ -348,13 +360,13 @@
       <p class="lead-text">O professor demonstra o fluxo completo de criação do Project Conteúdo Lumina em <strong>duas fases</strong>. Você não precisa testar agora &mdash; você terá sua própria atividade prática logo depois.</p>
 
       <div class="overview-card">
-        <h3>Fase 01 &mdash; Download dos arquivos prontos</h3>
+        <h3>Fase 01 &mdash; Download dos arquivos de contexto</h3>
         <p><strong>0 mensagens ao Claude.</strong> O professor mostra como baixar os 4 arquivos de contexto direto desta página HTML, sem precisar gerar nada no chat.</p>
       </div>
 
       <div class="overview-card">
         <h3>Fase 02 &mdash; Configuração do Project</h3>
-        <p><strong>0 mensagens ao Claude.</strong> O professor cria um Project novo no Claude, copia os textos prontos (Nome + Descrição + Instruções) e faz upload dos 4 arquivos baixados na Fase 01.</p>
+        <p><strong>0 mensagens ao Claude.</strong> O professor cria um Project novo no Claude, copia os 3 blocos de texto disponíveis nesta página (Nome + Descrição + Instruções) direto para os campos do Project, e faz upload dos 4 arquivos baixados na Fase 01.</p>
       </div>
 
       <div class="nav-buttons">
@@ -367,21 +379,21 @@
     <div class="section" id="sec-step6">
       <span class="section-badge badge-demo">Demonstração</span>
       <div class="sec-title demo"><span class="snum">06.</span> Artefatos da demonstração</div>
-      <div class="sec-desc">O que está disponível para você na seção Atividade Prática</div>
+      <div class="sec-desc">Tudo que você precisa está nesta página</div>
 
-      <p class="lead-text">Nesta AP <strong>não há prompt</strong> &mdash; toda a configuração é feita via interface do Claude. Os artefatos da demonstração são:</p>
+      <p class="lead-text">Nesta AP <strong>não há prompt</strong> &mdash; toda a configuração é feita via interface do Claude. Os artefatos da demonstração estão todos disponíveis nesta página, na seção <strong>Atividade Prática</strong>:</p>
 
       <div class="overview-card">
         <h3>Recursos prontos</h3>
         <ul>
-          <li><strong>4 arquivos de contexto Lumina</strong> disponíveis para download nesta página.</li>
-          <li><strong>3 textos prontos</strong> (Nome, Descrição, Instruções) para copiar e colar.</li>
+          <li><strong>4 arquivos de contexto Lumina</strong> para download (botão <em>"Baixar"</em> em cada um).</li>
+          <li><strong>3 blocos de texto</strong> (Nome, Descrição, Instruções) para copiar direto desta página (botão <em>"Copiar"</em> em cada um).</li>
         </ul>
       </div>
 
       <div class="tip-box">
         <div class="tip-label">Onde encontrar</div>
-        <p>Tudo está disponível na seção <strong>Atividade Prática</strong> desta aula, dentro do passo a passo.</p>
+        <p>Tudo está embutido dentro do <strong>passo a passo</strong> da Atividade Prática &mdash; download e botões de copiar aparecem exatamente no passo onde você precisa deles.</p>
       </div>
 
       <div class="nav-buttons">
@@ -436,7 +448,7 @@
 
       <div class="overview-card">
         <h3>Por que duas fases</h3>
-        <p>Em vez de gerar arquivos do zero no chat (consumindo várias mensagens), os arquivos já vêm prontos para baixar. Isso <strong>elimina retrabalho</strong> e mantém seu limite de mensagens do plano gratuito intacto para as APs seguintes.</p>
+        <p>Em vez de gerar arquivos do zero no chat (consumindo várias mensagens), os arquivos já vêm prontos para baixar e os textos do Project já estão disponíveis nesta página para copiar direto. Isso <strong>elimina retrabalho</strong> e mantém seu limite de mensagens do plano gratuito intacto para as APs seguintes.</p>
       </div>
 
       <div class="nav-buttons">
@@ -449,7 +461,7 @@
     <div class="section" id="sec-step9">
       <span class="section-badge badge-pratica">Atividade Prática</span>
       <div class="sec-title pratica"><span class="snum">09.</span> Passo a passo</div>
-      <div class="sec-desc">8 passos em 2 fases &middot; ~8 minutos no total</div>
+      <div class="sec-desc">7 passos em 2 fases &middot; ~8 minutos no total</div>
 
       <div class="fase-divider">
         <span class="fd-tag">Fase 01 &middot; Download</span>
@@ -498,71 +510,144 @@
         </div>
       </div>
 
-      <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Baixe o arquivo com os 3 textos prontos</span></div>
-        <div class="step-card-body">
-          <p class="step-card-desc">Baixe também o arquivo <code>textos-prontos-project.md</code>, que contém os <strong>3 blocos de texto</strong> (Nome, Descrição, Instruções) para copiar e colar nos campos do Project no Claude.</p>
-          <div class="downloads-card">
-            <div class="dc-head">&#128229; Textos prontos para os campos do Project</div>
-            <a class="dl-btn" href="textos-prontos-project.md" download>
-              <span class="dl-icon">&#128196;</span>
-              <span class="dl-meta">
-                <span class="dl-name">textos-prontos-project.md</span>
-                <span class="dl-desc">CAMPO 1 (Nome) + CAMPO 2 (Descrição) + CAMPO 3 (System Prompt)</span>
-              </span>
-              <span class="dl-arrow">&darr;</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
       <div class="fase-divider">
         <span class="fd-tag">Fase 02 &middot; Configuração no Claude</span>
         <span class="fd-line"></span>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Abra Projects no Claude</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 02</span><span class="step-card-title">Abra Projects no Claude</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Acesse <code>claude.ai</code> e faça login se necessário. No menu lateral, clique em <strong>Projetos</strong> (ou <em>Projects</em>, dependendo do idioma).</p>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Crie um novo projeto</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 03</span><span class="step-card-title">Crie um novo projeto</span></div>
         <div class="step-card-body">
           <p class="step-card-desc">Clique no botão <strong>+ Novo projeto</strong> para abrir o formulário de criação.</p>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Preencha o nome do projeto</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 04</span><span class="step-card-title">Cole o Nome do Project</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Abra o arquivo <code>textos-prontos-project.md</code> que você baixou no Passo 02. Copie o conteúdo do <strong>CAMPO 1 &mdash; Nome do Project</strong> (<code>Conteúdo — Lumina</code>) e cole no campo <em>"No que você está trabalhando?"</em> do formulário.</p>
+          <p class="step-card-desc">Use o botão <strong>"Copiar"</strong> abaixo e cole no campo <em>"No que você está trabalhando?"</em> do formulário de criação.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Bloco 1 &mdash; Nome do Project</span>
+            <div class="copy-block compact" id="block-nome">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('block-nome-text').textContent)">Copiar</button>
+<span id="block-nome-text">Conteúdo — Lumina</span></div>
+          </div>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Preencha a descrição e crie o projeto</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 05</span><span class="step-card-title">Cole a Descrição e crie o projeto</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Volte ao arquivo <code>textos-prontos-project.md</code>, copie o conteúdo do <strong>CAMPO 2 &mdash; Descrição do Project</strong> e cole no campo <em>"O que você quer realizar?"</em> do formulário. Em seguida clique em <strong>Criar projeto</strong>.</p>
+          <p class="step-card-desc">Use o botão <strong>"Copiar"</strong> abaixo, cole no campo <em>"O que você quer realizar?"</em> do formulário e clique em <strong>Criar projeto</strong>.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Bloco 2 &mdash; Descrição do Project</span>
+            <div class="copy-block" id="block-desc">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('block-desc-text').textContent)">Copiar</button>
+<span id="block-desc-text">Assistente da Bruna Ferreira (social media da Lumina) para planejamento, produção e análise de conteúdo de Instagram. Aplica a estratégia de marca, o tom acolhedor experto, o brand book, os formatos editoriais e as linhas temáticas da Lumina em todos os outputs.</span></div>
+          </div>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Cole as Instruções (System Prompt)</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 06</span><span class="step-card-title">Cole as Instruções (System Prompt)</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">No Project recém-criado, localize a seção <strong>Instruções</strong> e clique em <strong>Editar Instruções</strong>. Volte ao arquivo <code>textos-prontos-project.md</code>, copie o conteúdo do <strong>CAMPO 3 &mdash; Instruções do Project</strong> (o System Prompt completo) e cole no editor. Clique em <strong>Salvar instruções</strong>.</p>
+          <p class="step-card-desc">No Project recém-criado, localize a seção <strong>Instruções</strong> e clique em <strong>Editar Instruções</strong>. Use o botão <strong>"Copiar"</strong> abaixo, cole no editor de instruções e clique em <strong>Salvar instruções</strong>.</p>
+          <div class="copy-wrap">
+            <span class="copy-label">Bloco 3 &mdash; Instruções do Project (System Prompt)</span>
+            <div class="copy-block long" id="block-instr">
+<button class="copy-btn" onclick="copyText(this, document.getElementById('block-instr-text').textContent)">Copiar</button>
+<span id="block-instr-text"># Identidade
+
+Você é o assistente de conteúdo da Bruna Ferreira, social media da Lumina. A Lumina é uma marca brasileira de suplementos funcionais em formato gummy (pré-treino, creatina e whey protein) posicionada como wellness premium. Vende online (canal principal) e tem duas lojas físicas — São Paulo (Jardins) e Rio de Janeiro (Ipanema).
+
+Sua missão é ajudar a Bruna a planejar o calendário mensal de Instagram, escrever copy de posts, gerar prompts visuais para criativos e analisar performance dos conteúdos publicados — sempre respeitando rigorosamente a identidade da marca.
+
+# Persona da audiência
+
+A Lumina fala principalmente com a Mariana — 34 anos, São Paulo, profissional sênior, treina 4-5 vezes por semana, classe AB, lê rótulo de suplemento, pesquisa origem, compra Athletic Greens, Olipop e Loop. Ela não treina para emagrecer, treina porque cuidar do corpo é parte da identidade dela. Detalhes completos no arquivo "estrategia-marca-lumina.md".
+
+# Tom de voz — acolhedor experto
+
+Somos a amiga que entende de suplementação e fala com calma. Não a coach gritando, não o cientista distante. Cinco regras inegociáveis de tom:
+
+1. Falamos como gente, não como rótulo. Ciência sempre traduzida.
+2. Nunca prometemos transformação milagrosa.
+3. Nunca usamos linguagem de academia masculina bruta (nada de "monstro", "fera", "bombar", "destruir treino").
+4. Nunca infantilizamos a leitora.
+5. Sempre humanizamos a ciência — ingrediente vira experiência.
+
+# Palavras e bordões proibidos
+
+Nunca usamos: "monstro", "fera", "bombar", "gigante", "destruir treino", "amiga vou te contar um segredo", "você merece", "ame seu corpo", "aproveite enquanto há estoque", "garanta já o seu", "compre agora!", promessas de transformação em prazo curto.
+
+# Funil de Confiança — espinha do calendário mensal
+
+O calendário mensal da Lumina segue 6 semanas no modelo do Funil de Confiança:
+
+1. Semana NOTAM VOCÊ — hook forte, conteúdo provocativo para parar o scroll.
+2. Semana LEMBRAM DE VOCÊ — consistência, marca reconhecível.
+3. Semana SEGUEM VOCÊ — conteúdo de valor (framework, diagnóstico).
+4. Semana CONFIAM EM VOCÊ — prova, bastidores, autoridade humana.
+5. Semana PRECISAM DE VOCÊ — nomear a dor, gerar urgência sem coerção.
+6. Semana COMPRAM DE VOCÊ — CTA aparece como formalidade.
+
+# Formatos de Instagram que usamos
+
+A Lumina trabalha com 5 formatos de feed:
+- Carrossel educativo
+- Insights rápidos
+- Carrossel-ritual
+- Carrossel-ciência leve
+- Framework visual
+
+Detalhes de estrutura e tom de cada formato no arquivo "formatos-conteudo-instagram-lumina.md".
+
+# Linhas editoriais (territórios temáticos)
+
+Toda peça pertence a uma das 6 linhas editoriais Lumina:
+1. Ciência sem palestra (25% do mês)
+2. Ritual da rotina (25%)
+3. Mitos e verdades (15%)
+4. Bastidores Lumina (15%)
+5. Cultura wellness (10%)
+6. Produto em movimento (10%)
+
+Detalhes no arquivo "linhas-editoriais-lumina.md".
+
+# Identidade visual
+
+Paleta: branco quente (#FBF9F5), verde-musgo (#5C7A5A), coral terroso (#C97A5A), cinza-taupe (#8A857D), verde-claro pálido (#D4DDC9).
+Tipografia: Fraunces (títulos) + Inter (corpo).
+Estilo: muito espaço negativo, luz natural, ambientação real, linhas finas, sem ornamento pesado.
+
+Detalhes completos no arquivo "brandbook-produtos-lumina.md".
+
+# Como você responde
+
+- Use sempre os arquivos de contexto carregados como fonte de verdade. Eles têm prioridade sobre conhecimento geral.
+- Quando gerar copy ou prompt visual, aplique automaticamente o tom acolhedor experto e a paleta visual da marca.
+- Quando gerar plano de conteúdo, sempre alinhe a peça ao papel da semana no Funil de Confiança e à linha editorial correspondente.
+- Seja direto e objetivo. A Bruna é profissional ocupada — entregue o material, não o discurso sobre o material.
+- Quando estiver em dúvida sobre tom ou escolha de palavra, prefira sempre o caminho mais sereno, mais técnico-traduzido e menos eufórico.</span></div>
+          </div>
+          <p class="step-card-desc" style="margin-top:12px"><em>O bloco acima rola se necessário &mdash; clique em "Copiar" para pegar o System Prompt completo de uma vez.</em></p>
         </div>
       </div>
 
       <div class="step-card">
-        <div class="step-card-head"><span class="step-card-num">PASSO 08</span><span class="step-card-title">Faça upload dos 4 arquivos de contexto</span></div>
+        <div class="step-card-head"><span class="step-card-num">PASSO 07</span><span class="step-card-title">Faça upload dos 4 arquivos de contexto</span></div>
         <div class="step-card-body">
-          <p class="step-card-desc">Na seção <strong>Arquivos</strong> do Project, clique no ícone <strong>+</strong> e selecione <strong>Carregar do aparelho</strong>. Faça upload dos 4 arquivos <code>.md</code> baixados no Passo 01 &mdash; pode ser todos de uma vez ou um a um.</p>
+          <p class="step-card-desc">Na seção <strong>Arquivos</strong> do Project, clique no ícone <strong>+</strong> e selecione <strong>Carregar do aparelho</strong>. Faça upload dos 4 arquivos <code>.md</code> baixados na Fase 01 &mdash; pode ser todos de uma vez ou um a um.</p>
           <div class="warning-box">
             <div class="warning-label">Validação visual</div>
-            <p>Confirme que aparecem na seção Arquivos exatamente os 4 nomes: <code>estrategia-marca-lumina.md</code>, <code>brandbook-produtos-lumina.md</code>, <code>formatos-conteudo-instagram-lumina.md</code>, <code>linhas-editoriais-lumina.md</code>.</p>
+            <p>Confirme que aparecem na seção Arquivos exatamente os 4 nomes: <code>estrategia-marca-lumina.md</code>, <code>brandbook-produtos-lumina.md</code>, <code>formatos-conteudo-instagram-lumina.md</code>, <code>linhas-editoriais-lumina.md</code>. E confirme que a seção <strong>Instruções</strong> mostra o System Prompt completo salvo.</p>
           </div>
         </div>
       </div>
@@ -614,8 +699,9 @@
         <h3>O que fazer</h3>
         <ul>
           <li><strong>1. Adapte os 4 arquivos de contexto.</strong> Use os arquivos da Lumina como template: troque a marca, a persona Mariana pela persona real do seu negócio, adapte tom de voz, palavras proibidas e territórios editoriais. Mantenha a estrutura dos formatos ou ajuste para o canal principal da sua empresa.</li>
-          <li><strong>2. Crie um Project</strong> chamado <code>Conteúdo — [Nome da sua empresa]</code> e configure os 4 campos com base nos arquivos adaptados.</li>
-          <li><strong>3. Faça upload dos 4 arquivos customizados</strong> na seção Arquivos do Project.</li>
+          <li><strong>2. Adapte os 3 blocos de texto do Project</strong> (Nome, Descrição, Instruções) para sua marca real. Use os blocos da Lumina como template &mdash; mantenha a estrutura, troque o conteúdo.</li>
+          <li><strong>3. Crie um Project</strong> chamado <code>Conteúdo — [Nome da sua empresa]</code> e configure os 3 campos com base nos blocos adaptados.</li>
+          <li><strong>4. Faça upload dos 4 arquivos customizados</strong> na seção Arquivos do Project.</li>
         </ul>
       </div>
 
